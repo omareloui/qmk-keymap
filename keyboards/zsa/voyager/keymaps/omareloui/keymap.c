@@ -5,6 +5,28 @@
 
 #include QMK_KEYBOARD_H
 
+/* #ifdef ACHORDION_ENABLE */
+/* #    include "features/achordion.h" */
+/* #endif // ACHORDION_ENABLE */
+/* #ifdef CUSTOM_SHIFT_KEYS_ENABLE */
+/* #    include "features/custom_shift_keys.h" */
+/* #endif // CUSTOM_SHIFT_KEYS_ENABLE */
+/* #ifdef KEYCODE_STRING_ENABLE */
+/* #    include "features/keycode_string.h" */
+/* #endif // KEYCODE_STRING_ENABLE */
+/* #ifdef ORBITAL_MOUSE_ENABLE */
+/* #    include "features/orbital_mouse.h" */
+/* #endif // ORBITAL_MOUSE_ENABLE */
+/* #ifdef RGB_MATRIX_CUSTOM_USER */
+/* #    include "features/palettefx.h" */
+/* #endif // RGB_MATRIX_CUSTOM_USER */
+/* #ifdef SELECT_WORD_ENABLE */
+/* #    include "features/select_word.h" */
+/* #endif // SELECT_WORD_ENABLE */
+/* #ifdef SENTENCE_CASE_ENABLE */
+/* #    include "features/sentence_case.h" */
+/* #endif // SENTENCE_CASE_ENABLE */
+
 enum layers {
     BASE,
     SYM,
@@ -18,7 +40,13 @@ enum layers {
 enum custom_keycodes {
     USRNAME = SAFE_RANGE,
     SRCHSEL,
+    ARROW,
 };
+
+#define HRM_DOT LT(WIN, KC_DOT)
+#define HRM_F LT(NAV, KC_F)
+#define HRM_J LT(NUM, KC_J)
+#define HRM_K RSFT_T(KC_K)
 
 #define NOTIMPLE KC_NO
 #define MUTEMIC KC_F20
@@ -39,41 +67,41 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-//    ┌─────────┬───────────┬────────────┬───────────┬────────────┬──────────┐                  ┌──────┬────────────┬───────────┬────────────┬───────────┬──────┐
-//    │    `    │ NOTIMPLE  │    C(v)    │   C(a)    │    C(c)    │ NOTIMPLE │                  │ home │    left    │   rght    │    end     │  G(tab)   │ mply │
-//    ├─────────┼───────────┼────────────┼───────────┼────────────┼──────────┤                  ├──────┼────────────┼───────────┼────────────┼───────────┼──────┤
-//    │   tab   │     q     │     w      │     e     │     r      │    t     │                  │  y   │     u      │     i     │     o      │     p     │  /   │
-//    ├─────────┼───────────┼────────────┼───────────┼────────────┼──────────┤                  ├──────┼────────────┼───────────┼────────────┼───────────┼──────┤
-//    │  bspc   │ LALT_T(a) │ LT(SYM, s) │ LSFT_T(d) │ LT(NAV, f) │    g     │                  │  h   │ LT(NUM, j) │ RSFT_T(k) │ LT(SYM, l) │ LALT_T(;) │  -   │
-//    ├─────────┼───────────┼────────────┼───────────┼────────────┼──────────┤                  ├──────┼────────────┼───────────┼────────────┼───────────┼──────┤
-//    │ MO(EXT) │ LGUI_T(z) │     x      │     c     │ LCTL_T(v)  │    b     │                  │  n   │ RCTL_T(m)  │     ,     │ LT(WIN, .) │ RGUI_T(/) │ ent  │
-//    └─────────┴───────────┴────────────┴───────────┴────────────┼──────────┼─────┐   ┌────────┼──────┼────────────┴───────────┴────────────┴───────────┴──────┘
-//                                                                │    _     │ spc │   │ QK_REP │ esc  │
-//                                                                └──────────┴─────┘   └────────┴──────┘
+//    ┌─────────┬───────────┬────────────┬───────────┬───────────┬──────────┐                  ┌──────┬────────────┬───────────┬────────────┬───────────┬──────┐
+//    │    `    │ NOTIMPLE  │    C(v)    │   C(a)    │   C(c)    │ NOTIMPLE │                  │ home │    left    │   rght    │    end     │  G(tab)   │ mply │
+//    ├─────────┼───────────┼────────────┼───────────┼───────────┼──────────┤                  ├──────┼────────────┼───────────┼────────────┼───────────┼──────┤
+//    │   tab   │     q     │     w      │     e     │     r     │    t     │                  │  y   │     u      │     i     │     o      │     p     │  /   │
+//    ├─────────┼───────────┼────────────┼───────────┼───────────┼──────────┤                  ├──────┼────────────┼───────────┼────────────┼───────────┼──────┤
+//    │  bspc   │ LALT_T(a) │ LT(SYM, s) │ LSFT_T(d) │   HRM_F   │    g     │                  │  h   │ LT(NUM, j) │ RSFT_T(k) │ LT(SYM, l) │ LALT_T(;) │  -   │
+//    ├─────────┼───────────┼────────────┼───────────┼───────────┼──────────┤                  ├──────┼────────────┼───────────┼────────────┼───────────┼──────┤
+//    │ MO(EXT) │ LGUI_T(z) │     x      │     c     │ LCTL_T(v) │    b     │                  │  n   │ RCTL_T(m)  │     ,     │  HRM_DOT   │ RGUI_T(/) │ ent  │
+//    └─────────┴───────────┴────────────┴───────────┴───────────┼──────────┼─────┐   ┌────────┼──────┼────────────┴───────────┴────────────┴───────────┴──────┘
+//                                                               │    _     │ spc │   │ QK_REP │ esc  │
+//                                                               └──────────┴─────┘   └────────┴──────┘
 [BASE] = LAYOUT(
-  KC_GRV  , NOTIMPLE     , C(KC_V)       , C(KC_A)      , C(KC_C)       , NOTIMPLE ,                       KC_HOME , KC_LEFT       , KC_RGHT      , KC_END          , G(KC_TAB)       , KC_MPLY,
-  KC_TAB  , KC_Q         , KC_W          , KC_E         , KC_R          , KC_T     ,                       KC_Y    , KC_U          , KC_I         , KC_O            , KC_P            , KC_SLSH,
-  KC_BSPC , LALT_T(KC_A) , LT(SYM, KC_S) , LSFT_T(KC_D) , LT(NAV, KC_F) , KC_G     ,                       KC_H    , LT(NUM, KC_J) , RSFT_T(KC_K) , LT(SYM, KC_L)   , LALT_T(KC_SCLN) , KC_MINS,
-  MO(EXT) , LGUI_T(KC_Z) , KC_X          , KC_C         , LCTL_T(KC_V)  , KC_B     ,                       KC_N    , RCTL_T(KC_M)  , KC_COMMA     , LT(WIN, KC_DOT) , RGUI_T(KC_SLSH) , KC_ENT ,
-                                                                          KC_UNDS  , KC_SPC ,     QK_REP , KC_ESC
+  KC_GRV  , NOTIMPLE     , C(KC_V)       , C(KC_A)      , C(KC_C)      , NOTIMPLE ,                       KC_HOME , KC_LEFT       , KC_RGHT      , KC_END        , G(KC_TAB)       , KC_MPLY,
+  KC_TAB  , KC_Q         , KC_W          , KC_E         , KC_R         , KC_T     ,                       KC_Y    , KC_U          , KC_I         , KC_O          , KC_P            , KC_SLSH,
+  KC_BSPC , LALT_T(KC_A) , LT(SYM, KC_S) , LSFT_T(KC_D) , HRM_F        , KC_G     ,                       KC_H    , LT(NUM, KC_J) , RSFT_T(KC_K) , LT(SYM, KC_L) , LALT_T(KC_SCLN) , KC_MINS,
+  MO(EXT) , LGUI_T(KC_Z) , KC_X          , KC_C         , LCTL_T(KC_V) , KC_B     ,                       KC_N    , RCTL_T(KC_M)  , KC_COMMA     , HRM_DOT       , RGUI_T(KC_SLSH) , KC_ENT ,
+                                                                         KC_UNDS  , KC_SPC ,     QK_REP , KC_ESC
 ),
 
-//    ┌─────┬─────┬─────┬───────────┬─────────────┬─────────┐               ┌─────┬─────┬─────┬─────┬──────────┬─────┐
-//    │     │     │     │           │             │         │               │     │     │     │     │          │     │
-//    ├─────┼─────┼─────┼───────────┼─────────────┼─────────┤               ├─────┼─────┼─────┼─────┼──────────┼─────┤
-//    │     │  `  │  <  │     >     │      -      │    |    │               │  ^  │  {  │  }  │  $  │ NOTIMPLE │     │
-//    ├─────┼─────┼─────┼───────────┼─────────────┼─────────┤               ├─────┼─────┼─────┼─────┼──────────┼─────┤
-//    │     │  !  │  *  │ LSFT_T(/) │ LT(BASE, =) │    &    │               │  #  │  (  │  )  │  ;  │    "     │     │
-//    ├─────┼─────┼─────┼───────────┼─────────────┼─────────┤               ├─────┼─────┼─────┼─────┼──────────┼─────┤
-//    │     │  ~  │  +  │     [     │      ]      │    %    │               │  @  │  :  │  ,  │  .  │    '     │     │
-//    └─────┴─────┴─────┴───────────┴─────────────┼─────────┼─────┐   ┌─────┼─────┼─────┴─────┴─────┴──────────┴─────┘
+//    ┌─────┬─────┬─────┬───────────┬─────────────┬─────────┐               ┌─────┬─────┬─────┬─────┬───────┬─────┐
+//    │     │     │     │           │             │         │               │     │     │     │     │       │     │
+//    ├─────┼─────┼─────┼───────────┼─────────────┼─────────┤               ├─────┼─────┼─────┼─────┼───────┼─────┤
+//    │     │  `  │  <  │     >     │      -      │    |    │               │  ^  │  {  │  }  │  $  │ ARROW │     │
+//    ├─────┼─────┼─────┼───────────┼─────────────┼─────────┤               ├─────┼─────┼─────┼─────┼───────┼─────┤
+//    │     │  !  │  *  │ LSFT_T(/) │ LT(BASE, =) │    &    │               │  #  │  (  │  )  │  ;  │   "   │     │
+//    ├─────┼─────┼─────┼───────────┼─────────────┼─────────┤               ├─────┼─────┼─────┼─────┼───────┼─────┤
+//    │     │  ~  │  +  │     [     │      ]      │    %    │               │  @  │  :  │  ,  │  .  │   '   │     │
+//    └─────┴─────┴─────┴───────────┴─────────────┼─────────┼─────┐   ┌─────┼─────┼─────┴─────┴─────┴───────┴─────┘
 //                                                │ USRNAME │     │   │     │     │
 //                                                └─────────┴─────┘   └─────┴─────┘
 [SYM] = LAYOUT(
-  _______ , _______ , _______ , _______         , _______          , _______ ,                         _______ , _______ , _______ , _______ , _______  , _______,
-  _______ , KC_GRV  , KC_LABK , KC_RABK         , KC_MINS          , KC_PIPE ,                         KC_CIRC , KC_LCBR , KC_RCBR , KC_DLR  , NOTIMPLE , _______,
-  _______ , KC_EXLM , KC_ASTR , LSFT_T(KC_SLSH) , LT(BASE, KC_EQL) , KC_AMPR ,                         KC_HASH , KC_LPRN , KC_RPRN , KC_SCLN , KC_DQUO  , _______,
-  _______ , KC_TILD , KC_PLUS , KC_LBRC         , KC_RBRC          , KC_PERC ,                         KC_AT   , KC_COLN , KC_COMM , KC_DOT  , KC_QUOT  , _______,
+  _______ , _______ , _______ , _______         , _______          , _______ ,                         _______ , _______ , _______ , _______ , _______ , _______,
+  _______ , KC_GRV  , KC_LABK , KC_RABK         , KC_MINS          , KC_PIPE ,                         KC_CIRC , KC_LCBR , KC_RCBR , KC_DLR  , ARROW   , _______,
+  _______ , KC_EXLM , KC_ASTR , LSFT_T(KC_SLSH) , LT(BASE, KC_EQL) , KC_AMPR ,                         KC_HASH , KC_LPRN , KC_RPRN , KC_SCLN , KC_DQUO , _______,
+  _______ , KC_TILD , KC_PLUS , KC_LBRC         , KC_RBRC          , KC_PERC ,                         KC_AT   , KC_COLN , KC_COMM , KC_DOT  , KC_QUOT , _______,
                                                                      USRNAME , _______ ,     _______ , _______
 ),
 
@@ -174,24 +202,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
+///////////////////////////////////////////////////////////////////////////////
+// Combos (https://docs.qmk.fm/features/combo)
+///////////////////////////////////////////////////////////////////////////////
+const uint16_t caps_combo[] PROGMEM   = {KC_COMM, HRM_DOT, COMBO_END};
+const uint16_t j_k_combo[] PROGMEM    = {KC_J, KC_K, COMBO_END};
+const uint16_t h_comm_combo[] PROGMEM = {KC_H, KC_COMM, COMBO_END};
+const uint16_t f_n_combo[] PROGMEM    = {HRM_F, KC_N, COMBO_END};
+
+combo_t key_combos[] = {
+    COMBO(caps_combo, CW_TOGG),   // J and , => activate Caps Word.
+    COMBO(j_k_combo, KC_BSLS),    // J and K => backslash
+    COMBO(h_comm_combo, KC_QUOT), // H and , => '
+    COMBO(f_n_combo, OSL(FUN)),   // F and N => FUN layer
+};
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case USRNAME:
-            if (record->event.pressed) {
-                // when keycode QMKBEST is pressed
-                SEND_STRING("omareloui");
-                return true;
-            } else {
-                // when keycode QMKBEST is released
-            }
-            break;
-    }
+    const uint8_t mods     = get_mods();
+    const uint8_t all_mods = (mods | get_weak_mods()
+#ifndef NO_ACTION_ONESHOT
+                              | get_oneshot_mods()
+#endif // NO_ACTION_ONESHOT
+    );
+    const uint8_t shift_mods = all_mods & MOD_MASK_SHIFT;
+    const bool    alt        = all_mods & MOD_BIT_LALT;
 
     if (record->event.pressed) {
         switch (keycode) {
+            case USRNAME:
+                SEND_STRING("omareloui");
+                return true;
+
             case SRCHSEL: // Searches the current selection in a new tab.
                 // Mac users, change LCTL to LGUI.
                 SEND_STRING_DELAY(SS_LCTL("ct") SS_DELAY(100) SS_LCTL("v") SS_TAP(X_ENTER), TAP_CODE_DELAY);
+                return false;
+
+            case ARROW:                                                   // Unicode arrows -> => <-> <=> through Shift and Alt.
+                send_unicode_string(alt ? (shift_mods ? "\xe2\x87\x94"    // <=>
+                                                      : "\xe2\x86\x94")   // <->
+                                        : (shift_mods ? "\xe2\x87\x92"    // =>
+                                                      : "\xe2\x86\x92")); // ->
                 return false;
         }
     }
