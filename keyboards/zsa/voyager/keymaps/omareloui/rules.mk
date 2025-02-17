@@ -20,3 +20,9 @@ UNICODE_COMMON = yes
 # RGB_MATRIX_CUSTOM_USER ?= yes
 # SPACE_CADET_ENABLE ?= no
 # TAP_DANCE_ENABLE ?= no
+
+SELECT_WORD_ENABLE ?= yes
+ifeq ($(strip $(SELECT_WORD_ENABLE)), yes)
+	OPT_DEFS += -DSELECT_WORD_ENABLE
+	SRC += features/select_word.c
+endif

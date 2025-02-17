@@ -20,9 +20,9 @@
 /* #ifdef RGB_MATRIX_CUSTOM_USER */
 /* #    include "features/palettefx.h" */
 /* #endif // RGB_MATRIX_CUSTOM_USER */
-/* #ifdef SELECT_WORD_ENABLE */
-/* #    include "features/select_word.h" */
-/* #endif // SELECT_WORD_ENABLE */
+#ifdef SELECT_WORD_ENABLE
+#    include "features/select_word.h"
+#endif // SELECT_WORD_ENABLE
 /* #ifdef SENTENCE_CASE_ENABLE */
 /* #    include "features/sentence_case.h" */
 /* #endif // SENTENCE_CASE_ENABLE */
@@ -41,6 +41,9 @@ enum custom_keycodes {
     USRNAME = SAFE_RANGE,
     SRCHSEL,
     ARROW,
+    SELLINE,
+    SELWBAK,
+    SELWFWD,
 };
 
 #define HRM_DOT LT(WIN, KC_DOT)
@@ -68,7 +71,7 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ┌─────────┬───────────┬────────────┬───────────┬───────────┬──────────┐                  ┌──────┬────────────┬───────────┬────────────┬───────────┬──────┐
-//    │    `    │ NOTIMPLE  │    C(v)    │   C(a)    │   C(c)    │ NOTIMPLE │                  │ home │    left    │   rght    │    end     │  G(tab)   │ mply │
+//    │    `    │  SELLINE  │    C(v)    │   C(a)    │   C(c)    │ NOTIMPLE │                  │ home │    left    │   rght    │    end     │  G(tab)   │ mply │
 //    ├─────────┼───────────┼────────────┼───────────┼───────────┼──────────┤                  ├──────┼────────────┼───────────┼────────────┼───────────┼──────┤
 //    │   tab   │     q     │     w      │     e     │     r     │    t     │                  │  y   │     u      │     i     │     o      │     p     │  /   │
 //    ├─────────┼───────────┼────────────┼───────────┼───────────┼──────────┤                  ├──────┼────────────┼───────────┼────────────┼───────────┼──────┤
@@ -79,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                                                               │    _     │ spc │   │ QK_REP │ esc  │
 //                                                               └──────────┴─────┘   └────────┴──────┘
 [BASE] = LAYOUT(
-  KC_GRV  , NOTIMPLE     , C(KC_V)       , C(KC_A)      , C(KC_C)      , NOTIMPLE ,                       KC_HOME , KC_LEFT       , KC_RGHT      , KC_END        , G(KC_TAB)       , KC_MPLY,
+  KC_GRV  , SELLINE      , C(KC_V)       , C(KC_A)      , C(KC_C)      , NOTIMPLE ,                       KC_HOME , KC_LEFT       , KC_RGHT      , KC_END        , G(KC_TAB)       , KC_MPLY,
   KC_TAB  , KC_Q         , KC_W          , KC_E         , KC_R         , KC_T     ,                       KC_Y    , KC_U          , KC_I         , KC_O          , KC_P            , KC_SLSH,
   KC_BSPC , LALT_T(KC_A) , LT(SYM, KC_S) , LSFT_T(KC_D) , HRM_F        , KC_G     ,                       KC_H    , LT(NUM, KC_J) , RSFT_T(KC_K) , LT(SYM, KC_L) , LALT_T(KC_SCLN) , KC_MINS,
   MO(EXT) , LGUI_T(KC_Z) , KC_X          , KC_C         , LCTL_T(KC_V) , KC_B     ,                       KC_N    , RCTL_T(KC_M)  , KC_COMMA     , HRM_DOT       , RGUI_T(KC_SLSH) , KC_ENT ,
@@ -89,52 +92,52 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ┌─────┬─────┬─────┬───────────┬─────────────┬─────────┐               ┌─────┬─────┬─────┬─────┬───────┬─────┐
 //    │     │     │     │           │             │         │               │     │     │     │     │       │     │
 //    ├─────┼─────┼─────┼───────────┼─────────────┼─────────┤               ├─────┼─────┼─────┼─────┼───────┼─────┤
-//    │     │  `  │  <  │     >     │      -      │    |    │               │  ^  │  {  │  }  │  $  │ ARROW │     │
+//    │     │  `  │  <  │     >     │      -      │    |    │               │  ^  │  $  │  {  │  }  │ ARROW │     │
 //    ├─────┼─────┼─────┼───────────┼─────────────┼─────────┤               ├─────┼─────┼─────┼─────┼───────┼─────┤
-//    │     │  !  │  *  │ LSFT_T(/) │ LT(BASE, =) │    &    │               │  #  │  (  │  )  │  ;  │   "   │     │
+//    │     │  !  │  *  │ LSFT_T(/) │ LT(BASE, =) │    &    │               │  #  │  ;  │  (  │  )  │   "   │     │
 //    ├─────┼─────┼─────┼───────────┼─────────────┼─────────┤               ├─────┼─────┼─────┼─────┼───────┼─────┤
-//    │     │  ~  │  +  │     [     │      ]      │    %    │               │  @  │  :  │  ,  │  .  │   '   │     │
+//    │     │  ~  │  [  │     ]     │      +      │    %    │               │  @  │  :  │  ,  │  .  │   '   │     │
 //    └─────┴─────┴─────┴───────────┴─────────────┼─────────┼─────┐   ┌─────┼─────┼─────┴─────┴─────┴───────┴─────┘
 //                                                │ USRNAME │     │   │     │     │
 //                                                └─────────┴─────┘   └─────┴─────┘
 [SYM] = LAYOUT(
   _______ , _______ , _______ , _______         , _______          , _______ ,                         _______ , _______ , _______ , _______ , _______ , _______,
-  _______ , KC_GRV  , KC_LABK , KC_RABK         , KC_MINS          , KC_PIPE ,                         KC_CIRC , KC_LCBR , KC_RCBR , KC_DLR  , ARROW   , _______,
-  _______ , KC_EXLM , KC_ASTR , LSFT_T(KC_SLSH) , LT(BASE, KC_EQL) , KC_AMPR ,                         KC_HASH , KC_LPRN , KC_RPRN , KC_SCLN , KC_DQUO , _______,
-  _______ , KC_TILD , KC_PLUS , KC_LBRC         , KC_RBRC          , KC_PERC ,                         KC_AT   , KC_COLN , KC_COMM , KC_DOT  , KC_QUOT , _______,
+  _______ , KC_GRV  , KC_LABK , KC_RABK         , KC_MINS          , KC_PIPE ,                         KC_CIRC , KC_DLR  , KC_LCBR , KC_RCBR , ARROW   , _______,
+  _______ , KC_EXLM , KC_ASTR , LSFT_T(KC_SLSH) , LT(BASE, KC_EQL) , KC_AMPR ,                         KC_HASH , KC_SCLN , KC_LPRN , KC_RPRN , KC_DQUO , _______,
+  _______ , KC_TILD , KC_LBRC , KC_RBRC         , KC_PLUS          , KC_PERC ,                         KC_AT   , KC_COLN , KC_COMM , KC_DOT  , KC_QUOT , _______,
                                                                      USRNAME , _______ ,     _______ , _______
 ),
 
-//    ┌─────┬─────────────┬─────────┬─────────┬──────────┬──────────┐                  ┌────────────┬──────────┬──────────┬──────┬─────────┬─────┐
-//    │     │             │         │         │          │          │                  │            │          │          │      │         │     │
-//    ├─────┼─────────────┼─────────┼─────────┼──────────┼──────────┤                  ├────────────┼──────────┼──────────┼──────┼─────────┼─────┤
-//    │     │ www_refresh │ C(pgup) │ C(pgdn) │    no    │    no    │                  │    pgup    │   home   │    up    │ end  │ SRCHSEL │     │
-//    ├─────┼─────────────┼─────────┼─────────┼──────────┼──────────┤                  ├────────────┼──────────┼──────────┼──────┼─────────┼─────┤
-//    │     │    lalt     │  lctl   │  lsft   │ NOTIMPLE │ NOTIMPLE │                  │    pgdn    │   left   │   down   │ rght │   del   │     │
-//    ├─────┼─────────────┼─────────┼─────────┼──────────┼──────────┤                  ├────────────┼──────────┼──────────┼──────┼─────────┼─────┤
-//    │     │    lgui     │  pgup   │  pgdn   │    no    │    no    │                  │    C(z)    │ NOTIMPLE │ NOTIMPLE │ app  │   no    │     │
-//    └─────┴─────────────┴─────────┴─────────┴──────────┼──────────┼────────┐   ┌─────┼────────────┼──────────┴──────────┴──────┴─────────┴─────┘
-//                                                       │ www_back │ G(tab) │   │     │ Layer Lock │
-//                                                       └──────────┴────────┘   └─────┴────────────┘
+//    ┌─────┬─────────────┬─────────┬─────────┬─────────┬──────────┐                  ┌─────────┬──────┬─────────┬─────────┬─────────┬─────┐
+//    │     │             │         │         │         │          │                  │         │      │         │         │         │     │
+//    ├─────┼─────────────┼─────────┼─────────┼─────────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
+//    │     │ www_refresh │ C(pgup) │ C(pgdn) │   no    │    no    │                  │  pgup   │ home │   up    │   end   │ SRCHSEL │     │
+//    ├─────┼─────────────┼─────────┼─────────┼─────────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
+//    │     │    lalt     │  lctl   │  lsft   │ SELLINE │ NOTIMPLE │                  │  pgdn   │ left │  down   │  rght   │   del   │     │
+//    ├─────┼─────────────┼─────────┼─────────┼─────────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
+//    │     │    lgui     │  pgup   │  pgdn   │   no    │    no    │                  │  C(z)   │ app  │ SELWBAK │ SELWFWD │   no    │     │
+//    └─────┴─────────────┴─────────┴─────────┴─────────┼──────────┼────────┐   ┌─────┼─────────┼──────┴─────────┴─────────┴─────────┴─────┘
+//                                                      │ www_back │ G(tab) │   │     │ QK_LLCK │
+//                                                      └──────────┴────────┘   └─────┴─────────┘
 [NAV] = LAYOUT(
-  _______ , _______ , _______    , _______    , _______  , _______  ,                           _______ , _______  , _______  , _______ , _______ , _______,
-  _______ , KC_WREF , C(KC_PGUP) , C(KC_PGDN) , XXXXXXX  , XXXXXXX  ,                           KC_PGUP , KC_HOME  , KC_UP    , KC_END  , SRCHSEL , _______,
-  _______ , KC_LALT , KC_LCTL    , KC_LSFT    , NOTIMPLE , NOTIMPLE ,                           KC_PGDN , KC_LEFT  , KC_DOWN  , KC_RGHT , KC_DEL  , _______,
-  _______ , KC_LGUI , KC_PGUP    , KC_PGDN    , XXXXXXX  , XXXXXXX  ,                           C(KC_Z) , NOTIMPLE , NOTIMPLE , KC_APP  , XXXXXXX , _______,
-                                                           KC_WBAK  , G(KC_TAB) ,     _______ , QK_LLCK
+  _______ , _______ , _______    , _______    , _______ , _______  ,                           _______ , _______ , _______ , _______ , _______ , _______,
+  _______ , KC_WREF , C(KC_PGUP) , C(KC_PGDN) , XXXXXXX , XXXXXXX  ,                           KC_PGUP , KC_HOME , KC_UP   , KC_END  , SRCHSEL , _______,
+  _______ , KC_LALT , KC_LCTL    , KC_LSFT    , SELLINE , NOTIMPLE ,                           KC_PGDN , KC_LEFT , KC_DOWN , KC_RGHT , KC_DEL  , _______,
+  _______ , KC_LGUI , KC_PGUP    , KC_PGDN    , XXXXXXX , XXXXXXX  ,                           C(KC_Z) , KC_APP  , SELWBAK , SELWFWD , XXXXXXX , _______,
+                                                          KC_WBAK  , G(KC_TAB) ,     _______ , QK_LLCK
 ),
 
-//    ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌────────────┬─────┬─────┬──────┬──────┬─────┐
-//    │     │     │     │     │     │     │             │            │     │     │      │      │     │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤             ├────────────┼─────┼─────┼──────┼──────┼─────┤
-//    │     │  /  │  9  │  8  │  7  │  *  │             │     no     │ no  │ no  │  no  │  no  │     │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤             ├────────────┼─────┼─────┼──────┼──────┼─────┤
-//    │     │  -  │  3  │  2  │  1  │  +  │             │     no     │ no  │  e  │ rctl │ lalt │     │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤             ├────────────┼─────┼─────┼──────┼──────┼─────┤
-//    │     │  x  │  6  │  5  │  4  │  %  │             │     no     │ no  │  ,  │  .   │ lgui │     │
-//    └─────┴─────┴─────┴─────┴─────┼─────┼─────┐   ┌───┼────────────┼─────┴─────┴──────┴──────┴─────┘
-//                                  │     │     │   │ 0 │ Layer Lock │
-//                                  └─────┴─────┘   └───┴────────────┘
+//    ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌─────────┬─────┬─────┬──────┬──────┬─────┐
+//    │     │     │     │     │     │     │             │         │     │     │      │      │     │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┤             ├─────────┼─────┼─────┼──────┼──────┼─────┤
+//    │     │  /  │  9  │  8  │  7  │  *  │             │   no    │ no  │ no  │  no  │  no  │     │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┤             ├─────────┼─────┼─────┼──────┼──────┼─────┤
+//    │     │  -  │  3  │  2  │  1  │  +  │             │   no    │ no  │  e  │ rctl │ lalt │     │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┤             ├─────────┼─────┼─────┼──────┼──────┼─────┤
+//    │     │  x  │  6  │  5  │  4  │  %  │             │   no    │ no  │  ,  │  .   │ lgui │     │
+//    └─────┴─────┴─────┴─────┴─────┼─────┼─────┐   ┌───┼─────────┼─────┴─────┴──────┴──────┴─────┘
+//                                  │     │     │   │ 0 │ QK_LLCK │
+//                                  └─────┴─────┘   └───┴─────────┘
 [NUM] = LAYOUT(
   _______ , _______ , _______ , _______ , _______ , _______ ,                      _______ , _______ , _______ , _______ , _______ , _______,
   _______ , KC_SLSH , KC_9    , KC_8    , KC_7    , KC_ASTR ,                      XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , _______,
@@ -143,17 +146,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     _______ , _______ ,     KC_0 , QK_LLCK
 ),
 
-//    ┌─────────┬──────────┬──────┬──────┬──────┬─────────┐                  ┌────────────┬───────────┬────────┬─────┬──────┬────────┐
-//    │         │          │      │      │      │         │                  │            │           │        │     │      │        │
-//    ├─────────┼──────────┼──────┼──────┼──────┼─────────┤                  ├────────────┼───────────┼────────┼─────┼──────┼────────┤
-//    │ RM_TOGG │ NOTIMPLE │ mute │ vold │ volu │ MUTEMIC │                  │     no     │    no     │   no   │ no  │  no  │   no   │
-//    ├─────────┼──────────┼──────┼──────┼──────┼─────────┤                  ├────────────┼───────────┼────────┼─────┼──────┼────────┤
-//    │ RM_PREV │ RM_NEXT  │ G(3) │ G(2) │ G(1) │  G(d)   │                  │     no     │    no     │  rsft  │ no  │ lalt │   no   │
-//    ├─────────┼──────────┼──────┼──────┼──────┼─────────┤                  ├────────────┼───────────┼────────┼─────┼──────┼────────┤
-//    │ RM_VALD │ RM_VALU  │ G(6) │ G(5) │ G(4) │  G(w)   │                  │     no     │ S(A(tab)) │ A(tab) │ no  │  no  │ G(ent) │
-//    └─────────┴──────────┴──────┴──────┴──────┼─────────┼────────┐   ┌─────┼────────────┼───────────┴────────┴─────┴──────┴────────┘
-//                                              │  mply   │ G(spc) │   │     │ Layer Lock │
-//                                              └─────────┴────────┘   └─────┴────────────┘
+//    ┌─────────┬──────────┬──────┬──────┬──────┬─────────┐                  ┌─────────┬───────────┬────────┬─────┬──────┬────────┐
+//    │         │          │      │      │      │         │                  │         │           │        │     │      │        │
+//    ├─────────┼──────────┼──────┼──────┼──────┼─────────┤                  ├─────────┼───────────┼────────┼─────┼──────┼────────┤
+//    │ RM_TOGG │ NOTIMPLE │ mute │ vold │ volu │ MUTEMIC │                  │   no    │    no     │   no   │ no  │  no  │   no   │
+//    ├─────────┼──────────┼──────┼──────┼──────┼─────────┤                  ├─────────┼───────────┼────────┼─────┼──────┼────────┤
+//    │ RM_PREV │ RM_NEXT  │ G(3) │ G(2) │ G(1) │  G(d)   │                  │   no    │    no     │  rsft  │ no  │ lalt │   no   │
+//    ├─────────┼──────────┼──────┼──────┼──────┼─────────┤                  ├─────────┼───────────┼────────┼─────┼──────┼────────┤
+//    │ RM_VALD │ RM_VALU  │ G(6) │ G(5) │ G(4) │  G(w)   │                  │   no    │ S(A(tab)) │ A(tab) │ no  │  no  │ G(ent) │
+//    └─────────┴──────────┴──────┴──────┴──────┼─────────┼────────┐   ┌─────┼─────────┼───────────┴────────┴─────┴──────┴────────┘
+//                                              │  mply   │ G(spc) │   │     │ QK_LLCK │
+//                                              └─────────┴────────┘   └─────┴─────────┘
 [WIN] = LAYOUT(
   _______ , _______  , _______ , _______ , _______ , _______ ,                           _______ , _______      , _______   , _______ , _______ , _______  ,
   RM_TOGG , NOTIMPLE , KC_MUTE , KC_VOLD , KC_VOLU , MUTEMIC ,                           XXXXXXX , XXXXXXX      , XXXXXXX   , XXXXXXX , XXXXXXX , XXXXXXX  ,
@@ -162,17 +165,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      KC_MPLY , G(KC_SPC) ,     _______ , QK_LLCK
 ),
 
-//    ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌────────────┬────┬──────┬──────┬──────┬────────┐
-//    │     │     │     │     │     │     │             │     no     │ no │  no  │  no  │  no  │   no   │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤             ├────────────┼────┼──────┼──────┼──────┼────────┤
-//    │ no  │ f12 │ f9  │ f8  │ f7  │ no  │             │     no     │ no │  no  │  no  │  no  │   no   │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤             ├────────────┼────┼──────┼──────┼──────┼────────┤
-//    │ no  │ f10 │ f3  │ f2  │ f1  │ no  │             │     no     │ no │ rsft │ rctl │ lalt │   no   │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤             ├────────────┼────┼──────┼──────┼──────┼────────┤
-//    │ no  │ f11 │ f6  │ f5  │ f4  │ no  │             │     no     │ no │  no  │  no  │ rgui │ QK_RBT │
-//    └─────┴─────┴─────┴─────┴─────┼─────┼────┐   ┌────┼────────────┼────┴──────┴──────┴──────┴────────┘
-//                                  │ no  │ no │   │ no │ Layer Lock │
-//                                  └─────┴────┘   └────┴────────────┘
+//    ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌─────────┬────┬──────┬──────┬──────┬────────┐
+//    │     │     │     │     │     │     │             │   no    │ no │  no  │  no  │  no  │   no   │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┤             ├─────────┼────┼──────┼──────┼──────┼────────┤
+//    │ no  │ f12 │ f9  │ f8  │ f7  │ no  │             │   no    │ no │  no  │  no  │  no  │   no   │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┤             ├─────────┼────┼──────┼──────┼──────┼────────┤
+//    │ no  │ f10 │ f3  │ f2  │ f1  │ no  │             │   no    │ no │ rsft │ rctl │ lalt │   no   │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┤             ├─────────┼────┼──────┼──────┼──────┼────────┤
+//    │ no  │ f11 │ f6  │ f5  │ f4  │ no  │             │   no    │ no │  no  │  no  │ rgui │ QK_RBT │
+//    └─────┴─────┴─────┴─────┴─────┼─────┼────┐   ┌────┼─────────┼────┴──────┴──────┴──────┴────────┘
+//                                  │ no  │ no │   │ no │ QK_LLCK │
+//                                  └─────┴────┘   └────┴─────────┘
 [FUN] = LAYOUT(
   _______ , _______ , _______ , _______ , _______ , _______ ,                         XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX,
   XXXXXXX , KC_F12  , KC_F9   , KC_F8   , KC_F7   , XXXXXXX ,                         XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX,
@@ -181,23 +184,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     XXXXXXX , XXXXXXX ,     XXXXXXX , QK_LLCK
 ),
 
-//    ┌──────────┬──────┬──────┬──────┬──────────┬──────────┐                         ┌────────────┬──────────┬──────────┬──────────┬──────────┬─────┐
-//    │          │      │      │      │          │          │                         │            │          │          │          │          │     │
-//    ├──────────┼──────┼──────┼──────┼──────────┼──────────┤                         ├────────────┼──────────┼──────────┼──────────┼──────────┼─────┤
-//    │          │  no  │  no  │  no  │    no    │    no    │                         │  NOTIMPLE  │ NOTIMPLE │ NOTIMPLE │ NOTIMPLE │ SRCHSEL  │     │
-//    ├──────────┼──────┼──────┼──────┼──────────┼──────────┤                         ├────────────┼──────────┼──────────┼──────────┼──────────┼─────┤
-//    │ NOTIMPLE │ lalt │ lctl │ lsft │ NOTIMPLE │    no    │                         │  NOTIMPLE  │ NOTIMPLE │ NOTIMPLE │ NOTIMPLE │ NOTIMPLE │     │
-//    ├──────────┼──────┼──────┼──────┼──────────┼──────────┤                         ├────────────┼──────────┼──────────┼──────────┼──────────┼─────┤
-//    │          │ lgui │ C(v) │ C(a) │   C(c)   │   C(x)   │                         │     no     │    no    │    no    │    no    │    no    │     │
-//    └──────────┴──────┴──────┴──────┴──────────┼──────────┼──────────┐   ┌──────────┼────────────┼──────────┴──────────┴──────────┴──────────┴─────┘
-//                                               │ www_back │ NOTIMPLE │   │ NOTIMPLE │ Layer Lock │
-//                                               └──────────┴──────────┘   └──────────┴────────────┘
+//    ┌──────────┬──────┬──────┬──────┬─────────┬──────────┐                         ┌──────────┬──────────┬──────────┬──────────┬──────────┬─────┐
+//    │          │      │      │      │         │          │                         │          │          │          │          │          │     │
+//    ├──────────┼──────┼──────┼──────┼─────────┼──────────┤                         ├──────────┼──────────┼──────────┼──────────┼──────────┼─────┤
+//    │          │  no  │  no  │  no  │   no    │    no    │                         │ NOTIMPLE │ NOTIMPLE │ NOTIMPLE │ NOTIMPLE │ SRCHSEL  │     │
+//    ├──────────┼──────┼──────┼──────┼─────────┼──────────┤                         ├──────────┼──────────┼──────────┼──────────┼──────────┼─────┤
+//    │ NOTIMPLE │ lalt │ lctl │ lsft │ SELLINE │    no    │                         │ NOTIMPLE │ NOTIMPLE │ NOTIMPLE │ NOTIMPLE │ NOTIMPLE │     │
+//    ├──────────┼──────┼──────┼──────┼─────────┼──────────┤                         ├──────────┼──────────┼──────────┼──────────┼──────────┼─────┤
+//    │          │ lgui │ C(v) │ C(a) │  C(c)   │   C(x)   │                         │    no    │    no    │    no    │    no    │    no    │     │
+//    └──────────┴──────┴──────┴──────┴─────────┼──────────┼──────────┐   ┌──────────┼──────────┼──────────┴──────────┴──────────┴──────────┴─────┘
+//                                              │ www_back │ NOTIMPLE │   │ NOTIMPLE │ QK_LLCK  │
+//                                              └──────────┴──────────┘   └──────────┴──────────┘
 [EXT] = LAYOUT(
-  _______  , _______ , _______ , _______ , _______  , _______ ,                           _______  , _______  , _______  , _______  , _______  , _______,
-  _______  , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX  , XXXXXXX ,                           NOTIMPLE , NOTIMPLE , NOTIMPLE , NOTIMPLE , SRCHSEL  , _______,
-  NOTIMPLE , KC_LALT , KC_LCTL , KC_LSFT , NOTIMPLE , XXXXXXX ,                           NOTIMPLE , NOTIMPLE , NOTIMPLE , NOTIMPLE , NOTIMPLE , _______,
-  _______  , KC_LGUI , C(KC_V) , C(KC_A) , C(KC_C)  , C(KC_X) ,                           XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , _______,
-                                                      KC_WBAK , NOTIMPLE ,     NOTIMPLE , QK_LLCK
+  _______  , _______ , _______ , _______ , _______ , _______ ,                           _______  , _______  , _______  , _______  , _______  , _______,
+  _______  , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,                           NOTIMPLE , NOTIMPLE , NOTIMPLE , NOTIMPLE , SRCHSEL  , _______,
+  NOTIMPLE , KC_LALT , KC_LCTL , KC_LSFT , SELLINE , XXXXXXX ,                           NOTIMPLE , NOTIMPLE , NOTIMPLE , NOTIMPLE , NOTIMPLE , _______,
+  _______  , KC_LGUI , C(KC_V) , C(KC_A) , C(KC_C) , C(KC_X) ,                           XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , _______,
+                                                     KC_WBAK , NOTIMPLE ,     NOTIMPLE , QK_LLCK
 )
 };
 // clang-format on
@@ -245,6 +248,66 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                                                       : "\xe2\x86\x92")); // ->
                 return false;
         }
+    }
+
+    switch (keycode) {
+        case SELWBAK: // Backward word selection.
+            if (record->event.pressed) {
+                select_word_register('B');
+            } else {
+                select_word_unregister();
+            }
+            break;
+
+        case SELWFWD: // Forward word selection.
+            if (record->event.pressed) {
+                select_word_register('W');
+            } else {
+                select_word_unregister();
+            }
+            break;
+
+        case SELLINE: // Line selection.
+            if (record->event.pressed) {
+                select_word_register('L');
+            } else {
+                select_word_unregister();
+            }
+
+            break;
+
+        // Behavior:
+        //  * Unmodified:       _ (KC_UNDS)
+        //  * With Shift:       - (KC_MINS)
+        //  * With Alt:         Unicode en dash
+        //  * With Shift + Alt: Unicode em dash
+        case KC_UNDS: {
+            static uint16_t registered_keycode = KC_NO;
+
+            if (record->event.pressed) {
+                if (alt) {
+                    send_unicode_string(shift_mods ? "\xe2\x80\x94" : "\xe2\x80\x93");
+                } else {
+                    process_caps_word(keycode, record);
+                    const bool shifted = (mods | get_weak_mods()) & MOD_MASK_SHIFT;
+                    clear_weak_mods();
+                    clear_mods();
+
+                    if (registered_keycode) { // Invoked through Repeat key.
+                        unregister_code16(registered_keycode);
+                    } else {
+                        registered_keycode = shifted ? KC_MINS : KC_UNDS;
+                    }
+
+                    register_code16(registered_keycode);
+                    set_mods(mods);
+                }
+            } else if (registered_keycode) {
+                unregister_code16(registered_keycode);
+                registered_keycode = KC_NO;
+            }
+        }
+            return false;
     }
 
     return true;
