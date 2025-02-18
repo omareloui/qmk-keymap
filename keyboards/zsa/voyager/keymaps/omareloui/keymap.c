@@ -50,6 +50,7 @@ enum custom_keycodes {
 #define HRM_F LT(NAV, KC_F)
 #define HRM_J LT(NUM, KC_J)
 #define HRM_K RSFT_T(KC_K)
+#define HRM_D LSFT_T(KC_D)
 
 #define NOTIMPLE KC_NO
 #define MUTEMIC KC_F20
@@ -70,23 +71,23 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-//    ┌─────────┬───────────┬────────────┬───────────┬───────────┬──────────┐                  ┌──────┬────────────┬───────────┬────────────┬───────────┬──────┐
-//    │    `    │  SELLINE  │    C(v)    │   C(a)    │   C(c)    │ NOTIMPLE │                  │ home │    left    │   rght    │    end     │  G(tab)   │ mply │
-//    ├─────────┼───────────┼────────────┼───────────┼───────────┼──────────┤                  ├──────┼────────────┼───────────┼────────────┼───────────┼──────┤
-//    │   tab   │     q     │     w      │     e     │     r     │    t     │                  │  y   │     u      │     i     │     o      │     p     │  /   │
-//    ├─────────┼───────────┼────────────┼───────────┼───────────┼──────────┤                  ├──────┼────────────┼───────────┼────────────┼───────────┼──────┤
-//    │  bspc   │ LALT_T(a) │ LT(SYM, s) │ LSFT_T(d) │   HRM_F   │    g     │                  │  h   │ LT(NUM, j) │ RSFT_T(k) │ LT(SYM, l) │ LALT_T(;) │  -   │
-//    ├─────────┼───────────┼────────────┼───────────┼───────────┼──────────┤                  ├──────┼────────────┼───────────┼────────────┼───────────┼──────┤
-//    │ MO(EXT) │ LGUI_T(z) │     x      │     c     │ LCTL_T(v) │    b     │                  │  n   │ RCTL_T(m)  │     ,     │  HRM_DOT   │ RGUI_T(/) │ ent  │
-//    └─────────┴───────────┴────────────┴───────────┴───────────┼──────────┼─────┐   ┌────────┼──────┼────────────┴───────────┴────────────┴───────────┴──────┘
-//                                                               │    _     │ spc │   │ QK_REP │ esc  │
-//                                                               └──────────┴─────┘   └────────┴──────┘
+//    ┌─────────┬───────────┬────────────┬───────┬───────────┬──────────┐                  ┌──────┬────────────┬───────────┬────────────┬───────────┬──────┐
+//    │    `    │  SELLINE  │    C(v)    │ C(a)  │   C(c)    │ NOTIMPLE │                  │ home │    left    │   rght    │    end     │  G(tab)   │ mply │
+//    ├─────────┼───────────┼────────────┼───────┼───────────┼──────────┤                  ├──────┼────────────┼───────────┼────────────┼───────────┼──────┤
+//    │   tab   │     q     │     w      │   e   │     r     │    t     │                  │  y   │     u      │     i     │     o      │     p     │  /   │
+//    ├─────────┼───────────┼────────────┼───────┼───────────┼──────────┤                  ├──────┼────────────┼───────────┼────────────┼───────────┼──────┤
+//    │  bspc   │ LALT_T(a) │ LT(SYM, s) │ HRM_D │   HRM_F   │    g     │                  │  h   │ LT(NUM, j) │ RSFT_T(k) │ LT(SYM, l) │ LALT_T(;) │  -   │
+//    ├─────────┼───────────┼────────────┼───────┼───────────┼──────────┤                  ├──────┼────────────┼───────────┼────────────┼───────────┼──────┤
+//    │ MO(EXT) │ LGUI_T(z) │     x      │   c   │ LCTL_T(v) │    b     │                  │  n   │ RCTL_T(m)  │     ,     │  HRM_DOT   │ RGUI_T(/) │ ent  │
+//    └─────────┴───────────┴────────────┴───────┴───────────┼──────────┼─────┐   ┌────────┼──────┼────────────┴───────────┴────────────┴───────────┴──────┘
+//                                                           │    _     │ spc │   │ QK_REP │ esc  │
+//                                                           └──────────┴─────┘   └────────┴──────┘
 [BASE] = LAYOUT(
-  KC_GRV  , SELLINE      , C(KC_V)       , C(KC_A)      , C(KC_C)      , NOTIMPLE ,                       KC_HOME , KC_LEFT       , KC_RGHT      , KC_END        , G(KC_TAB)       , KC_MPLY,
-  KC_TAB  , KC_Q         , KC_W          , KC_E         , KC_R         , KC_T     ,                       KC_Y    , KC_U          , KC_I         , KC_O          , KC_P            , KC_SLSH,
-  KC_BSPC , LALT_T(KC_A) , LT(SYM, KC_S) , LSFT_T(KC_D) , HRM_F        , KC_G     ,                       KC_H    , LT(NUM, KC_J) , RSFT_T(KC_K) , LT(SYM, KC_L) , LALT_T(KC_SCLN) , KC_MINS,
-  MO(EXT) , LGUI_T(KC_Z) , KC_X          , KC_C         , LCTL_T(KC_V) , KC_B     ,                       KC_N    , RCTL_T(KC_M)  , KC_COMMA     , HRM_DOT       , RGUI_T(KC_SLSH) , KC_ENT ,
-                                                                         KC_UNDS  , KC_SPC ,     QK_REP , KC_ESC
+  KC_GRV  , SELLINE      , C(KC_V)       , C(KC_A) , C(KC_C)      , NOTIMPLE ,                       KC_HOME , KC_LEFT       , KC_RGHT      , KC_END        , G(KC_TAB)       , KC_MPLY,
+  KC_TAB  , KC_Q         , KC_W          , KC_E    , KC_R         , KC_T     ,                       KC_Y    , KC_U          , KC_I         , KC_O          , KC_P            , KC_SLSH,
+  KC_BSPC , LALT_T(KC_A) , LT(SYM, KC_S) , HRM_D   , HRM_F        , KC_G     ,                       KC_H    , LT(NUM, KC_J) , RSFT_T(KC_K) , LT(SYM, KC_L) , LALT_T(KC_SCLN) , KC_MINS,
+  MO(EXT) , LGUI_T(KC_Z) , KC_X          , KC_C    , LCTL_T(KC_V) , KC_B     ,                       KC_N    , RCTL_T(KC_M)  , KC_COMMA     , HRM_DOT       , RGUI_T(KC_SLSH) , KC_ENT ,
+                                                                    KC_UNDS  , KC_SPC ,     QK_REP , KC_ESC
 ),
 
 //    ┌─────┬─────┬─────┬───────────┬─────────────┬─────────┐               ┌─────┬─────┬─────┬─────┬───────┬─────┐
@@ -219,6 +220,19 @@ combo_t key_combos[] = {
     COMBO(h_comm_combo, KC_QUOT), // H and , => '
     COMBO(f_n_combo, OSL(FUN)),   // F and N => FUN layer
 };
+
+///////////////////////////////////////////////////////////////////////////////
+// Tap-hold configuration (https://docs.qmk.fm/tap_hold)
+///////////////////////////////////////////////////////////////////////////////
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case HRM_D:
+        case HRM_K:
+            return TAPPING_TERM - 45;
+        default:
+            return TAPPING_TERM;
+    }
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     const uint8_t mods     = get_mods();
