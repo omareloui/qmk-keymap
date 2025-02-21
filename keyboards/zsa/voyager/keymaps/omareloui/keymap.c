@@ -300,6 +300,22 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+    // If you quickly hold a tap-hold key after tapping it, the tap action is
+    // repeated. Key repeating is useful e.g. for Vim navigation keys, but can
+    // lead to missed triggers in fast typing. Here, returning 0 means we
+    // instead want to "force hold" and disable key repeating.
+    switch (keycode) {
+        case HRM_N:
+        case HRM_H:
+        case QRTY_HRM_J:
+        case QRTY_HRM_K:
+            return QUICK_TAP_TERM; // Enable key repeating.
+        default:
+            return 0; // Otherwise, force hold and disable key repeating.
+    }
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Repeat key (https://docs.qmk.fm/features/repeat_key)
 ///////////////////////////////////////////////////////////////////////////////
