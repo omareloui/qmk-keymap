@@ -5,9 +5,6 @@
 
 #include QMK_KEYBOARD_H
 
-/* #ifdef ACHORDION_ENABLE */
-/* #    include "features/achordion.h" */
-/* #endif // ACHORDION_ENABLE */
 /* #ifdef CUSTOM_SHIFT_KEYS_ENABLE */
 /* #    include "features/custom_shift_keys.h" */
 /* #endif // CUSTOM_SHIFT_KEYS_ENABLE */
@@ -315,6 +312,28 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
             return 0; // Otherwise, force hold and disable key repeating.
     }
 }
+
+#ifdef CHORDAL_HOLD
+// Callback for Chordal Hold (https://github.com/qmk/qmk_firmware/pull/24560)
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
+    switch (tap_hold_keycode) {
+        case NAV_SLS:
+            return true;
+
+        case HRM_D:
+            if (other_keycode == KC_M || other_keycode == KC_L || other_keycode == KC_Y || other_keycode == KC_K || other_keycode == KC_J) {
+                return true;
+            }
+            break;
+
+        case HRM_DOT:
+            if (other_keycode == HRM_H || other_keycode == KC_COMM) {
+                return true;
+            }
+    }
+    return get_chordal_hold_default(tap_hold_record, other_record);
+}
+#endif // CHORDAL_HOLD
 
 ///////////////////////////////////////////////////////////////////////////////
 // Repeat key (https://docs.qmk.fm/features/repeat_key)
@@ -718,19 +737,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 };
 
 void housekeeping_task_user(void) {
-#ifdef ACHORDION_ENABLE
-    achordion_task();
-#endif // ACHORDION_ENABLE
 /* #ifdef RGB_MATRIX_ENABLE */
 /*     lighting_task(); */
 /* #endif // RGB_MATRIX_ENABLE */
-#ifdef ORBITAL_MOUSE_ENABLE
-    orbital_mouse_task();
-#endif // ORBITAL_MOUSE_ENABLE
+/* #ifdef ORBITAL_MOUSE_ENABLE */
+/*     orbital_mouse_task(); */
+/* #endif // ORBITAL_MOUSE_ENABLE */
 #ifdef SELECT_WORD_ENABLE
     select_word_task();
 #endif // SELECT_WORD_ENABLE
-#ifdef SENTENCE_CASE_ENABLE
-    sentence_case_task();
-#endif // SENTENCE_CASE_ENABLE
+    /* #ifdef SENTENCE_CASE_ENABLE */
+    /*     sentence_case_task(); */
+    /* #endif // SENTENCE_CASE_ENABLE */
 }
