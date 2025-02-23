@@ -9,6 +9,12 @@
 
 #define UNICODE_SELECTED_MODES UNICODE_MODE_LINUX
 
+// Don't apply custom shift keys with mods other than Shift.
+#define CUSTOM_SHIFT_KEYS_NEGMODS ~MOD_MASK_SHIFT
+
+// Only apply custom shift keys on layers 0, 1 and 5.
+#define CUSTOM_SHIFT_KEYS_LAYER_MASK (1 << 0) | (1 << 1) | (1 << 5)
+
 // When idle, turn off Layer Lock after 60 seconds.
 #define LAYER_LOCK_IDLE_TIMEOUT 60000
 

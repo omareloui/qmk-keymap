@@ -5,9 +5,9 @@
 
 #include QMK_KEYBOARD_H
 
-/* #ifdef CUSTOM_SHIFT_KEYS_ENABLE */
-/* #    include "features/custom_shift_keys.h" */
-/* #endif // CUSTOM_SHIFT_KEYS_ENABLE */
+#ifdef CUSTOM_SHIFT_KEYS_ENABLE
+#    include "features/custom_shift_keys.h"
+#endif // CUSTOM_SHIFT_KEYS_ENABLE
 /* #ifdef KEYCODE_STRING_ENABLE */
 /* #    include "features/keycode_string.h" */
 /* #endif // KEYCODE_STRING_ENABLE */
@@ -296,6 +296,16 @@ combo_t key_combos[] = {
     COMBO(f_n_combo, OSL(FUN)),     // F and N => FUN layer
     /* COMBO(comm_dot_combo, KC_SCLN), // , and . => ; */
 };
+
+///////////////////////////////////////////////////////////////////////////////
+// Custom shift keys (https://getreuer.info/posts/keyboards/custom-shift-keys)
+///////////////////////////////////////////////////////////////////////////////
+#ifdef CUSTOM_SHIFT_KEYS_ENABLE
+const custom_shift_key_t custom_shift_keys[] = {
+    {HRM_DOT, KC_QUES}, {KC_COMM, KC_EXLM}, {KC_MINS, KC_SCLN}, {KC_SLSH, KC_BSLS}, {KC_MPLY, KC_MNXT},
+};
+uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
+#endif // CUSTOM_SHIFT_KEYS_ENABLE
 
 ///////////////////////////////////////////////////////////////////////////////
 // Autocorrect (https://docs.qmk.fm/features/autocorrect)

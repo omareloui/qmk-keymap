@@ -19,6 +19,11 @@ LAYER_LOCK_ENABLE ?= yes
 # SPACE_CADET_ENABLE ?= no
 # TAP_DANCE_ENABLE ?= no
 
+CUSTOM_SHIFT_KEYS_ENABLE ?= yes
+ifeq ($(strip $(CUSTOM_SHIFT_KEYS_ENABLE)), yes)
+	OPT_DEFS += -DCUSTOM_SHIFT_KEYS_ENABLE
+	SRC += features/custom_shift_keys.c
+endif
 
 SENTENCE_CASE_ENABLE ?= yes
 ifeq ($(strip $(SENTENCE_CASE_ENABLE)), yes)
