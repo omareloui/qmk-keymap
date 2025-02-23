@@ -58,6 +58,13 @@ enum custom_keycodes {
     M_NOOP,
 };
 
+// Matrix positions of the left home row keys.
+#define LEFT_HOME_ROW 2
+#define LEFT_HOME_PINKY_COL 2
+#define LEFT_HOME_RING_COL 3
+#define LEFT_HOME_MIDDLE_COL 4
+#define LEFT_HOME_INDEX_COL 5
+
 #define MAGIC QK_AREP
 
 #define NOTIMPLE KC_NO
@@ -137,27 +144,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_GRV  , SELLINE      , C(KC_V)       , C(KC_A)    , C(KC_C)      , NOTIMPLE ,                       KC_HOME , KC_LEFT      , KC_RGHT    , KC_END        , G(KC_TAB)       , DF(STRDY),
   KC_TAB  , KC_Q         , KC_W          , KC_E       , KC_R         , KC_T     ,                       KC_Y    , KC_U         , KC_I       , KC_O          , KC_P            , KC_SLSH  ,
   KC_BSPC , LALT_T(KC_A) , LT(SYM, KC_S) , QRTY_HRM_D , QRTY_HRM_F   , KC_G     ,                       KC_H    , QRTY_HRM_J   , QRTY_HRM_K , LT(SYM, KC_L) , LALT_T(KC_SCLN) , KC_MINS  ,
-  MO(EXT) , LGUI_T(KC_Z) , KC_X          , KC_C       , LCTL_T(KC_V) , KC_B     ,                       KC_N    , RCTL_T(KC_M) , KC_COMMA   , HRM_DOT       , RGUI_T(KC_SLSH) , KC_ENT   ,
+  MO(EXT) , LGUI_T(KC_Z) , KC_X          , KC_C       , LCTL_T(KC_V) , KC_B     ,                       KC_N    , RCTL_T(KC_M) , KC_COMM    , HRM_DOT       , RGUI_T(KC_SLSH) , KC_ENT   ,
                                                                        KC_UNDS  , KC_SPC ,     QK_REP , KC_ESC
 ),
 
-//    ┌─────┬─────┬─────┬───────────┬──────────────┬─────────┐               ┌─────┬─────┬─────┬─────┬───────┬─────┐
-//    │     │     │     │           │              │         │               │     │     │     │     │       │     │
-//    ├─────┼─────┼─────┼───────────┼──────────────┼─────────┤               ├─────┼─────┼─────┼─────┼───────┼─────┤
-//    │     │  `  │  <  │     >     │      -       │    |    │               │  ^  │  $  │  {  │  }  │ ARROW │     │
-//    ├─────┼─────┼─────┼───────────┼──────────────┼─────────┤               ├─────┼─────┼─────┼─────┼───────┼─────┤
-//    │     │  !  │  *  │ LSFT_T(/) │ LT(STRDY, =) │    &    │               │  #  │  ;  │  (  │  )  │   "   │     │
-//    ├─────┼─────┼─────┼───────────┼──────────────┼─────────┤               ├─────┼─────┼─────┼─────┼───────┼─────┤
-//    │     │  ~  │  [  │     ]     │      +       │    %    │               │  @  │  :  │  ,  │  .  │   '   │     │
-//    └─────┴─────┴─────┴───────────┴──────────────┼─────────┼─────┐   ┌─────┼─────┼─────┴─────┴─────┴───────┴─────┘
-//                                                 │ USRNAME │     │   │     │     │
-//                                                 └─────────┴─────┘   └─────┴─────┘
+//    ┌─────┬─────┬─────┬─────────┬─────────┬─────────┐               ┌─────┬─────┬─────┬─────┬───────┬─────┐
+//    │     │     │     │         │         │         │               │     │     │     │     │       │     │
+//    ├─────┼─────┼─────┼─────────┼─────────┼─────────┤               ├─────┼─────┼─────┼─────┼───────┼─────┤
+//    │     │  `  │  <  │    >    │    -    │    |    │               │  ^  │  $  │  {  │  }  │ ARROW │     │
+//    ├─────┼─────┼─────┼─────────┼─────────┼─────────┤               ├─────┼─────┼─────┼─────┼───────┼─────┤
+//    │     │  !  │  *  │ NAV_SLS │ NAV_EQL │    &    │               │  #  │  ;  │  (  │  )  │   "   │     │
+//    ├─────┼─────┼─────┼─────────┼─────────┼─────────┤               ├─────┼─────┼─────┼─────┼───────┼─────┤
+//    │     │  ~  │  [  │    ]    │    +    │    %    │               │  @  │  :  │  ,  │  .  │   '   │     │
+//    └─────┴─────┴─────┴─────────┴─────────┼─────────┼─────┐   ┌─────┼─────┼─────┴─────┴─────┴───────┴─────┘
+//                                          │ USRNAME │     │   │     │     │
+//                                          └─────────┴─────┘   └─────┴─────┘
 [SYM] = LAYOUT(
-  _______ , _______ , _______ , _______         , _______           , _______ ,                         _______ , _______ , _______ , _______ , _______ , _______,
-  _______ , KC_GRV  , KC_LABK , KC_RABK         , KC_MINS           , KC_PIPE ,                         KC_CIRC , KC_DLR  , KC_LCBR , KC_RCBR , ARROW   , _______,
-  _______ , KC_EXLM , KC_ASTR , LSFT_T(KC_SLSH) , LT(STRDY, KC_EQL) , KC_AMPR ,                         KC_HASH , KC_SCLN , KC_LPRN , KC_RPRN , KC_DQUO , _______,
-  _______ , KC_TILD , KC_LBRC , KC_RBRC         , KC_PLUS           , KC_PERC ,                         KC_AT   , KC_COLN , KC_COMM , KC_DOT  , KC_QUOT , _______,
-                                                                      USRNAME , _______ ,     _______ , _______
+  _______ , _______ , _______ , _______ , _______ , _______ ,                         _______ , _______ , _______ , _______ , _______ , _______,
+  _______ , KC_GRV  , KC_LABK , KC_RABK , KC_MINS , KC_PIPE ,                         KC_CIRC , KC_DLR  , KC_LCBR , KC_RCBR , ARROW   , _______,
+  _______ , KC_EXLM , KC_ASTR , NAV_SLS , NAV_EQL , KC_AMPR ,                         KC_HASH , KC_SCLN , KC_LPRN , KC_RPRN , KC_DQUO , _______,
+  _______ , KC_TILD , KC_LBRC , KC_RBRC , KC_PLUS , KC_PERC ,                         KC_AT   , KC_COLN , KC_COMM , KC_DOT  , KC_QUOT , _______,
+                                                    USRNAME , _______ ,     _______ , _______
 ),
 
 //    ┌─────┬─────────────┬─────────┬─────────┬─────────┬──────────┐                  ┌─────────┬──────┬─────────┬─────────┬─────────┬─────┐
@@ -491,17 +498,17 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
             case KC_AMPR:
                 return M_NBSP; // & -> nbsp;
             case KC_EQL:
+            case NAV_EQL:
                 return M_EQEQ; // = -> ==
+            case KC_EXLM:
+                return M_EQEQ; // ! -> ==
             case KC_RBRC:
                 return KC_SCLN; // ] -> ;
             case KC_AT:
                 return USRNAME; // @ -> <username>
 
-            case KC_COMM:
-                if ((mods & MOD_MASK_SHIFT) != 0) {
-                    return KC_EQL; // ! -> =
-                }
-                return M_NOOP;
+            case KC_DQUO:
+                return M_DOCSTR; // " -> ""<cursor>"""
             case HRM_QUO:
                 if ((mods & MOD_MASK_SHIFT) != 0) {
                     return M_DOCSTR; // " -> ""<cursor>"""
@@ -521,7 +528,6 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
             case KC_PIPE:
             case KC_CIRC:
             case KC_TILD:
-            case KC_EXLM:
             case KC_DLR:
             case KC_RABK:
             case KC_LPRN:
@@ -575,6 +581,56 @@ static void magic_send_string_P(const char *str, uint16_t repeat_keycode) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+/* #ifdef RGB_MATRIX_ENABLE */
+/*     lighting_activity_trigger(); */
+/* #endif // RGB_MATRIX_ENABLE */
+#ifdef ORBITAL_MOUSE_ENABLE
+    if (!process_orbital_mouse(keycode, record)) {
+        return false;
+    }
+#endif // ORBITAL_MOUSE_ENABLE
+#ifdef SELECT_WORD_ENABLE
+    if (!process_select_word(keycode, record)) {
+        return false;
+    }
+#endif // SELECT_WORD_ENABLE
+#ifdef SENTENCE_CASE_ENABLE
+    if (!process_sentence_case(keycode, record)) {
+        return false;
+    }
+#endif // SENTENCE_CASE_ENABLE
+#ifdef CUSTOM_SHIFT_KEYS_ENABLE
+    if (!process_custom_shift_keys(keycode, record)) {
+        return false;
+    }
+#endif // CUSTOM_SHIFT_KEYS_ENABLE
+
+    // Track whether the left home ring and index keys are held, ignoring layer.
+    static bool left_home_ring_held  = false;
+    static bool left_home_index_held = false;
+    if (record->event.key.row == LEFT_HOME_ROW) {
+        switch (record->event.key.col) {
+            case LEFT_HOME_RING_COL:
+                left_home_ring_held = record->event.pressed;
+                break;
+            case LEFT_HOME_INDEX_COL:
+                left_home_index_held = record->event.pressed;
+                break;
+        }
+
+        // NAV stays on while layer locked or while either ring or index is held.
+        if (!(is_layer_locked(NAV) || left_home_ring_held || left_home_index_held)) {
+            layer_off(NAV);
+        }
+    }
+
+    // Logic for Alt mod when using alt-tabbing keys.
+    if (keycode == HRM_DOT && record->tap.count == 0 && !record->event.pressed) {
+        unregister_mods(MOD_BIT_LALT);
+    } else if (record->event.pressed && (keycode == S(A(KC_TAB)) || keycode == A(KC_TAB))) {
+        register_mods(MOD_BIT_LALT);
+    }
+
     const uint8_t mods     = get_mods();
     const uint8_t all_mods = (mods | get_weak_mods()
 #ifndef NO_ACTION_ONESHOT
@@ -583,94 +639,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     );
     const uint8_t shift_mods = all_mods & MOD_MASK_SHIFT;
     const bool    alt        = all_mods & MOD_BIT_LALT;
+    const uint8_t layer      = read_source_layers_cache(record->event.key);
 
-    if (record->event.pressed) {
-        switch (keycode) {
-            case UPDIR:
-                SEND_STRING_DELAY("../", TAP_CODE_DELAY);
-                return false;
+    if (layer == SYM && record->event.pressed) {
+        clear_weak_mods();
+        send_keyboard_report();
+    }
 
-            case USRNAME:
-                SEND_STRING("omareloui");
-                return true;
-
-            case SRCHSEL: // Searches the current selection in a new tab.
-                // Mac users, change LCTL to LGUI.
-                SEND_STRING_DELAY(SS_LCTL("ct") SS_DELAY(100) SS_LCTL("v") SS_TAP(X_ENTER), TAP_CODE_DELAY);
-                return false;
-
-            case ARROW:                                                   // Unicode arrows -> => <-> <=> through Shift and Alt.
-                send_unicode_string(alt ? (shift_mods ? "\xe2\x87\x94"    // <=>
-                                                      : "\xe2\x86\x94")   // <->
-                                        : (shift_mods ? "\xe2\x87\x92"    // =>
-                                                      : "\xe2\x86\x92")); // ->
-                return false;
-
-            // Macros invoked through the MAGIC key.
-            case M_THE:
-                MAGIC_STRING(/* */ "the", KC_N);
-                break;
-            case M_ION:
-                MAGIC_STRING(/*i*/ "on", KC_S);
-                break;
-            case M_MENT:
-                MAGIC_STRING(/*m*/ "ent", KC_S);
-                break;
-            case M_QUEN:
-                MAGIC_STRING(/*q*/ "uen", KC_C);
-                break;
-            case M_TMENT:
-                MAGIC_STRING(/*t*/ "ment", KC_S);
-                break;
-            case M_UPDIR:
-                MAGIC_STRING(/*.*/ "./", UPDIR);
-                break;
-            case M_INCLUDE:
-                SEND_STRING_DELAY(/*#*/ "include ", TAP_CODE_DELAY);
-                break;
-            case M_EQEQ:
-                SEND_STRING_DELAY(/*=*/"==", TAP_CODE_DELAY);
-                break;
-            case M_NBSP:
-                SEND_STRING_DELAY(/*&*/ "nbsp;", TAP_CODE_DELAY);
-                break;
-
-            case M_DOCSTR:
-                SEND_STRING_DELAY(/*"*/ "\"\"\"\"\"" SS_TAP(X_LEFT) SS_TAP(X_LEFT) SS_TAP(X_LEFT), TAP_CODE_DELAY);
-                break;
-            case M_MKGRVS:
-                SEND_STRING_DELAY(/*`*/ "``\n\n```" SS_TAP(X_UP), TAP_CODE_DELAY);
-                break;
-
-            case KC_RABK:
-                if (shift_mods) { // Shift + > types a happy emoji.
-                    static const char *emojis[] = {
-                        "\xf0\x9f\xa5\xb3", // Party hat.
-                        "\xf0\x9f\x91\x8d", // Thumbs up.
-                        "\xe2\x9c\x8c",     // Victory hand.
-                        "\xf0\x9f\xa4\xa9", // Star eyes.
-                        "\xf0\x9f\x94\xa5", // Fire.
-                        "\xf0\x9f\x8e\x89", // Party popper.
-                        "\xf0\x9f\x91\xbe", // Purple alien.
-                        "\xf0\x9f\x98\x81", // Grin.
-                    };
-                    const int NUM_EMOJIS = sizeof(emojis) / sizeof(*emojis);
-
-                    // Pick an index between 0 and NUM_EMOJIS - 2.
-                    uint8_t index = ((NUM_EMOJIS - 1) * myrand()) >> 8;
-                    // Don't pick the same emoji twice in a row.
-                    static uint8_t last_index = 0;
-                    if (index >= last_index) {
-                        ++index;
-                    }
-                    last_index = index;
-
-                    // Produce the emoji.
-                    send_unicode_string(emojis[index]);
-                    return false;
-                }
-                return true;
-        }
+    // If alt repeating key A, E, I, O, U, Y with no mods other than Shift, set
+    // the last key to KC_N. Above, alternate repeat of KC_N is defined to be
+    // again KC_N. This way, either tapping alt repeat and then repeat (or
+    // equivalently double tapping alt repeat) is useful to type certain patterns
+    // without SFBs:
+    //
+    //   D <altrep> <rep> -> DYN (as in "dynamic")
+    //   O <altrep> <rep> -> OAN (as in "loan")
+    if (get_repeat_key_count() < 0 && (all_mods & ~MOD_MASK_SHIFT) == 0 && (keycode == KC_A || keycode == KC_E || keycode == KC_I || keycode == KC_O || keycode == KC_U || keycode == KC_Y)) {
+        set_last_keycode(KC_N);
+        set_last_mods(0);
     }
 
     switch (keycode) {
@@ -731,6 +717,166 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
         }
             return false;
+
+        // Hold behavior: switches to EXT layer.
+        // Tap behavior:
+        //  * Unmodified:       :
+        //  * With Shift:       ;
+        case EXT_COL:
+            if (record->tap.count) {
+                if (record->event.pressed) {
+                    if (shift_mods) {
+                        del_weak_mods(MOD_MASK_SHIFT);
+                        unregister_mods(MOD_MASK_SHIFT);
+                        tap_code_delay(KC_SCLN, TAP_CODE_DELAY);
+                        set_mods(mods);
+                    } else {
+                        tap_code16_delay(KC_COLN, TAP_CODE_DELAY);
+                    }
+                }
+                return false;
+            }
+            return true;
+
+        case HRM_T:
+            if (!record->tap.count) {
+                if (record->event.pressed) {
+                    if ((mods & MOD_BIT_LSHIFT) != 0) {
+                        register_mods(MOD_BIT_LCTRL);
+                        layer_on(NAV);
+                    } else {
+                        layer_on(SYM);
+                    }
+                } else {
+                    unregister_mods(MOD_BIT_LCTRL);
+                    layer_off(SYM);
+                }
+                return false;
+            }
+            return true;
+
+        case NAV_SLS:
+            if (!record->tap.count) {
+                if (!record->event.pressed) {
+                    unregister_mods(MOD_BIT_LSHIFT);
+                } else if (left_home_ring_held) {
+                    register_mods(MOD_BIT_LCTRL | MOD_BIT_LSHIFT);
+                    layer_on(NAV);
+                }
+                return false;
+            }
+            return true; // Default handling taps /.
+
+        case NAV_EQL:
+            if (!record->tap.count) {
+                if (left_home_ring_held && record->event.pressed) {
+                    register_mods(MOD_BIT_LCTRL);
+                    layer_on(NAV);
+                }
+                return false;
+            }
+            return true;
+
+        case HRM_D: // NAV switch.
+            if (!record->tap.count) {
+                if (record->event.pressed) {
+                    layer_on(NAV);
+                }
+                return false;
+            }
+            return true;
+    }
+
+    if (record->event.pressed) {
+        switch (keycode) {
+            case UPDIR:
+                SEND_STRING_DELAY("../", TAP_CODE_DELAY);
+                return false;
+
+            case SRCHSEL: // Searches the current selection in a new tab.
+                // Mac users, change LCTL to LGUI.
+                SEND_STRING_DELAY(SS_LCTL("ct") SS_DELAY(100) SS_LCTL("v") SS_TAP(X_ENTER), TAP_CODE_DELAY);
+                return false;
+
+            case USRNAME:
+                add_oneshot_mods(shift_mods);
+                clear_weak_mods();
+                MAGIC_STRING("omareloui", KC_AT);
+                return false;
+
+            case ARROW:                                                   // Unicode arrows -> => <-> <=> through Shift and Alt.
+                send_unicode_string(alt ? (shift_mods ? "\xe2\x87\x94"    // <=>
+                                                      : "\xe2\x86\x94")   // <->
+                                        : (shift_mods ? "\xe2\x87\x92"    // =>
+                                                      : "\xe2\x86\x92")); // ->
+                return false;
+
+            case KC_RABK:
+                if (shift_mods) { // Shift + > types a happy emoji.
+                    static const char *emojis[] = {
+                        "\xf0\x9f\xa5\xb3", // Party hat.
+                        "\xf0\x9f\x91\x8d", // Thumbs up.
+                        "\xe2\x9c\x8c",     // Victory hand.
+                        "\xf0\x9f\xa4\xa9", // Star eyes.
+                        "\xf0\x9f\x94\xa5", // Fire.
+                        "\xf0\x9f\x8e\x89", // Party popper.
+                        "\xf0\x9f\x91\xbe", // Purple alien.
+                        "\xf0\x9f\x98\x81", // Grin.
+                    };
+                    const int NUM_EMOJIS = sizeof(emojis) / sizeof(*emojis);
+
+                    // Pick an index between 0 and NUM_EMOJIS - 2.
+                    uint8_t index = ((NUM_EMOJIS - 1) * myrand()) >> 8;
+                    // Don't pick the same emoji twice in a row.
+                    static uint8_t last_index = 0;
+                    if (index >= last_index) {
+                        ++index;
+                    }
+                    last_index = index;
+
+                    // Produce the emoji.
+                    send_unicode_string(emojis[index]);
+                    return false;
+                }
+
+            // Macros invoked through the MAGIC key.
+            case M_THE:
+                MAGIC_STRING(/* */ "the", KC_N);
+                break;
+            case M_ION:
+                MAGIC_STRING(/*i*/ "on", KC_S);
+                break;
+            case M_MENT:
+                MAGIC_STRING(/*m*/ "ent", KC_S);
+                break;
+            case M_QUEN:
+                MAGIC_STRING(/*q*/ "uen", KC_C);
+                break;
+            case M_TMENT:
+                MAGIC_STRING(/*t*/ "ment", KC_S);
+                break;
+            case M_UPDIR:
+                MAGIC_STRING(/*.*/ "./", UPDIR);
+                break;
+            case M_INCLUDE:
+                SEND_STRING_DELAY(/*#*/ "include ", TAP_CODE_DELAY);
+                break;
+            case M_EQEQ:
+                SEND_STRING_DELAY(/*=*/"==", TAP_CODE_DELAY);
+                break;
+            case M_NBSP:
+                SEND_STRING_DELAY(/*&*/ "nbsp;", TAP_CODE_DELAY);
+                break;
+
+            case M_DOCSTR:
+                SEND_STRING_DELAY(/*"*/ "\"\"\"\"\"" SS_TAP(X_LEFT) SS_TAP(X_LEFT) SS_TAP(X_LEFT), TAP_CODE_DELAY);
+                break;
+            case M_MKGRVS:
+                SEND_STRING_DELAY(/*`*/ "``\n\n```" SS_TAP(X_UP), TAP_CODE_DELAY);
+                break;
+
+                return true;
+        }
     }
 
     return true;
