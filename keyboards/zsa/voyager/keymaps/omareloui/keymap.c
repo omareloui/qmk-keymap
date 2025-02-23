@@ -11,9 +11,9 @@
 /* #ifdef KEYCODE_STRING_ENABLE */
 /* #    include "features/keycode_string.h" */
 /* #endif // KEYCODE_STRING_ENABLE */
-/* #ifdef ORBITAL_MOUSE_ENABLE */
-/* #    include "features/orbital_mouse.h" */
-/* #endif // ORBITAL_MOUSE_ENABLE */
+#ifdef ORBITAL_MOUSE_ENABLE
+#    include "features/orbital_mouse.h"
+#endif // ORBITAL_MOUSE_ENABLE
 /* #ifdef RGB_MATRIX_CUSTOM_USER */
 /* #    include "features/palettefx.h" */
 /* #endif // RGB_MATRIX_CUSTOM_USER */
@@ -110,42 +110,42 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-//    ┌─────────┬─────────┬───────┬───────┬───────┬──────────┐                  ┌──────┬───────┬───────┬─────────┬─────────┬────────────┐
-//    │    `    │ SELLINE │ C(v)  │ C(a)  │ C(c)  │ NOTIMPLE │                  │ home │ left  │ rght  │   end   │ G(tab)  │ DF(QWERTY) │
-//    ├─────────┼─────────┼───────┼───────┼───────┼──────────┤                  ├──────┼───────┼───────┼─────────┼─────────┼────────────┤
-//    │   tab   │    v    │   m   │   l   │   c   │    p     │                  │  b   │ MAGIC │   u   │    o    │    q    │     /      │
-//    ├─────────┼─────────┼───────┼───────┼───────┼──────────┤                  ├──────┼───────┼───────┼─────────┼─────────┼────────────┤
-//    │  bspc   │  HRM_S  │ HRM_T │ HRM_R │ HRM_D │    y     │                  │  f   │ HRM_N │ HRM_E │  HRM_A  │  HRM_I  │     -      │
-//    ├─────────┼─────────┼───────┼───────┼───────┼──────────┤                  ├──────┼───────┼───────┼─────────┼─────────┼────────────┤
-//    │ EXT_COL │  HRM_X  │   k   │   j   │ HRM_G │    w     │                  │  z   │ HRM_H │   ,   │ HRM_DOT │ HRM_QUO │    ent     │
-//    └─────────┴─────────┴───────┴───────┴───────┼──────────┼─────┐   ┌────────┼──────┼───────┴───────┴─────────┴─────────┴────────────┘
-//                                                │    _     │ spc │   │ QK_REP │ esc  │
-//                                                └──────────┴─────┘   └────────┴──────┘
+//    ┌─────────┬─────────┬───────┬───────┬───────┬─────────┐                  ┌──────┬───────┬───────┬─────────┬─────────┬────────────┐
+//    │    `    │ SELLINE │ paste │ C(a)  │ copy  │ OM_BTN1 │                  │ home │ left  │ rght  │   end   │ G(tab)  │ DF(QWERTY) │
+//    ├─────────┼─────────┼───────┼───────┼───────┼─────────┤                  ├──────┼───────┼───────┼─────────┼─────────┼────────────┤
+//    │   tab   │    v    │   m   │   l   │   c   │    p    │                  │  b   │ MAGIC │   u   │    o    │    q    │     /      │
+//    ├─────────┼─────────┼───────┼───────┼───────┼─────────┤                  ├──────┼───────┼───────┼─────────┼─────────┼────────────┤
+//    │  bspc   │  HRM_S  │ HRM_T │ HRM_R │ HRM_D │    y    │                  │  f   │ HRM_N │ HRM_E │  HRM_A  │  HRM_I  │     -      │
+//    ├─────────┼─────────┼───────┼───────┼───────┼─────────┤                  ├──────┼───────┼───────┼─────────┼─────────┼────────────┤
+//    │ EXT_COL │  HRM_X  │   k   │   j   │ HRM_G │    w    │                  │  z   │ HRM_H │   ,   │ HRM_DOT │ HRM_QUO │    ent     │
+//    └─────────┴─────────┴───────┴───────┴───────┼─────────┼─────┐   ┌────────┼──────┼───────┴───────┴─────────┴─────────┴────────────┘
+//                                                │    _    │ spc │   │ QK_REP │ esc  │
+//                                                └─────────┴─────┘   └────────┴──────┘
 [STRDY] = LAYOUT(
-  KC_GRV  , SELLINE , C(KC_V) , C(KC_A) , C(KC_C) , NOTIMPLE ,                       KC_HOME , KC_LEFT , KC_RGHT , KC_END  , G(KC_TAB) , DF(QWERTY),
-  KC_TAB  , KC_V    , KC_M    , KC_L    , KC_C    , KC_P     ,                       KC_B    , MAGIC   , KC_U    , KC_O    , KC_Q      , KC_SLSH   ,
-  KC_BSPC , HRM_S   , HRM_T   , HRM_R   , HRM_D   , KC_Y     ,                       KC_F    , HRM_N   , HRM_E   , HRM_A   , HRM_I     , KC_MINS   ,
-  EXT_COL , HRM_X   , KC_K    , KC_J    , HRM_G   , KC_W     ,                       KC_Z    , HRM_H   , KC_COMM , HRM_DOT , HRM_QUO   , KC_ENT    ,
-                                                    KC_UNDS  , KC_SPC ,     QK_REP , KC_ESC
+  KC_GRV  , SELLINE , KC_PASTE , C(KC_A) , KC_COPY , OM_BTN1 ,                       KC_HOME , KC_LEFT , KC_RGHT , KC_END  , G(KC_TAB) , DF(QWERTY),
+  KC_TAB  , KC_V    , KC_M     , KC_L    , KC_C    , KC_P    ,                       KC_B    , MAGIC   , KC_U    , KC_O    , KC_Q      , KC_SLSH   ,
+  KC_BSPC , HRM_S   , HRM_T    , HRM_R   , HRM_D   , KC_Y    ,                       KC_F    , HRM_N   , HRM_E   , HRM_A   , HRM_I     , KC_MINS   ,
+  EXT_COL , HRM_X   , KC_K     , KC_J    , HRM_G   , KC_W    ,                       KC_Z    , HRM_H   , KC_COMM , HRM_DOT , HRM_QUO   , KC_ENT    ,
+                                                     KC_UNDS , KC_SPC ,     QK_REP , KC_ESC
 ),
 
-//    ┌─────────┬───────────┬────────────┬────────────┬────────────┬──────────┐                  ┌──────┬────────────┬────────────┬────────────┬───────────┬───────────┐
-//    │    `    │  SELLINE  │    C(v)    │    C(a)    │    C(c)    │ NOTIMPLE │                  │ home │    left    │    rght    │    end     │  G(tab)   │ DF(STRDY) │
-//    ├─────────┼───────────┼────────────┼────────────┼────────────┼──────────┤                  ├──────┼────────────┼────────────┼────────────┼───────────┼───────────┤
-//    │   tab   │     q     │     w      │     e      │     r      │    t     │                  │  y   │     u      │     i      │     o      │     p     │     /     │
-//    ├─────────┼───────────┼────────────┼────────────┼────────────┼──────────┤                  ├──────┼────────────┼────────────┼────────────┼───────────┼───────────┤
-//    │  bspc   │ LALT_T(a) │ LT(SYM, s) │ QRTY_HRM_D │ QRTY_HRM_F │    g     │                  │  h   │ QRTY_HRM_J │ QRTY_HRM_K │ LT(SYM, l) │ LALT_T(;) │     -     │
-//    ├─────────┼───────────┼────────────┼────────────┼────────────┼──────────┤                  ├──────┼────────────┼────────────┼────────────┼───────────┼───────────┤
-//    │ MO(EXT) │ LGUI_T(z) │     x      │     c      │ LCTL_T(v)  │    b     │                  │  n   │ RCTL_T(m)  │     ,      │  HRM_DOT   │ RGUI_T(/) │    ent    │
-//    └─────────┴───────────┴────────────┴────────────┴────────────┼──────────┼─────┐   ┌────────┼──────┼────────────┴────────────┴────────────┴───────────┴───────────┘
-//                                                                 │    _     │ spc │   │ QK_REP │ esc  │
-//                                                                 └──────────┴─────┘   └────────┴──────┘
+//    ┌─────────┬───────────┬────────────┬────────────┬────────────┬─────────┐                  ┌──────┬────────────┬────────────┬────────────┬───────────┬───────────┐
+//    │    `    │  SELLINE  │   paste    │    C(a)    │    copy    │ OM_BTN1 │                  │ home │    left    │    rght    │    end     │  G(tab)   │ DF(STRDY) │
+//    ├─────────┼───────────┼────────────┼────────────┼────────────┼─────────┤                  ├──────┼────────────┼────────────┼────────────┼───────────┼───────────┤
+//    │   tab   │     q     │     w      │     e      │     r      │    t    │                  │  y   │     u      │     i      │     o      │     p     │     /     │
+//    ├─────────┼───────────┼────────────┼────────────┼────────────┼─────────┤                  ├──────┼────────────┼────────────┼────────────┼───────────┼───────────┤
+//    │  bspc   │ LALT_T(a) │ LT(SYM, s) │ QRTY_HRM_D │ QRTY_HRM_F │    g    │                  │  h   │ QRTY_HRM_J │ QRTY_HRM_K │ LT(SYM, l) │ LALT_T(;) │     -     │
+//    ├─────────┼───────────┼────────────┼────────────┼────────────┼─────────┤                  ├──────┼────────────┼────────────┼────────────┼───────────┼───────────┤
+//    │ EXT_COL │ LGUI_T(z) │     x      │     c      │ LCTL_T(v)  │    b    │                  │  n   │ RCTL_T(m)  │     ,      │  HRM_DOT   │ RGUI_T(/) │    ent    │
+//    └─────────┴───────────┴────────────┴────────────┴────────────┼─────────┼─────┐   ┌────────┼──────┼────────────┴────────────┴────────────┴───────────┴───────────┘
+//                                                                 │    _    │ spc │   │ QK_REP │ esc  │
+//                                                                 └─────────┴─────┘   └────────┴──────┘
 [QWERTY] = LAYOUT(
-  KC_GRV  , SELLINE      , C(KC_V)       , C(KC_A)    , C(KC_C)      , NOTIMPLE ,                       KC_HOME , KC_LEFT      , KC_RGHT    , KC_END        , G(KC_TAB)       , DF(STRDY),
-  KC_TAB  , KC_Q         , KC_W          , KC_E       , KC_R         , KC_T     ,                       KC_Y    , KC_U         , KC_I       , KC_O          , KC_P            , KC_SLSH  ,
-  KC_BSPC , LALT_T(KC_A) , LT(SYM, KC_S) , QRTY_HRM_D , QRTY_HRM_F   , KC_G     ,                       KC_H    , QRTY_HRM_J   , QRTY_HRM_K , LT(SYM, KC_L) , LALT_T(KC_SCLN) , KC_MINS  ,
-  MO(EXT) , LGUI_T(KC_Z) , KC_X          , KC_C       , LCTL_T(KC_V) , KC_B     ,                       KC_N    , RCTL_T(KC_M) , KC_COMM    , HRM_DOT       , RGUI_T(KC_SLSH) , KC_ENT   ,
-                                                                       KC_UNDS  , KC_SPC ,     QK_REP , KC_ESC
+  KC_GRV  , SELLINE      , KC_PASTE      , C(KC_A)    , KC_COPY      , OM_BTN1 ,                       KC_HOME , KC_LEFT      , KC_RGHT    , KC_END        , G(KC_TAB)       , DF(STRDY),
+  KC_TAB  , KC_Q         , KC_W          , KC_E       , KC_R         , KC_T    ,                       KC_Y    , KC_U         , KC_I       , KC_O          , KC_P            , KC_SLSH  ,
+  KC_BSPC , LALT_T(KC_A) , LT(SYM, KC_S) , QRTY_HRM_D , QRTY_HRM_F   , KC_G    ,                       KC_H    , QRTY_HRM_J   , QRTY_HRM_K , LT(SYM, KC_L) , LALT_T(KC_SCLN) , KC_MINS  ,
+  EXT_COL , LGUI_T(KC_Z) , KC_X          , KC_C       , LCTL_T(KC_V) , KC_B    ,                       KC_N    , RCTL_T(KC_M) , KC_COMM    , HRM_DOT       , RGUI_T(KC_SLSH) , KC_ENT   ,
+                                                                       KC_UNDS , KC_SPC ,     QK_REP , KC_ESC
 ),
 
 //    ┌─────┬─────┬─────┬─────────┬─────────┬─────────┐               ┌─────┬─────┬─────┬─────┬───────┬─────┐
@@ -172,18 +172,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ├─────┼─────────────┼─────────┼─────────┼─────────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
 //    │     │ www_refresh │ C(pgup) │ C(pgdn) │   no    │    no    │                  │  pgup   │ home │   up    │   end   │ SRCHSEL │     │
 //    ├─────┼─────────────┼─────────┼─────────┼─────────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
-//    │     │    lalt     │  lctl   │  lsft   │ SELLINE │ NOTIMPLE │                  │  pgdn   │ left │  down   │  rght   │   del   │     │
+//    │     │    lalt     │  lctl   │  lsft   │ SELLINE │ OM_BTN1  │                  │  pgdn   │ left │  down   │  rght   │   del   │     │
 //    ├─────┼─────────────┼─────────┼─────────┼─────────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
-//    │     │    lgui     │  pgup   │  pgdn   │   no    │    no    │                  │  C(z)   │ app  │ SELWBAK │ SELWFWD │   no    │     │
+//    │     │    lgui     │  pgup   │  pgdn   │   no    │    no    │                  │  undo   │ app  │ SELWBAK │ SELWFWD │   no    │     │
 //    └─────┴─────────────┴─────────┴─────────┴─────────┼──────────┼────────┐   ┌─────┼─────────┼──────┴─────────┴─────────┴─────────┴─────┘
 //                                                      │ www_back │ G(tab) │   │     │ QK_LLCK │
 //                                                      └──────────┴────────┘   └─────┴─────────┘
 [NAV] = LAYOUT(
-  _______ , _______ , _______    , _______    , _______ , _______  ,                           _______ , _______ , _______ , _______ , _______ , _______,
-  _______ , KC_WREF , C(KC_PGUP) , C(KC_PGDN) , XXXXXXX , XXXXXXX  ,                           KC_PGUP , KC_HOME , KC_UP   , KC_END  , SRCHSEL , _______,
-  _______ , KC_LALT , KC_LCTL    , KC_LSFT    , SELLINE , NOTIMPLE ,                           KC_PGDN , KC_LEFT , KC_DOWN , KC_RGHT , KC_DEL  , _______,
-  _______ , KC_LGUI , KC_PGUP    , KC_PGDN    , XXXXXXX , XXXXXXX  ,                           C(KC_Z) , KC_APP  , SELWBAK , SELWFWD , XXXXXXX , _______,
-                                                          KC_WBAK  , G(KC_TAB) ,     _______ , QK_LLCK
+  _______ , _______ , _______    , _______    , _______ , _______ ,                           _______ , _______ , _______ , _______ , _______ , _______,
+  _______ , KC_WREF , C(KC_PGUP) , C(KC_PGDN) , XXXXXXX , XXXXXXX ,                           KC_PGUP , KC_HOME , KC_UP   , KC_END  , SRCHSEL , _______,
+  _______ , KC_LALT , KC_LCTL    , KC_LSFT    , SELLINE , OM_BTN1 ,                           KC_PGDN , KC_LEFT , KC_DOWN , KC_RGHT , KC_DEL  , _______,
+  _______ , KC_LGUI , KC_PGUP    , KC_PGDN    , XXXXXXX , XXXXXXX ,                           KC_UNDO , KC_APP  , SELWBAK , SELWFWD , XXXXXXX , _______,
+                                                          KC_WBAK , G(KC_TAB) ,     _______ , QK_LLCK
 ),
 
 //    ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌─────────┬─────┬─────┬──────┬──────┬─────┐
@@ -243,23 +243,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     XXXXXXX , XXXXXXX ,     XXXXXXX , QK_LLCK
 ),
 
-//    ┌──────────┬──────┬──────┬──────┬─────────┬──────────┐                         ┌──────────┬──────────┬──────────┬──────────┬──────────┬─────┐
-//    │          │      │      │      │         │          │                         │          │          │          │          │          │     │
-//    ├──────────┼──────┼──────┼──────┼─────────┼──────────┤                         ├──────────┼──────────┼──────────┼──────────┼──────────┼─────┤
-//    │          │  no  │  no  │  no  │   no    │    no    │                         │ NOTIMPLE │ NOTIMPLE │ NOTIMPLE │ NOTIMPLE │ SRCHSEL  │     │
-//    ├──────────┼──────┼──────┼──────┼─────────┼──────────┤                         ├──────────┼──────────┼──────────┼──────────┼──────────┼─────┤
-//    │ NOTIMPLE │ lalt │ lctl │ lsft │ SELLINE │    no    │                         │ NOTIMPLE │ NOTIMPLE │ NOTIMPLE │ NOTIMPLE │ NOTIMPLE │     │
-//    ├──────────┼──────┼──────┼──────┼─────────┼──────────┤                         ├──────────┼──────────┼──────────┼──────────┼──────────┼─────┤
-//    │          │ lgui │ C(v) │ C(a) │  C(c)   │   C(x)   │                         │    no    │    no    │    no    │    no    │    no    │     │
-//    └──────────┴──────┴──────┴──────┴─────────┼──────────┼──────────┐   ┌──────────┼──────────┼──────────┴──────────┴──────────┴──────────┴─────┘
-//                                              │ www_back │ NOTIMPLE │   │ NOTIMPLE │ QK_LLCK  │
-//                                              └──────────┴──────────┘   └──────────┴──────────┘
+//    ┌─────────┬──────┬───────┬──────┬─────────┬──────────┐                       ┌─────────┬─────────┬──────┬─────────┬─────────┬─────┐
+//    │         │      │       │      │         │          │                       │         │         │      │         │         │     │
+//    ├─────────┼──────┼───────┼──────┼─────────┼──────────┤                       ├─────────┼─────────┼──────┼─────────┼─────────┼─────┤
+//    │         │  no  │  no   │  no  │   no    │    no    │                       │ OM_W_U  │ OM_BTN1 │ OM_U │ OM_BTN2 │ SRCHSEL │     │
+//    ├─────────┼──────┼───────┼──────┼─────────┼──────────┤                       ├─────────┼─────────┼──────┼─────────┼─────────┼─────┤
+//    │ OM_SLOW │ lalt │ lctl  │ lsft │ SELLINE │    no    │                       │ OM_W_D  │  OM_L   │ OM_D │  OM_R   │ OM_SLOW │     │
+//    ├─────────┼──────┼───────┼──────┼─────────┼──────────┤                       ├─────────┼─────────┼──────┼─────────┼─────────┼─────┤
+//    │         │ lgui │ paste │ C(a) │  copy   │   cut    │                       │   no    │   no    │  no  │   no    │   no    │     │
+//    └─────────┴──────┴───────┴──────┴─────────┼──────────┼─────────┐   ┌─────────┼─────────┼─────────┴──────┴─────────┴─────────┴─────┘
+//                                              │ www_back │ OM_BTN1 │   │ OM_BTN1 │ QK_LLCK │
+//                                              └──────────┴─────────┘   └─────────┴─────────┘
 [EXT] = LAYOUT(
-  _______  , _______ , _______ , _______ , _______ , _______ ,                           _______  , _______  , _______  , _______  , _______  , _______,
-  _______  , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,                           NOTIMPLE , NOTIMPLE , NOTIMPLE , NOTIMPLE , SRCHSEL  , _______,
-  NOTIMPLE , KC_LALT , KC_LCTL , KC_LSFT , SELLINE , XXXXXXX ,                           NOTIMPLE , NOTIMPLE , NOTIMPLE , NOTIMPLE , NOTIMPLE , _______,
-  _______  , KC_LGUI , C(KC_V) , C(KC_A) , C(KC_C) , C(KC_X) ,                           XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , _______,
-                                                     KC_WBAK , NOTIMPLE ,     NOTIMPLE , QK_LLCK
+  _______ , _______ , _______  , _______ , _______ , _______ ,                         _______ , _______ , _______ , _______ , _______ , _______,
+  _______ , XXXXXXX , XXXXXXX  , XXXXXXX , XXXXXXX , XXXXXXX ,                         OM_W_U  , OM_BTN1 , OM_U    , OM_BTN2 , SRCHSEL , _______,
+  OM_SLOW , KC_LALT , KC_LCTL  , KC_LSFT , SELLINE , XXXXXXX ,                         OM_W_D  , OM_L    , OM_D    , OM_R    , OM_SLOW , _______,
+  _______ , KC_LGUI , KC_PASTE , C(KC_A) , KC_COPY , KC_CUT  ,                         XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , _______,
+                                                     KC_WBAK , OM_BTN1 ,     OM_BTN1 , QK_LLCK
 )
 };
 // clang-format on
@@ -886,9 +886,9 @@ void housekeeping_task_user(void) {
 /* #ifdef RGB_MATRIX_ENABLE */
 /*     lighting_task(); */
 /* #endif // RGB_MATRIX_ENABLE */
-/* #ifdef ORBITAL_MOUSE_ENABLE */
-/*     orbital_mouse_task(); */
-/* #endif // ORBITAL_MOUSE_ENABLE */
+#ifdef ORBITAL_MOUSE_ENABLE
+    orbital_mouse_task();
+#endif // ORBITAL_MOUSE_ENABLE
 #ifdef SELECT_WORD_ENABLE
     select_word_task();
 #endif // SELECT_WORD_ENABLE

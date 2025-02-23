@@ -6,9 +6,9 @@ UCIS_ENABLE = no
 UNICODEMAP_ENABLE = no
 UNICODE_COMMON = yes
 
-# EXTRAKEY_ENABLE = yes
+EXTRAKEY_ENABLE = yes
 # LTO_ENABLE = yes
-# MOUSEKEY_ENABLE = no
+MOUSEKEY_ENABLE = no
 
 # AUTOCORRECT_ENABLE ?= yes
 # CAPS_WORD_ENABLE ?= yes
@@ -24,4 +24,11 @@ SELECT_WORD_ENABLE ?= yes
 ifeq ($(strip $(SELECT_WORD_ENABLE)), yes)
 	OPT_DEFS += -DSELECT_WORD_ENABLE
 	SRC += features/select_word.c
+endif
+
+ORBITAL_MOUSE_ENABLE ?= yes
+ifeq ($(strip $(ORBITAL_MOUSE_ENABLE)), yes)
+	MOUSE_ENABLE = yes
+	OPT_DEFS += -DORBITAL_MOUSE_ENABLE
+	SRC += features/orbital_mouse.c
 endif
