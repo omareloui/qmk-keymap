@@ -8,15 +8,12 @@
 #ifdef CUSTOM_SHIFT_KEYS_ENABLE
 #    include "features/custom_shift_keys.h"
 #endif // CUSTOM_SHIFT_KEYS_ENABLE
-/* #ifdef KEYCODE_STRING_ENABLE */
-/* #    include "features/keycode_string.h" */
-/* #endif // KEYCODE_STRING_ENABLE */
 #ifdef ORBITAL_MOUSE_ENABLE
 #    include "features/orbital_mouse.h"
 #endif // ORBITAL_MOUSE_ENABLE
-/* #ifdef RGB_MATRIX_CUSTOM_USER */
-/* #    include "features/palettefx.h" */
-/* #endif // RGB_MATRIX_CUSTOM_USER */
+#ifdef RGB_MATRIX_CUSTOM_USER
+#    include "features/palettefx.h"
+#endif // RGB_MATRIX_CUSTOM_USER
 #ifdef SELECT_WORD_ENABLE
 #    include "features/select_word.h"
 #endif // SELECT_WORD_ENABLE
@@ -43,6 +40,12 @@ enum custom_keycodes {
     SELLINE,
     SELWBAK,
     SELWFWD,
+    RGBBRI,
+    RGBNEXT,
+    RGBHUP,
+    RGBHRND,
+    RGBDEF1,
+    RGBDEF2,
     // Macros invoked through the Magic key.
     M_DOCSTR,
     M_EQEQ,
@@ -213,23 +216,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     _______ , _______ ,     KC_0 , QK_LLCK
 ),
 
-//    ┌─────────┬──────────┬──────┬──────┬──────┬─────────┐                  ┌─────────┬───────────┬────────┬─────┬──────┬────────┐
-//    │         │          │      │      │      │         │                  │         │           │        │     │      │        │
-//    ├─────────┼──────────┼──────┼──────┼──────┼─────────┤                  ├─────────┼───────────┼────────┼─────┼──────┼────────┤
-//    │ RM_TOGG │ NOTIMPLE │ mute │ vold │ volu │ MUTEMIC │                  │   no    │    no     │   no   │ no  │  no  │   no   │
-//    ├─────────┼──────────┼──────┼──────┼──────┼─────────┤                  ├─────────┼───────────┼────────┼─────┼──────┼────────┤
-//    │ RM_PREV │ RM_NEXT  │ G(3) │ G(2) │ G(1) │  G(d)   │                  │   no    │    no     │  rsft  │ no  │ lalt │   no   │
-//    ├─────────┼──────────┼──────┼──────┼──────┼─────────┤                  ├─────────┼───────────┼────────┼─────┼──────┼────────┤
-//    │ RM_VALD │ RM_VALU  │ G(6) │ G(5) │ G(4) │  G(w)   │                  │   no    │ S(A(tab)) │ A(tab) │ no  │  no  │ G(ent) │
-//    └─────────┴──────────┴──────┴──────┴──────┼─────────┼────────┐   ┌─────┼─────────┼───────────┴────────┴─────┴──────┴────────┘
-//                                              │  mply   │ G(spc) │   │     │ QK_LLCK │
-//                                              └─────────┴────────┘   └─────┴─────────┘
+//    ┌─────────┬─────────┬──────┬──────┬──────┬─────────┐                  ┌─────────┬───────────┬────────┬─────┬──────┬────────┐
+//    │         │         │      │      │      │         │                  │         │           │        │     │      │        │
+//    ├─────────┼─────────┼──────┼──────┼──────┼─────────┤                  ├─────────┼───────────┼────────┼─────┼──────┼────────┤
+//    │ RGBDEF1 │ RGBDEF2 │ mute │ vold │ volu │ MUTEMIC │                  │   no    │    no     │   no   │ no  │  no  │   no   │
+//    ├─────────┼─────────┼──────┼──────┼──────┼─────────┤                  ├─────────┼───────────┼────────┼─────┼──────┼────────┤
+//    │ RGBHRND │ RGBHUP  │ G(3) │ G(2) │ G(1) │  G(d)   │                  │   no    │    no     │  rsft  │ no  │ lalt │   no   │
+//    ├─────────┼─────────┼──────┼──────┼──────┼─────────┤                  ├─────────┼───────────┼────────┼─────┼──────┼────────┤
+//    │ RGBBRI  │ RGBNEXT │ G(6) │ G(5) │ G(4) │  G(w)   │                  │   no    │ S(A(tab)) │ A(tab) │ no  │  no  │ G(ent) │
+//    └─────────┴─────────┴──────┴──────┴──────┼─────────┼────────┐   ┌─────┼─────────┼───────────┴────────┴─────┴──────┴────────┘
+//                                             │  mply   │ G(spc) │   │     │ QK_LLCK │
+//                                             └─────────┴────────┘   └─────┴─────────┘
 [WIN] = LAYOUT(
-  _______ , _______  , _______ , _______ , _______ , _______ ,                           _______ , _______      , _______   , _______ , _______ , _______  ,
-  RM_TOGG , NOTIMPLE , KC_MUTE , KC_VOLD , KC_VOLU , MUTEMIC ,                           XXXXXXX , XXXXXXX      , XXXXXXX   , XXXXXXX , XXXXXXX , XXXXXXX  ,
-  RM_PREV , RM_NEXT  , G(KC_3) , G(KC_2) , G(KC_1) , G(KC_D) ,                           XXXXXXX , XXXXXXX      , KC_RSFT   , XXXXXXX , KC_LALT , XXXXXXX  ,
-  RM_VALD , RM_VALU  , G(KC_6) , G(KC_5) , G(KC_4) , G(KC_W) ,                           XXXXXXX , S(A(KC_TAB)) , A(KC_TAB) , XXXXXXX , XXXXXXX , G(KC_ENT),
-                                                     KC_MPLY , G(KC_SPC) ,     _______ , QK_LLCK
+  _______ , _______ , _______ , _______ , _______ , _______ ,                           _______ , _______      , _______   , _______ , _______ , _______  ,
+  RGBDEF1 , RGBDEF2 , KC_MUTE , KC_VOLD , KC_VOLU , MUTEMIC ,                           XXXXXXX , XXXXXXX      , XXXXXXX   , XXXXXXX , XXXXXXX , XXXXXXX  ,
+  RGBHRND , RGBHUP  , G(KC_3) , G(KC_2) , G(KC_1) , G(KC_D) ,                           XXXXXXX , XXXXXXX      , KC_RSFT   , XXXXXXX , KC_LALT , XXXXXXX  ,
+  RGBBRI  , RGBNEXT , G(KC_6) , G(KC_5) , G(KC_4) , G(KC_W) ,                           XXXXXXX , S(A(KC_TAB)) , A(KC_TAB) , XXXXXXX , XXXXXXX , G(KC_ENT),
+                                                    KC_MPLY , G(KC_SPC) ,     _______ , QK_LLCK
 ),
 
 //    ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌─────────┬────┬──────┬──────┬──────┬────────┐
@@ -656,10 +659,160 @@ static void magic_send_string_P(const char *str, uint16_t repeat_keycode) {
     }
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// RGB Matrix Lighting (https://docs.qmk.fm/features/rgb_matrix)
+///////////////////////////////////////////////////////////////////////////////
+#if RGB_MATRIX_ENABLE
+// The following logic controls the RGB Matrix light level with a convenient
+// 3-state setting---off, dim, or full---and turns off automatically and with
+// smooth transitions when the keyboard is idle.
+
+#    include <lib/lib8tion/lib8tion.h>
+
+static struct {
+    uint32_t timer;
+    uint8_t  event_count;
+    uint8_t  val;
+    uint8_t  val_start;
+    uint8_t  val_end;
+} lighting = {0};
+
+static void lighting_set_val(uint8_t val) {
+    lighting.val     = val;
+    lighting.val_end = val;
+    if (lighting.val_start != lighting.val_end) {
+        lighting.timer = timer_read32();
+    }
+}
+
+/** Cycles between off, 40% brightness, and max brightness. */
+static void lighting_cycle_3_state(void) {
+    if (lighting.val == 0) {
+        lighting_set_val((RGB_MATRIX_MAXIMUM_BRIGHTNESS * 2 + 2) / 5);
+    } else if (lighting.val < RGB_MATRIX_MAXIMUM_BRIGHTNESS) {
+        lighting_set_val(RGB_MATRIX_MAXIMUM_BRIGHTNESS);
+    } else {
+        lighting_set_val(0);
+    }
+}
+
+static void lighting_set_palette(uint8_t palette) {
+    if (lighting.val == 0) {
+        lighting_cycle_3_state();
+    }
+    rgb_matrix_enable_noeeprom();
+    rgb_matrix_sethsv_noeeprom(RGB_MATRIX_HUE_STEP * palette, 255, rgb_matrix_get_val());
+}
+
+static void lighting_preset(uint8_t effect, uint8_t palette) {
+    lighting_set_palette(palette);
+    rgb_matrix_mode_noeeprom(effect);
+    rgb_matrix_set_speed_noeeprom(100);
+}
+
+static void lighting_init(void) {
+    lighting.val_start = 0;
+    lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_RIPPLE, PALETTEFX_CARNIVAL);
+    lighting_set_val(RGB_MATRIX_MAXIMUM_BRIGHTNESS);
+}
+
+static void lighting_set_sleep_timer(void) {
+    if (lighting.val_start == lighting.val_end) {
+        const uint32_t duration = (lighting.event_count <= 10) ? UINT32_C(5000) : UINT32_C(30000);
+        lighting.timer          = (timer_read32() + duration) | 1;
+    }
+}
+
+/** This function should be called on every key event to keep lights awake. */
+static void lighting_activity_trigger(void) {
+    if (lighting.val > 0) {
+        lighting.event_count = qadd8(lighting.event_count, 1);
+        if (lighting.val_end == 0) {
+            lighting_set_val(lighting.val); // Wake lighting.
+        } else {
+            lighting_set_sleep_timer();
+        }
+    }
+}
+
+static void lighting_task(void) {
+    if (!lighting.timer) {
+        return;
+    } // Early return if sleeping.
+    const uint32_t diff = timer_read32() - lighting.timer;
+
+    if (lighting.val_start != lighting.val_end) {
+        const uint8_t t = (diff <= 511) ? (uint8_t)(diff / 2) : 255;
+
+        hsv_t hsv = rgb_matrix_get_hsv();
+        hsv.v     = (t == 255) ? lighting.val_end : lerp8by8(lighting.val_start, lighting.val_end, ease8InOutCubic(t));
+        rgb_matrix_sethsv_noeeprom(hsv.h, hsv.s, hsv.v);
+
+        if (t == 255) { // Transition complete.
+            lighting.val_end   = rgb_matrix_get_val();
+            lighting.val_start = lighting.val_end;
+            if (lighting.val_end == 0) { // Sleep.
+                lighting.timer       = 0;
+                lighting.event_count = 0;
+            } else {
+                lighting_set_sleep_timer();
+            }
+        }
+    } else if (diff < UINT32_MAX / 2) { // Sleep timeout expired; begin fading.
+        lighting.val_end = 0;
+    }
+}
+#endif // RGB_MATRIX_ENABLE
+
+///////////////////////////////////////////////////////////////////////////////
+// Status LEDs
+///////////////////////////////////////////////////////////////////////////////
+#ifdef STATUS_LED_1
+// LED 1 indicates when any layer above the SYM layer is active.
+layer_state_t layer_state_set_user(layer_state_t state) {
+    STATUS_LED_1(get_highest_layer(layer_state) > SYM);
+    return state;
+}
+#endif // STATUS_LED_1
+
+#ifdef STATUS_LED_2
+// LED 2 indicates when Sentence case is in primed to capitalize the next key.
+void sentence_case_primed(bool primed) {
+    STATUS_LED_2(primed);
+}
+#endif // STATUS_LED_2
+
+#ifdef STATUS_LED_3
+// LED 3 indicates when Caps word is active.
+void caps_word_set_user(bool active) {
+    STATUS_LED_3(active);
+}
+#endif // STATUS_LED_3
+
+///////////////////////////////////////////////////////////////////////////////
+// User macro callbacks (https://docs.qmk.fm/feature_macros)
+///////////////////////////////////////////////////////////////////////////////
+
+void keyboard_post_init_user(void) {
+#if RGB_MATRIX_ENABLE
+    lighting_init();
+#endif // RGB_MATRIX_ENABLE
+
+    // Play MUSHROOM_SOUND two seconds after init, if defined and audio enabled.
+#if defined(AUDIO_ENABLE) && defined(MUSHROOM_SOUND)
+    uint32_t play_init_song_callback(uint32_t trigger_time, void *cb_arg) {
+        static float init_song[][2] = SONG(MUSHROOM_SOUND);
+        PLAY_SONG(init_song);
+        return 0;
+    }
+    defer_exec(2000, play_init_song_callback, NULL);
+#endif // defined(AUDIO_ENABLE) && defined(MUSHROOM_SOUND)
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-/* #ifdef RGB_MATRIX_ENABLE */
-/*     lighting_activity_trigger(); */
-/* #endif // RGB_MATRIX_ENABLE */
+#ifdef RGB_MATRIX_ENABLE
+    lighting_activity_trigger();
+#endif // RGB_MATRIX_ENABLE
 #ifdef ORBITAL_MOUSE_ENABLE
     if (!process_orbital_mouse(keycode, record)) {
         return false;
@@ -951,7 +1104,39 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING_DELAY(/*`*/ "``\n\n```" SS_TAP(X_UP), TAP_CODE_DELAY);
                 break;
 
-                return true;
+#if RGB_MATRIX_ENABLE
+            case RGBBRI:
+                lighting_cycle_3_state();
+                break;
+
+            case RGBNEXT:
+                if (shift_mods) {
+                    rgb_matrix_step_reverse_noeeprom();
+                } else {
+                    rgb_matrix_step_noeeprom();
+                }
+                break;
+
+            case RGBHUP:
+                if (shift_mods) {
+                    rgb_matrix_decrease_hue_noeeprom();
+                } else {
+                    rgb_matrix_increase_hue_noeeprom();
+                }
+                break;
+
+            case RGBHRND:
+                lighting_set_palette(myrand());
+                break;
+
+            case RGBDEF1:
+                lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_RIPPLE, PALETTEFX_CARNIVAL);
+                break;
+
+            case RGBDEF2:
+                lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_FLOW, PALETTEFX_POLARIZED);
+                break;
+#endif // RGB_MATRIX_ENABLE
         }
     }
 
@@ -959,9 +1144,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 };
 
 void housekeeping_task_user(void) {
-/* #ifdef RGB_MATRIX_ENABLE */
-/*     lighting_task(); */
-/* #endif // RGB_MATRIX_ENABLE */
+#ifdef RGB_MATRIX_ENABLE
+    lighting_task();
+#endif // RGB_MATRIX_ENABLE
 #ifdef ORBITAL_MOUSE_ENABLE
     orbital_mouse_task();
 #endif // ORBITAL_MOUSE_ENABLE
