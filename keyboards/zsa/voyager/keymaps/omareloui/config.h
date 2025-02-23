@@ -9,6 +9,12 @@
 
 #define UNICODE_SELECTED_MODES UNICODE_MODE_LINUX
 
+// When idle, turn off Layer Lock after 60 seconds.
+#define LAYER_LOCK_IDLE_TIMEOUT 60000
+
+// When idle, turn off Sentence Case after 2 seconds.
+#define SENTENCE_CASE_TIMEOUT 2000
+
 // Define speed curve for Orbital Mouse.
 #define ORBITAL_MOUSE_SPEED_CURVE {24, 24, 24, 32, 62, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72}
 //                                 |               |               |               |           |

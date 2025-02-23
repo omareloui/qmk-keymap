@@ -19,6 +19,13 @@ LAYER_LOCK_ENABLE ?= yes
 # SPACE_CADET_ENABLE ?= no
 # TAP_DANCE_ENABLE ?= no
 
+
+SENTENCE_CASE_ENABLE ?= yes
+ifeq ($(strip $(SENTENCE_CASE_ENABLE)), yes)
+	OPT_DEFS += -DSENTENCE_CASE_ENABLE
+	SRC += features/sentence_case.c
+endif
+
 SELECT_WORD_ENABLE ?= yes
 ifeq ($(strip $(SELECT_WORD_ENABLE)), yes)
 	OPT_DEFS += -DSELECT_WORD_ENABLE

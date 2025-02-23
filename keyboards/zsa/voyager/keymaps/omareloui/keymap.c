@@ -20,9 +20,9 @@
 #ifdef SELECT_WORD_ENABLE
 #    include "features/select_word.h"
 #endif // SELECT_WORD_ENABLE
-/* #ifdef SENTENCE_CASE_ENABLE */
-/* #    include "features/sentence_case.h" */
-/* #endif // SENTENCE_CASE_ENABLE */
+#ifdef SENTENCE_CASE_ENABLE
+#    include "features/sentence_case.h"
+#endif // SENTENCE_CASE_ENABLE
 
 enum layers {
     STRDY,
@@ -362,6 +362,51 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
     return get_chordal_hold_default(tap_hold_record, other_record);
 }
 #endif // CHORDAL_HOLD
+
+///////////////////////////////////////////////////////////////////////////////
+// Sentence case (https://getreuer.info/posts/keyboards/sentence-case)
+///////////////////////////////////////////////////////////////////////////////
+#ifdef SENTENCE_CASE_ENABLE
+char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mods) {
+    if ((mods & ~(MOD_MASK_SHIFT | MOD_BIT_RALT)) == 0) {
+        const bool shifted = mods & MOD_MASK_SHIFT;
+        switch (keycode) {
+            case KC_A ... KC_Z:
+            case M_THE:
+            case M_ION:
+            case M_MENT:
+            case M_TMENT:
+                return 'a'; // Letter key.
+
+            case KC_DOT: // Both . and Shift . (?) punctuate sentence endings.
+            case KC_EXLM:
+            case KC_QUES:
+                return '.';
+
+            case KC_COMM:
+                return shifted ? '.' : '#';
+
+            case KC_2 ... KC_0:       // 2 3 4 5 6 7 8 9 0
+            case KC_AT ... KC_RPRN:   // @ # $ % ^ & * ( )
+            case KC_MINS ... KC_SCLN: // - = [ ] backslash ;
+            case KC_UNDS ... KC_COLN: // _ + { } | :
+            case KC_GRV:
+                return '#'; // Symbol key.
+
+            case KC_SPC:
+                return ' '; // Space key.
+
+            case KC_QUOT:
+            case KC_DQUO:
+                return '\''; // Quote key.
+        }
+    }
+
+    // Otherwise clear Sentence Case to initial state.
+    sentence_case_clear();
+    return '\0';
+}
+#endif // SENTENCE_CASE_ENABLE
 
 ///////////////////////////////////////////////////////////////////////////////
 // Repeat key (https://docs.qmk.fm/features/repeat_key)
@@ -913,7 +958,7 @@ void housekeeping_task_user(void) {
 #ifdef SELECT_WORD_ENABLE
     select_word_task();
 #endif // SELECT_WORD_ENABLE
-    /* #ifdef SENTENCE_CASE_ENABLE */
-    /*     sentence_case_task(); */
-    /* #endif // SENTENCE_CASE_ENABLE */
+#ifdef SENTENCE_CASE_ENABLE
+    sentence_case_task();
+#endif // SENTENCE_CASE_ENABLE
 }
