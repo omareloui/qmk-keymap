@@ -94,6 +94,14 @@ enum custom_keycodes {
 #define NAV_SLS LSFT_T(KC_SLSH)
 #define NAV_EQL LT(0, KC_EQL)
 
+#define COPY C(KC_C)
+#define CUT C(KC_X)
+#define PASTE C(KC_V)
+#define UNDO C(KC_Z)
+#define SELALL C(KC_A)
+#define WWW_PRV_TAB C(KC_PGUP)
+#define WWW_NXT_TAB C(KC_PGDN)
+
 #ifdef CHORDAL_HOLD
 // clang-format off
 // Handedness for Chordal Hold (https://github.com/qmk/qmk_firmware/pull/24560)
@@ -110,27 +118,27 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-//    ┌─────────┬─────────┬───────┬───────┬───────┬─────────┐                  ┌──────┬───────┬───────┬─────────┬─────────┬────────────┐
-//    │    `    │ SELLINE │ paste │ C(a)  │ copy  │ OM_BTN1 │                  │ home │ left  │ rght  │   end   │ G(tab)  │ DF(QWERTY) │
-//    ├─────────┼─────────┼───────┼───────┼───────┼─────────┤                  ├──────┼───────┼───────┼─────────┼─────────┼────────────┤
-//    │   tab   │    v    │   m   │   l   │   c   │    p    │                  │  b   │ MAGIC │   u   │    o    │    q    │     /      │
-//    ├─────────┼─────────┼───────┼───────┼───────┼─────────┤                  ├──────┼───────┼───────┼─────────┼─────────┼────────────┤
-//    │  bspc   │  HRM_S  │ HRM_T │ HRM_R │ HRM_D │    y    │                  │  f   │ HRM_N │ HRM_E │  HRM_A  │  HRM_I  │     -      │
-//    ├─────────┼─────────┼───────┼───────┼───────┼─────────┤                  ├──────┼───────┼───────┼─────────┼─────────┼────────────┤
-//    │ EXT_COL │  HRM_X  │   k   │   j   │ HRM_G │    w    │                  │  z   │ HRM_H │   ,   │ HRM_DOT │ HRM_QUO │    ent     │
-//    └─────────┴─────────┴───────┴───────┴───────┼─────────┼─────┐   ┌────────┼──────┼───────┴───────┴─────────┴─────────┴────────────┘
-//                                                │    _    │ spc │   │ QK_REP │ esc  │
-//                                                └─────────┴─────┘   └────────┴──────┘
+//    ┌─────────┬─────────┬───────┬────────┬───────┬─────────┐                  ┌──────┬───────┬───────┬─────────┬─────────┬────────────┐
+//    │    `    │ SELLINE │ PASTE │ SELALL │ COPY  │ OM_BTN1 │                  │ home │ left  │ rght  │   end   │ G(tab)  │ DF(QWERTY) │
+//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├──────┼───────┼───────┼─────────┼─────────┼────────────┤
+//    │   tab   │    v    │   m   │   l    │   c   │    p    │                  │  b   │ MAGIC │   u   │    o    │    q    │     /      │
+//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├──────┼───────┼───────┼─────────┼─────────┼────────────┤
+//    │  bspc   │  HRM_S  │ HRM_T │ HRM_R  │ HRM_D │    y    │                  │  f   │ HRM_N │ HRM_E │  HRM_A  │  HRM_I  │     -      │
+//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├──────┼───────┼───────┼─────────┼─────────┼────────────┤
+//    │ EXT_COL │  HRM_X  │   k   │   j    │ HRM_G │    w    │                  │  z   │ HRM_H │   ,   │ HRM_DOT │ HRM_QUO │    ent     │
+//    └─────────┴─────────┴───────┴────────┴───────┼─────────┼─────┐   ┌────────┼──────┼───────┴───────┴─────────┴─────────┴────────────┘
+//                                                 │    _    │ spc │   │ QK_REP │ esc  │
+//                                                 └─────────┴─────┘   └────────┴──────┘
 [STRDY] = LAYOUT(
-  KC_GRV  , SELLINE , KC_PASTE , C(KC_A) , KC_COPY , OM_BTN1 ,                       KC_HOME , KC_LEFT , KC_RGHT , KC_END  , G(KC_TAB) , DF(QWERTY),
-  KC_TAB  , KC_V    , KC_M     , KC_L    , KC_C    , KC_P    ,                       KC_B    , MAGIC   , KC_U    , KC_O    , KC_Q      , KC_SLSH   ,
-  KC_BSPC , HRM_S   , HRM_T    , HRM_R   , HRM_D   , KC_Y    ,                       KC_F    , HRM_N   , HRM_E   , HRM_A   , HRM_I     , KC_MINS   ,
-  EXT_COL , HRM_X   , KC_K     , KC_J    , HRM_G   , KC_W    ,                       KC_Z    , HRM_H   , KC_COMM , HRM_DOT , HRM_QUO   , KC_ENT    ,
-                                                     KC_UNDS , KC_SPC ,     QK_REP , KC_ESC
+  KC_GRV  , SELLINE , PASTE , SELALL , COPY  , OM_BTN1 ,                       KC_HOME , KC_LEFT , KC_RGHT , KC_END  , G(KC_TAB) , DF(QWERTY),
+  KC_TAB  , KC_V    , KC_M  , KC_L   , KC_C  , KC_P    ,                       KC_B    , MAGIC   , KC_U    , KC_O    , KC_Q      , KC_SLSH   ,
+  KC_BSPC , HRM_S   , HRM_T , HRM_R  , HRM_D , KC_Y    ,                       KC_F    , HRM_N   , HRM_E   , HRM_A   , HRM_I     , KC_MINS   ,
+  EXT_COL , HRM_X   , KC_K  , KC_J   , HRM_G , KC_W    ,                       KC_Z    , HRM_H   , KC_COMM , HRM_DOT , HRM_QUO   , KC_ENT    ,
+                                               KC_UNDS , KC_SPC ,     QK_REP , KC_ESC
 ),
 
 //    ┌─────────┬───────────┬────────────┬────────────┬────────────┬─────────┐                  ┌──────┬────────────┬────────────┬────────────┬───────────┬───────────┐
-//    │    `    │  SELLINE  │   paste    │    C(a)    │    copy    │ OM_BTN1 │                  │ home │    left    │    rght    │    end     │  G(tab)   │ DF(STRDY) │
+//    │    `    │  SELLINE  │   PASTE    │   SELALL   │    COPY    │ OM_BTN1 │                  │ home │    left    │    rght    │    end     │  G(tab)   │ DF(STRDY) │
 //    ├─────────┼───────────┼────────────┼────────────┼────────────┼─────────┤                  ├──────┼────────────┼────────────┼────────────┼───────────┼───────────┤
 //    │   tab   │     q     │     w      │     e      │     r      │    t    │                  │  y   │     u      │     i      │     o      │     p     │     /     │
 //    ├─────────┼───────────┼────────────┼────────────┼────────────┼─────────┤                  ├──────┼────────────┼────────────┼────────────┼───────────┼───────────┤
@@ -141,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                                                                 │    _    │ spc │   │ QK_REP │ esc  │
 //                                                                 └─────────┴─────┘   └────────┴──────┘
 [QWERTY] = LAYOUT(
-  KC_GRV  , SELLINE      , KC_PASTE      , C(KC_A)    , KC_COPY      , OM_BTN1 ,                       KC_HOME , KC_LEFT      , KC_RGHT    , KC_END        , G(KC_TAB)       , DF(STRDY),
+  KC_GRV  , SELLINE      , PASTE         , SELALL     , COPY         , OM_BTN1 ,                       KC_HOME , KC_LEFT      , KC_RGHT    , KC_END        , G(KC_TAB)       , DF(STRDY),
   KC_TAB  , KC_Q         , KC_W          , KC_E       , KC_R         , KC_T    ,                       KC_Y    , KC_U         , KC_I       , KC_O          , KC_P            , KC_SLSH  ,
   KC_BSPC , LALT_T(KC_A) , LT(SYM, KC_S) , QRTY_HRM_D , QRTY_HRM_F   , KC_G    ,                       KC_H    , QRTY_HRM_J   , QRTY_HRM_K , LT(SYM, KC_L) , LALT_T(KC_SCLN) , KC_MINS  ,
   EXT_COL , LGUI_T(KC_Z) , KC_X          , KC_C       , LCTL_T(KC_V) , KC_B    ,                       KC_N    , RCTL_T(KC_M) , KC_COMM    , HRM_DOT       , RGUI_T(KC_SLSH) , KC_ENT   ,
@@ -167,23 +175,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     USRNAME , _______ ,     _______ , _______
 ),
 
-//    ┌─────┬─────────────┬─────────┬─────────┬─────────┬──────────┐                  ┌─────────┬──────┬─────────┬─────────┬─────────┬─────┐
-//    │     │             │         │         │         │          │                  │         │      │         │         │         │     │
-//    ├─────┼─────────────┼─────────┼─────────┼─────────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
-//    │     │ www_refresh │ C(pgup) │ C(pgdn) │   no    │    no    │                  │  pgup   │ home │   up    │   end   │ SRCHSEL │     │
-//    ├─────┼─────────────┼─────────┼─────────┼─────────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
-//    │     │    lalt     │  lctl   │  lsft   │ SELLINE │ OM_BTN1  │                  │  pgdn   │ left │  down   │  rght   │   del   │     │
-//    ├─────┼─────────────┼─────────┼─────────┼─────────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
-//    │     │    lgui     │  pgup   │  pgdn   │   no    │    no    │                  │  undo   │ app  │ SELWBAK │ SELWFWD │   no    │     │
-//    └─────┴─────────────┴─────────┴─────────┴─────────┼──────────┼────────┐   ┌─────┼─────────┼──────┴─────────┴─────────┴─────────┴─────┘
-//                                                      │ www_back │ G(tab) │   │     │ QK_LLCK │
-//                                                      └──────────┴────────┘   └─────┴─────────┘
+//    ┌─────┬─────────────┬─────────────┬─────────────┬─────────┬──────────┐                  ┌─────────┬──────┬─────────┬─────────┬─────────┬─────┐
+//    │     │             │             │             │         │          │                  │         │      │         │         │         │     │
+//    ├─────┼─────────────┼─────────────┼─────────────┼─────────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
+//    │     │ www_refresh │ WWW_PRV_TAB │ WWW_NXT_TAB │   no    │    no    │                  │  pgup   │ home │   up    │   end   │ SRCHSEL │     │
+//    ├─────┼─────────────┼─────────────┼─────────────┼─────────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
+//    │     │    lalt     │    lctl     │    lsft     │ SELLINE │ OM_BTN1  │                  │  pgdn   │ left │  down   │  rght   │   del   │     │
+//    ├─────┼─────────────┼─────────────┼─────────────┼─────────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
+//    │     │    lgui     │    pgup     │    pgdn     │   no    │    no    │                  │  UNDO   │ app  │ SELWBAK │ SELWFWD │   no    │     │
+//    └─────┴─────────────┴─────────────┴─────────────┴─────────┼──────────┼────────┐   ┌─────┼─────────┼──────┴─────────┴─────────┴─────────┴─────┘
+//                                                              │ www_back │ G(tab) │   │     │ QK_LLCK │
+//                                                              └──────────┴────────┘   └─────┴─────────┘
 [NAV] = LAYOUT(
-  _______ , _______ , _______    , _______    , _______ , _______ ,                           _______ , _______ , _______ , _______ , _______ , _______,
-  _______ , KC_WREF , C(KC_PGUP) , C(KC_PGDN) , XXXXXXX , XXXXXXX ,                           KC_PGUP , KC_HOME , KC_UP   , KC_END  , SRCHSEL , _______,
-  _______ , KC_LALT , KC_LCTL    , KC_LSFT    , SELLINE , OM_BTN1 ,                           KC_PGDN , KC_LEFT , KC_DOWN , KC_RGHT , KC_DEL  , _______,
-  _______ , KC_LGUI , KC_PGUP    , KC_PGDN    , XXXXXXX , XXXXXXX ,                           KC_UNDO , KC_APP  , SELWBAK , SELWFWD , XXXXXXX , _______,
-                                                          KC_WBAK , G(KC_TAB) ,     _______ , QK_LLCK
+  _______ , _______ , _______     , _______     , _______ , _______ ,                           _______ , _______ , _______ , _______ , _______ , _______,
+  _______ , KC_WREF , WWW_PRV_TAB , WWW_NXT_TAB , XXXXXXX , XXXXXXX ,                           KC_PGUP , KC_HOME , KC_UP   , KC_END  , SRCHSEL , _______,
+  _______ , KC_LALT , KC_LCTL     , KC_LSFT     , SELLINE , OM_BTN1 ,                           KC_PGDN , KC_LEFT , KC_DOWN , KC_RGHT , KC_DEL  , _______,
+  _______ , KC_LGUI , KC_PGUP     , KC_PGDN     , XXXXXXX , XXXXXXX ,                           UNDO    , KC_APP  , SELWBAK , SELWFWD , XXXXXXX , _______,
+                                                            KC_WBAK , G(KC_TAB) ,     _______ , QK_LLCK
 ),
 
 //    ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌─────────┬─────┬─────┬──────┬──────┬─────┐
@@ -243,23 +251,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     XXXXXXX , XXXXXXX ,     XXXXXXX , QK_LLCK
 ),
 
-//    ┌─────────┬──────┬───────┬──────┬─────────┬──────────┐                       ┌─────────┬─────────┬──────┬─────────┬─────────┬─────┐
-//    │         │      │       │      │         │          │                       │         │         │      │         │         │     │
-//    ├─────────┼──────┼───────┼──────┼─────────┼──────────┤                       ├─────────┼─────────┼──────┼─────────┼─────────┼─────┤
-//    │         │  no  │  no   │  no  │   no    │    no    │                       │ OM_W_U  │ OM_BTN1 │ OM_U │ OM_BTN2 │ SRCHSEL │     │
-//    ├─────────┼──────┼───────┼──────┼─────────┼──────────┤                       ├─────────┼─────────┼──────┼─────────┼─────────┼─────┤
-//    │ OM_SLOW │ lalt │ lctl  │ lsft │ SELLINE │    no    │                       │ OM_W_D  │  OM_L   │ OM_D │  OM_R   │ OM_SLOW │     │
-//    ├─────────┼──────┼───────┼──────┼─────────┼──────────┤                       ├─────────┼─────────┼──────┼─────────┼─────────┼─────┤
-//    │         │ lgui │ paste │ C(a) │  copy   │   cut    │                       │   no    │   no    │  no  │   no    │   no    │     │
-//    └─────────┴──────┴───────┴──────┴─────────┼──────────┼─────────┐   ┌─────────┼─────────┼─────────┴──────┴─────────┴─────────┴─────┘
-//                                              │ www_back │ OM_BTN1 │   │ OM_BTN1 │ QK_LLCK │
-//                                              └──────────┴─────────┘   └─────────┴─────────┘
+//    ┌─────────┬──────┬───────┬────────┬─────────┬──────────┐                       ┌─────────┬─────────┬──────┬─────────┬─────────┬─────┐
+//    │         │      │       │        │         │          │                       │         │         │      │         │         │     │
+//    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼─────────┼──────┼─────────┼─────────┼─────┤
+//    │         │  no  │  no   │   no   │   no    │    no    │                       │ OM_W_U  │ OM_BTN1 │ OM_U │ OM_BTN2 │ SRCHSEL │     │
+//    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼─────────┼──────┼─────────┼─────────┼─────┤
+//    │ OM_SLOW │ lalt │ lctl  │  lsft  │ SELLINE │    no    │                       │ OM_W_D  │  OM_L   │ OM_D │  OM_R   │ OM_SLOW │     │
+//    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼─────────┼──────┼─────────┼─────────┼─────┤
+//    │         │ lgui │ PASTE │ SELALL │  COPY   │   CUT    │                       │   no    │   no    │  no  │   no    │   no    │     │
+//    └─────────┴──────┴───────┴────────┴─────────┼──────────┼─────────┐   ┌─────────┼─────────┼─────────┴──────┴─────────┴─────────┴─────┘
+//                                                │ www_back │ OM_BTN1 │   │ OM_BTN1 │ QK_LLCK │
+//                                                └──────────┴─────────┘   └─────────┴─────────┘
 [EXT] = LAYOUT(
-  _______ , _______ , _______  , _______ , _______ , _______ ,                         _______ , _______ , _______ , _______ , _______ , _______,
-  _______ , XXXXXXX , XXXXXXX  , XXXXXXX , XXXXXXX , XXXXXXX ,                         OM_W_U  , OM_BTN1 , OM_U    , OM_BTN2 , SRCHSEL , _______,
-  OM_SLOW , KC_LALT , KC_LCTL  , KC_LSFT , SELLINE , XXXXXXX ,                         OM_W_D  , OM_L    , OM_D    , OM_R    , OM_SLOW , _______,
-  _______ , KC_LGUI , KC_PASTE , C(KC_A) , KC_COPY , KC_CUT  ,                         XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , _______,
-                                                     KC_WBAK , OM_BTN1 ,     OM_BTN1 , QK_LLCK
+  _______ , _______ , _______ , _______ , _______ , _______ ,                         _______ , _______ , _______ , _______ , _______ , _______,
+  _______ , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,                         OM_W_U  , OM_BTN1 , OM_U    , OM_BTN2 , SRCHSEL , _______,
+  OM_SLOW , KC_LALT , KC_LCTL , KC_LSFT , SELLINE , XXXXXXX ,                         OM_W_D  , OM_L    , OM_D    , OM_R    , OM_SLOW , _______,
+  _______ , KC_LGUI , PASTE   , SELALL  , COPY    , CUT     ,                         XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , _______,
+                                                    KC_WBAK , OM_BTN1 ,     OM_BTN1 , QK_LLCK
 )
 };
 // clang-format on
