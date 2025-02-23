@@ -251,19 +251,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     XXXXXXX , XXXXXXX ,     XXXXXXX , QK_LLCK
 ),
 
-//    ┌─────────┬──────┬───────┬────────┬─────────┬──────────┐                       ┌─────────┬─────────┬──────┬─────────┬─────────┬─────┐
-//    │         │      │       │        │         │          │                       │         │         │      │         │         │     │
-//    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼─────────┼──────┼─────────┼─────────┼─────┤
-//    │         │  no  │  no   │   no   │   no    │    no    │                       │ OM_W_U  │ OM_BTN1 │ OM_U │ OM_BTN2 │ SRCHSEL │     │
-//    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼─────────┼──────┼─────────┼─────────┼─────┤
-//    │ OM_SLOW │ lalt │ lctl  │  lsft  │ SELLINE │    no    │                       │ OM_W_D  │  OM_L   │ OM_D │  OM_R   │ OM_SLOW │     │
-//    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼─────────┼──────┼─────────┼─────────┼─────┤
-//    │         │ lgui │ PASTE │ SELALL │  COPY   │   CUT    │                       │   no    │   no    │  no  │   no    │   no    │     │
-//    └─────────┴──────┴───────┴────────┴─────────┼──────────┼─────────┐   ┌─────────┼─────────┼─────────┴──────┴─────────┴─────────┴─────┘
+//    ┌─────────┬──────┬───────┬────────┬─────────┬──────────┐                       ┌─────────┬─────────┬──────┬─────────┬─────────┬─────────┐
+//    │         │      │       │        │         │          │                       │         │         │      │         │         │ AC_TOGG │
+//    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼─────────┼──────┼─────────┼─────────┼─────────┤
+//    │         │  no  │  no   │   no   │   no    │    no    │                       │ OM_W_U  │ OM_BTN1 │ OM_U │ OM_BTN2 │ SRCHSEL │         │
+//    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼─────────┼──────┼─────────┼─────────┼─────────┤
+//    │ OM_SLOW │ lalt │ lctl  │  lsft  │ SELLINE │    no    │                       │ OM_W_D  │  OM_L   │ OM_D │  OM_R   │ OM_SLOW │         │
+//    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼─────────┼──────┼─────────┼─────────┼─────────┤
+//    │         │ lgui │ PASTE │ SELALL │  COPY   │   CUT    │                       │   no    │   no    │  no  │   no    │   no    │         │
+//    └─────────┴──────┴───────┴────────┴─────────┼──────────┼─────────┐   ┌─────────┼─────────┼─────────┴──────┴─────────┴─────────┴─────────┘
 //                                                │ www_back │ OM_BTN1 │   │ OM_BTN1 │ QK_LLCK │
 //                                                └──────────┴─────────┘   └─────────┴─────────┘
 [EXT] = LAYOUT(
-  _______ , _______ , _______ , _______ , _______ , _______ ,                         _______ , _______ , _______ , _______ , _______ , _______,
+  _______ , _______ , _______ , _______ , _______ , _______ ,                         _______ , _______ , _______ , _______ , _______ , AC_TOGG,
   _______ , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,                         OM_W_U  , OM_BTN1 , OM_U    , OM_BTN2 , SRCHSEL , _______,
   OM_SLOW , KC_LALT , KC_LCTL , KC_LSFT , SELLINE , XXXXXXX ,                         OM_W_D  , OM_L    , OM_D    , OM_R    , OM_SLOW , _______,
   _______ , KC_LGUI , PASTE   , SELALL  , COPY    , CUT     ,                         XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , _______,
@@ -293,9 +293,22 @@ combo_t key_combos[] = {
     COMBO(j_k_combo, KC_BSLS),      // J and K => backslash
     COMBO(h_comm_combo, KC_QUOT),   // H and , => '
     COMBO(comm_dot_combo, CW_TOGG), // , and . => activate Caps Word in QWERTY layer.
+    COMBO(f_n_combo, OSL(FUN)),     // F and N => FUN layer
     /* COMBO(comm_dot_combo, KC_SCLN), // , and . => ; */
-    COMBO(f_n_combo, OSL(FUN)), // F and N => FUN layer
 };
+
+///////////////////////////////////////////////////////////////////////////////
+// Autocorrect (https://docs.qmk.fm/features/autocorrect)
+///////////////////////////////////////////////////////////////////////////////
+#ifdef AUTOCORRECT_ENABLE
+bool apply_autocorrect(uint8_t backspaces, const char *str, char *typo, char *correct) {
+    for (uint8_t i = 0; i < backspaces; ++i) {
+        tap_code(KC_BSPC);
+    }
+    send_string_with_delay_P(str, TAP_CODE_DELAY);
+    return false;
+}
+#endif // AUTOCORRECT_ENABLE
 
 ///////////////////////////////////////////////////////////////////////////////
 // Tap-hold configuration (https://docs.qmk.fm/tap_hold)
