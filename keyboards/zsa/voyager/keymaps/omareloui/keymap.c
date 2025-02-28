@@ -1067,6 +1067,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     send_unicode_string(emojis[index]);
                     return false;
                 }
+                return true;
 
             // Macros invoked through the MAGIC key.
             case M_THE:
