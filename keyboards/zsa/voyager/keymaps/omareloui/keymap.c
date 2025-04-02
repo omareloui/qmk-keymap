@@ -56,8 +56,12 @@ enum custom_keycodes {
     M_QUEN,
     M_THE,
     M_TMENT,
-    M_UPDIR,
     M_NBSP,
+    M_UPDIR,
+    M_BRC,
+    M_ABK,
+    M_CBR,
+    M_PRN,
     M_NOOP,
 };
 
@@ -94,8 +98,6 @@ enum custom_keycodes {
 #define HRM_QUO RGUI_T(KC_QUOT)
 
 #define EXT_COL LT(EXT, KC_SCLN)
-#define NAV_SLS LSFT_T(KC_SLSH)
-#define NAV_EQL LT(0, KC_EQL)
 
 #define COPY C(KC_C)
 #define CUT C(KC_X)
@@ -159,22 +161,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                        KC_UNDS , KC_SPC ,     QK_REP , KC_ESC
 ),
 
-//    ┌─────┬─────┬─────┬─────────┬─────────┬─────────┐               ┌─────┬─────┬─────┬─────┬───────┬─────┐
-//    │     │     │     │         │         │         │               │     │     │     │     │       │     │
-//    ├─────┼─────┼─────┼─────────┼─────────┼─────────┤               ├─────┼─────┼─────┼─────┼───────┼─────┤
-//    │     │  `  │  <  │    >    │    -    │    |    │               │  ^  │  $  │  {  │  }  │ ARROW │     │
-//    ├─────┼─────┼─────┼─────────┼─────────┼─────────┤               ├─────┼─────┼─────┼─────┼───────┼─────┤
-//    │     │  !  │  *  │ NAV_SLS │ NAV_EQL │    &    │               │  #  │  ;  │  (  │  )  │   "   │     │
-//    ├─────┼─────┼─────┼─────────┼─────────┼─────────┤               ├─────┼─────┼─────┼─────┼───────┼─────┤
-//    │     │  ~  │  [  │    ]    │    +    │    %    │               │  @  │  :  │  ,  │  .  │   '   │     │
-//    └─────┴─────┴─────┴─────────┴─────────┼─────────┼─────┐   ┌─────┼─────┼─────┴─────┴─────┴───────┴─────┘
-//                                          │ USRNAME │     │   │     │     │
-//                                          └─────────┴─────┘   └─────┴─────┘
+//    ┌─────┬─────┬─────┬─────┬───────┬─────────┐               ┌─────┬─────┬─────┬─────┬─────┬─────┐
+//    │     │     │     │     │       │         │               │     │     │     │     │     │     │
+//    ├─────┼─────┼─────┼─────┼───────┼─────────┤               ├─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │  ^  │  <  │  [  │   "   │    '    │               │  +  │  |  │  ]  │  >  │  $  │     │
+//    ├─────┼─────┼─────┼─────┼───────┼─────────┤               ├─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │  ~  │  (  │  {  │ MAGIC │    /    │               │  \  │  =  │  }  │  )  │  ;  │     │
+//    ├─────┼─────┼─────┼─────┼───────┼─────────┤               ├─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │  @  │  .  │  ,  │   %   │    #    │               │  *  │  &  │  ?  │  !  │  :  │     │
+//    └─────┴─────┴─────┴─────┴───────┼─────────┼─────┐   ┌─────┼─────┼─────┴─────┴─────┴─────┴─────┘
+//                                    │ USRNAME │     │   │     │     │
+//                                    └─────────┴─────┘   └─────┴─────┘
 [SYM] = LAYOUT(
   _______ , _______ , _______ , _______ , _______ , _______ ,                         _______ , _______ , _______ , _______ , _______ , _______,
-  _______ , KC_GRV  , KC_LABK , KC_RABK , KC_MINS , KC_PIPE ,                         KC_CIRC , KC_DLR  , KC_LCBR , KC_RCBR , ARROW   , _______,
-  _______ , KC_EXLM , KC_ASTR , NAV_SLS , NAV_EQL , KC_AMPR ,                         KC_HASH , KC_SCLN , KC_LPRN , KC_RPRN , KC_DQUO , _______,
-  _______ , KC_TILD , KC_LBRC , KC_RBRC , KC_PLUS , KC_PERC ,                         KC_AT   , KC_COLN , KC_COMM , KC_DOT  , KC_QUOT , _______,
+  _______ , KC_CIRC , KC_LABK , KC_LBRC , KC_DQUO , KC_QUOT ,                         KC_PLUS , KC_PIPE , KC_RBRC , KC_RABK , KC_DLR  , _______,
+  _______ , KC_TILD , KC_LPRN , KC_LCBR , MAGIC   , KC_SLSH ,                         KC_BSLS , KC_EQL  , KC_RCBR , KC_RPRN , KC_SCLN , _______,
+  _______ , KC_AT   , KC_DOT  , KC_COMM , KC_PERC , KC_HASH ,                         KC_ASTR , KC_AMPR , KC_QUES , KC_EXLM , KC_COLN , _______,
                                                     USRNAME , _______ ,     _______ , _______
 ),
 
@@ -358,9 +360,6 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 // Callback for Chordal Hold (https://github.com/qmk/qmk_firmware/pull/24560)
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
     switch (tap_hold_keycode) {
-        case NAV_SLS:
-            return true;
-
         case HRM_D:
             if (other_keycode == KC_M || other_keycode == KC_L || other_keycode == KC_Y || other_keycode == KC_K || other_keycode == KC_J) {
                 return true;
@@ -497,6 +496,18 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *reme
 //     & *   -> &nbsp;          (HTML code)
 //     . *   -> ../             (shell)
 //     . * @ -> ../../
+//     ( *   -> ()
+//     [ *   -> []
+//     < *   -> <>
+//     { *   -> {}
+//     ( * @ -> ();
+//     [ * @ -> [];
+//     < * @ -> <>;
+//     { * @ -> {};
+//     ) *   -> );
+//     ] *   -> ];
+//     > *   -> >;
+//     } *   -> };
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     if (mods == MOD_BIT_LALT) {
         switch (keycode) {
@@ -567,7 +578,9 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
 
             case HRM_R:
                 return KC_L; // R -> L
+
             case HRM_DOT:
+            case KC_DOT:
                 if ((mods & MOD_MASK_SHIFT) == 0) {
                     return M_UPDIR; // . -> ./
                 }
@@ -577,12 +590,10 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
             case KC_AMPR:
                 return M_NBSP; // & -> nbsp;
             case KC_EQL:
-            case NAV_EQL:
                 return M_EQEQ; // = -> ==
             case KC_EXLM:
                 return M_EQEQ; // ! -> ==
-            case KC_RBRC:
-                return KC_SCLN; // ] -> ;
+
             case KC_AT:
                 return USRNAME; // @ -> <username>
 
@@ -595,24 +606,32 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
                 return M_NOOP;
             case KC_GRV: // ` -> ``<cursor>``` (for Markdown code)
                 return M_MKGRVS;
-            case KC_LABK: // < -> - (for Haskell)
-                return KC_MINS;
-            case KC_SLSH:
-                return KC_SLSH; // / -> / (easier reach than Repeat)
 
-            case KC_PLUS:
-            case KC_MINS:
-            case KC_ASTR:
-            case KC_PERC:
-            case KC_PIPE:
-            case KC_CIRC:
-            case KC_TILD:
-            case KC_DLR:
-            case KC_RABK:
+            case KC_LBRC:
+                return M_BRC; // [ -> ]
+            case KC_LABK:
+                return M_ABK; // < -> >
+            case KC_LCBR:
+                return M_CBR; // { -> }
             case KC_LPRN:
-            case KC_RPRN:
-            case KC_UNDS:
-            case KC_COLN:
+                return M_PRN; // ( -> )
+
+            case KC_RABK: // > -> ;
+            case KC_RBRC: // ] -> ;
+            case KC_RCBR: // } -> ;
+            case KC_RPRN: // ) -> ;
+                return KC_SCLN;
+
+            case KC_PLUS: // + -> =
+            case KC_MINS: // - -> =
+            case KC_ASTR: // * -> =
+            case KC_PERC: // % -> =
+            case KC_PIPE: // | -> =
+            case KC_CIRC: // ^ -> =
+            case KC_TILD: // ~ -> =
+            case KC_DLR:  // $ -> =
+            case KC_UNDS: // _ -> =
+            case KC_COLN: // : -> =
                 return KC_EQL;
 
             case KC_F:
@@ -984,28 +1003,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return true;
 
-        case NAV_SLS:
-            if (!record->tap.count) {
-                if (!record->event.pressed) {
-                    unregister_mods(MOD_BIT_LSHIFT);
-                } else if (left_home_ring_held) {
-                    register_mods(MOD_BIT_LCTRL | MOD_BIT_LSHIFT);
-                    layer_on(NAV);
-                }
-                return false;
-            }
-            return true; // Default handling taps /.
-
-        case NAV_EQL:
-            if (!record->tap.count) {
-                if (left_home_ring_held && record->event.pressed) {
-                    register_mods(MOD_BIT_LCTRL);
-                    layer_on(NAV);
-                }
-                return false;
-            }
-            return true;
-
         case HRM_D: // NAV switch.
             if (!record->tap.count) {
                 if (record->event.pressed) {
@@ -1087,6 +1084,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;
             case M_UPDIR:
                 MAGIC_STRING(/*.*/ "./", UPDIR);
+                break;
+            case M_ABK:
+                MAGIC_STRING(/*<*/ ">", KC_SCLN);
+                break;
+            case M_BRC:
+                MAGIC_STRING(/*[*/ "]", KC_SCLN);
+                break;
+            case M_CBR:
+                MAGIC_STRING(/*{*/ "}", KC_SCLN);
+                break;
+            case M_PRN:
+                MAGIC_STRING(/*(*/ ")", KC_SCLN);
                 break;
             case M_INCLUDE:
                 SEND_STRING_DELAY(/*#*/ "include ", TAP_CODE_DELAY);
