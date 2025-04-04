@@ -326,7 +326,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HRM_R:
         case HRM_E:
-            return TAPPING_TERM - 45;
+            /* return TAPPING_TERM - 45; */
         default:
             return TAPPING_TERM;
     }
@@ -351,7 +351,13 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
     switch (tap_hold_keycode) {
         case HRM_D:
-            if (other_keycode == KC_M || other_keycode == KC_L || other_keycode == KC_Y || other_keycode == KC_K || other_keycode == KC_J) {
+            if (other_keycode == KC_M || other_keycode == KC_L || other_keycode == KC_Y || other_keycode == KC_K || other_keycode == KC_J || other_keycode == KC_V) {
+                return true;
+            }
+            break;
+
+        case HRM_N:
+            if (other_keycode == QK_REP) {
                 return true;
             }
             break;
@@ -360,6 +366,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
             if (other_keycode == HRM_H || other_keycode == KC_COMM) {
                 return true;
             }
+            break;
     }
     return get_chordal_hold_default(tap_hold_record, other_record);
 }
