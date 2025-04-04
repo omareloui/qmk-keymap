@@ -23,7 +23,6 @@
 
 enum layers {
     STRDY,
-    QWERTY,
     GAME,
     SYM,
     NAV,
@@ -78,11 +77,6 @@ enum custom_keycodes {
 #define NOTIMPLE KC_NO
 #define MUTEMIC KC_F20
 
-#define QRTY_HRM_F LT(NAV, KC_F)
-#define QRTY_HRM_J LT(NUM, KC_J)
-#define QRTY_HRM_K RSFT_T(KC_K)
-#define QRTY_HRM_D LSFT_T(KC_D)
-
 #define HRM_S LALT_T(KC_S)
 #define HRM_T LT(SYM, KC_T)
 #define HRM_R LSFT_T(KC_R)
@@ -124,61 +118,42 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-//    ┌─────────┬─────────┬───────┬────────┬───────┬─────────┐                  ┌────────┬───────┬───────┬─────────┬─────────┬────────────┐
-//    │    `    │ SELLINE │ PASTE │ SELALL │ COPY  │ OM_BTN1 │                  │ G(tab) │ home  │ left  │  rght   │   end   │ DF(QWERTY) │
-//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├────────┼───────┼───────┼─────────┼─────────┼────────────┤
-//    │   tab   │    v    │   m   │   l    │   c   │    p    │                  │   b    │ MAGIC │   u   │    o    │    q    │     /      │
-//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├────────┼───────┼───────┼─────────┼─────────┼────────────┤
-//    │  bspc   │  HRM_S  │ HRM_T │ HRM_R  │ HRM_D │    y    │                  │   f    │ HRM_N │ HRM_E │  HRM_A  │  HRM_I  │     -      │
-//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├────────┼───────┼───────┼─────────┼─────────┼────────────┤
-//    │ EXT_COL │  HRM_X  │   k   │   j    │ HRM_G │    w    │                  │   z    │ HRM_H │   ,   │ HRM_DOT │ HRM_QUO │    ent     │
-//    └─────────┴─────────┴───────┴────────┴───────┼─────────┼─────┐   ┌────────┼────────┼───────┴───────┴─────────┴─────────┴────────────┘
+//    ┌─────────┬─────────┬───────┬────────┬───────┬─────────┐                  ┌────────┬───────┬───────┬─────────┬─────────┬──────────┐
+//    │    `    │ SELLINE │ PASTE │ SELALL │ COPY  │ OM_BTN1 │                  │ G(tab) │ home  │ left  │  rght   │   end   │ DF(GAME) │
+//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├────────┼───────┼───────┼─────────┼─────────┼──────────┤
+//    │   tab   │    v    │   m   │   l    │   c   │    p    │                  │   b    │ MAGIC │   u   │    o    │    q    │    /     │
+//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├────────┼───────┼───────┼─────────┼─────────┼──────────┤
+//    │  bspc   │  HRM_S  │ HRM_T │ HRM_R  │ HRM_D │    y    │                  │   f    │ HRM_N │ HRM_E │  HRM_A  │  HRM_I  │    -     │
+//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├────────┼───────┼───────┼─────────┼─────────┼──────────┤
+//    │ EXT_COL │  HRM_X  │   k   │   j    │ HRM_G │    w    │                  │   z    │ HRM_H │   ,   │ HRM_DOT │ HRM_QUO │   ent    │
+//    └─────────┴─────────┴───────┴────────┴───────┼─────────┼─────┐   ┌────────┼────────┼───────┴───────┴─────────┴─────────┴──────────┘
 //                                                 │    _    │ spc │   │ QK_REP │  esc   │
 //                                                 └─────────┴─────┘   └────────┴────────┘
 [STRDY] = LAYOUT(
-  KC_GRV  , SELLINE , PASTE , SELALL , COPY  , OM_BTN1 ,                       G(KC_TAB) , KC_HOME , KC_LEFT , KC_RGHT , KC_END  , DF(QWERTY),
-  KC_TAB  , KC_V    , KC_M  , KC_L   , KC_C  , KC_P    ,                       KC_B      , MAGIC   , KC_U    , KC_O    , KC_Q    , KC_SLSH   ,
-  KC_BSPC , HRM_S   , HRM_T , HRM_R  , HRM_D , KC_Y    ,                       KC_F      , HRM_N   , HRM_E   , HRM_A   , HRM_I   , KC_MINS   ,
-  EXT_COL , HRM_X   , KC_K  , KC_J   , HRM_G , KC_W    ,                       KC_Z      , HRM_H   , KC_COMM , HRM_DOT , HRM_QUO , KC_ENT    ,
+  KC_GRV  , SELLINE , PASTE , SELALL , COPY  , OM_BTN1 ,                       G(KC_TAB) , KC_HOME , KC_LEFT , KC_RGHT , KC_END  , DF(GAME),
+  KC_TAB  , KC_V    , KC_M  , KC_L   , KC_C  , KC_P    ,                       KC_B      , MAGIC   , KC_U    , KC_O    , KC_Q    , KC_SLSH ,
+  KC_BSPC , HRM_S   , HRM_T , HRM_R  , HRM_D , KC_Y    ,                       KC_F      , HRM_N   , HRM_E   , HRM_A   , HRM_I   , KC_MINS ,
+  EXT_COL , HRM_X   , KC_K  , KC_J   , HRM_G , KC_W    ,                       KC_Z      , HRM_H   , KC_COMM , HRM_DOT , HRM_QUO , KC_ENT  ,
                                                KC_UNDS , KC_SPC ,     QK_REP , KC_ESC
 ),
 
-//    ┌─────────┬───────────┬────────────┬────────────┬────────────┬─────────┐                  ┌────────┬────────────┬────────────┬────────────┬───────────┬──────────┐
-//    │    `    │  SELLINE  │   PASTE    │   SELALL   │    COPY    │ OM_BTN1 │                  │ G(tab) │    home    │    left    │    rght    │    end    │ DF(GAME) │
-//    ├─────────┼───────────┼────────────┼────────────┼────────────┼─────────┤                  ├────────┼────────────┼────────────┼────────────┼───────────┼──────────┤
-//    │   tab   │     q     │     w      │     e      │     r      │    t    │                  │   y    │     u      │     i      │     o      │     p     │    /     │
-//    ├─────────┼───────────┼────────────┼────────────┼────────────┼─────────┤                  ├────────┼────────────┼────────────┼────────────┼───────────┼──────────┤
-//    │  bspc   │ LALT_T(a) │ LT(SYM, s) │ QRTY_HRM_D │ QRTY_HRM_F │    g    │                  │   h    │ QRTY_HRM_J │ QRTY_HRM_K │ LT(SYM, l) │ LALT_T(;) │    -     │
-//    ├─────────┼───────────┼────────────┼────────────┼────────────┼─────────┤                  ├────────┼────────────┼────────────┼────────────┼───────────┼──────────┤
-//    │ EXT_COL │ LGUI_T(z) │     x      │     c      │ LCTL_T(v)  │    b    │                  │   n    │ RCTL_T(m)  │     ,      │  HRM_DOT   │ RGUI_T(/) │   ent    │
-//    └─────────┴───────────┴────────────┴────────────┴────────────┼─────────┼─────┐   ┌────────┼────────┼────────────┴────────────┴────────────┴───────────┴──────────┘
-//                                                                 │    _    │ spc │   │ QK_REP │  esc   │
-//                                                                 └─────────┴─────┘   └────────┴────────┘
-[QWERTY] = LAYOUT(
-  KC_GRV  , SELLINE      , PASTE         , SELALL     , COPY         , OM_BTN1 ,                       G(KC_TAB) , KC_HOME      , KC_LEFT    , KC_RGHT       , KC_END          , DF(GAME),
-  KC_TAB  , KC_Q         , KC_W          , KC_E       , KC_R         , KC_T    ,                       KC_Y      , KC_U         , KC_I       , KC_O          , KC_P            , KC_SLSH ,
-  KC_BSPC , LALT_T(KC_A) , LT(SYM, KC_S) , QRTY_HRM_D , QRTY_HRM_F   , KC_G    ,                       KC_H      , QRTY_HRM_J   , QRTY_HRM_K , LT(SYM, KC_L) , LALT_T(KC_SCLN) , KC_MINS ,
-  EXT_COL , LGUI_T(KC_Z) , KC_X          , KC_C       , LCTL_T(KC_V) , KC_B    ,                       KC_N      , RCTL_T(KC_M) , KC_COMM    , HRM_DOT       , RGUI_T(KC_SLSH) , KC_ENT  ,
-                                                                       KC_UNDS , KC_SPC ,     QK_REP , KC_ESC
-),
-
-//    ┌───────────┬──────┬──────┬──────┬──────┬─────────┐              ┌────┬────┬────┬────┬────┬───────────┐
-//    │ DF(STRDY) │  1   │  2   │  3   │  4   │    5    │              │ 6  │ 7  │ 8  │ 9  │ 0  │ DF(STRDY) │
-//    ├───────────┼──────┼──────┼──────┼──────┼─────────┤              ├────┼────┼────┼────┼────┼───────────┤
-//    │    tab    │  no  │  q   │  up  │  e   │    r    │              │ no │ no │ no │ no │ no │    no     │
-//    ├───────────┼──────┼──────┼──────┼──────┼─────────┤              ├────┼────┼────┼────┼────┼───────────┤
-//    │   lsft    │  no  │ left │ down │ rght │   no    │              │ no │ no │ no │ no │ no │    no     │
-//    ├───────────┼──────┼──────┼──────┼──────┼─────────┤              ├────┼────┼────┼────┼────┼───────────┤
-//    │    ent    │ rctl │  no  │  no  │  no  │   esc   │              │ no │ no │ no │ no │ no │    no     │
-//    └───────────┴──────┴──────┴──────┴──────┼─────────┼─────┐   ┌────┼────┼────┴────┴────┴────┴───────────┘
-//                                            │ OM_BTN1 │ spc │   │ no │ no │
-//                                            └─────────┴─────┘   └────┴────┘
+//    ┌──────┬──────┬──────┬──────┬──────┬─────────┐              ┌────┬────┬────┬────┬────┬───────────┐
+//    │  no  │  1   │  2   │  3   │  4   │    5    │              │ 6  │ 7  │ 8  │ 9  │ 0  │ DF(STRDY) │
+//    ├──────┼──────┼──────┼──────┼──────┼─────────┤              ├────┼────┼────┼────┼────┼───────────┤
+//    │ tab  │  no  │  q   │  up  │  e   │    r    │              │ no │ no │ no │ no │ no │    no     │
+//    ├──────┼──────┼──────┼──────┼──────┼─────────┤              ├────┼────┼────┼────┼────┼───────────┤
+//    │ lsft │  no  │ left │ down │ rght │   no    │              │ no │ no │ no │ no │ no │    no     │
+//    ├──────┼──────┼──────┼──────┼──────┼─────────┤              ├────┼────┼────┼────┼────┼───────────┤
+//    │ ent  │ rctl │  no  │  no  │  no  │   esc   │              │ no │ no │ no │ no │ no │    no     │
+//    └──────┴──────┴──────┴──────┴──────┼─────────┼─────┐   ┌────┼────┼────┴────┴────┴────┴───────────┘
+//                                       │ OM_BTN1 │ spc │   │ no │ no │
+//                                       └─────────┴─────┘   └────┴────┘
 [GAME] = LAYOUT(
-  DF(STRDY) , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    ,                        KC_6    , KC_7    , KC_8    , KC_9    , KC_0    , DF(STRDY),
-  KC_TAB    , XXXXXXX , KC_Q    , KC_UP   , KC_E    , KC_R    ,                        XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX  ,
-  KC_LSFT   , XXXXXXX , KC_LEFT , KC_DOWN , KC_RGHT , XXXXXXX ,                        XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX  ,
-  KC_ENT    , KC_RCTL , XXXXXXX , XXXXXXX , XXXXXXX , KC_ESC  ,                        XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX  ,
-                                                      OM_BTN1 , KC_SPC ,     XXXXXXX , XXXXXXX
+  XXXXXXX , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    ,                        KC_6    , KC_7    , KC_8    , KC_9    , KC_0    , DF(STRDY),
+  KC_TAB  , XXXXXXX , KC_Q    , KC_UP   , KC_E    , KC_R    ,                        XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX  ,
+  KC_LSFT , XXXXXXX , KC_LEFT , KC_DOWN , KC_RGHT , XXXXXXX ,                        XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX  ,
+  KC_ENT  , KC_RCTL , XXXXXXX , XXXXXXX , XXXXXXX , KC_ESC  ,                        XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX  ,
+                                                    OM_BTN1 , KC_SPC ,     XXXXXXX , XXXXXXX
 ),
 
 //    ┌─────┬─────┬─────┬─────┬───────┬─────────┐               ┌─────┬─────┬─────┬─────┬─────┬─────┐
@@ -317,9 +292,8 @@ combo_t key_combos[] = {
     COMBO(j_comm_combo, CW_TOGG),   // J and , => activate Caps Word.
     COMBO(j_k_combo, KC_BSLS),      // J and K => backslash
     COMBO(h_comm_combo, KC_QUOT),   // H and , => '
-    COMBO(comm_dot_combo, CW_TOGG), // , and . => activate Caps Word in QWERTY layer.
+    COMBO(comm_dot_combo, KC_SCLN), // , and . => ;
     COMBO(f_n_combo, OSL(FUN)),     // F and N => FUN layer
-    /* COMBO(comm_dot_combo, KC_SCLN), // , and . => ; */
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -350,8 +324,6 @@ bool apply_autocorrect(uint8_t backspaces, const char *str, char *typo, char *co
 ///////////////////////////////////////////////////////////////////////////////
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case QRTY_HRM_D:
-        case QRTY_HRM_K:
         case HRM_R:
         case HRM_E:
             return TAPPING_TERM - 45;
@@ -368,8 +340,6 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HRM_N:
         case HRM_H:
-        case QRTY_HRM_J:
-        case QRTY_HRM_K:
             return QUICK_TAP_TERM; // Enable key repeating.
         default:
             return 0; // Otherwise, force hold and disable key repeating.
