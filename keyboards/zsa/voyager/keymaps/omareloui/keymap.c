@@ -494,10 +494,6 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *reme
 //     [ * @ -> [];
 //     < * @ -> <>;
 //     { * @ -> {};
-//     ) *   -> );
-//     ] *   -> ];
-//     > *   -> >;
-//     } *   -> };
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     if (mods == MOD_BIT_LALT) {
         switch (keycode) {
@@ -605,12 +601,6 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
                 return M_CBR; // { -> }
             case KC_LPRN:
                 return M_PRN; // ( -> )
-
-            case KC_RABK: // > -> ;
-            case KC_RBRC: // ] -> ;
-            case KC_RCBR: // } -> ;
-            case KC_RPRN: // ) -> ;
-                return KC_SCLN;
 
             case KC_PLUS: // + -> =
             case KC_MINS: // - -> =
