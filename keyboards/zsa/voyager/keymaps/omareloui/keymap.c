@@ -774,6 +774,21 @@ static void lighting_task(void) {
 #endif // RGB_MATRIX_ENABLE
 
 ///////////////////////////////////////////////////////////////////////////////
+// Custom RGB
+///////////////////////////////////////////////////////////////////////////////
+bool rgb_matrix_indicators_user(void) {
+    switch (get_highest_layer(layer_state | default_layer_state)) {
+        case GAME:
+            rgb_matrix_set_color(9, RGB_BLUE);
+            rgb_matrix_set_color(14, RGB_BLUE);
+            rgb_matrix_set_color(15, RGB_BLUE);
+            rgb_matrix_set_color(16, RGB_BLUE);
+            break;
+    }
+
+    return false;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Status LEDs
 ///////////////////////////////////////////////////////////////////////////////
