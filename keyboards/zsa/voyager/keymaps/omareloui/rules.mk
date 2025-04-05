@@ -25,12 +25,6 @@ ifeq ($(strip $(SENTENCE_CASE_ENABLE)), yes)
 	SRC += features/sentence_case.c
 endif
 
-SELECT_WORD_ENABLE ?= yes
-ifeq ($(strip $(SELECT_WORD_ENABLE)), yes)
-	OPT_DEFS += -DSELECT_WORD_ENABLE
-	SRC += features/select_word.c
-endif
-
 ORBITAL_MOUSE_ENABLE ?= yes
 ifeq ($(strip $(ORBITAL_MOUSE_ENABLE)), yes)
 	MOUSE_ENABLE = yes
