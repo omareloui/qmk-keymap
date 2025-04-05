@@ -5,10 +5,6 @@
 
 #include QMK_KEYBOARD_H
 
-#ifdef RGB_MATRIX_CUSTOM_USER
-#    include "features/palettefx.h"
-#endif // RGB_MATRIX_CUSTOM_USER
-
 enum layers {
     STRDY,
     GAME,
@@ -25,12 +21,10 @@ enum custom_keycodes {
     UPDIR,
     SRCHSEL,
     ARROW,
-    RGBBRI,
-    RGBNEXT,
-    RGBHUP,
-    RGBHRND,
-    RGBDEF1,
-    RGBDEF2,
+    RM_RND,
+    RM_DEF1,
+    RM_DEF2,
+
     // Macros invoked through the Magic key.
     M_DOCSTR,
     M_EQEQ,
@@ -201,19 +195,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ┌─────────┬─────────┬──────┬──────┬──────┬─────────┐                  ┌────────────┬───────────┬────────┬─────┬──────┬────────┐
 //    │         │         │      │      │      │         │                  │            │           │        │     │      │        │
 //    ├─────────┼─────────┼──────┼──────┼──────┼─────────┤                  ├────────────┼───────────┼────────┼─────┼──────┼────────┤
-//    │ RGBDEF1 │ RGBDEF2 │ mute │ vold │ volu │ MUTEMIC │                  │     no     │    no     │   no   │ no  │  no  │   no   │
+//    │ RM_DEF1 │ RM_DEF2 │ mute │ vold │ volu │ MUTEMIC │                  │     no     │    no     │   no   │ no  │  no  │   no   │
 //    ├─────────┼─────────┼──────┼──────┼──────┼─────────┤                  ├────────────┼───────────┼────────┼─────┼──────┼────────┤
-//    │ RGBHRND │ RGBHUP  │ G(3) │ G(2) │ G(1) │  G(d)   │                  │     no     │    no     │  rsft  │ no  │ lalt │   no   │
+//    │ RM_RND  │ RM_HUEU │ G(3) │ G(2) │ G(1) │  G(d)   │                  │     no     │    no     │  rsft  │ no  │ lalt │   no   │
 //    ├─────────┼─────────┼──────┼──────┼──────┼─────────┤                  ├────────────┼───────────┼────────┼─────┼──────┼────────┤
-//    │ RGBBRI  │ RGBNEXT │ G(6) │ G(5) │ G(4) │  G(w)   │                  │     no     │ S(A(tab)) │ A(tab) │ no  │  no  │ G(ent) │
+//    │ RM_VALU │ RM_NEXT │ G(6) │ G(5) │ G(4) │  G(w)   │                  │     no     │ S(A(tab)) │ A(tab) │ no  │  no  │ G(ent) │
 //    └─────────┴─────────┴──────┴──────┴──────┼─────────┼────────┐   ┌─────┼────────────┼───────────┴────────┴─────┴──────┴────────┘
 //                                             │  mply   │ G(spc) │   │     │ Layer Lock │
 //                                             └─────────┴────────┘   └─────┴────────────┘
 [WIN] = LAYOUT(
   _______ , _______ , _______ , _______ , _______ , _______ ,                           _______ , _______      , _______   , _______ , _______ , _______  ,
-  RGBDEF1 , RGBDEF2 , KC_MUTE , KC_VOLD , KC_VOLU , MUTEMIC ,                           XXXXXXX , XXXXXXX      , XXXXXXX   , XXXXXXX , XXXXXXX , XXXXXXX  ,
-  RGBHRND , RGBHUP  , G(KC_3) , G(KC_2) , G(KC_1) , G(KC_D) ,                           XXXXXXX , XXXXXXX      , KC_RSFT   , XXXXXXX , KC_LALT , XXXXXXX  ,
-  RGBBRI  , RGBNEXT , G(KC_6) , G(KC_5) , G(KC_4) , G(KC_W) ,                           XXXXXXX , S(A(KC_TAB)) , A(KC_TAB) , XXXXXXX , XXXXXXX , G(KC_ENT),
+  RM_DEF1 , RM_DEF2 , KC_MUTE , KC_VOLD , KC_VOLU , MUTEMIC ,                           XXXXXXX , XXXXXXX      , XXXXXXX   , XXXXXXX , XXXXXXX , XXXXXXX  ,
+  RM_RND  , RM_HUEU , G(KC_3) , G(KC_2) , G(KC_1) , G(KC_D) ,                           XXXXXXX , XXXXXXX      , KC_RSFT   , XXXXXXX , KC_LALT , XXXXXXX  ,
+  RM_VALU , RM_NEXT , G(KC_6) , G(KC_5) , G(KC_4) , G(KC_W) ,                           XXXXXXX , S(A(KC_TAB)) , A(KC_TAB) , XXXXXXX , XXXXXXX , G(KC_ENT),
                                                     KC_MPLY , G(KC_SPC) ,     _______ , QK_LLCK
 ),
 
@@ -290,6 +284,8 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_MINS, KC_SCLN}, // - -> ;
     {KC_SLSH, KC_BSLS}, // / -> backslash
     {KC_MPLY, KC_MNXT},
+
+    {RM_VALU, RM_VALD}, {RM_NEXT, RM_PREV}, {RM_HUEU, RM_HUED},
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -797,16 +793,6 @@ void keyboard_post_init_user(void) {
 #if RGB_MATRIX_ENABLE
     lighting_init();
 #endif // RGB_MATRIX_ENABLE
-
-    // Play MUSHROOM_SOUND two seconds after init, if defined and audio enabled.
-#if defined(AUDIO_ENABLE) && defined(MUSHROOM_SOUND)
-    uint32_t play_init_song_callback(uint32_t trigger_time, void *cb_arg) {
-        static float init_song[][2] = SONG(MUSHROOM_SOUND);
-        PLAY_SONG(init_song);
-        return 0;
-    }
-    defer_exec(2000, play_init_song_callback, NULL);
-#endif // defined(AUDIO_ENABLE) && defined(MUSHROOM_SOUND)
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -1051,35 +1037,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;
 
 #if RGB_MATRIX_ENABLE
-            case RGBBRI:
-                lighting_cycle_3_state();
+            case RM_RND:
+                uint8_t h = (UINT16_C(17099) * timer_read()) >> 8;
+                rgb_matrix_sethsv_noeeprom(h, 255, 255);
                 break;
 
-            case RGBNEXT:
-                if (shift_mods) {
-                    rgb_matrix_step_reverse_noeeprom();
-                } else {
-                    rgb_matrix_step_noeeprom();
-                }
-                break;
-
-            case RGBHUP:
-                if (shift_mods) {
-                    rgb_matrix_decrease_hue_noeeprom();
-                } else {
-                    rgb_matrix_increase_hue_noeeprom();
-                }
-                break;
-
-            case RGBHRND:
-                lighting_set_palette(myrand());
-                break;
-
-            case RGBDEF1:
+            case RM_DEF1:
                 lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_RIPPLE, PALETTEFX_CARNIVAL);
                 break;
 
-            case RGBDEF2:
+            case RM_DEF2:
                 lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_FLOW, PALETTEFX_POLARIZED);
                 break;
 #endif // RGB_MATRIX_ENABLE

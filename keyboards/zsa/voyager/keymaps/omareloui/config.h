@@ -29,7 +29,3 @@
 // Enable all effects and palettes in PaletteFx.
 #define PALETTEFX_ENABLE_ALL_EFFECTS
 #define PALETTEFX_ENABLE_ALL_PALETTES
-
-#ifdef AUDIO_ENABLE
-#    define STARTUP_SONG SONG(NO_SOUND)
-#endif // AUDIO_ENABLE

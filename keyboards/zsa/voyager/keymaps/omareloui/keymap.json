@@ -3,6 +3,7 @@
         "getreuer/sentence_case",
         "getreuer/custom_shift_keys",
         "getreuer/select_word",
+        "getreuer/palettefx",
         "getreuer/orbital_mouse"
     ]
 }
