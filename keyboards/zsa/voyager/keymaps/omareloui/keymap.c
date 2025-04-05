@@ -5,18 +5,12 @@
 
 #include QMK_KEYBOARD_H
 
-#ifdef CUSTOM_SHIFT_KEYS_ENABLE
-#    include "features/custom_shift_keys.h"
-#endif // CUSTOM_SHIFT_KEYS_ENABLE
 #ifdef ORBITAL_MOUSE_ENABLE
 #    include "features/orbital_mouse.h"
 #endif // ORBITAL_MOUSE_ENABLE
 #ifdef RGB_MATRIX_CUSTOM_USER
 #    include "features/palettefx.h"
 #endif // RGB_MATRIX_CUSTOM_USER
-#ifdef SENTENCE_CASE_ENABLE
-#    include "features/sentence_case.h"
-#endif // SENTENCE_CASE_ENABLE
 
 enum layers {
     STRDY,
@@ -293,12 +287,13 @@ combo_t key_combos[] = {
 ///////////////////////////////////////////////////////////////////////////////
 // Custom shift keys (https://getreuer.info/posts/keyboards/custom-shift-keys)
 ///////////////////////////////////////////////////////////////////////////////
-#ifdef CUSTOM_SHIFT_KEYS_ENABLE
 const custom_shift_key_t custom_shift_keys[] = {
-    {HRM_DOT, KC_QUES}, {KC_COMM, KC_EXLM}, {KC_MINS, KC_SCLN}, {KC_SLSH, KC_BSLS}, {KC_MPLY, KC_MNXT},
+    {HRM_DOT, KC_QUES}, // . -> ?
+    {KC_COMM, KC_EXLM}, // , -> !
+    {KC_MINS, KC_SCLN}, // - -> ;
+    {KC_SLSH, KC_BSLS}, // / -> backslash
+    {KC_MPLY, KC_MNXT},
 };
-uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
-#endif // CUSTOM_SHIFT_KEYS_ENABLE
 
 ///////////////////////////////////////////////////////////////////////////////
 // Autocorrect (https://docs.qmk.fm/features/autocorrect)
@@ -369,7 +364,6 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
 ///////////////////////////////////////////////////////////////////////////////
 // Sentence case (https://getreuer.info/posts/keyboards/sentence-case)
 ///////////////////////////////////////////////////////////////////////////////
-#ifdef SENTENCE_CASE_ENABLE
 char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mods) {
     if ((mods & ~(MOD_MASK_SHIFT | MOD_BIT_RALT)) == 0) {
         const bool shifted = mods & MOD_MASK_SHIFT;
@@ -409,7 +403,6 @@ char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mod
     sentence_case_clear();
     return '\0';
 }
-#endif // SENTENCE_CASE_ENABLE
 
 ///////////////////////////////////////////////////////////////////////////////
 // Repeat key (https://docs.qmk.fm/features/repeat_key)
@@ -428,12 +421,6 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *reme
 #    endif // NO_ACTION_LAYER
 #endif     // NO_ACTION_TAPPING
     }
-
-#ifdef SENTENCE_CASE_ENABLE
-    if (is_sentence_case_primed() && sentence_case_press_user(keycode, record, *remembered_mods) == 'a') {
-        *remembered_mods |= MOD_BIT_LSHIFT;
-    }
-#endif // SENTENCE_CASE_ENABLE
 
     // Forget Shift on most letters when Shift or AltGr are the only mods. Some
     // letters are excluded, e.g. for "NN" and "ZZ" in Vim.
@@ -834,16 +821,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
     }
 #endif // ORBITAL_MOUSE_ENABLE
-#ifdef SENTENCE_CASE_ENABLE
-    if (!process_sentence_case(keycode, record)) {
-        return false;
-    }
-#endif // SENTENCE_CASE_ENABLE
-#ifdef CUSTOM_SHIFT_KEYS_ENABLE
-    if (!process_custom_shift_keys(keycode, record)) {
-        return false;
-    }
-#endif // CUSTOM_SHIFT_KEYS_ENABLE
 
     // Track whether the left home ring and index keys are held, ignoring layer.
     static bool left_home_ring_held  = false;
@@ -1127,7 +1104,4 @@ void housekeeping_task_user(void) {
 #ifdef ORBITAL_MOUSE_ENABLE
     orbital_mouse_task();
 #endif // ORBITAL_MOUSE_ENABLE
-#ifdef SENTENCE_CASE_ENABLE
-    sentence_case_task();
-#endif // SENTENCE_CASE_ENABLE
 }

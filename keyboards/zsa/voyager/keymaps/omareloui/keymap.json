@@ -1,3 +1,7 @@
 {
-    "modules": ["getreuer/select_word"]
+    "modules": [
+        "getreuer/sentence_case",
+        "getreuer/custom_shift_keys",
+        "getreuer/select_word"
+    ]
 }
