@@ -5,9 +5,6 @@
 
 #include QMK_KEYBOARD_H
 
-#ifdef ORBITAL_MOUSE_ENABLE
-#    include "features/orbital_mouse.h"
-#endif // ORBITAL_MOUSE_ENABLE
 #ifdef RGB_MATRIX_CUSTOM_USER
 #    include "features/palettefx.h"
 #endif // RGB_MATRIX_CUSTOM_USER
@@ -816,11 +813,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef RGB_MATRIX_ENABLE
     lighting_activity_trigger();
 #endif // RGB_MATRIX_ENABLE
-#ifdef ORBITAL_MOUSE_ENABLE
-    if (!process_orbital_mouse(keycode, record)) {
-        return false;
-    }
-#endif // ORBITAL_MOUSE_ENABLE
 
     // Track whether the left home ring and index keys are held, ignoring layer.
     static bool left_home_ring_held  = false;
@@ -1101,7 +1093,4 @@ void housekeeping_task_user(void) {
 #ifdef RGB_MATRIX_ENABLE
     lighting_task();
 #endif // RGB_MATRIX_ENABLE
-#ifdef ORBITAL_MOUSE_ENABLE
-    orbital_mouse_task();
-#endif // ORBITAL_MOUSE_ENABLE
 }

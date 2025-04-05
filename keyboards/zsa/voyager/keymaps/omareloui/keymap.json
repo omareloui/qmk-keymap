@@ -2,6 +2,7 @@
     "modules": [
         "getreuer/sentence_case",
         "getreuer/custom_shift_keys",
-        "getreuer/select_word"
+        "getreuer/select_word",
+        "getreuer/orbital_mouse"
     ]
 }
