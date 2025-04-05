@@ -278,6 +278,7 @@ combo_t key_combos[] = {
 ///////////////////////////////////////////////////////////////////////////////
 // Custom shift keys (https://getreuer.info/posts/keyboards/custom-shift-keys)
 ///////////////////////////////////////////////////////////////////////////////
+#ifdef COMMUNITY_MODULE_CUSTOM_SHIFT_KEYS_ENABLE
 const custom_shift_key_t custom_shift_keys[] = {
     {HRM_DOT, KC_QUES}, // . -> ?
     {KC_COMM, KC_EXLM}, // , -> !
@@ -287,6 +288,7 @@ const custom_shift_key_t custom_shift_keys[] = {
 
     {RM_VALU, RM_VALD}, {RM_NEXT, RM_PREV}, {RM_HUEU, RM_HUED},
 };
+#endif // COMMUNITY_MODULE_CUSTOM_SHIFT_KEYS_ENABLE
 
 ///////////////////////////////////////////////////////////////////////////////
 // Autocorrect (https://docs.qmk.fm/features/autocorrect)
@@ -357,6 +359,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
 ///////////////////////////////////////////////////////////////////////////////
 // Sentence case (https://getreuer.info/posts/keyboards/sentence-case)
 ///////////////////////////////////////////////////////////////////////////////
+#ifdef COMMUNITY_MODULE_SENTENCE_CASE_ENABLE
 char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mods) {
     if ((mods & ~(MOD_MASK_SHIFT | MOD_BIT_RALT)) == 0) {
         const bool shifted = mods & MOD_MASK_SHIFT;
@@ -396,6 +399,7 @@ char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mod
     sentence_case_clear();
     return '\0';
 }
+#endif // COMMUNITY_MODULE_SENTENCE_CASE_ENABLE
 
 ///////////////////////////////////////////////////////////////////////////////
 // Repeat key (https://docs.qmk.fm/features/repeat_key)
@@ -609,10 +613,13 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
             return KC_WH_D;
         case KC_WH_D:
             return KC_WH_U;
+
+#ifdef COMMUNITY_MODULE_SELECT_WORD_ENABLE
         case SELWBAK:
             return SELWORD;
         case SELWORD:
             return SELWBAK;
+#endif // COMMUNITY_MODULE_SELECT_WORD_ENABLE
     }
     return KC_TRNS;
 }
