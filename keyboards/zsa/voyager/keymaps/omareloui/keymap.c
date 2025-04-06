@@ -116,23 +116,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_UNDS , KC_SPC ,     QK_REP , KC_ESC
 ),
 
-//    ┌──────┬──────┬──────┬──────┬──────┬─────────┐              ┌────┬────┬────┬────┬────┬───────────┐
-//    │  no  │  1   │  2   │  3   │  4   │    5    │              │ 6  │ 7  │ 8  │ 9  │ 0  │ DF(STRDY) │
-//    ├──────┼──────┼──────┼──────┼──────┼─────────┤              ├────┼────┼────┼────┼────┼───────────┤
-//    │ tab  │  no  │  q   │  up  │  e   │    r    │              │ no │ no │ no │ no │ no │    no     │
-//    ├──────┼──────┼──────┼──────┼──────┼─────────┤              ├────┼────┼────┼────┼────┼───────────┤
-//    │ lsft │  no  │ left │ down │ rght │   no    │              │ no │ no │ no │ no │ no │    no     │
-//    ├──────┼──────┼──────┼──────┼──────┼─────────┤              ├────┼────┼────┼────┼────┼───────────┤
-//    │ ent  │ rctl │  no  │  no  │  no  │   esc   │              │ no │ no │ no │ no │ no │    no     │
-//    └──────┴──────┴──────┴──────┴──────┼─────────┼─────┐   ┌────┼────┼────┴────┴────┴────┴───────────┘
-//                                       │ OM_BTN1 │ spc │   │ no │ no │
-//                                       └─────────┴─────┘   └────┴────┘
+//    ┌──────┬──────┬──────┬──────┬──────┬───────┐              ┌────┬────┬────┬────┬────┬───────────┐
+//    │  no  │  1   │  2   │  3   │  4   │   5   │              │ 6  │ 7  │ 8  │ 9  │ 0  │ DF(STRDY) │
+//    ├──────┼──────┼──────┼──────┼──────┼───────┤              ├────┼────┼────┼────┼────┼───────────┤
+//    │ tab  │  no  │  q   │  up  │  e   │   r   │              │ no │ no │ no │ no │ no │    no     │
+//    ├──────┼──────┼──────┼──────┼──────┼───────┤              ├────┼────┼────┼────┼────┼───────────┤
+//    │ lsft │  no  │ left │ down │ rght │  no   │              │ no │ no │ no │ no │ no │    no     │
+//    ├──────┼──────┼──────┼──────┼──────┼───────┤              ├────┼────┼────┼────┼────┼───────────┤
+//    │ ent  │ rctl │  no  │  no  │  no  │  esc  │              │ no │ no │ no │ no │ no │    no     │
+//    └──────┴──────┴──────┴──────┴──────┼───────┼─────┐   ┌────┼────┼────┴────┴────┴────┴───────────┘
+//                                       │ TURBO │ spc │   │ no │ no │
+//                                       └───────┴─────┘   └────┴────┘
 [GAME] = LAYOUT(
   XXXXXXX , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    ,                        KC_6    , KC_7    , KC_8    , KC_9    , KC_0    , DF(STRDY),
   KC_TAB  , XXXXXXX , KC_Q    , KC_UP   , KC_E    , KC_R    ,                        XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX  ,
   KC_LSFT , XXXXXXX , KC_LEFT , KC_DOWN , KC_RGHT , XXXXXXX ,                        XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX  ,
   KC_ENT  , KC_RCTL , XXXXXXX , XXXXXXX , XXXXXXX , KC_ESC  ,                        XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX  ,
-                                                    OM_BTN1 , KC_SPC ,     XXXXXXX , XXXXXXX
+                                                    TURBO   , KC_SPC ,     XXXXXXX , XXXXXXX
 ),
 
 //    ┌─────┬─────┬─────┬─────┬───────┬─────────┐               ┌─────┬─────┬─────┬─────┬─────┬─────┐
