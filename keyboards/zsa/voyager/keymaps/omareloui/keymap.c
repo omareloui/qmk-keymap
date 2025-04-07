@@ -3,7 +3,10 @@
 // Copyright 2025 Omar Eloui  (@omareloui) <contact@omareloui.com>
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+#include <stdint.h>
+#include <sys/types.h>
 #include "keycodes.h"
+#include "rgb_matrix.h"
 #include QMK_KEYBOARD_H
 
 enum layers {
@@ -758,10 +761,11 @@ static void lighting_task(void) {
 bool rgb_matrix_indicators_user(void) {
     switch (get_highest_layer(layer_state | default_layer_state)) {
         case GAME:
-            rgb_matrix_set_color(9, RGB_BLUE);
-            rgb_matrix_set_color(14, RGB_BLUE);
-            rgb_matrix_set_color(15, RGB_BLUE);
-            rgb_matrix_set_color(16, RGB_BLUE);
+            rgb_matrix_set_color_all(0, 0, 0);
+            rgb_matrix_set_color(9, RGB_WHITE);
+            rgb_matrix_set_color(14, RGB_WHITE);
+            rgb_matrix_set_color(15, RGB_WHITE);
+            rgb_matrix_set_color(16, RGB_WHITE);
             break;
     }
 
