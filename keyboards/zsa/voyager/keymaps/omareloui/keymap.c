@@ -273,7 +273,7 @@ const uint16_t f_n_combo[] PROGMEM      = {KC_F, HRM_N, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(j_comm_combo, CW_TOGG),   // J and , => activate Caps Word.
-    COMBO(j_k_combo, KC_BSLS),      // J and K => backslash
+    COMBO(j_k_combo, KC_ENT),       // J and K => enter
     COMBO(h_comm_combo, KC_QUOT),   // H and , => '
     COMBO(comm_dot_combo, KC_SCLN), // , and . => ;
     COMBO(f_n_combo, OSL(FUN)),     // F and N => FUN layer
