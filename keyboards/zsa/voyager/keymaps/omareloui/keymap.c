@@ -762,10 +762,16 @@ bool rgb_matrix_indicators_user(void) {
     switch (get_highest_layer(layer_state | default_layer_state)) {
         case GAME:
             rgb_matrix_set_color_all(0, 0, 0);
+            rgb_matrix_set_color(0, RGB_RED);
+
             rgb_matrix_set_color(9, RGB_WHITE);
             rgb_matrix_set_color(14, RGB_WHITE);
             rgb_matrix_set_color(15, RGB_WHITE);
             rgb_matrix_set_color(16, RGB_WHITE);
+            rgb_matrix_set_color(24, RGB_WHITE);
+            rgb_matrix_set_color(25, RGB_WHITE);
+
+            rgb_matrix_set_color(18, RGB_GREEN);
             break;
     }
 
