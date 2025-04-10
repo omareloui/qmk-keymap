@@ -266,6 +266,8 @@ const uint16_t j_k_combo[] PROGMEM      = {KC_J, KC_K, COMBO_END};
 const uint16_t h_comm_combo[] PROGMEM   = {HRM_H, KC_COMM, COMBO_END};
 const uint16_t comm_dot_combo[] PROGMEM = {KC_COMM, HRM_DOT, COMBO_END};
 const uint16_t f_n_combo[] PROGMEM      = {KC_F, HRM_N, COMBO_END};
+const uint16_t y_d_combo[] PROGMEM      = {KC_Y, HRM_D, COMBO_END};
+const uint16_t c_p_combo[] PROGMEM      = {KC_C, KC_P, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(j_comm_combo, CW_TOGG),   // J and , => activate Caps Word.
@@ -273,6 +275,8 @@ combo_t key_combos[] = {
     COMBO(h_comm_combo, KC_QUOT),   // H and , => '
     COMBO(comm_dot_combo, KC_SCLN), // , and . => ;
     COMBO(f_n_combo, OSL(FUN)),     // F and N => FUN layer
+    COMBO(y_d_combo, OSL(DM_REC1)), // Y and D => Start recording a macro
+    COMBO(c_p_combo, OSL(DM_PLY1)), // C and P => Play the recorded mocro
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -286,7 +290,10 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_SLSH, KC_BSLS}, // / -> backslash
     {KC_MPLY, KC_MNXT},
 
-    {RM_VALU, RM_VALD}, {RM_NEXT, RM_PREV}, {RM_HUEU, RM_HUED},
+    // RGB Matrix
+    {RM_VALU, RM_VALD},
+    {RM_NEXT, RM_PREV},
+    {RM_HUEU, RM_HUED},
 };
 #endif // COMMUNITY_MODULE_CUSTOM_SHIFT_KEYS_ENABLE
 
