@@ -1,0 +1,437 @@
+# Preview here <https://keymap-drawer.streamlit.app>
+layout: { qmk_keyboard: zsa/voyager, layout_name: LAYOUT }
+layers:
+    STRDY:
+        - "`"
+        - SELLINE
+        - Ctl+V
+        - Ctl+A
+        - Ctl+C
+        - OM BTN1
+        - Gui+TAB
+        - HOME
+        - LEFT
+        - RGHT
+        - END
+        - DF(GAME)
+        - TAB
+        - V
+        - M
+        - L
+        - C
+        - P
+        - B
+        - QK AREP
+        - U
+        - O
+        - Q
+        - /
+        - BSPC
+        - { t: S, h: LALT }
+        - LT(SYM,T)
+        - { t: R, h: LSFT }
+        - LT(NAV,D)
+        - Y
+        - F
+        - LT(NUM,N)
+        - { t: E, h: RSFT }
+        - LT(SYM,A)
+        - { t: I, h: LALT }
+        - "-"
+        - LT(EXT,SCLN)
+        - { t: X, h: LGUI }
+        - K
+        - J
+        - { t: G, h: LCTL }
+        - W
+        - Z
+        - { t: H, h: RCTL }
+        - ","
+        - LT(WIN,DOT)
+        - { t: "'", h: RGUI }
+        - ENT
+        - _
+        - SPC
+        - QK REP
+        - ESC
+    GAME:
+        [
+            ESC,
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0",
+            DF(STRDY),
+            TAB,
+            "",
+            Q,
+            UP,
+            E,
+            R,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            LSFT,
+            "",
+            LEFT,
+            DOWN,
+            RGHT,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ENT,
+            RCTL,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            TURBO,
+            SPC,
+            "",
+            "",
+        ]
+    SYM:
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - ^
+        - <
+        - "["
+        - '"'
+        - "'"
+        - +
+        - "&"
+        - "]"
+        - ">"
+        - $
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - "="
+        - (
+        - "{"
+        - QK AREP
+        - /
+        - \
+        - "~"
+        - "}"
+        - )
+        - ;
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - "@"
+        - .
+        - ","
+        - "%"
+        - "#"
+        - "*"
+        - "|"
+        - "?"
+        - "!"
+        - ":"
+        - { t: ▽, type: trans }
+        - USRNAME
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+    NAV:
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - WREF
+        - Ctl+PGUP
+        - Ctl+PGDN
+        - ""
+        - ""
+        - PGUP
+        - HOME
+        - UP
+        - END
+        - SRCHSEL
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - LALT
+        - LCTL
+        - LSFT
+        - SELLINE
+        - OM BTN1
+        - PGDN
+        - LEFT
+        - DOWN
+        - RGHT
+        - DEL
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - LGUI
+        - PGUP
+        - PGDN
+        - ""
+        - ""
+        - Ctl+Z
+        - APP
+        - SELWBAK
+        - SELWORD
+        - ""
+        - { t: ▽, type: trans }
+        - WBAK
+        - Gui+TAB
+        - { t: ▽, type: trans }
+        - QK LLCK
+    NUM:
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - /
+        - "9"
+        - "8"
+        - "7"
+        - "*"
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - "-"
+        - "3"
+        - "2"
+        - "1"
+        - +
+        - ""
+        - ""
+        - E
+        - RCTL
+        - LALT
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - X
+        - "6"
+        - "5"
+        - "4"
+        - "%"
+        - ""
+        - ""
+        - ","
+        - .
+        - LGUI
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - "0"
+        - QK LLCK
+    WIN:
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - RM DEF1
+        - RM DEF2
+        - MUTE
+        - VOLD
+        - VOLU
+        - F20
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+        - RM RND
+        - RM HUEU
+        - Gui+3
+        - Gui+2
+        - Gui+1
+        - Gui+D
+        - ""
+        - ""
+        - RSFT
+        - ""
+        - LALT
+        - ""
+        - RM VALU
+        - RM NEXT
+        - Gui+6
+        - Gui+5
+        - Gui+4
+        - Gui+W
+        - ""
+        - Sft+Alt+TAB
+        - Alt+TAB
+        - ""
+        - ""
+        - Gui+ENT
+        - MPLY
+        - Gui+SPC
+        - { t: ▽, type: trans }
+        - QK LLCK
+    FUN:
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+        - F12
+        - F9
+        - F8
+        - F7
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+        - F10
+        - F3
+        - F2
+        - F1
+        - ""
+        - ""
+        - ""
+        - RSFT
+        - RCTL
+        - LALT
+        - ""
+        - ""
+        - F11
+        - F6
+        - F5
+        - F4
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+        - RGUI
+        - QK RBT
+        - ""
+        - ""
+        - ""
+        - QK LLCK
+    EXT:
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - AC TOGG
+        - { t: ▽, type: trans }
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+        - OM W U
+        - OM BTN1
+        - OM U
+        - OM BTN2
+        - SRCHSEL
+        - { t: ▽, type: trans }
+        - OM SLOW
+        - LALT
+        - LCTL
+        - LSFT
+        - SELLINE
+        - ""
+        - OM W D
+        - OM L
+        - OM D
+        - OM R
+        - OM SLOW
+        - { t: ▽, type: trans }
+        - { t: ▽, type: trans }
+        - LGUI
+        - Ctl+V
+        - Ctl+A
+        - Ctl+C
+        - Ctl+X
+        - ""
+        - ""
+        - ""
+        - ""
+        - ""
+        - { t: ▽, type: trans }
+        - WBAK
+        - OM BTN1
+        - OM BTN1
+        - QK LLCK
+combos:
+    - { tk: [J, ","], k: CW TOGG, l: [STRDY] }
+    - { tk: [J, K], k: ENT, l: [STRDY] }
+    - { tk: [H, ","], k: "'", l: [STRDY] }
+    - { tk: [",", "LT(WIN,DOT)"], k: ";", l: [STRDY] }
+    - { tk: [F, "LT(NUM,N)"], k: OSL(FUN), l: [STRDY] }
+    - { tk: [Y, "LT(NAV,D)"], k: DM REC1, l: [STRDY] }
+    - { tk: [C, P], k: DM PLY1, l: [STRDY] }
