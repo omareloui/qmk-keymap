@@ -32,3 +32,5 @@
 // Enable all effects and palettes in PaletteFx.
 #define PALETTEFX_ENABLE_ALL_EFFECTS
 #define PALETTEFX_ENABLE_ALL_PALETTES
+
+#define DYNAMIC_MACRO_NO_NESTING
