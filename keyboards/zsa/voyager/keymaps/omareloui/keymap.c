@@ -275,8 +275,8 @@ combo_t key_combos[] = {
     COMBO(h_comm_combo, KC_QUOT),   // H and , => '
     COMBO(comm_dot_combo, KC_SCLN), // , and . => ;
     COMBO(f_n_combo, OSL(FUN)),     // F and N => FUN layer
-    COMBO(y_d_combo, OSL(DM_REC1)), // Y and D => Start recording a macro
-    COMBO(c_p_combo, OSL(DM_PLY1)), // C and P => Play the recorded mocro
+    COMBO(y_d_combo, DM_REC1),      // Y and D => Start recording a macro
+    COMBO(c_p_combo, DM_PLY1),      // C and P => Play the recorded mocro
 };
 
 ///////////////////////////////////////////////////////////////////////////////
