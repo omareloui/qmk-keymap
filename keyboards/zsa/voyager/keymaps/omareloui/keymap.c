@@ -154,21 +154,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     USRNAME , _______ ,     _______ , _______
 ),
 
-//    ┌─────┬─────────────┬─────────────┬─────────────┬─────────┬──────────┐                  ┌─────────┬──────┬─────────┬─────────┬─────────┬─────┐
-//    │     │             │             │             │         │          │                  │         │      │         │         │         │     │
-//    ├─────┼─────────────┼─────────────┼─────────────┼─────────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
-//    │     │ www_refresh │ WWW_PRV_TAB │ WWW_NXT_TAB │   no    │    no    │                  │  pgup   │ home │   up    │   end   │ SRCHSEL │     │
-//    ├─────┼─────────────┼─────────────┼─────────────┼─────────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
-//    │     │    lalt     │    lctl     │    lsft     │ SELLINE │ OM_BTN1  │                  │  pgdn   │ left │  down   │  rght   │   del   │     │
-//    ├─────┼─────────────┼─────────────┼─────────────┼─────────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
-//    │     │    lgui     │  S(A(tab))  │   A(tab)    │   no    │    no    │                  │  UNDO   │ app  │ SELWBAK │ SELWORD │   no    │     │
-//    └─────┴─────────────┴─────────────┴─────────────┴─────────┼──────────┼────────┐   ┌─────┼─────────┼──────┴─────────┴─────────┴─────────┴─────┘
-//                                                              │ www_back │ G(tab) │   │     │ QK_LLCK │
-//                                                              └──────────┴────────┘   └─────┴─────────┘
+//    ┌─────┬─────────────┬─────────────┬─────────────┬─────┬──────────┐                  ┌─────────┬──────┬─────────┬─────────┬─────────┬─────┐
+//    │     │             │             │             │     │          │                  │         │      │         │         │         │     │
+//    ├─────┼─────────────┼─────────────┼─────────────┼─────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
+//    │     │ www_refresh │ WWW_PRV_TAB │ WWW_NXT_TAB │ no  │    no    │                  │  pgup   │ home │   up    │   end   │ SRCHSEL │     │
+//    ├─────┼─────────────┼─────────────┼─────────────┼─────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
+//    │     │    lalt     │    lctl     │    lsft     │ no  │ OM_BTN1  │                  │  pgdn   │ left │  down   │  rght   │   del   │     │
+//    ├─────┼─────────────┼─────────────┼─────────────┼─────┼──────────┤                  ├─────────┼──────┼─────────┼─────────┼─────────┼─────┤
+//    │     │    lgui     │  S(A(tab))  │   A(tab)    │ no  │    no    │                  │  UNDO   │ app  │ SELWBAK │ SELWORD │   no    │     │
+//    └─────┴─────────────┴─────────────┴─────────────┴─────┼──────────┼────────┐   ┌─────┼─────────┼──────┴─────────┴─────────┴─────────┴─────┘
+//                                                          │ www_back │ G(tab) │   │     │ QK_LLCK │
+//                                                          └──────────┴────────┘   └─────┴─────────┘
 [NAV] = LAYOUT(
   _______ , _______ , _______      , _______     , _______ , _______ ,                           _______ , _______ , _______ , _______ , _______ , _______,
   _______ , KC_WREF , WWW_PRV_TAB  , WWW_NXT_TAB , XXXXXXX , XXXXXXX ,                           KC_PGUP , KC_HOME , KC_UP   , KC_END  , SRCHSEL , _______,
-  _______ , KC_LALT , KC_LCTL      , KC_LSFT     , SELLINE , OM_BTN1 ,                           KC_PGDN , KC_LEFT , KC_DOWN , KC_RGHT , KC_DEL  , _______,
+  _______ , KC_LALT , KC_LCTL      , KC_LSFT     , XXXXXXX , OM_BTN1 ,                           KC_PGDN , KC_LEFT , KC_DOWN , KC_RGHT , KC_DEL  , _______,
   _______ , KC_LGUI , S(A(KC_TAB)) , A(KC_TAB)   , XXXXXXX , XXXXXXX ,                           UNDO    , KC_APP  , SELWBAK , SELWORD , XXXXXXX , _______,
                                                              KC_WBAK , G(KC_TAB) ,     _______ , QK_LLCK
 ),
@@ -842,7 +842,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     // Logic for Alt mod when using alt-tabbing keys.
-    if (keycode == HRM_DOT && record->tap.count == 0 && !record->event.pressed) {
+    if ((keycode == HRM_DOT || keycode == HRM_D) && record->tap.count == 0 && !record->event.pressed) {
         unregister_mods(MOD_BIT_LALT);
     } else if (record->event.pressed && (keycode == S(A(KC_TAB)) || keycode == A(KC_TAB))) {
         register_mods(MOD_BIT_LALT);
