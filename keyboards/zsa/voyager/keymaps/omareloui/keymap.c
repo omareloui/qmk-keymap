@@ -138,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ┌─────┬─────┬─────┬─────┬───────┬─────────┐               ┌─────┬─────┬─────┬─────┬─────┬─────┐
 //    │     │     │     │     │       │         │               │     │     │     │     │     │     │
 //    ├─────┼─────┼─────┼─────┼───────┼─────────┤               ├─────┼─────┼─────┼─────┼─────┼─────┤
-//    │     │  ^  │  <  │  [  │ MAGIC │    '    │               │  +  │  &  │  ]  │  >  │  $  │     │
+//    │     │  ^  │  <  │  [  │ MAGIC │    '    │               │  &  │  +  │  ]  │  >  │  $  │     │
 //    ├─────┼─────┼─────┼─────┼───────┼─────────┤               ├─────┼─────┼─────┼─────┼─────┼─────┤
 //    │     │  =  │  (  │  {  │   /   │    "    │               │  ~  │  \  │  }  │  )  │  ;  │     │
 //    ├─────┼─────┼─────┼─────┼───────┼─────────┤               ├─────┼─────┼─────┼─────┼─────┼─────┤
@@ -148,7 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                                    └─────────┴─────┘   └─────┴─────┘
 [SYM] = LAYOUT(
   _______ , _______ , _______ , _______ , _______ , _______ ,                         _______ , _______ , _______ , _______ , _______ , _______,
-  _______ , KC_CIRC , KC_LABK , KC_LBRC , MAGIC   , KC_QUOT ,                         KC_PLUS , KC_AMPR , KC_RBRC , KC_RABK , KC_DLR  , _______,
+  _______ , KC_CIRC , KC_LABK , KC_LBRC , MAGIC   , KC_QUOT ,                         KC_AMPR , KC_PLUS , KC_RBRC , KC_RABK , KC_DLR  , _______,
   _______ , KC_EQL  , KC_LPRN , KC_LCBR , KC_SLSH , KC_DQUO ,                         KC_TILD , KC_BSLS , KC_RCBR , KC_RPRN , KC_SCLN , _______,
   _______ , KC_AT   , KC_DOT  , KC_COMM , KC_HASH , KC_PERC ,                         KC_PIPE , KC_ASTR , KC_EXLM , KC_QUES , KC_COLN , _______,
                                                     USRNAME , _______ ,     _______ , _______
