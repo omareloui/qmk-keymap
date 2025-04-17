@@ -28,12 +28,13 @@ enum xcase_state {
 
 // Get xcase state
 enum xcase_state get_xcase_state(void);
-// Enable xcase and pickup the next keystroke as the delimiter
+
+void set_xcase_state(enum xcase_state state, uint16_t delimiter);
 void enable_xcase(void);
-// Enable xcase with the specified delimiter
 void enable_xcase_with(uint16_t delimiter);
-// Disable xcase
 void disable_xcase(void);
 
-// Function to be put in process user
+// Optional callback to indicate primed state.
+void xcase_primed(bool primed);
+
 bool process_case_modes(uint16_t keycode, const keyrecord_t *record);

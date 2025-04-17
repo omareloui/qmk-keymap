@@ -17,6 +17,7 @@
 
 #include "xcase.h"
 #include "keycodes.h"
+#include "modifiers.h"
 
 #ifndef DEFAULT_XCASE_SEPARATOR
 #    define DEFAULT_XCASE_SEPARATOR KC_UNDS
@@ -36,32 +37,39 @@ enum xcase_state get_xcase_state(void) {
     return xcase_state;
 }
 
+void set_xcase(enum xcase_state state, uint16_t delimiter) {
+    xcase_state = xcase_state;
+    if (delimiter != KC_NO) {
+        xcase_delimiter        = delimiter;
+        distance_to_last_delim = -1;
+    }
+    xcase_primed(xcase_state == XCASE_ON);
+}
+
 // Enable xcase and pickup the next keystroke as the delimiter
 void enable_xcase(void) {
-    xcase_state = XCASE_WAIT;
+    set_xcase(XCASE_WAIT, KC_NO);
 }
 
 // Enable xcase with the specified delimiter
 void enable_xcase_with(uint16_t delimiter) {
-    xcase_state            = XCASE_ON;
-    xcase_delimiter        = delimiter;
-    distance_to_last_delim = -1;
+    set_xcase(XCASE_ON, delimiter);
 }
 
 // Disable xcase
 void disable_xcase(void) {
-    xcase_state = XCASE_OFF;
+    set_xcase(XCASE_OFF, KC_NO);
 }
 
 // Place the current xcase delimiter
 static void place_delimiter(void) {
-    if (IS_OSM(xcase_delimiter)) {
-        // apparently set_oneshot_mods() is dumb and doesn't deal with handedness for you
-        uint8_t mods = xcase_delimiter & 0x10 ? (xcase_delimiter & 0x0F) << 4 : xcase_delimiter & 0xFF;
-        set_oneshot_mods(mods);
-    } else {
-        tap_code16(xcase_delimiter);
-    }
+    /* if (IS_OSM(xcase_delimiter)) { */
+    /*     // apparently set_oneshot_mods() is dumb and doesn't deal with handedness for you */
+    /*     uint8_t mods = xcase_delimiter & 0x10 ? (xcase_delimiter & 0x0F) << 4 : xcase_delimiter & 0xFF; */
+    /*     set_oneshot_mods(mods); */
+    /* } else { */
+    tap_code16(xcase_delimiter);
+    /* } */
 }
 
 // Removes a delimiter, used for double tap space exit
@@ -211,3 +219,5 @@ bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
             return true;
     }
 }
+
+__attribute__((weak)) void xcase_primed(bool primed) {}

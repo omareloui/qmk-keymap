@@ -799,6 +799,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 void sentence_case_primed(bool primed) {
     STATUS_LED_2(primed);
 }
+
+void xcase_primed(bool primed) {
+    STATUS_LED_2(primed);
+}
 #endif // STATUS_LED_2
 
 #ifdef STATUS_LED_3
