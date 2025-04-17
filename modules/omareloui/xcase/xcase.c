@@ -1,5 +1,20 @@
+/* Copyright 2021 Andrew Rae ajrae.nv@gmail.com @andrewjrae
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "xcase.h"
-#include "keycodes.h"
 
 #ifndef DEFAULT_XCASE_SEPARATOR
 #    define DEFAULT_XCASE_SEPARATOR KC_UNDS
@@ -41,15 +56,6 @@ void enable_xcase_with(uint16_t delimiter) {
 // Disable xcase
 void disable_xcase(void) {
     xcase_state = XCASE_OFF;
-}
-
-void set_xcase_state(enum xcase_state state, uint16_t delimiter) {
-    xcase_state = state;
-    if (state == XCASE_ON) {
-        xcase_delimiter        = delimiter;
-        distance_to_last_delim = -1;
-        delimiters_count       = 0;
-    }
 }
 
 // Place the current xcase delimiter
@@ -196,4 +202,3 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
     return true;
 }
 
-__attribute__((weak)) void xcase_primed(bool primed) {}

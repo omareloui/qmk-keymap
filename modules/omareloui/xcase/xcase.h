@@ -1,5 +1,4 @@
 /* Copyright 2021 Andrew Rae ajrae.nv@gmail.com @andrewjrae
- * Copyright 2025 Omar Eloui contact@omareloui.com
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +18,15 @@
 
 #include QMK_KEYBOARD_H
 
+// Check whether caps word is on
+bool caps_word_enabled(void);
+// Enable caps word
+void enable_caps_word(void);
+// Disable caps word
+void disable_caps_word(void);
+// Toggle caps word
+void toggle_caps_word(void);
+
 // enum for the xcase states
 enum xcase_state {
     XCASE_OFF = 0, // xcase is off
@@ -28,13 +36,12 @@ enum xcase_state {
 
 // Get xcase state
 enum xcase_state get_xcase_state(void);
-
-void set_xcase_state(enum xcase_state state, uint16_t delimiter);
+// Enable xcase and pickup the next keystroke as the delimiter
 void enable_xcase(void);
+// Enable xcase with the specified delimiter
 void enable_xcase_with(uint16_t delimiter);
+// Disable xcase
 void disable_xcase(void);
 
-// Optional callback to indicate primed state.
-void xcase_primed(bool primed);
-
+// Function to be put in process user
 bool process_case_modes(uint16_t keycode, const keyrecord_t *record);
