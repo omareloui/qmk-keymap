@@ -3,6 +3,7 @@
 // Copyright 2025 Omar Eloui  (@omareloui) <contact@omareloui.com>
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+#include "community_modules.h"
 #include QMK_KEYBOARD_H
 
 enum layers {
@@ -270,12 +271,13 @@ const uint16_t y_d_combo[] PROGMEM      = {KC_Y, HRM_D, COMBO_END};
 const uint16_t c_p_combo[] PROGMEM      = {KC_C, KC_P, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(j_comm_combo, CW_TOGG), // J and , => activate Caps Word.
-    COMBO(j_k_combo, KC_ESC),     // J and K => esc
-    COMBO(f_n_combo, OSL(FUN)),   // F and N => FUN layer
-    COMBO(comm_dot_combo, XC_SNAKECASE),
-    COMBO(y_d_combo, DM_REC1), // Y and D => Start recording a macro
-    COMBO(c_p_combo, DM_PLY1), // C and P => Play the recorded mocro
+    COMBO(j_comm_combo, CW_TOGG),        // J and , => activate Caps Word.
+    COMBO(j_k_combo, KC_ESC),            // J and K => esc
+    COMBO(f_n_combo, OSL(FUN)),          // F and N => FUN layer
+    COMBO(comm_dot_combo, XC_SNAKECASE), // , and . => activate Snake Case
+    COMBO(h_comm_combo, XC_CAMELCASE),   // h and , => activate Camel Case
+    COMBO(y_d_combo, DM_REC1),           // Y and D => Start recording a macro
+    COMBO(c_p_combo, DM_PLY1),           // C and P => Play the recorded mocro
 };
 
 ///////////////////////////////////////////////////////////////////////////////
