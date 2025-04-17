@@ -27,17 +27,20 @@ enum xcase_state get_xcase_state(void) {
 
 // Enable xcase and pickup the next keystroke as the delimiter
 void enable_xcase(void) {
-    set_xcase_state(XCASE_WAIT, KC_NO);
+    xcase_state = XCASE_WAIT;
 }
 
 // Enable xcase with the specified delimiter
 void enable_xcase_with(uint16_t delimiter) {
-    set_xcase_state(XCASE_ON, delimiter);
+    xcase_state            = XCASE_ON;
+    xcase_delimiter        = delimiter;
+    distance_to_last_delim = -1;
+    delimiters_count       = 0;
 }
 
 // Disable xcase
 void disable_xcase(void) {
-    set_xcase_state(XCASE_OFF, KC_NO);
+    xcase_state = XCASE_OFF;
 }
 
 void set_xcase_state(enum xcase_state state, uint16_t delimiter) {
@@ -47,8 +50,6 @@ void set_xcase_state(enum xcase_state state, uint16_t delimiter) {
         distance_to_last_delim = -1;
         delimiters_count       = 0;
     }
-
-    /* xcase_primed(state == XCASE_ON); */
 }
 
 // Place the current xcase delimiter
