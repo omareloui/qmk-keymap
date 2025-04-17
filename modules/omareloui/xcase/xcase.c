@@ -1,26 +1,12 @@
-/* Copyright 2021 Andrew Rae ajrae.nv@gmail.com @andrewjrae
- * Copyright 2025 Omar Eloui contact@omareloui.com
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 #include "xcase.h"
 #include "keycodes.h"
-#include "modifiers.h"
 
 #ifndef DEFAULT_XCASE_SEPARATOR
 #    define DEFAULT_XCASE_SEPARATOR KC_UNDS
+#endif
+
+#ifndef DEFAULT_DELIMITERS_TERMINATE_COUNT
+#    define DEFAULT_DELIMITERS_TERMINATE_COUNT 2
 #endif
 
 #define IS_OSM(keycode) (keycode >= QK_ONE_SHOT_MOD && keycode <= QK_ONE_SHOT_MOD_MAX)
@@ -31,34 +17,38 @@ static enum xcase_state xcase_state = XCASE_OFF;
 static uint16_t xcase_delimiter;
 // the number of keys to the last delimiter
 static int8_t distance_to_last_delim = -1;
+// the number of delimiters in a row
+static int8_t delimiters_count = 0;
 
 // Get xcase state
 enum xcase_state get_xcase_state(void) {
     return xcase_state;
 }
 
-void set_xcase(enum xcase_state state, uint16_t delimiter) {
-    xcase_state = xcase_state;
-    if (delimiter != KC_NO) {
-        xcase_delimiter        = delimiter;
-        distance_to_last_delim = -1;
-    }
-    xcase_primed(xcase_state == XCASE_ON);
-}
-
 // Enable xcase and pickup the next keystroke as the delimiter
 void enable_xcase(void) {
-    set_xcase(XCASE_WAIT, KC_NO);
+    set_xcase_state(XCASE_WAIT, KC_NO);
 }
 
 // Enable xcase with the specified delimiter
 void enable_xcase_with(uint16_t delimiter) {
-    set_xcase(XCASE_ON, delimiter);
+    set_xcase_state(XCASE_ON, delimiter);
 }
 
 // Disable xcase
 void disable_xcase(void) {
-    set_xcase(XCASE_OFF, KC_NO);
+    set_xcase_state(XCASE_OFF, KC_NO);
+}
+
+void set_xcase_state(enum xcase_state state, uint16_t delimiter) {
+    xcase_state = state;
+    if (state == XCASE_ON) {
+        xcase_delimiter        = delimiter;
+        distance_to_last_delim = -1;
+        delimiters_count       = 0;
+    }
+
+    /* xcase_primed(state == XCASE_ON); */
 }
 
 // Place the current xcase delimiter
@@ -77,7 +67,9 @@ static void remove_delimiter(void) {
     if (IS_OSM(xcase_delimiter)) {
         clear_oneshot_mods();
     } else {
-        tap_code(KC_BSPC);
+        for (int8_t i = 0; i < DEFAULT_DELIMITERS_TERMINATE_COUNT - 1; i++) {
+            tap_code(KC_BSPC);
+        }
     }
 }
 
@@ -159,11 +151,13 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
             if (xcase_state == XCASE_ON) {
                 // place the delimiter if space is tapped
                 if (keycode == KC_SPACE) {
-                    if (distance_to_last_delim != 0) {
+                    delimiters_count++;
+                    if (delimiters_count < DEFAULT_DELIMITERS_TERMINATE_COUNT) {
                         place_delimiter();
                         distance_to_last_delim = 0;
                         return false;
                     }
+
                     // remove the delimiter and disable modes
                     else {
                         remove_delimiter();
@@ -174,6 +168,9 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
                 // decrement distance to delimiter on back space
                 else if (keycode == KC_BSPC) {
                     --distance_to_last_delim;
+                    if (delimiters_count > 0) {
+                        --delimiters_count;
+                    }
                 }
                 // don't increment distance to last delim if negative
                 else if (distance_to_last_delim >= 0) {
@@ -182,6 +179,7 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
                         place_delimiter();
                     }
                     ++distance_to_last_delim;
+                    delimiters_count = 0;
                 }
 
             } // end XCASE_ON
@@ -190,34 +188,11 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
             if (terminate_case_modes(keycode, record)) {
                 disable_xcase();
             }
-
         } // end if event.pressed
 
         return true;
     }
     return true;
-}
-
-bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
-    // Process case modes
-    if (!process_case_modes(keycode, record)) {
-        return false;
-    }
-
-    switch (keycode) {
-        case XC_SNAKECASE:
-            if (record->event.pressed) {
-                enable_xcase_with(KC_UNDS);
-            }
-            return false;
-        case XC_CAMELCASE:
-            if (record->event.pressed) {
-                enable_xcase_with(OSM(MOD_LSFT));
-            }
-            return false;
-        default:
-            return true;
-    }
 }
 
 __attribute__((weak)) void xcase_primed(bool primed) {}
