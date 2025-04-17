@@ -270,13 +270,12 @@ const uint16_t y_d_combo[] PROGMEM      = {KC_Y, HRM_D, COMBO_END};
 const uint16_t c_p_combo[] PROGMEM      = {KC_C, KC_P, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(j_comm_combo, CW_TOGG),   // J and , => activate Caps Word.
-    COMBO(j_k_combo, KC_ENT),       // J and K => enter
-    COMBO(h_comm_combo, KC_QUOT),   // H and , => '
-    COMBO(comm_dot_combo, KC_SCLN), // , and . => ;
-    COMBO(f_n_combo, OSL(FUN)),     // F and N => FUN layer
-    COMBO(y_d_combo, DM_REC1),      // Y and D => Start recording a macro
-    COMBO(c_p_combo, DM_PLY1),      // C and P => Play the recorded mocro
+    COMBO(j_comm_combo, CW_TOGG), // J and , => activate Caps Word.
+    COMBO(j_k_combo, KC_ESC),     // J and K => esc
+    COMBO(f_n_combo, OSL(FUN)),   // F and N => FUN layer
+    COMBO(comm_dot_combo, XC_SNAKECASE),
+    COMBO(y_d_combo, DM_REC1), // Y and D => Start recording a macro
+    COMBO(c_p_combo, DM_PLY1), // C and P => Play the recorded mocro
 };
 
 ///////////////////////////////////////////////////////////////////////////////

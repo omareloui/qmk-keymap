@@ -16,6 +16,7 @@
  */
 
 #include "xcase.h"
+#include "keycodes.h"
 
 #ifndef DEFAULT_XCASE_SEPARATOR
 #    define DEFAULT_XCASE_SEPARATOR KC_UNDS
@@ -81,6 +82,8 @@ __attribute__((weak)) bool terminate_case_modes(uint16_t keycode, const keyrecor
         case KC_MINS:
         case KC_UNDS:
         case KC_BSPC:
+        case XC_SNAKECASE:
+        case XC_CAMELCASE:
             // If mod chording disable the mods
             if (record->event.pressed && (get_mods() != 0)) {
                 return true;
@@ -187,4 +190,26 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
         return true;
     }
     return true;
+}
+
+bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
+    // Process case modes
+    if (!process_case_modes(keycode, record)) {
+        return false;
+    }
+
+    switch (keycode) {
+        case XC_SNAKECASE:
+            if (record->event.pressed) {
+                enable_xcase_with(KC_UNDS);
+            }
+            return false;
+        case XC_CAMELCASE:
+            if (record->event.pressed) {
+                enable_xcase_with(KC_LSFT);
+            }
+            return false;
+        default:
+            return true;
+    }
 }

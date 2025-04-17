@@ -1,0 +1,14 @@
+{
+    "module_name": "XCase",
+    "maintainer": "omareloui",
+    "keycodes": [
+        {
+            "key": "XC_SNAKECASE",
+            "aliases": ["SNKCASE"]
+        },
+        {
+            "key": "XC_CAMELCASE",
+            "aliases": ["CMLCASE"]
+        }
+    ]
+}
