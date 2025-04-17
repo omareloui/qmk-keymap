@@ -204,7 +204,7 @@ bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
             return false;
         case XC_CAMELCASE:
             if (record->event.pressed) {
-                enable_xcase_with(KC_LSFT);
+                enable_xcase_with(OSM(MOD_LSFT));
             }
             return false;
         default:
