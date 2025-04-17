@@ -3,7 +3,6 @@
 // Copyright 2025 Omar Eloui  (@omareloui) <contact@omareloui.com>
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include "community_modules.h"
 #include QMK_KEYBOARD_H
 
 enum layers {
@@ -800,9 +799,12 @@ void sentence_case_primed(bool primed) {
     STATUS_LED_2(primed);
 }
 
+#    ifdef COMMUNITY_MODULE_XCASE_ENABLE
 void xcase_primed(bool primed) {
     STATUS_LED_2(primed);
 }
+#    endif // COMMUNITY_MODULE_XCASE_ENABLE
+
 #endif // STATUS_LED_2
 
 #ifdef STATUS_LED_3
