@@ -202,3 +202,26 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
     return true;
 }
 
+bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
+    // Process case modes
+    if (!process_case_modes(keycode, record)) {
+        return false;
+    }
+
+    switch (keycode) {
+        case XC_SNAKECASE:
+            if (record->event.pressed) {
+                enable_xcase_with(KC_UNDS);
+            }
+            return false;
+        case XC_CAMELCASE:
+            if (record->event.pressed) {
+                enable_xcase_with(OSM(MOD_LSFT));
+            }
+            return false;
+        default:
+            return true;
+    }
+}
+
+__attribute__((weak)) void xcase_primed(bool primed) {}
