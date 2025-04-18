@@ -16,8 +16,6 @@
  */
 
 #include "xcase.h"
-#include "keycodes.h"
-#include "quantum.h"
 
 #ifndef DEFAULT_XCASE_SEPARATOR
 #    define DEFAULT_XCASE_SEPARATOR KC_UNDS
@@ -63,14 +61,14 @@ void enable_xcase(void) {
 }
 
 // Enable xcase with the specified delimiter
-void enable_xcase_with(uint16_t delimiter, bool capture, bool inc_space) {
+void enable_xcase_with(xcase_config_t *config) {
     xcase_state            = XCASE_ON;
-    xcase_delimiter        = delimiter;
+    xcase_delimiter        = config->delimiter;
     distance_to_last_delim = -1;
     delimiters_count       = 0;
-    include_space          = inc_space;
+    include_space          = config->include_space;
     start_of_xcase         = true;
-    if (capture) {
+    if (config->capture_first) {
         delimiters_count++;
         place_delimiter();
         distance_to_last_delim = 0;
@@ -84,15 +82,16 @@ void disable_xcase(void) {
 
 // Removes a delimiter, used for double tap space exit
 static void remove_delimiter(void) {
-    if (IS_OSM(xcase_delimiter)) {
+    bool is_mod = IS_OSM(xcase_delimiter);
+
+    if (is_mod) {
         clear_oneshot_mods();
-    } else {
+    }
+
+    if (!is_mod || (!start_of_xcase && include_space)) {
         for (int8_t i = 0; i < DEFAULT_DELIMITERS_TERMINATE_COUNT - 1; i++) {
             tap_code(KC_BSPC);
         }
-    }
-    if (!start_of_xcase && include_space) {
-        tap_code16(KC_BSPC);
     }
 }
 
@@ -147,21 +146,30 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
         if (xcase_state == XCASE_WAIT) {
             // grab the next input to be the delimiter
             if (use_default_xcase_separator(keycode, record)) {
-                enable_xcase_with(DEFAULT_XCASE_SEPARATOR, false, false);
+                xcase_config_t config = {
+                    .delimiter = DEFAULT_XCASE_SEPARATOR,
+                };
+                enable_xcase_with(&config);
             } else if (record->event.pressed) {
+                xcase_config_t config = {
+                    .delimiter = DEFAULT_XCASE_SEPARATOR,
+                };
                 // factor in mods
                 if (get_mods() & MOD_MASK_SHIFT) {
-                    keycode = LSFT(keycode);
+                    config.delimiter = LSFT(keycode);
                 } else if (get_mods() & MOD_BIT(KC_RALT)) {
-                    keycode = RALT(keycode);
+                    config.delimiter = RALT(keycode);
                 }
-                enable_xcase_with(keycode, false, false);
+                enable_xcase_with(&config);
                 return false;
             } else {
                 if (IS_OSM(keycode)) {
+                    xcase_config_t config = {
+                        .delimiter = keycode,
+                    };
                     // this catches the OSM release if no other key was pressed
                     set_oneshot_mods(0);
-                    enable_xcase_with(keycode, false, false);
+                    enable_xcase_with(&config);
                     return false;
                 }
                 // let other special keys go through
@@ -221,44 +229,64 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
     return true;
 }
 
+void enable_title_case(void) {
+    xcase_config_t config = {.delimiter = KC_LSFT, .capture_first = true, .include_space = true};
+    enable_xcase_with(&config);
+}
+
+void enable_snake_case(void) {
+    xcase_config_t config = {.delimiter = KC_UNDS, .capture_first = false, .include_space = false};
+    enable_xcase_with(&config);
+}
+
+void enable_kebab_case(void) {
+    xcase_config_t config = {.delimiter = KC_MINUS, .capture_first = false, .include_space = false};
+    enable_xcase_with(&config);
+}
+
+void enable_camel_case(void) {
+    xcase_config_t config = {.delimiter = KC_LSFT, .capture_first = false, .include_space = false};
+    enable_xcase_with(&config);
+}
+
+void enable_pascal_case(void) {
+    xcase_config_t config = {.delimiter = KC_LSFT, .capture_first = true, .include_space = false};
+    enable_xcase_with(&config);
+}
+
+void enable_path_case(void) {
+    xcase_config_t config = {.delimiter = KC_SLSH, .capture_first = false, .include_space = false};
+    enable_xcase_with(&config);
+}
+
 bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
     // Process case modes
     if (!process_case_modes(keycode, record)) {
         return false;
     }
 
-    switch (keycode) {
-        case XC_TITLECASE:
-            if (record->event.pressed) {
-                enable_xcase_with(KC_LSFT, true, true);
-            }
-            return false;
-        case XC_SNAKECASE:
-            if (record->event.pressed) {
-                enable_xcase_with(KC_UNDS, false, false);
-            }
-            return false;
-        case XC_PASCALCASE:
-            if (record->event.pressed) {
-                enable_xcase_with(KC_LSFT, true, false);
-            }
-            return false;
-        case XC_CAMELCASE:
-            if (record->event.pressed) {
-                enable_xcase_with(KC_LSFT, false, false);
-            }
-            return false;
-        case XC_KEBABCASE:
-            if (record->event.pressed) {
-                enable_xcase_with(KC_MINS, false, false);
-            }
-            return false;
-        case XC_PATHCASE:
-            if (record->event.pressed) {
-                enable_xcase_with(KC_SLSH, false, false);
-            }
-            return false;
-        default:
-            return true;
+    if (record->event.pressed) {
+        switch (keycode) {
+            case XC_TITLECASE:
+                enable_title_case();
+                return false;
+            case XC_SNAKECASE:
+                enable_snake_case();
+                return false;
+            case XC_PASCALCASE:
+                enable_pascal_case();
+                return false;
+            case XC_CAMELCASE:
+                enable_camel_case();
+                return false;
+            case XC_KEBABCASE:
+                enable_kebab_case();
+                return false;
+            case XC_PATHCASE:
+                enable_path_case();
+                return false;
+        }
     }
+
+    return true;
 }

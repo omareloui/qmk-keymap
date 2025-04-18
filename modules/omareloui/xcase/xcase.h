@@ -18,15 +18,6 @@
 
 #include QMK_KEYBOARD_H
 
-// Check whether caps word is on
-bool caps_word_enabled(void);
-// Enable caps word
-void enable_caps_word(void);
-// Disable caps word
-void disable_caps_word(void);
-// Toggle caps word
-void toggle_caps_word(void);
-
 // enum for the xcase states
 enum xcase_state {
     XCASE_OFF = 0, // xcase is off
@@ -34,14 +25,27 @@ enum xcase_state {
     XCASE_WAIT,    // xcase is waiting for the delimiter input
 };
 
+typedef struct {
+    uint16_t delimiter;
+    bool     capture_first;
+    bool     include_space;
+} xcase_config_t;
+
 // Get xcase state
 enum xcase_state get_xcase_state(void);
 // Enable xcase and pickup the next keystroke as the delimiter
 void enable_xcase(void);
 // Enable xcase with the specified delimiter
-void enable_xcase_with(uint16_t delimiter, bool capture, bool inc_space);
+void enable_xcase_with(xcase_config_t *config);
 // Disable xcase
 void disable_xcase(void);
 
 // Function to be put in process user
 bool process_case_modes(uint16_t keycode, const keyrecord_t *record);
+
+void enable_title_case(void);
+void enable_snake_case(void);
+void enable_kebab_case(void);
+void enable_camel_case(void);
+void enable_pascal_case(void);
+void enable_path_case(void);
