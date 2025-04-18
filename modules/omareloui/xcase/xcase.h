@@ -18,31 +18,30 @@
 
 #include QMK_KEYBOARD_H
 
+#include "xcase_user.h"
+
 // enum for the xcase states
-enum xcase_state {
-    XCASE_OFF = 0, // xcase is off
-    XCASE_ON,      // xcase is actively on
-    XCASE_WAIT,    // xcase is waiting for the delimiter input
-};
+typedef enum xcase_state { XCASE_OFF, XCASE_WAIT, XCASE_ON } xcase_state_t;
 
 typedef struct {
     uint16_t delimiter;
-    bool     capture_first;
-    bool     include_space;
+    bool     capture_first : 1;
+    bool     with_space : 1;
 } xcase_config_t;
 
 // Get xcase state
-enum xcase_state get_xcase_state(void);
+xcase_state_t get_xcase_state(void);
 // Enable xcase and pickup the next keystroke as the delimiter
 void enable_xcase(void);
 // Enable xcase with the specified delimiter
-void enable_xcase_with(xcase_config_t *config);
+void enable_xcase_with(xcase_config_t config);
 // Disable xcase
 void disable_xcase(void);
 
 // Function to be put in process user
 bool process_case_modes(uint16_t keycode, const keyrecord_t *record);
 
+// Helper funcions
 void enable_title_case(void);
 void enable_snake_case(void);
 void enable_kebab_case(void);
