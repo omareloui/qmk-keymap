@@ -267,6 +267,7 @@ const uint16_t h_quot_combo[] PROGMEM    = {HRM_H, HRM_QUO, COMBO_END};
 const uint16_t h_comm_combo[] PROGMEM    = {HRM_H, KC_COMM, COMBO_END};
 const uint16_t quot_comm_combo[] PROGMEM = {HRM_QUO, KC_COMM, COMBO_END};
 const uint16_t h_dot_combo[] PROGMEM     = {HRM_H, HRM_DOT, COMBO_END};
+const uint16_t dot_quot_combo[] PROGMEM  = {HRM_DOT, HRM_QUO, COMBO_END};
 const uint16_t comm_dot_combo[] PROGMEM  = {KC_COMM, HRM_DOT, COMBO_END};
 const uint16_t f_n_combo[] PROGMEM       = {KC_F, HRM_N, COMBO_END};
 const uint16_t y_d_combo[] PROGMEM       = {KC_Y, HRM_D, COMBO_END};
@@ -280,10 +281,11 @@ combo_t key_combos[] = {
 #ifdef COMMUNITY_MODULE_XCASE_ENABLE
 
     COMBO(h_quot_combo, XC_TITLECASE),    // h and ' => activate Title Case
-    COMBO(comm_dot_combo, XC_SNAKECASE),  // , and . => activate snake_case
     COMBO(h_comm_combo, XC_CAMELCASE),    // h and , => activate camelCase
     COMBO(h_dot_combo, XC_PASCALCASE),    // h and . => activate PascalCase
+    COMBO(comm_dot_combo, XC_SNAKECASE),  // , and . => activate snake_case
     COMBO(quot_comm_combo, XC_KEBABCASE), // , and ' => activate kebab-case
+    COMBO(dot_quot_combo, XC_PATHCASE),   // . and ' => activate path/case
 
 #endif // COMMUNITY_MODULE_XCASE_ENABLE
 
