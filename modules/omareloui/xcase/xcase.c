@@ -1,4 +1,5 @@
 /* Copyright 2021 Andrew Rae ajrae.nv@gmail.com @andrewjrae
+ * Copyright 2025 Omar Eloui contact@omareloui.com
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +25,7 @@
 #    define DEFAULT_DELIMITERS_TERMINATE_COUNT 2
 #endif
 
-#define IS_OSM(keycode) (keycode >= QK_ONE_SHOT_MOD && keycode <= QK_ONE_SHOT_MOD_MAX)
+#define IS_OSM(keycode) (keycode >= KC_LEFT_CTRL && keycode <= KC_RIGHT_GUI)
 
 // enum to keep track of the xcase state
 static enum xcase_state xcase_state = XCASE_OFF;
@@ -61,9 +62,7 @@ void disable_xcase(void) {
 // Place the current xcase delimiter
 static void place_delimiter(void) {
     if (IS_OSM(xcase_delimiter)) {
-        // apparently set_oneshot_mods() is dumb and doesn't deal with handedness for you
-        uint8_t mods = xcase_delimiter & 0x10 ? (xcase_delimiter & 0x0F) << 4 : xcase_delimiter & 0xFF;
-        set_oneshot_mods(mods);
+        set_oneshot_mods(MOD_BIT(xcase_delimiter));
     } else {
         tap_code16(xcase_delimiter);
     }
@@ -216,7 +215,7 @@ bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
             return false;
         case XC_CAMELCASE:
             if (record->event.pressed) {
-                enable_xcase_with(OSM(MOD_LSFT));
+                enable_xcase_with(KC_LSFT);
             }
             return false;
         default:
