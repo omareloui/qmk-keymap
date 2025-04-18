@@ -914,35 +914,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
             return false;
 
-        // Backspace with exponential repeating
-        // Behavior:
-        //  * Unmodified:       backspace
-        //  * With Shift:       delete
-        //  * With both shifts: shift + delete
+            // Behavior:
+            //  * Unmodified:       backspace
+            //  * With Shift:       delete
+            //  * With both shifts: shift + delete
         case KC_BSPC: {
-            // Initial delay before the first repeat.
-            static const uint8_t INIT_DELAY_MS = 250;
-            // This array customizes the rate at which the Backspace key
-            // repeats. The delay after the ith repeat is REP_DELAY_MS[i].
-            // Values must be between 1 and 255.
-            static const uint8_t  REP_DELAY_MS[] PROGMEM = {99, 79, 65, 57, 49, 43, 40, 35, 33, 30, 28, 26, 25, 23, 22, 20, 20, 19, 18, 17, 16, 15, 15, 14, 14, 13, 13, 12, 12, 11, 11, 10};
-            static deferred_token token                  = INVALID_DEFERRED_TOKEN;
-            static uint8_t        rep_count              = 0;
-
             static uint16_t registered_key = KC_NO;
-
-            if (!record->event.pressed) {
-                // Backspace released: stop repeating.
-                cancel_deferred_exec(token);
-                token = INVALID_DEFERRED_TOKEN;
-            } else if (!token) {
+            if (record->event.pressed) { // On key press.
                 const uint8_t mods = get_mods();
 #ifndef NO_ACTION_ONESHOT
                 uint8_t shift_mods = (mods | get_oneshot_mods()) & MOD_MASK_SHIFT;
 #else
                 uint8_t shift_mods = mods & MOD_MASK_SHIFT;
-#endif // NO_ACTION_ONESHOT
-
+#endif                            // NO_ACTION_ONESHOT
                 if (shift_mods) { // At least one shift key is held.
                     registered_key = KC_DEL;
                     // If one shift is held, clear it from the mods. But if both
@@ -959,19 +943,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
                 register_code(registered_key);
                 set_mods(mods);
-                rep_count = 0;
-
-                uint32_t bspc_callback(uint32_t trigger_time, void *cb_arg) {
-                    register_code(registered_key);
-                    set_mods(mods);
-
-                    if (rep_count < sizeof(REP_DELAY_MS)) {
-                        ++rep_count;
-                    }
-                    return pgm_read_byte(REP_DELAY_MS - 1 + rep_count);
-                }
-
-                token = defer_exec(INIT_DELAY_MS, bspc_callback, NULL);
+            } else { // On key release.
+                unregister_code(registered_key);
             }
         }
             return false;
