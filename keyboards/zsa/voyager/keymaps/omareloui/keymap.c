@@ -914,7 +914,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
             return false;
 
-        // Backspace with exponential repeating.
+        // Backspace with exponential repeating
         // Behavior:
         //  * Unmodified:       backspace
         //  * With Shift:       delete
@@ -930,13 +930,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             static uint8_t        rep_count              = 0;
 
             static uint16_t registered_key = KC_NO;
-            if (record->event.pressed) { // On key press.
+
+            if (!record->event.pressed) {
+                // Backspace released: stop repeating.
+                cancel_deferred_exec(token);
+                token = INVALID_DEFERRED_TOKEN;
+            } else if (!token) {
                 const uint8_t mods = get_mods();
 #ifndef NO_ACTION_ONESHOT
                 uint8_t shift_mods = (mods | get_oneshot_mods()) & MOD_MASK_SHIFT;
 #else
                 uint8_t shift_mods = mods & MOD_MASK_SHIFT;
-#endif                            // NO_ACTION_ONESHOT
+#endif // NO_ACTION_ONESHOT
+
                 if (shift_mods) { // At least one shift key is held.
                     registered_key = KC_DEL;
                     // If one shift is held, clear it from the mods. But if both
@@ -953,20 +959,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
                 register_code(registered_key);
                 set_mods(mods);
-            } else { // On key release.
-                unregister_code(registered_key);
-
-                // Backspace released: stop repeating.
-                cancel_deferred_exec(token);
-                token = INVALID_DEFERRED_TOKEN;
-            }
-
-            if (!token && record->event.pressed) {
-                tap_code(KC_BSPC); // Initial tap of Backspace key.
                 rep_count = 0;
 
                 uint32_t bspc_callback(uint32_t trigger_time, void *cb_arg) {
-                    tap_code(KC_BSPC);
+                    register_code(registered_key);
+                    set_mods(mods);
+
                     if (rep_count < sizeof(REP_DELAY_MS)) {
                         ++rep_count;
                     }
