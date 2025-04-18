@@ -261,13 +261,15 @@ uint8_t myrand(void) {
 ///////////////////////////////////////////////////////////////////////////////
 // Combos (https://docs.qmk.fm/features/combo)
 ///////////////////////////////////////////////////////////////////////////////
-const uint16_t j_comm_combo[] PROGMEM   = {KC_J, KC_COMM, COMBO_END};
-const uint16_t j_k_combo[] PROGMEM      = {KC_J, KC_K, COMBO_END};
-const uint16_t h_comm_combo[] PROGMEM   = {HRM_H, KC_COMM, COMBO_END};
-const uint16_t comm_dot_combo[] PROGMEM = {KC_COMM, HRM_DOT, COMBO_END};
-const uint16_t f_n_combo[] PROGMEM      = {KC_F, HRM_N, COMBO_END};
-const uint16_t y_d_combo[] PROGMEM      = {KC_Y, HRM_D, COMBO_END};
-const uint16_t c_p_combo[] PROGMEM      = {KC_C, KC_P, COMBO_END};
+const uint16_t j_comm_combo[] PROGMEM    = {KC_J, KC_COMM, COMBO_END};
+const uint16_t j_k_combo[] PROGMEM       = {KC_J, KC_K, COMBO_END};
+const uint16_t h_comm_combo[] PROGMEM    = {HRM_H, KC_COMM, COMBO_END};
+const uint16_t quot_comm_combo[] PROGMEM = {HRM_QUO, KC_COMM, COMBO_END};
+const uint16_t h_dot_combo[] PROGMEM     = {HRM_H, HRM_DOT, COMBO_END};
+const uint16_t comm_dot_combo[] PROGMEM  = {KC_COMM, HRM_DOT, COMBO_END};
+const uint16_t f_n_combo[] PROGMEM       = {KC_F, HRM_N, COMBO_END};
+const uint16_t y_d_combo[] PROGMEM       = {KC_Y, HRM_D, COMBO_END};
+const uint16_t c_p_combo[] PROGMEM       = {KC_C, KC_P, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(j_comm_combo, CW_TOGG), // J and , => activate Caps Word.
@@ -275,9 +277,13 @@ combo_t key_combos[] = {
     COMBO(f_n_combo, OSL(FUN)),   // F and N => FUN layer
 
 #ifdef COMMUNITY_MODULE_XCASE_ENABLE
-    COMBO(comm_dot_combo, XC_SNAKECASE), // , and . => activate Snake Case
-    COMBO(h_comm_combo, XC_CAMELCASE),   // h and , => activate Camel Case
-#endif                                   // COMMUNITY_MODULE_XCASE_ENABLE
+
+    COMBO(comm_dot_combo, XC_SNAKECASE),  // , and . => activate snake_case
+    COMBO(h_comm_combo, XC_CAMELCASE),    // h and , => activate camelCase
+    COMBO(h_dot_combo, XC_PASCALCASE),    // h and . => activate PascalCase
+    COMBO(quot_comm_combo, XC_KEBABCASE), // , and ' => activate kebab-case
+
+#endif // COMMUNITY_MODULE_XCASE_ENABLE
 
     COMBO(y_d_combo, DM_REC1), // Y and D => Start recording a macro
     COMBO(c_p_combo, DM_PLY1), // C and P => Play the recorded mocro

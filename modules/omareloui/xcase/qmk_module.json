@@ -7,8 +7,20 @@
             "aliases": ["SNKCASE"]
         },
         {
+            "key": "XC_PASCALCASE",
+            "aliases": ["PASCASE"]
+        },
+        {
             "key": "XC_CAMELCASE",
             "aliases": ["CMLCASE"]
+        },
+        {
+            "key": "XC_KEBABCASE",
+            "aliases": ["KEBCASE"]
+        },
+        {
+            "key": "XC_PATHCASE",
+            "aliases": ["PTHCASE"]
         }
     ]
 }

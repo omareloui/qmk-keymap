@@ -213,9 +213,25 @@ bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
                 enable_xcase_with(KC_UNDS);
             }
             return false;
+        case XC_PASCALCASE:
+            if (record->event.pressed) {
+                enable_xcase_with(KC_LSFT);
+                place_delimiter();
+            }
+            return false;
         case XC_CAMELCASE:
             if (record->event.pressed) {
                 enable_xcase_with(KC_LSFT);
+            }
+            return false;
+        case XC_KEBABCASE:
+            if (record->event.pressed) {
+                enable_xcase_with(KC_MINS);
+            }
+            return false;
+        case XC_PATHCASE:
+            if (record->event.pressed) {
+                enable_xcase_with(KC_SLSH);
             }
             return false;
         default:
