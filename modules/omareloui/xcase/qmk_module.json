@@ -3,6 +3,10 @@
     "maintainer": "omareloui",
     "keycodes": [
         {
+            "key": "XC_TITLECASE",
+            "aliases": ["TILCASE"]
+        },
+        {
             "key": "XC_SNAKECASE",
             "aliases": ["SNKCASE"]
         },

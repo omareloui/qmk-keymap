@@ -16,6 +16,8 @@
  */
 
 #include "xcase.h"
+#include "keycodes.h"
+#include "quantum.h"
 
 #ifndef DEFAULT_XCASE_SEPARATOR
 #    define DEFAULT_XCASE_SEPARATOR KC_UNDS
@@ -31,6 +33,10 @@
 static enum xcase_state xcase_state = XCASE_OFF;
 // the keycode of the xcase delimiter
 static uint16_t xcase_delimiter;
+// wiether to include space before the delimiter
+static bool include_space = false;
+// marks if we're of the start of the xcase word
+static bool start_of_xcase = false;
 // the number of keys to the last delimiter
 static int8_t distance_to_last_delim = -1;
 // the number of delimiters in a row
@@ -48,6 +54,7 @@ static void place_delimiter(void) {
     } else {
         tap_code16(xcase_delimiter);
     }
+    start_of_xcase = false;
 }
 
 // Enable xcase and pickup the next keystroke as the delimiter
@@ -56,11 +63,13 @@ void enable_xcase(void) {
 }
 
 // Enable xcase with the specified delimiter
-void enable_xcase_with(uint16_t delimiter, bool capture) {
+void enable_xcase_with(uint16_t delimiter, bool capture, bool inc_space) {
     xcase_state            = XCASE_ON;
     xcase_delimiter        = delimiter;
     distance_to_last_delim = -1;
     delimiters_count       = 0;
+    include_space          = inc_space;
+    start_of_xcase         = true;
     if (capture) {
         delimiters_count++;
         place_delimiter();
@@ -81,6 +90,9 @@ static void remove_delimiter(void) {
         for (int8_t i = 0; i < DEFAULT_DELIMITERS_TERMINATE_COUNT - 1; i++) {
             tap_code(KC_BSPC);
         }
+    }
+    if (!start_of_xcase && include_space) {
+        tap_code16(KC_BSPC);
     }
 }
 
@@ -135,7 +147,7 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
         if (xcase_state == XCASE_WAIT) {
             // grab the next input to be the delimiter
             if (use_default_xcase_separator(keycode, record)) {
-                enable_xcase_with(DEFAULT_XCASE_SEPARATOR, false);
+                enable_xcase_with(DEFAULT_XCASE_SEPARATOR, false, false);
             } else if (record->event.pressed) {
                 // factor in mods
                 if (get_mods() & MOD_MASK_SHIFT) {
@@ -143,13 +155,13 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
                 } else if (get_mods() & MOD_BIT(KC_RALT)) {
                     keycode = RALT(keycode);
                 }
-                enable_xcase_with(keycode, false);
+                enable_xcase_with(keycode, false, false);
                 return false;
             } else {
                 if (IS_OSM(keycode)) {
                     // this catches the OSM release if no other key was pressed
                     set_oneshot_mods(0);
-                    enable_xcase_with(keycode, false);
+                    enable_xcase_with(keycode, false, false);
                     return false;
                 }
                 // let other special keys go through
@@ -164,6 +176,9 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
                 if (keycode == KC_SPACE) {
                     delimiters_count++;
                     if (delimiters_count < DEFAULT_DELIMITERS_TERMINATE_COUNT) {
+                        if (!start_of_xcase && include_space) {
+                            tap_code16(KC_SPACE);
+                        }
                         place_delimiter();
                         distance_to_last_delim = 0;
                         return false;
@@ -213,29 +228,34 @@ bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
     }
 
     switch (keycode) {
+        case XC_TITLECASE:
+            if (record->event.pressed) {
+                enable_xcase_with(KC_LSFT, true, true);
+            }
+            return false;
         case XC_SNAKECASE:
             if (record->event.pressed) {
-                enable_xcase_with(KC_UNDS, false);
+                enable_xcase_with(KC_UNDS, false, false);
             }
             return false;
         case XC_PASCALCASE:
             if (record->event.pressed) {
-                enable_xcase_with(KC_LSFT, true);
+                enable_xcase_with(KC_LSFT, true, false);
             }
             return false;
         case XC_CAMELCASE:
             if (record->event.pressed) {
-                enable_xcase_with(KC_LSFT, false);
+                enable_xcase_with(KC_LSFT, false, false);
             }
             return false;
         case XC_KEBABCASE:
             if (record->event.pressed) {
-                enable_xcase_with(KC_MINS, false);
+                enable_xcase_with(KC_MINS, false, false);
             }
             return false;
         case XC_PATHCASE:
             if (record->event.pressed) {
-                enable_xcase_with(KC_SLSH, false);
+                enable_xcase_with(KC_SLSH, false, false);
             }
             return false;
         default:
