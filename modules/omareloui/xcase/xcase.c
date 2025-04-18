@@ -51,13 +51,11 @@ void enable_xcase_with(uint16_t delimiter) {
     xcase_delimiter        = delimiter;
     distance_to_last_delim = -1;
     delimiters_count       = 0;
-    xcase_primed(true);
 }
 
 // Disable xcase
 void disable_xcase(void) {
     xcase_state = XCASE_OFF;
-    xcase_primed(false);
 }
 
 // Place the current xcase delimiter
@@ -225,5 +223,3 @@ bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
             return true;
     }
 }
-
-__attribute__((weak)) void xcase_primed(bool primed) {}

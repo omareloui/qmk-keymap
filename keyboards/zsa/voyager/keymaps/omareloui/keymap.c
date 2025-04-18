@@ -270,13 +270,17 @@ const uint16_t y_d_combo[] PROGMEM      = {KC_Y, HRM_D, COMBO_END};
 const uint16_t c_p_combo[] PROGMEM      = {KC_C, KC_P, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(j_comm_combo, CW_TOGG),        // J and , => activate Caps Word.
-    COMBO(j_k_combo, KC_ESC),            // J and K => esc
-    COMBO(f_n_combo, OSL(FUN)),          // F and N => FUN layer
+    COMBO(j_comm_combo, CW_TOGG), // J and , => activate Caps Word.
+    COMBO(j_k_combo, KC_ESC),     // J and K => esc
+    COMBO(f_n_combo, OSL(FUN)),   // F and N => FUN layer
+
+#ifdef COMMUNITY_MODULE_XCASE_ENABLE
     COMBO(comm_dot_combo, XC_SNAKECASE), // , and . => activate Snake Case
     COMBO(h_comm_combo, XC_CAMELCASE),   // h and , => activate Camel Case
-    COMBO(y_d_combo, DM_REC1),           // Y and D => Start recording a macro
-    COMBO(c_p_combo, DM_PLY1),           // C and P => Play the recorded mocro
+#endif                                   // COMMUNITY_MODULE_XCASE_ENABLE
+
+    COMBO(y_d_combo, DM_REC1), // Y and D => Start recording a macro
+    COMBO(c_p_combo, DM_PLY1), // C and P => Play the recorded mocro
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -798,13 +802,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 void sentence_case_primed(bool primed) {
     STATUS_LED_2(primed);
 }
-
-#    ifdef COMMUNITY_MODULE_XCASE_ENABLE
-void xcase_primed(bool primed) {
-    STATUS_LED_2(primed);
-}
-#    endif // COMMUNITY_MODULE_XCASE_ENABLE
-
 #endif // STATUS_LED_2
 
 #ifdef STATUS_LED_3

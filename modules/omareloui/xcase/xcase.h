@@ -45,5 +45,3 @@ void disable_xcase(void);
 
 // Function to be put in process user
 bool process_case_modes(uint16_t keycode, const keyrecord_t *record);
-
-void xcase_primed(bool primed);
