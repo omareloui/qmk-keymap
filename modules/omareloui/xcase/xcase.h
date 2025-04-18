@@ -39,7 +39,7 @@ enum xcase_state get_xcase_state(void);
 // Enable xcase and pickup the next keystroke as the delimiter
 void enable_xcase(void);
 // Enable xcase with the specified delimiter
-void enable_xcase_with(uint16_t delimiter);
+void enable_xcase_with(uint16_t delimiter, bool capture);
 // Disable xcase
 void disable_xcase(void);
 

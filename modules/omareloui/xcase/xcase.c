@@ -41,24 +41,6 @@ enum xcase_state get_xcase_state(void) {
     return xcase_state;
 }
 
-// Enable xcase and pickup the next keystroke as the delimiter
-void enable_xcase(void) {
-    xcase_state = XCASE_WAIT;
-}
-
-// Enable xcase with the specified delimiter
-void enable_xcase_with(uint16_t delimiter) {
-    xcase_state            = XCASE_ON;
-    xcase_delimiter        = delimiter;
-    distance_to_last_delim = -1;
-    delimiters_count       = 0;
-}
-
-// Disable xcase
-void disable_xcase(void) {
-    xcase_state = XCASE_OFF;
-}
-
 // Place the current xcase delimiter
 static void place_delimiter(void) {
     if (IS_OSM(xcase_delimiter)) {
@@ -66,6 +48,29 @@ static void place_delimiter(void) {
     } else {
         tap_code16(xcase_delimiter);
     }
+}
+
+// Enable xcase and pickup the next keystroke as the delimiter
+void enable_xcase(void) {
+    xcase_state = XCASE_WAIT;
+}
+
+// Enable xcase with the specified delimiter
+void enable_xcase_with(uint16_t delimiter, bool capture) {
+    xcase_state            = XCASE_ON;
+    xcase_delimiter        = delimiter;
+    distance_to_last_delim = -1;
+    delimiters_count       = 0;
+    if (capture) {
+        delimiters_count++;
+        place_delimiter();
+        distance_to_last_delim = 0;
+    }
+}
+
+// Disable xcase
+void disable_xcase(void) {
+    xcase_state = XCASE_OFF;
 }
 
 // Removes a delimiter, used for double tap space exit
@@ -130,7 +135,7 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
         if (xcase_state == XCASE_WAIT) {
             // grab the next input to be the delimiter
             if (use_default_xcase_separator(keycode, record)) {
-                enable_xcase_with(DEFAULT_XCASE_SEPARATOR);
+                enable_xcase_with(DEFAULT_XCASE_SEPARATOR, false);
             } else if (record->event.pressed) {
                 // factor in mods
                 if (get_mods() & MOD_MASK_SHIFT) {
@@ -138,13 +143,13 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
                 } else if (get_mods() & MOD_BIT(KC_RALT)) {
                     keycode = RALT(keycode);
                 }
-                enable_xcase_with(keycode);
+                enable_xcase_with(keycode, false);
                 return false;
             } else {
                 if (IS_OSM(keycode)) {
                     // this catches the OSM release if no other key was pressed
                     set_oneshot_mods(0);
-                    enable_xcase_with(keycode);
+                    enable_xcase_with(keycode, false);
                     return false;
                 }
                 // let other special keys go through
@@ -210,28 +215,27 @@ bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case XC_SNAKECASE:
             if (record->event.pressed) {
-                enable_xcase_with(KC_UNDS);
+                enable_xcase_with(KC_UNDS, false);
             }
             return false;
         case XC_PASCALCASE:
             if (record->event.pressed) {
-                enable_xcase_with(KC_LSFT);
-                place_delimiter();
+                enable_xcase_with(KC_LSFT, true);
             }
             return false;
         case XC_CAMELCASE:
             if (record->event.pressed) {
-                enable_xcase_with(KC_LSFT);
+                enable_xcase_with(KC_LSFT, false);
             }
             return false;
         case XC_KEBABCASE:
             if (record->event.pressed) {
-                enable_xcase_with(KC_MINS);
+                enable_xcase_with(KC_MINS, false);
             }
             return false;
         case XC_PATHCASE:
             if (record->event.pressed) {
-                enable_xcase_with(KC_SLSH);
+                enable_xcase_with(KC_SLSH, false);
             }
             return false;
         default:
