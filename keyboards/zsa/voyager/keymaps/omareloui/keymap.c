@@ -261,17 +261,17 @@ uint8_t myrand(void) {
 ///////////////////////////////////////////////////////////////////////////////
 // Combos (https://docs.qmk.fm/features/combo)
 ///////////////////////////////////////////////////////////////////////////////
-const uint16_t j_comm_combo[] PROGMEM    = {KC_J, KC_COMM, COMBO_END};
-const uint16_t j_k_combo[] PROGMEM       = {KC_J, KC_K, COMBO_END};
-const uint16_t h_quot_combo[] PROGMEM    = {HRM_H, HRM_QUO, COMBO_END};
-const uint16_t h_comm_combo[] PROGMEM    = {HRM_H, KC_COMM, COMBO_END};
-const uint16_t quot_comm_combo[] PROGMEM = {HRM_QUO, KC_COMM, COMBO_END};
-const uint16_t h_dot_combo[] PROGMEM     = {HRM_H, HRM_DOT, COMBO_END};
-const uint16_t dot_quot_combo[] PROGMEM  = {HRM_DOT, HRM_QUO, COMBO_END};
-const uint16_t comm_dot_combo[] PROGMEM  = {KC_COMM, HRM_DOT, COMBO_END};
-const uint16_t f_n_combo[] PROGMEM       = {KC_F, HRM_N, COMBO_END};
-const uint16_t y_d_combo[] PROGMEM       = {KC_Y, HRM_D, COMBO_END};
-const uint16_t c_p_combo[] PROGMEM       = {KC_C, KC_P, COMBO_END};
+const uint16_t PROGMEM j_comm_combo[]    = {KC_J, KC_COMM, COMBO_END};
+const uint16_t PROGMEM j_k_combo[]       = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM h_quot_combo[]    = {HRM_H, HRM_QUO, COMBO_END};
+const uint16_t PROGMEM h_comm_combo[]    = {HRM_H, KC_COMM, COMBO_END};
+const uint16_t PROGMEM quot_comm_combo[] = {HRM_QUO, KC_COMM, COMBO_END};
+const uint16_t PROGMEM h_dot_combo[]     = {HRM_H, HRM_DOT, COMBO_END};
+const uint16_t PROGMEM dot_quot_combo[]  = {HRM_DOT, HRM_QUO, COMBO_END};
+const uint16_t PROGMEM comm_dot_combo[]  = {KC_COMM, HRM_DOT, COMBO_END};
+const uint16_t PROGMEM f_n_combo[]       = {KC_F, HRM_N, COMBO_END};
+const uint16_t PROGMEM y_d_combo[]       = {KC_Y, HRM_D, COMBO_END};
+const uint16_t PROGMEM c_p_combo[]       = {KC_C, KC_P, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(j_comm_combo, CW_TOGG), // J and , => activate Caps Word.
