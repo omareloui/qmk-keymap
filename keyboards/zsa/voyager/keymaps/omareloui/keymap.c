@@ -251,13 +251,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
-// A cheap pseudorandom generator.
-uint8_t myrand(void) {
-    static uint16_t state = 1;
-    state                 = UINT16_C(36563) * (state + timer_read());
-    return state >> 8;
-}
-
 ///////////////////////////////////////////////////////////////////////////////
 // Combos (https://docs.qmk.fm/features/combo)
 ///////////////////////////////////////////////////////////////////////////////
@@ -1029,35 +1022,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                                         : (shift_mods ? "\xe2\x87\x92"    // =>
                                                       : "\xe2\x86\x92")); // ->
                 return false;
-
-            case KC_RABK:
-                if (shift_mods) { // Shift + > types a happy emoji.
-                    static const char *emojis[] = {
-                        "\xf0\x9f\xa5\xb3", // Party hat.
-                        "\xf0\x9f\x91\x8d", // Thumbs up.
-                        "\xe2\x9c\x8c",     // Victory hand.
-                        "\xf0\x9f\xa4\xa9", // Star eyes.
-                        "\xf0\x9f\x94\xa5", // Fire.
-                        "\xf0\x9f\x8e\x89", // Party popper.
-                        "\xf0\x9f\x91\xbe", // Purple alien.
-                        "\xf0\x9f\x98\x81", // Grin.
-                    };
-                    const int NUM_EMOJIS = sizeof(emojis) / sizeof(*emojis);
-
-                    // Pick an index between 0 and NUM_EMOJIS - 2.
-                    uint8_t index = ((NUM_EMOJIS - 1) * myrand()) >> 8;
-                    // Don't pick the same emoji twice in a row.
-                    static uint8_t last_index = 0;
-                    if (index >= last_index) {
-                        ++index;
-                    }
-                    last_index = index;
-
-                    // Produce the emoji.
-                    send_unicode_string(emojis[index]);
-                    return false;
-                }
-                return true;
 
             // Macros invoked through the MAGIC key.
             case M_THE:
