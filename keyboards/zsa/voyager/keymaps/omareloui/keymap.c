@@ -31,6 +31,8 @@ enum custom_keycodes {
     SYM_ARROW,
     SYM_FAT_ARROW,
     SYM_POUND_SIGN,
+    SYM_DBLAMPR,
+    SYM_DBLPIPE,
     SYM_RPRN_AND_NEW_BLOCK,
 
     // Macros invoked through the Magic key.
@@ -277,6 +279,8 @@ const uint16_t PROGMEM plus_rabke_combo[] = {KC_PLUS, SYM_RABK, COMBO_END};
 const uint16_t PROGMEM rbrc_rabk_combo[]  = {SYM_RBRC, SYM_RABK, COMBO_END};
 const uint16_t PROGMEM rabk_dlr_combo[]   = {SYM_RABK, KC_DLR, COMBO_END};
 const uint16_t PROGMEM rcb_rprn_combo[]   = {SYM_RCBR, SYM_RPRN, COMBO_END};
+const uint16_t PROGMEM ampr_plus_combo[]  = {KC_AMPR, KC_PLUS, COMBO_END};
+const uint16_t PROGMEM pipe_astr_combo[]  = {KC_PIPE, KC_ASTR, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(j_comm_combo, CW_TOGG), // J and , => activate Caps Word.
@@ -291,6 +295,8 @@ combo_t key_combos[] = {
     COMBO(plus_rabke_combo, SYM_FAT_ARROW),        // + and > => =>
     COMBO(rabk_dlr_combo, SYM_POUND_SIGN),         // > and $ => £
     COMBO(rcb_rprn_combo, SYM_RPRN_AND_NEW_BLOCK), // } and ) => end ) {<cursor>}
+    COMBO(ampr_plus_combo, SYM_DBLAMPR),           // & and + => &&<space>
+    COMBO(pipe_astr_combo, SYM_DBLPIPE),           // | and * => ||<space>
 
 #ifdef COMMUNITY_MODULE_XCASE_ENABLE
 
@@ -1051,8 +1057,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case SYM_RPRN_AND_NEW_BLOCK:
                 SEND_STRING(SS_TAP(X_END) ") {}" SS_TAP(X_LEFT));
                 break;
+            case SYM_DBLAMPR:
+                SEND_STRING("&& ");
+                break;
+            case SYM_DBLPIPE:
+                SEND_STRING("|| ");
+                break;
             case SYM_POUND_SIGN:
-                send_unicode_string("£"); // £
+                send_unicode_string("£");
                 break;
 
             // Macros invoked through the MAGIC key.
