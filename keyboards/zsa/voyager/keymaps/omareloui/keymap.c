@@ -3,6 +3,7 @@
 // Copyright 2025 Omar Eloui  (@omareloui) <contact@omareloui.com>
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+#include "keycodes.h"
 #include QMK_KEYBOARD_H
 
 #include "tap_dance.c"
@@ -33,6 +34,7 @@ enum custom_keycodes {
     SYM_POUND_SIGN,
     SYM_DBLAMPR,
     SYM_DBLPIPE,
+    SYM_GOASS,
     SYM_RPRN_AND_NEW_BLOCK,
 
     // Macros invoked through the Magic key.
@@ -281,6 +283,7 @@ const uint16_t PROGMEM rabk_dlr_combo[]   = {SYM_RABK, KC_DLR, COMBO_END};
 const uint16_t PROGMEM rcb_rprn_combo[]   = {SYM_RCBR, SYM_RPRN, COMBO_END};
 const uint16_t PROGMEM ampr_plus_combo[]  = {KC_AMPR, KC_PLUS, COMBO_END};
 const uint16_t PROGMEM pipe_astr_combo[]  = {KC_PIPE, KC_ASTR, COMBO_END};
+const uint16_t PROGMEM eq_lprn_combo[]    = {KC_EQL, SYM_LPRN, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(j_comm_combo, CW_TOGG), // J and , => activate Caps Word.
@@ -297,6 +300,7 @@ combo_t key_combos[] = {
     COMBO(rcb_rprn_combo, SYM_RPRN_AND_NEW_BLOCK), // } and ) => end ) {<cursor>}
     COMBO(ampr_plus_combo, SYM_DBLAMPR),           // & and + => &&<space>
     COMBO(pipe_astr_combo, SYM_DBLPIPE),           // | and * => ||<space>
+    COMBO(eq_lprn_combo, SYM_GOASS),               // = and ( => :=
 
 #ifdef COMMUNITY_MODULE_XCASE_ENABLE
 
@@ -1053,6 +1057,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;
             case SYM_FAT_ARROW:
                 SEND_STRING("=>");
+                break;
+            case SYM_GOASS:
+                SEND_STRING(":=");
                 break;
             case SYM_RPRN_AND_NEW_BLOCK:
                 SEND_STRING(SS_TAP(X_END) ") {}" SS_TAP(X_LEFT));
