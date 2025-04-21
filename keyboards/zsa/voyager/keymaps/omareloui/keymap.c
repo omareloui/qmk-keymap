@@ -27,6 +27,12 @@ enum custom_keycodes {
     RM_DEF1,
     RM_DEF2,
 
+    // Symbols
+    SYM_ARROW,
+    SYM_FAT_ARROW,
+    SYM_POUND_SIGN,
+    SYM_RPRN_AND_NEW_BLOCK,
+
     // Macros invoked through the Magic key.
     M_DOCSTR,
     M_EQEQ,
@@ -239,7 +245,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├────────┼─────────┼──────┼─────────┼─────────┼─────────┤
 //    │ OM_SLOW │ lalt │ lctl  │  lsft  │ SELLINE │    no    │                       │ OM_W_D │  OM_L   │ OM_D │  OM_R   │ OM_SLOW │         │
 //    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├────────┼─────────┼──────┼─────────┼─────────┼─────────┤
-//    │         │ lgui │ PASTE │ SELALL │  COPY   │   CUT    │                       │   no   │   no    │  no  │   no    │   no    │         │
+//    │         │ lgui │ PASTE │ SELALL │  COPY   │   CUT    │                       │   no   │   no    │  no  │ UC_PREV │ UC_NEXT │         │
 //    └─────────┴──────┴───────┴────────┴─────────┼──────────┼─────────┐   ┌─────────┼────────┼─────────┴──────┴─────────┴─────────┴─────────┘
 //                                                │ www_back │ OM_BTN1 │   │ OM_BTN1 │  lock  │
 //                                                └──────────┴─────────┘   └─────────┴────────┘
@@ -247,7 +253,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______ , _______ , _______ , _______ , _______ , _______ ,                         _______ , _______ , _______ , _______ , _______ , AC_TOGG,
   _______ , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,                         OM_W_U  , OM_BTN1 , OM_U    , OM_BTN2 , SRCHSEL , _______,
   OM_SLOW , KC_LALT , KC_LCTL , KC_LSFT , SELLINE , XXXXXXX ,                         OM_W_D  , OM_L    , OM_D    , OM_R    , OM_SLOW , _______,
-  _______ , KC_LGUI , PASTE   , SELALL  , COPY    , CUT     ,                         XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , _______,
+  _______ , KC_LGUI , PASTE   , SELALL  , COPY    , CUT     ,                         XXXXXXX , XXXXXXX , XXXXXXX , UC_PREV , UC_NEXT , _______,
                                                     KC_WBAK , OM_BTN1 ,     OM_BTN1 , QK_LLCK
 )
 };
@@ -256,22 +262,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ///////////////////////////////////////////////////////////////////////////////
 // Combos (https://docs.qmk.fm/features/combo)
 ///////////////////////////////////////////////////////////////////////////////
-const uint16_t PROGMEM j_comm_combo[]    = {KC_J, KC_COMM, COMBO_END};
-const uint16_t PROGMEM j_k_combo[]       = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM h_quot_combo[]    = {HRM_H, HRM_QUO, COMBO_END};
-const uint16_t PROGMEM h_comm_combo[]    = {HRM_H, KC_COMM, COMBO_END};
-const uint16_t PROGMEM quot_comm_combo[] = {HRM_QUO, KC_COMM, COMBO_END};
-const uint16_t PROGMEM h_dot_combo[]     = {HRM_H, HRM_DOT, COMBO_END};
-const uint16_t PROGMEM dot_quot_combo[]  = {HRM_DOT, HRM_QUO, COMBO_END};
-const uint16_t PROGMEM comm_dot_combo[]  = {KC_COMM, HRM_DOT, COMBO_END};
-const uint16_t PROGMEM f_n_combo[]       = {KC_F, HRM_N, COMBO_END};
-const uint16_t PROGMEM y_d_combo[]       = {KC_Y, HRM_D, COMBO_END};
-const uint16_t PROGMEM c_p_combo[]       = {KC_C, KC_P, COMBO_END};
+const uint16_t PROGMEM j_comm_combo[]     = {KC_J, KC_COMM, COMBO_END};
+const uint16_t PROGMEM j_k_combo[]        = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM h_quot_combo[]     = {HRM_H, HRM_QUO, COMBO_END};
+const uint16_t PROGMEM h_comm_combo[]     = {HRM_H, KC_COMM, COMBO_END};
+const uint16_t PROGMEM quot_comm_combo[]  = {HRM_QUO, KC_COMM, COMBO_END};
+const uint16_t PROGMEM h_dot_combo[]      = {HRM_H, HRM_DOT, COMBO_END};
+const uint16_t PROGMEM dot_quot_combo[]   = {HRM_DOT, HRM_QUO, COMBO_END};
+const uint16_t PROGMEM comm_dot_combo[]   = {KC_COMM, HRM_DOT, COMBO_END};
+const uint16_t PROGMEM f_n_combo[]        = {KC_F, HRM_N, COMBO_END};
+const uint16_t PROGMEM y_d_combo[]        = {KC_Y, HRM_D, COMBO_END};
+const uint16_t PROGMEM c_p_combo[]        = {KC_C, KC_P, COMBO_END};
+const uint16_t PROGMEM plus_rabke_combo[] = {KC_PLUS, SYM_RABK, COMBO_END};
+const uint16_t PROGMEM rbrc_rabk_combo[]  = {SYM_RBRC, SYM_RABK, COMBO_END};
+const uint16_t PROGMEM rabk_dlr_combo[]   = {SYM_RABK, KC_DLR, COMBO_END};
+const uint16_t PROGMEM rcb_rprn_combo[]   = {SYM_RCBR, SYM_RPRN, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(j_comm_combo, CW_TOGG), // J and , => activate Caps Word.
     COMBO(j_k_combo, KC_ESC),     // J and K => esc
     COMBO(f_n_combo, OSL(FUN)),   // F and N => FUN layer
+
+    COMBO(y_d_combo, DM_REC1), // y and d => Start recording a macro
+    COMBO(c_p_combo, DM_PLY1), // c and p => Play the recorded mocro
+
+    // Symbols
+    COMBO(rbrc_rabk_combo, SYM_ARROW),             // ] and > => ->
+    COMBO(plus_rabke_combo, SYM_FAT_ARROW),        // + and > => =>
+    COMBO(rabk_dlr_combo, SYM_POUND_SIGN),         // > and $ => £
+    COMBO(rcb_rprn_combo, SYM_RPRN_AND_NEW_BLOCK), // } and ) => end ) {<cursor>}
 
 #ifdef COMMUNITY_MODULE_XCASE_ENABLE
 
@@ -283,9 +302,6 @@ combo_t key_combos[] = {
     COMBO(dot_quot_combo, XC_PATHCASE),   // . and ' => activate path/case
 
 #endif // COMMUNITY_MODULE_XCASE_ENABLE
-
-    COMBO(y_d_combo, DM_REC1), // Y and D => Start recording a macro
-    COMBO(c_p_combo, DM_PLY1), // C and P => Play the recorded mocro
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -326,7 +342,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HRM_R:
         case HRM_E:
-            /* return TAPPING_TERM - 45; */
+            return TAPPING_TERM - 20;
         default:
             return TAPPING_TERM;
     }
@@ -487,14 +503,10 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t *record, uint8_t *reme
 //     & *   -> &nbsp;          (HTML code)
 //     . *   -> ../             (shell)
 //     . * @ -> ../../
-//     ( *   -> ()
-//     [ *   -> []
-//     < *   -> <>
-//     { *   -> {}
-//     ( * @ -> ();
-//     [ * @ -> [];
-//     < * @ -> <>;
-//     { * @ -> {};
+//     ( *   -> (<cursor>)
+//     [ *   -> [<cursor>]
+//     < *   -> <<cursor>>
+//     { *   -> {<cursor>}
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     if (mods == MOD_BIT_LALT) {
         switch (keycode) {
@@ -1029,6 +1041,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                                                       : "\xe2\x86\x92")); // ->
                 return false;
 
+            // Symbols
+            case SYM_ARROW:
+                SEND_STRING("->");
+                break;
+            case SYM_FAT_ARROW:
+                SEND_STRING("=>");
+                break;
+            case SYM_RPRN_AND_NEW_BLOCK:
+                SEND_STRING(SS_TAP(X_END) ") {}" SS_TAP(X_LEFT));
+                break;
+            case SYM_POUND_SIGN:
+                send_unicode_string("£"); // £
+                break;
+
             // Macros invoked through the MAGIC key.
             case M_THE:
                 MAGIC_STRING(/* */ "the", KC_N);
@@ -1049,16 +1075,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 MAGIC_STRING(/*.*/ "./", UPDIR);
                 break;
             case M_ABK:
-                MAGIC_STRING(/*<*/ ">", KC_SCLN);
+                SEND_STRING(/*<*/ ">" SS_TAP(X_LEFT));
                 break;
             case M_BRC:
-                MAGIC_STRING(/*[*/ "]", KC_SCLN);
+                SEND_STRING(/*[*/ "]" SS_TAP(X_LEFT));
                 break;
             case M_CBR:
-                MAGIC_STRING(/*{*/ "}", KC_SCLN);
+                SEND_STRING(/*{*/ "}" SS_TAP(X_LEFT));
                 break;
             case M_PRN:
-                MAGIC_STRING(/*(*/ ")", KC_SCLN);
+                SEND_STRING(/*(*/ ")" SS_TAP(X_LEFT));
                 break;
             case M_INCLUDE:
                 SEND_STRING_DELAY(/*#*/ "include ", TAP_CODE_DELAY);
