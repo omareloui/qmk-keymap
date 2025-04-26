@@ -1155,10 +1155,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;
 
 #if RGB_MATRIX_ENABLE
-            case RM_RND:
+            case RM_RND: {
                 uint8_t h = (UINT16_C(17099) * timer_read()) >> 8;
                 rgb_matrix_sethsv_noeeprom(h, 255, 255);
                 break;
+            }
 
             case RM_DEF1:
                 lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_RIPPLE, PALETTEFX_CARNIVAL);
