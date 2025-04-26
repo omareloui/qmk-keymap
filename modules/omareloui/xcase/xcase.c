@@ -175,7 +175,7 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
     }
 
     // check if the case modes have been terminated
-    if (terminate_case_modes(keycode, record)) {
+    if (terminate_case_modes_user(keycode, record)) {
         disable_xcase();
     }
 
@@ -239,3 +239,5 @@ bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
             return true;
     }
 }
+
+#include "xcase_user.h"

@@ -18,8 +18,6 @@
 
 #include QMK_KEYBOARD_H
 
-#include "xcase_user.h"
-
 // enum for the xcase states
 typedef enum xcase_state { XCASE_OFF, XCASE_WAIT, XCASE_ON } xcase_state_t;
 
@@ -48,3 +46,6 @@ void enable_kebab_case(void);
 void enable_camel_case(void);
 void enable_pascal_case(void);
 void enable_path_case(void);
+
+bool terminate_case_modes_user(uint16_t keycode, const keyrecord_t *record);
+bool use_default_xcase_separator(uint16_t keycode, const keyrecord_t *record);

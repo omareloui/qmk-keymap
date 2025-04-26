@@ -2,7 +2,7 @@
 
 #include "quantum.h"
 
-__attribute__((weak)) bool terminate_case_modes(uint16_t keycode, const keyrecord_t *record) {
+__attribute__((weak)) bool terminate_case_modes_user(uint16_t keycode, const keyrecord_t *record) {
     switch (keycode) {
         // Keycodes to ignore (don't disable caps word)
         case KC_A ... KC_Z:

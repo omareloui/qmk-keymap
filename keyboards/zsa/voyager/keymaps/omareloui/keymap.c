@@ -3,7 +3,6 @@
 // Copyright 2025 Omar Eloui  (@omareloui) <contact@omareloui.com>
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include "keycodes.h"
 #include QMK_KEYBOARD_H
 
 #include "tap_dance.c"
@@ -38,15 +37,15 @@ enum custom_keycodes {
     SYM_RPRN_AND_NEW_BLOCK,
 
     // Macros invoked through the Magic key.
-    M_DOCSTR,
-    M_EQEQ,
-    M_INCLUDE,
     M_ION,
     M_MENT,
-    M_MKGRVS,
     M_QUEN,
     M_THE,
     M_TMENT,
+    M_DOCSTR,
+    M_EQEQ,
+    M_MKGRVS,
+    M_INCLUDE,
     M_NBSP,
     M_UPDIR,
     M_BRC,
@@ -442,6 +441,39 @@ char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mod
     return '\0';
 }
 #endif // COMMUNITY_MODULE_SENTENCE_CASE_ENABLE
+
+///////////////////////////////////////////////////////////////////////////////
+// XCase
+///////////////////////////////////////////////////////////////////////////////
+#ifdef COMMUNITY_MODULE_XCASE_ENABLE
+bool terminate_case_modes_user(uint16_t keycode, const keyrecord_t *record) {
+    switch (keycode) {
+        // Keycodes to ignore (don't disable caps word)
+        case KC_A ... KC_Z:
+        case KC_1 ... KC_0:
+        case KC_MINS:
+        case KC_UNDS:
+        case KC_BSPC:
+        case KC_QUOT:
+        case M_ION:
+        case M_MENT:
+        case M_QUEN:
+        case M_THE:
+        case M_TMENT:
+            // If mod chording disable the mods
+            if (record->event.pressed && (get_mods() != 0)) {
+                return true;
+            }
+            break;
+        default:
+            if (record->event.pressed) {
+                return true;
+            }
+            break;
+    }
+    return false;
+}
+#endif // COMMUNITY_MODULE_XCASE_ENABLE
 
 ///////////////////////////////////////////////////////////////////////////////
 // Repeat key (https://docs.qmk.fm/features/repeat_key)
