@@ -38,6 +38,16 @@ enum custom_keycodes {
     SYM_TEMPLATE_STRING,
     SYM_MULTILINE_COMMENT,
 
+    SYM_ELABK,
+    SYM_ELBRC,
+    SYM_ELCBR,
+    SYM_ELPRN,
+    SYM_ERABK,
+    SYM_ERBRC,
+    SYM_ERCBR,
+    SYM_ERPRN,
+    SYM_ESCLN,
+
     // Macros invoked through the Magic key.
     M_ION,
     M_MENT,
@@ -173,7 +183,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    │     │ www_refresh │ WWW_PRV_TAB │ WWW_NXT_TAB │   no    │    no    │                  │ pgup │ home │   up    │   end   │ SRCHSEL │     │
 //    ├─────┼─────────────┼─────────────┼─────────────┼─────────┼──────────┤                  ├──────┼──────┼─────────┼─────────┼─────────┼─────┤
 //    │     │    lalt     │  S(A(tab))  │   A(tab)    │ SELLINE │ OM_BTN1  │                  │ pgdn │ left │  down   │  rght   │   del   │     │
-//    ├─────┼─────────────┼─────────────┼─────────────┼─────────┼──────────┤                  ├──────┼──────┼─────────┼─────────┼─────────┼─────┤
 //    │     │    lgui     │    pgup     │    pgdn     │   no    │    no    │                  │ UNDO │ app  │ SELWBAK │ SELWORD │   no    │     │
 //    └─────┴─────────────┴─────────────┴─────────────┴─────────┼──────────┼────────┐   ┌─────┼──────┼──────┴─────────┴─────────┴─────────┴─────┘
 //                                                              │ www_back │ G(tab) │   │     │ lock │
@@ -336,6 +345,29 @@ const custom_shift_key_t custom_shift_keys[] = {
     {RM_HUEU, RM_HUED},
 };
 #endif // COMMUNITY_MODULE_CUSTOM_SHIFT_KEYS_ENABLE
+
+///////////////////////////////////////////////////////////////////////////////
+// Tap Dance
+///////////////////////////////////////////////////////////////////////////////
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_LABK] = ACTION_TAP_DANCE_TAP_HOLD(KC_LABK, SYM_ELABK),
+
+    [TD_LBRC] = ACTION_TAP_DANCE_TAP_HOLD(KC_LBRC, SYM_ELBRC),
+
+    [TD_LCBR] = ACTION_TAP_DANCE_TAP_HOLD(KC_LCBR, SYM_ELCBR),
+
+    [TD_LPRN] = ACTION_TAP_DANCE_TAP_HOLD(KC_LPRN, SYM_ELPRN),
+
+    [TD_RABK] = ACTION_TAP_DANCE_TAP_HOLD(KC_RABK, SYM_ERABK),
+
+    [TD_RBRC] = ACTION_TAP_DANCE_TAP_HOLD(KC_RBRC, SYM_ERBRC),
+
+    [TD_RCBR] = ACTION_TAP_DANCE_TAP_HOLD(KC_RCBR, SYM_ERCBR),
+
+    [TD_RPRN] = ACTION_TAP_DANCE_TAP_HOLD(KC_RPRN, SYM_ERPRN),
+
+    [TD_SCLN] = ACTION_TAP_DANCE_TAP_HOLD(KC_SCLN, SYM_ESCLN),
+};
 
 ///////////////////////////////////////////////////////////////////////////////
 // Autocorrect (https://docs.qmk.fm/features/autocorrect)
@@ -900,6 +932,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     lighting_activity_trigger();
 #endif // RGB_MATRIX_ENABLE
 
+    tap_dance_action_t *action;
+
     // Track whether the left home ring and index keys are held, ignoring layer.
     static bool left_home_ring_held  = false;
     static bool left_home_index_held = false;
@@ -1068,6 +1102,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             return true;
+
+        // To detecte holding on tap dancing
+        case SYM_LABK:
+        case SYM_LBRC:
+        case SYM_LCBR:
+        case SYM_LPRN:
+        case SYM_RABK:
+        case SYM_RBRC:
+        case SYM_RCBR:
+        case SYM_RPRN:
+        case SYM_SCLN:
+            action = &tap_dance_actions[QK_TAP_DANCE_GET_INDEX(keycode)];
+            if (!record->event.pressed && action->state.count && !action->state.finished) {
+                tap_dance_tap_hold_t *tap_hold = action->user_data;
+                tap_code16(tap_hold->tap);
+            }
+            break;
     }
 
     if (record->event.pressed) {
@@ -1121,6 +1172,34 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;
             case SYM_POUND_SIGN:
                 send_unicode_string("£");
+                break;
+
+            case SYM_ELABK:
+                SEND_STRING(SS_TAP(X_END) "<");
+                break;
+            case SYM_ELBRC:
+                SEND_STRING(SS_TAP(X_END) "[");
+                break;
+            case SYM_ELCBR:
+                SEND_STRING(SS_TAP(X_END) "{");
+                break;
+            case SYM_ELPRN:
+                SEND_STRING(SS_TAP(X_END) "(");
+                break;
+            case SYM_ERABK:
+                SEND_STRING(SS_TAP(X_END) ">");
+                break;
+            case SYM_ERBRC:
+                SEND_STRING(SS_TAP(X_END) "]");
+                break;
+            case SYM_ERCBR:
+                SEND_STRING(SS_TAP(X_END) "}");
+                break;
+            case SYM_ERPRN:
+                SEND_STRING(SS_TAP(X_END) ")");
+                break;
+            case SYM_ESCLN:
+                SEND_STRING(SS_TAP(X_END) ";");
                 break;
 
             // Macros invoked through the MAGIC key.
