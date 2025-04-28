@@ -35,6 +35,8 @@ enum custom_keycodes {
     SYM_DBLPIPE,
     SYM_GOASS,
     SYM_RPRN_AND_NEW_BLOCK,
+    SYM_TEMPLATE_STRING,
+    SYM_MULTILINE_COMMENT,
 
     // Macros invoked through the Magic key.
     M_ION,
@@ -283,6 +285,8 @@ const uint16_t PROGMEM rcb_rprn_combo[]   = {SYM_RCBR, SYM_RPRN, COMBO_END};
 const uint16_t PROGMEM ampr_plus_combo[]  = {KC_AMPR, KC_PLUS, COMBO_END};
 const uint16_t PROGMEM pipe_astr_combo[]  = {KC_PIPE, KC_ASTR, COMBO_END};
 const uint16_t PROGMEM eq_lprn_combo[]    = {KC_EQL, SYM_LPRN, COMBO_END};
+const uint16_t PROGMEM astr_exlm_combo[]  = {KC_ASTR, KC_EXLM, COMBO_END};
+const uint16_t PROGMEM dlr_rbrc_combo[]   = {KC_DLR, SYM_RBRC, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(j_comm_combo, CW_TOGG), // J and , => activate Caps Word.
@@ -300,6 +304,8 @@ combo_t key_combos[] = {
     COMBO(ampr_plus_combo, SYM_DBLAMPR),           // & and + => &&<space>
     COMBO(pipe_astr_combo, SYM_DBLPIPE),           // | and * => ||<space>
     COMBO(eq_lprn_combo, SYM_GOASS),               // = and ( => :=
+    COMBO(dlr_rbrc_combo, SYM_TEMPLATE_STRING),    // $ and ] => ${<cursor>}
+    COMBO(astr_exlm_combo, SYM_MULTILINE_COMMENT), // * and ! => /* <cursor> *\/
 
 #ifdef COMMUNITY_MODULE_XCASE_ENABLE
 
@@ -1095,6 +1101,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;
             case SYM_RPRN_AND_NEW_BLOCK:
                 SEND_STRING(SS_TAP(X_END) ") {}" SS_TAP(X_LEFT));
+                break;
+            case SYM_TEMPLATE_STRING:
+                SEND_STRING("${}" SS_TAP(X_LEFT));
+                break;
+            case SYM_MULTILINE_COMMENT:
+                SEND_STRING("/*  */" SS_TAP(X_LEFT) SS_TAP(X_LEFT) SS_TAP(X_LEFT));
                 break;
             case SYM_DBLAMPR:
                 SEND_STRING("&& ");

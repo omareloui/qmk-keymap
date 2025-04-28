@@ -17,6 +17,7 @@ enum {
         if (state->count == 1) {                                                        \
             tap_code16(KC_##keycode);                                                   \
             reset_tap_dance(state);                                                     \
+            /* TODO: make it wore on hold instead of this */                            \
         } else if (state->count >= 2) {                                                 \
             tap_code16(KC_END);                                                         \
             tap_code16(KC_##keycode);                                                   \
