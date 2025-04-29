@@ -38,16 +38,6 @@ enum custom_keycodes {
     SYM_TEMPLATE_STRING,
     SYM_MULTILINE_COMMENT,
 
-    SYM_ELABK,
-    SYM_ELBRC,
-    SYM_ELCBR,
-    SYM_ELPRN,
-    SYM_ERABK,
-    SYM_ERBRC,
-    SYM_ERCBR,
-    SYM_ERPRN,
-    SYM_ESCLN,
-
     // Macros invoked through the Magic key.
     M_ION,
     M_MENT,
@@ -173,7 +163,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______ , _______ , _______  , _______  , _______ , _______ ,                         _______ , _______ , _______  , _______  , _______  , _______,
   _______ , KC_CIRC , SYM_LABK , SYM_LBRC , MAGIC   , KC_GRV  ,                         KC_AMPR , KC_PLUS , SYM_RBRC , SYM_RABK , KC_DLR   , _______,
   _______ , KC_EQL  , SYM_LPRN , SYM_LCBR , KC_SLSH , KC_TILD ,                         KC_MINS , KC_BSLS , SYM_RCBR , SYM_RPRN , SYM_SCLN , _______,
-  _______ , KC_AT   , KC_QUOT  , KC_DQUO  , KC_HASH , KC_PERC ,                         KC_PIPE , KC_ASTR , KC_EXLM  , KC_QUES  , KC_COLN  , _______,
+  _______ , KC_AT   , KC_QUOT  , KC_DQUO  , KC_HASH , KC_PERC ,                         KC_PIPE , KC_ASTR , KC_EXLM  , KC_QUES  , SYM_COLN , _______,
                                                       USRNAME , _______ ,     _______ , QK_LLCK
 ),
 
@@ -183,6 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    │     │ www_refresh │ WWW_PRV_TAB │ WWW_NXT_TAB │   no    │    no    │                  │ pgup │ home │   up    │   end   │ SRCHSEL │     │
 //    ├─────┼─────────────┼─────────────┼─────────────┼─────────┼──────────┤                  ├──────┼──────┼─────────┼─────────┼─────────┼─────┤
 //    │     │    lalt     │  S(A(tab))  │   A(tab)    │ SELLINE │ OM_BTN1  │                  │ pgdn │ left │  down   │  rght   │   del   │     │
+//    ├─────┼─────────────┼─────────────┼─────────────┼─────────┼──────────┤                  ├──────┼──────┼─────────┼─────────┼─────────┼─────┤
 //    │     │    lgui     │    pgup     │    pgdn     │   no    │    no    │                  │ UNDO │ app  │ SELWBAK │ SELWORD │   no    │     │
 //    └─────┴─────────────┴─────────────┴─────────────┴─────────┼──────────┼────────┐   ┌─────┼──────┼──────┴─────────┴─────────┴─────────┴─────┘
 //                                                              │ www_back │ G(tab) │   │     │ lock │
@@ -350,23 +341,25 @@ const custom_shift_key_t custom_shift_keys[] = {
 // Tap Dance
 ///////////////////////////////////////////////////////////////////////////////
 tap_dance_action_t tap_dance_actions[] = {
-    [TD_LABK] = ACTION_TAP_DANCE_TAP_HOLD(KC_LABK, SYM_ELABK),
+    [TD_LABK] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_LABK),
 
-    [TD_LBRC] = ACTION_TAP_DANCE_TAP_HOLD(KC_LBRC, SYM_ELBRC),
+    [TD_LBRC] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_LBRC),
 
-    [TD_LCBR] = ACTION_TAP_DANCE_TAP_HOLD(KC_LCBR, SYM_ELCBR),
+    [TD_LCBR] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_LCBR),
 
-    [TD_LPRN] = ACTION_TAP_DANCE_TAP_HOLD(KC_LPRN, SYM_ELPRN),
+    [TD_LPRN] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_LPRN),
 
-    [TD_RABK] = ACTION_TAP_DANCE_TAP_HOLD(KC_RABK, SYM_ERABK),
+    [TD_RABK] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_RABK),
 
-    [TD_RBRC] = ACTION_TAP_DANCE_TAP_HOLD(KC_RBRC, SYM_ERBRC),
+    [TD_RBRC] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_RBRC),
 
-    [TD_RCBR] = ACTION_TAP_DANCE_TAP_HOLD(KC_RCBR, SYM_ERCBR),
+    [TD_RCBR] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_RCBR),
 
-    [TD_RPRN] = ACTION_TAP_DANCE_TAP_HOLD(KC_RPRN, SYM_ERPRN),
+    [TD_RPRN] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_RPRN),
 
-    [TD_SCLN] = ACTION_TAP_DANCE_TAP_HOLD(KC_SCLN, SYM_ESCLN),
+    [TD_SCLN] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_SCLN),
+
+    [TD_COLN] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_COLN),
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -393,7 +386,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
         case HRM_R:
         case HRM_E:
-            /* return TAPPING_TERM - 45; */
+            return TAPPING_TERM - 20;
 
         default:
             return TAPPING_TERM;
@@ -1113,6 +1106,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case SYM_RCBR:
         case SYM_RPRN:
         case SYM_SCLN:
+        case SYM_COLN:
             action = &tap_dance_actions[QK_TAP_DANCE_GET_INDEX(keycode)];
             if (!record->event.pressed && action->state.count && !action->state.finished) {
                 tap_dance_tap_hold_t *tap_hold = action->user_data;
@@ -1172,34 +1166,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;
             case SYM_POUND_SIGN:
                 send_unicode_string("£");
-                break;
-
-            case SYM_ELABK:
-                SEND_STRING(SS_TAP(X_END) "<");
-                break;
-            case SYM_ELBRC:
-                SEND_STRING(SS_TAP(X_END) "[");
-                break;
-            case SYM_ELCBR:
-                SEND_STRING(SS_TAP(X_END) "{");
-                break;
-            case SYM_ELPRN:
-                SEND_STRING(SS_TAP(X_END) "(");
-                break;
-            case SYM_ERABK:
-                SEND_STRING(SS_TAP(X_END) ">");
-                break;
-            case SYM_ERBRC:
-                SEND_STRING(SS_TAP(X_END) "]");
-                break;
-            case SYM_ERCBR:
-                SEND_STRING(SS_TAP(X_END) "}");
-                break;
-            case SYM_ERPRN:
-                SEND_STRING(SS_TAP(X_END) ")");
-                break;
-            case SYM_ESCLN:
-                SEND_STRING(SS_TAP(X_END) ";");
                 break;
 
             // Macros invoked through the MAGIC key.

@@ -11,6 +11,7 @@ enum {
     TD_RCBR,
     TD_RPRN,
     TD_SCLN,
+    TD_COLN,
 };
 
 typedef struct {
@@ -28,11 +29,18 @@ typedef struct {
 #define SYM_RCBR TD(TD_RCBR)
 #define SYM_RPRN TD(TD_RPRN)
 #define SYM_SCLN TD(TD_SCLN)
+#define SYM_COLN TD(TD_COLN)
 
 #define ACTION_TAP_DANCE_TAP_HOLD(tap, hold)                                        \
     {                                                                               \
         .fn        = {NULL, tap_dance_tap_hold_finished, tap_dance_tap_hold_reset}, \
         .user_data = (void *)&((tap_dance_tap_hold_t){tap, hold, 0}),               \
+    }
+
+#define ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(keycode)                                                   \
+    {                                                                                                   \
+        .fn        = {NULL, tap_dance_tap_hold_prepend_end_on_hold_finished, tap_dance_tap_hold_reset}, \
+        .user_data = (void *)&((tap_dance_tap_hold_t){keycode, 0, 0}),                                  \
     }
 
 void tap_dance_tap_hold_finished(tap_dance_state_t *state, void *user_data) {
@@ -50,6 +58,23 @@ void tap_dance_tap_hold_finished(tap_dance_state_t *state, void *user_data) {
             register_code16(tap_hold->tap);
             tap_hold->held = tap_hold->tap;
         }
+    }
+}
+
+void tap_dance_tap_hold_prepend_end_on_hold_finished(tap_dance_state_t *state, void *user_data) {
+    tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
+
+    if (state->pressed) {
+        if (state->count == 1
+#ifndef PERMISSIVE_HOLD
+            && !state->interrupted
+#endif
+        ) {
+            tap_code(KC_END);
+        }
+
+        register_code16(tap_hold->tap);
+        tap_hold->held = tap_hold->tap;
     }
 }
 
