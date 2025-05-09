@@ -267,17 +267,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ///////////////////////////////////////////////////////////////////////////////
 // Combos (https://docs.qmk.fm/features/combo)
 ///////////////////////////////////////////////////////////////////////////////
-const uint16_t PROGMEM j_comm_combo[]     = {KC_J, KC_COMM, COMBO_END};
-const uint16_t PROGMEM j_k_combo[]        = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM h_quot_combo[]     = {HRM_H, HRM_QUO, COMBO_END};
-const uint16_t PROGMEM h_comm_combo[]     = {HRM_H, KC_COMM, COMBO_END};
-const uint16_t PROGMEM quot_comm_combo[]  = {HRM_QUO, KC_COMM, COMBO_END};
-const uint16_t PROGMEM h_dot_combo[]      = {HRM_H, HRM_DOT, COMBO_END};
-const uint16_t PROGMEM dot_quot_combo[]   = {HRM_DOT, HRM_QUO, COMBO_END};
-const uint16_t PROGMEM comm_dot_combo[]   = {KC_COMM, HRM_DOT, COMBO_END};
-const uint16_t PROGMEM f_n_combo[]        = {KC_F, HRM_N, COMBO_END};
-const uint16_t PROGMEM y_d_combo[]        = {KC_Y, HRM_D, COMBO_END};
-const uint16_t PROGMEM c_p_combo[]        = {KC_C, KC_P, COMBO_END};
+const uint16_t PROGMEM j_comm_combo[]    = {KC_J, KC_COMM, COMBO_END};
+const uint16_t PROGMEM j_k_combo[]       = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM j_k_g_combo[]     = {KC_J, KC_K, HRM_G, COMBO_END};
+const uint16_t PROGMEM h_quot_combo[]    = {HRM_H, HRM_QUO, COMBO_END};
+const uint16_t PROGMEM h_comm_combo[]    = {HRM_H, KC_COMM, COMBO_END};
+const uint16_t PROGMEM quot_comm_combo[] = {HRM_QUO, KC_COMM, COMBO_END};
+const uint16_t PROGMEM h_dot_combo[]     = {HRM_H, HRM_DOT, COMBO_END};
+const uint16_t PROGMEM dot_quot_combo[]  = {HRM_DOT, HRM_QUO, COMBO_END};
+const uint16_t PROGMEM comm_dot_combo[]  = {KC_COMM, HRM_DOT, COMBO_END};
+
+const uint16_t PROGMEM f_n_combo[] = {KC_F, HRM_N, COMBO_END};
+const uint16_t PROGMEM y_d_combo[] = {KC_Y, HRM_D, COMBO_END};
+const uint16_t PROGMEM c_p_combo[] = {KC_C, KC_P, COMBO_END};
+
 const uint16_t PROGMEM plus_rabke_combo[] = {KC_PLUS, SYM_RABK, COMBO_END};
 const uint16_t PROGMEM rbrc_rabk_combo[]  = {SYM_RBRC, SYM_RABK, COMBO_END};
 const uint16_t PROGMEM rabk_dlr_combo[]   = {SYM_RABK, KC_DLR, COMBO_END};
@@ -291,6 +294,7 @@ const uint16_t PROGMEM dlr_rbrc_combo[]   = {KC_DLR, SYM_RBRC, COMBO_END};
 combo_t key_combos[] = {
     COMBO(j_comm_combo, CW_TOGG), // J and , => activate Caps Word.
     COMBO(j_k_combo, KC_ESC),     // J and K => esc
+    COMBO(j_k_g_combo, KC_ENT),   // J, K and G => enter
     COMBO(f_n_combo, OSL(FUN)),   // F and N => FUN layer
 
     COMBO(y_d_combo, DM_REC1), // y and d => Start recording a macro
