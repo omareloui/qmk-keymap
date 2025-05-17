@@ -65,11 +65,7 @@ void tap_dance_tap_hold_prepend_end_on_hold_finished(tap_dance_state_t *state, v
     tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
 
     if (state->pressed) {
-        if (state->count == 1
-#ifndef PERMISSIVE_HOLD
-            && !state->interrupted
-#endif
-        ) {
+        if (state->count == 1 && !state->interrupted) {
             tap_code(KC_END);
         }
 
