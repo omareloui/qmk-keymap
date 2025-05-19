@@ -1163,10 +1163,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("/*  */" SS_TAP(X_LEFT) SS_TAP(X_LEFT) SS_TAP(X_LEFT));
                 break;
             case SYM_DBLAMPR:
-                SEND_STRING("&& ");
+                SEND_STRING("&&");
                 break;
             case SYM_DBLPIPE:
-                SEND_STRING("|| ");
+                SEND_STRING("||");
                 break;
             case SYM_POUND_SIGN:
                 send_unicode_string("£");
