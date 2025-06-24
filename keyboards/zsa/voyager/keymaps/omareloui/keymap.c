@@ -269,7 +269,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ///////////////////////////////////////////////////////////////////////////////
 const uint16_t PROGMEM j_comm_combo[]    = {KC_J, KC_COMM, COMBO_END};
 const uint16_t PROGMEM j_k_combo[]       = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM j_k_g_combo[]     = {KC_J, KC_K, HRM_G, COMBO_END};
+const uint16_t PROGMEM k_g_combo[]       = {KC_K, HRM_G, COMBO_END};
 const uint16_t PROGMEM h_quot_combo[]    = {HRM_H, HRM_QUO, COMBO_END};
 const uint16_t PROGMEM h_comm_combo[]    = {HRM_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM quot_comm_combo[] = {HRM_QUO, KC_COMM, COMBO_END};
@@ -294,7 +294,7 @@ const uint16_t PROGMEM dlr_rbrc_combo[]   = {KC_DLR, SYM_RBRC, COMBO_END};
 combo_t key_combos[] = {
     COMBO(j_comm_combo, CW_TOGG), // J and , => activate Caps Word.
     COMBO(j_k_combo, KC_ESC),     // J and K => esc
-    COMBO(j_k_g_combo, KC_ENT),   // J, K and G => enter
+    COMBO(k_g_combo, KC_ENT),     // J, K and G => enter
     COMBO(f_n_combo, OSL(FUN)),   // F and N => FUN layer
 
     COMBO(y_d_combo, DM_REC1), // y and d => Start recording a macro
