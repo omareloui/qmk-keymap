@@ -20,6 +20,7 @@ enum layers {
 
 enum custom_keycodes {
     USRNAME = SAFE_RANGE,
+
     UPDIR,
     SRCHSEL,
     ARROW,
@@ -55,6 +56,11 @@ enum custom_keycodes {
     M_CBR,
     M_PRN,
     M_NOOP,
+
+    O_EMAIL,
+    O_CD_EMAIL,
+    O_SEC,
+    O_ID,
 };
 
 // Matrix positions of the left home row keys.
@@ -243,22 +249,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     XXXXXXX , XXXXXXX ,     XXXXXXX , QK_LLCK
 ),
 
-//    ┌─────────┬──────┬───────┬────────┬─────────┬──────────┐                       ┌────────┬─────────┬──────┬─────────┬─────────┬─────────┐
-//    │         │      │       │        │         │          │                       │        │         │      │         │         │ AC_TOGG │
-//    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├────────┼─────────┼──────┼─────────┼─────────┼─────────┤
-//    │         │  no  │  no   │   no   │   no    │    no    │                       │ OM_W_U │ OM_BTN1 │ OM_U │ OM_BTN2 │ SRCHSEL │         │
-//    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├────────┼─────────┼──────┼─────────┼─────────┼─────────┤
-//    │ OM_SLOW │ lalt │ lctl  │  lsft  │ SELLINE │    no    │                       │ OM_W_D │  OM_L   │ OM_D │  OM_R   │ OM_SLOW │         │
-//    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├────────┼─────────┼──────┼─────────┼─────────┼─────────┤
-//    │         │ lgui │ PASTE │ SELALL │  COPY   │   CUT    │                       │   no   │   no    │  no  │ UC_PREV │ UC_NEXT │         │
-//    └─────────┴──────┴───────┴────────┴─────────┼──────────┼─────────┐   ┌─────────┼────────┼─────────┴──────┴─────────┴─────────┴─────────┘
+//    ┌─────────┬──────┬───────┬────────┬─────────┬──────────┐                       ┌────────┬─────────┬───────┬─────────┬─────────┬─────────┐
+//    │         │      │       │        │         │          │                       │        │         │       │         │         │ AC_TOGG │
+//    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├────────┼─────────┼───────┼─────────┼─────────┼─────────┤
+//    │         │  no  │  no   │   no   │   no    │    no    │                       │ OM_W_U │ OM_BTN1 │ OM_U  │ OM_BTN2 │ SRCHSEL │         │
+//    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├────────┼─────────┼───────┼─────────┼─────────┼─────────┤
+//    │ OM_SLOW │ lalt │ lctl  │  lsft  │ SELLINE │    no    │                       │ OM_W_D │  OM_L   │ OM_D  │  OM_R   │ OM_SLOW │         │
+//    ├─────────┼──────┼───────┼────────┼─────────┼──────────┤                       ├────────┼─────────┼───────┼─────────┼─────────┼─────────┤
+//    │         │ lgui │ PASTE │ SELALL │  COPY   │   CUT    │                       │  O_ID  │ O_EMAIL │ O_SEC │ UC_PREV │ UC_NEXT │         │
+//    └─────────┴──────┴───────┴────────┴─────────┼──────────┼─────────┐   ┌─────────┼────────┼─────────┴───────┴─────────┴─────────┴─────────┘
 //                                                │ www_back │ OM_BTN1 │   │ OM_BTN1 │  lock  │
 //                                                └──────────┴─────────┘   └─────────┴────────┘
 [EXT] = LAYOUT(
   _______ , _______ , _______ , _______ , _______ , _______ ,                         _______ , _______ , _______ , _______ , _______ , AC_TOGG,
   _______ , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX ,                         OM_W_U  , OM_BTN1 , OM_U    , OM_BTN2 , SRCHSEL , _______,
   OM_SLOW , KC_LALT , KC_LCTL , KC_LSFT , SELLINE , XXXXXXX ,                         OM_W_D  , OM_L    , OM_D    , OM_R    , OM_SLOW , _______,
-  _______ , KC_LGUI , PASTE   , SELALL  , COPY    , CUT     ,                         XXXXXXX , XXXXXXX , XXXXXXX , UC_PREV , UC_NEXT , _______,
+  _______ , KC_LGUI , PASTE   , SELALL  , COPY    , CUT     ,                         O_ID    , O_EMAIL , O_SEC   , UC_PREV , UC_NEXT , _______,
                                                     KC_WBAK , OM_BTN1 ,     OM_BTN1 , QK_LLCK
 )
 };
@@ -1134,6 +1140,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 add_oneshot_mods(shift_mods);
                 clear_weak_mods();
                 MAGIC_STRING("omareloui", KC_AT);
+                return false;
+
+            case O_ID:
+                add_oneshot_mods(shift_mods);
+                clear_weak_mods();
+                send_string_with_delay_P("VPYH9010", TAP_CODE_DELAY);
+                return false;
+            case O_EMAIL:
+                add_oneshot_mods(shift_mods);
+                clear_weak_mods();
+                send_string_with_delay_P("omar.eloui@orange.com", TAP_CODE_DELAY);
+                return false;
+            case O_CD_EMAIL:
+                add_oneshot_mods(shift_mods);
+                clear_weak_mods();
+                send_string_with_delay_P("omar.eloui@orangecyberdefense.com", TAP_CODE_DELAY);
+                return false;
+            case O_SEC:
+                add_oneshot_mods(shift_mods);
+                clear_weak_mods();
+                send_string_with_delay_P("oeloui.SEC", TAP_CODE_DELAY);
                 return false;
 
             case ARROW:                                                   // Unicode arrows -> => <-> <=> through Shift and Alt.
