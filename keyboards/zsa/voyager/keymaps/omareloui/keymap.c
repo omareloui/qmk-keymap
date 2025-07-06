@@ -3,6 +3,7 @@
 // Copyright 2025 Omar Eloui  (@omareloui) <contact@omareloui.com>
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+#include "palettefx.h"
 #include QMK_KEYBOARD_H
 
 #include "tap_dance.c"
@@ -56,6 +57,8 @@ enum custom_keycodes {
     M_CBR,
     M_PRN,
     M_NOOP,
+
+    LUM_CYC,
 
     O_EMAIL,
     O_CD_EMAIL,
@@ -218,7 +221,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ├─────────┼─────────┼──────┼──────┼──────┼─────────┤                  ├──────┼───────────┼────────┼─────┼──────┼────────┤
 //    │ RM_RND  │ RM_HUEU │ G(3) │ G(2) │ G(1) │  G(d)   │                  │  no  │    no     │  rsft  │ no  │ lalt │   no   │
 //    ├─────────┼─────────┼──────┼──────┼──────┼─────────┤                  ├──────┼───────────┼────────┼─────┼──────┼────────┤
-//    │ RM_VALU │ RM_NEXT │ G(6) │ G(5) │ G(4) │  G(w)   │                  │  no  │ S(A(tab)) │ A(tab) │ no  │  no  │ G(ent) │
+//    │ LUM_CYC │ RM_NEXT │ G(6) │ G(5) │ G(4) │  G(w)   │                  │  no  │ S(A(tab)) │ A(tab) │ no  │  no  │ G(ent) │
 //    └─────────┴─────────┴──────┴──────┴──────┼─────────┼────────┐   ┌─────┼──────┼───────────┴────────┴─────┴──────┴────────┘
 //                                             │  mply   │ G(spc) │   │     │ lock │
 //                                             └─────────┴────────┘   └─────┴──────┘
@@ -226,7 +229,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______ , _______ , _______ , _______ , _______ , _______ ,                           _______ , _______      , _______   , _______ , _______ , _______  ,
   RM_DEF1 , RM_DEF2 , KC_MUTE , KC_VOLD , KC_VOLU , MUTEMIC ,                           XXXXXXX , XXXXXXX      , XXXXXXX   , XXXXXXX , XXXXXXX , XXXXXXX  ,
   RM_RND  , RM_HUEU , G(KC_3) , G(KC_2) , G(KC_1) , G(KC_D) ,                           XXXXXXX , XXXXXXX      , KC_RSFT   , XXXXXXX , KC_LALT , XXXXXXX  ,
-  RM_VALU , RM_NEXT , G(KC_6) , G(KC_5) , G(KC_4) , G(KC_W) ,                           XXXXXXX , S(A(KC_TAB)) , A(KC_TAB) , XXXXXXX , XXXXXXX , G(KC_ENT),
+  LUM_CYC , RM_NEXT , G(KC_6) , G(KC_5) , G(KC_4) , G(KC_W) ,                           XXXXXXX , S(A(KC_TAB)) , A(KC_TAB) , XXXXXXX , XXXXXXX , G(KC_ENT),
                                                     KC_MPLY , G(KC_SPC) ,     _______ , QK_LLCK
 ),
 
@@ -341,7 +344,6 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_MPLY, KC_MNXT},
 
     // RGB Matrix
-    {RM_VALU, RM_VALD},
     {RM_NEXT, RM_PREV},
     {RM_HUEU, RM_HUED},
 };
@@ -767,111 +769,6 @@ static void magic_send_string_P(const char *str, uint16_t repeat_keycode) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// RGB Matrix Lighting (https://docs.qmk.fm/features/rgb_matrix)
-///////////////////////////////////////////////////////////////////////////////
-#if RGB_MATRIX_ENABLE
-// The following logic controls the RGB Matrix light level with a convenient
-// 3-state setting---off, dim, or full---and turns off automatically and with
-// smooth transitions when the keyboard is idle.
-
-#    include <lib/lib8tion/lib8tion.h>
-
-static struct {
-    uint32_t timer;
-    uint8_t  event_count;
-    uint8_t  val;
-    uint8_t  val_start;
-    uint8_t  val_end;
-} lighting = {0};
-
-static void lighting_set_val(uint8_t val) {
-    lighting.val     = val;
-    lighting.val_end = val;
-    if (lighting.val_start != lighting.val_end) {
-        lighting.timer = timer_read32();
-    }
-}
-
-/** Cycles between off, 40% brightness, and max brightness. */
-static void lighting_cycle_3_state(void) {
-    if (lighting.val == 0) {
-        lighting_set_val((RGB_MATRIX_MAXIMUM_BRIGHTNESS * 2 + 2) / 5);
-    } else if (lighting.val < RGB_MATRIX_MAXIMUM_BRIGHTNESS) {
-        lighting_set_val(RGB_MATRIX_MAXIMUM_BRIGHTNESS);
-    } else {
-        lighting_set_val(0);
-    }
-}
-
-static void lighting_set_palette(uint8_t palette) {
-    if (lighting.val == 0) {
-        lighting_cycle_3_state();
-    }
-    rgb_matrix_enable_noeeprom();
-    rgb_matrix_sethsv_noeeprom(RGB_MATRIX_HUE_STEP * palette, 255, rgb_matrix_get_val());
-}
-
-static void lighting_preset(uint8_t effect, uint8_t palette) {
-    lighting_set_palette(palette);
-    rgb_matrix_mode_noeeprom(effect);
-    rgb_matrix_set_speed_noeeprom(100);
-}
-
-static void lighting_init(void) {
-    lighting.val_start = 0;
-    lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_RIPPLE, PALETTEFX_CARNIVAL);
-    lighting_set_val(RGB_MATRIX_MAXIMUM_BRIGHTNESS);
-}
-
-static void lighting_set_sleep_timer(void) {
-    if (lighting.val_start == lighting.val_end) {
-        const uint32_t duration = (lighting.event_count <= 10) ? UINT32_C(5000) : UINT32_C(30000);
-        lighting.timer          = (timer_read32() + duration) | 1;
-    }
-}
-
-/** This function should be called on every key event to keep lights awake. */
-static void lighting_activity_trigger(void) {
-    if (lighting.val > 0) {
-        lighting.event_count = qadd8(lighting.event_count, 1);
-        if (lighting.val_end == 0) {
-            lighting_set_val(lighting.val); // Wake lighting.
-        } else {
-            lighting_set_sleep_timer();
-        }
-    }
-}
-
-static void lighting_task(void) {
-    if (!lighting.timer) {
-        return;
-    } // Early return if sleeping.
-    const uint32_t diff = timer_read32() - lighting.timer;
-
-    if (lighting.val_start != lighting.val_end) {
-        const uint8_t t = (diff <= 511) ? (uint8_t)(diff / 2) : 255;
-
-        hsv_t hsv = rgb_matrix_get_hsv();
-        hsv.v     = (t == 255) ? lighting.val_end : lerp8by8(lighting.val_start, lighting.val_end, ease8InOutCubic(t));
-        rgb_matrix_sethsv_noeeprom(hsv.h, hsv.s, hsv.v);
-
-        if (t == 255) { // Transition complete.
-            lighting.val_end   = rgb_matrix_get_val();
-            lighting.val_start = lighting.val_end;
-            if (lighting.val_end == 0) { // Sleep.
-                lighting.timer       = 0;
-                lighting.event_count = 0;
-            } else {
-                lighting_set_sleep_timer();
-            }
-        }
-    } else if (diff < UINT32_MAX / 2) { // Sleep timeout expired; begin fading.
-        lighting.val_end = 0;
-    }
-}
-#endif // RGB_MATRIX_ENABLE
-
-///////////////////////////////////////////////////////////////////////////////
 // Custom RGB
 ///////////////////////////////////////////////////////////////////////////////
 bool rgb_matrix_indicators_user(void) {
@@ -921,20 +818,36 @@ void caps_word_set_user(bool active) {
 #endif // STATUS_LED_3
 
 ///////////////////////////////////////////////////////////////////////////////
+// RGB Matrix Lighting (https://docs.qmk.fm/features/rgb_matrix)
+///////////////////////////////////////////////////////////////////////////////
+#if RGB_MATRIX_ENABLE
+static void lighting_set_palette(uint8_t palette) {
+#    ifdef COMMUNITY_MODULE_LUMINO_ENABLE
+    if (lumino_get_value() == 0) {
+        lumino_cycle_3_state();
+    }
+#    endif // COMMUNITY_MODULE_LUMINO_ENABLE
+    rgb_matrix_sethsv_noeeprom(RGB_MATRIX_HUE_STEP * palette, 255, 255);
+    rgb_matrix_enable_noeeprom();
+}
+
+static void lighting_preset(uint8_t effect, uint8_t palette) {
+    rgb_matrix_mode_noeeprom(effect);
+    lighting_set_palette(palette);
+    rgb_matrix_set_speed_noeeprom(128);
+}
+#endif // RGB_MATRIX_ENABLE
+
+///////////////////////////////////////////////////////////////////////////////
 // User macro callbacks (https://docs.qmk.fm/feature_macros)
 ///////////////////////////////////////////////////////////////////////////////
-
 void keyboard_post_init_user(void) {
 #if RGB_MATRIX_ENABLE
-    lighting_init();
+    lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_FLOW, PALETTEFX_SYNTHWAVE);
 #endif // RGB_MATRIX_ENABLE
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-#ifdef RGB_MATRIX_ENABLE
-    lighting_activity_trigger();
-#endif // RGB_MATRIX_ENABLE
-
     tap_dance_action_t *action;
 
     // Track whether the left home ring and index keys are held, ignoring layer.
@@ -1247,29 +1160,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING_DELAY(/*`*/ "``\n\n```" SS_TAP(X_UP), TAP_CODE_DELAY);
                 break;
 
+#ifdef COMMUNITY_MODULE_LUMINO_ENABLE
+            case G(KC_L):
+                lumino_sleep_soon();
+                return true;
+
+            case LUM_CYC:
+                lumino_cycle_3_state();
+                return false;
+#endif // COMMUNITY_MODULE_LUMINO_ENABLE
+
 #if RGB_MATRIX_ENABLE
             case RM_RND: {
                 uint8_t h = (UINT16_C(17099) * timer_read()) >> 8;
-                rgb_matrix_sethsv_noeeprom(h, 255, 255);
-                break;
+                lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_FLOW, h);
+                return false;
             }
 
             case RM_DEF1:
-                lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_RIPPLE, PALETTEFX_CARNIVAL);
-                break;
+                lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_FLOW, PALETTEFX_SYNTHWAVE);
+                return false;
 
             case RM_DEF2:
-                lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_FLOW, PALETTEFX_POLARIZED);
-                break;
+                lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_RIPPLE, PALETTEFX_WATERMELON);
+                return false;
 #endif // RGB_MATRIX_ENABLE
         }
     }
 
     return true;
 };
-
-void housekeeping_task_user(void) {
-#ifdef RGB_MATRIX_ENABLE
-    lighting_task();
-#endif // RGB_MATRIX_ENABLE
-}

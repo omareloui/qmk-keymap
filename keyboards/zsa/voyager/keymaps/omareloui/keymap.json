@@ -3,7 +3,10 @@
         "getreuer/sentence_case",
         "getreuer/custom_shift_keys",
         "getreuer/select_word",
+
+        "getreuer/lumino",
         "getreuer/palettefx",
+
         "getreuer/orbital_mouse",
         "getreuer/mouse_turbo_click",
         "omareloui/xcase"
