@@ -1133,16 +1133,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 MAGIC_STRING(/*.*/ "./", UPDIR);
                 break;
             case M_ABK:
-                SEND_STRING(/*<*/ ">" SS_TAP(X_LEFT));
+                SEND_STRING(/*<*/ ">");
                 break;
             case M_BRC:
-                SEND_STRING(/*[*/ "]" SS_TAP(X_LEFT));
+                SEND_STRING(/*[*/ "]");
                 break;
             case M_CBR:
-                SEND_STRING(/*{*/ "}" SS_TAP(X_LEFT));
+                SEND_STRING(/*{*/ "}");
                 break;
             case M_PRN:
-                SEND_STRING(/*(*/ ")" SS_TAP(X_LEFT));
+                SEND_STRING(/*(*/ ")");
                 break;
             case M_INCLUDE:
                 SEND_STRING_DELAY(/*#*/ "include ", TAP_CODE_DELAY);
