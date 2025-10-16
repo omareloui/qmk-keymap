@@ -6,8 +6,6 @@
 #include "palettefx.h"
 #include QMK_KEYBOARD_H
 
-#include "tap_dance.c"
-
 enum layers {
     STRDY,
     GAME,
@@ -169,11 +167,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                                    │ USRNAME │     │   │     │ lock │
 //                                    └─────────┴─────┘   └─────┴──────┘
 [SYM] = LAYOUT(
-  _______ , _______ , _______  , _______  , _______ , _______ ,                         _______ , _______ , _______  , _______  , _______  , _______,
-  _______ , KC_CIRC , SYM_LABK , SYM_LBRC , MAGIC   , KC_GRV  ,                         KC_AMPR , KC_PLUS , SYM_RBRC , SYM_RABK , KC_DLR   , _______,
-  _______ , KC_EQL  , SYM_LPRN , SYM_LCBR , KC_SLSH , KC_TILD ,                         KC_MINS , KC_BSLS , SYM_RCBR , SYM_RPRN , SYM_SCLN , _______,
-  _______ , KC_AT   , KC_QUOT  , KC_DQUO  , KC_HASH , KC_PERC ,                         KC_PIPE , KC_ASTR , KC_EXLM  , KC_QUES  , SYM_COLN , _______,
-                                                      USRNAME , _______ ,     _______ , QK_LLCK
+  _______ , _______ , _______ , _______ , _______ , _______ ,                         _______ , _______ , _______ , _______ , _______ , _______,
+  _______ , KC_CIRC , KC_LABK , KC_LBRC , MAGIC   , KC_GRV  ,                         KC_AMPR , KC_PLUS , KC_RBRC , KC_RABK , KC_DLR  , _______,
+  _______ , KC_EQL  , KC_LPRN , KC_LCBR , KC_SLSH , KC_TILD ,                         KC_MINS , KC_BSLS , KC_RCBR , KC_RPRN , KC_SCLN , _______,
+  _______ , KC_AT   , KC_QUOT , KC_DQUO , KC_HASH , KC_PERC ,                         KC_PIPE , KC_ASTR , KC_EXLM , KC_QUES , KC_COLN , _______,
+                                                    USRNAME , _______ ,     _______ , QK_LLCK
 ),
 
 //    ┌─────┬─────────────┬─────────────┬─────────────┬─────────┬──────────┐                  ┌──────┬──────┬─────────┬─────────┬─────────┬─────┐
@@ -290,15 +288,15 @@ const uint16_t PROGMEM f_n_combo[] = {KC_F, HRM_N, COMBO_END};
 const uint16_t PROGMEM y_d_combo[] = {KC_Y, HRM_D, COMBO_END};
 const uint16_t PROGMEM c_p_combo[] = {KC_C, KC_P, COMBO_END};
 
-const uint16_t PROGMEM plus_rabke_combo[] = {KC_PLUS, SYM_RABK, COMBO_END};
-const uint16_t PROGMEM rbrc_rabk_combo[]  = {SYM_RBRC, SYM_RABK, COMBO_END};
-const uint16_t PROGMEM rabk_dlr_combo[]   = {SYM_RABK, KC_DLR, COMBO_END};
-const uint16_t PROGMEM rcb_rprn_combo[]   = {SYM_RCBR, SYM_RPRN, COMBO_END};
+const uint16_t PROGMEM plus_rabke_combo[] = {KC_PLUS, KC_RABK, COMBO_END};
+const uint16_t PROGMEM rbrc_rabk_combo[]  = {KC_RBRC, KC_RABK, COMBO_END};
+const uint16_t PROGMEM rabk_dlr_combo[]   = {KC_RABK, KC_DLR, COMBO_END};
+const uint16_t PROGMEM rcb_rprn_combo[]   = {KC_RCBR, KC_RPRN, COMBO_END};
 const uint16_t PROGMEM ampr_plus_combo[]  = {KC_AMPR, KC_PLUS, COMBO_END};
 const uint16_t PROGMEM pipe_astr_combo[]  = {KC_PIPE, KC_ASTR, COMBO_END};
-const uint16_t PROGMEM eq_lprn_combo[]    = {KC_EQL, SYM_LPRN, COMBO_END};
+const uint16_t PROGMEM eq_lprn_combo[]    = {KC_EQL, KC_LPRN, COMBO_END};
 const uint16_t PROGMEM astr_exlm_combo[]  = {KC_ASTR, KC_EXLM, COMBO_END};
-const uint16_t PROGMEM dlr_rbrc_combo[]   = {KC_DLR, SYM_RBRC, COMBO_END};
+const uint16_t PROGMEM dlr_rbrc_combo[]   = {KC_DLR, KC_RBRC, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(j_comm_combo, CW_TOGG), // J and , => activate Caps Word.
@@ -348,31 +346,6 @@ const custom_shift_key_t custom_shift_keys[] = {
     {RM_HUEU, RM_HUED},
 };
 #endif // COMMUNITY_MODULE_CUSTOM_SHIFT_KEYS_ENABLE
-
-///////////////////////////////////////////////////////////////////////////////
-// Tap Dance
-///////////////////////////////////////////////////////////////////////////////
-tap_dance_action_t tap_dance_actions[] = {
-    [TD_LABK] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_LABK),
-
-    [TD_LBRC] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_LBRC),
-
-    [TD_LCBR] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_LCBR),
-
-    [TD_LPRN] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_LPRN),
-
-    [TD_RABK] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_RABK),
-
-    [TD_RBRC] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_RBRC),
-
-    [TD_RCBR] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_RCBR),
-
-    [TD_RPRN] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_RPRN),
-
-    [TD_SCLN] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_SCLN),
-
-    [TD_COLN] = ACTION_TAP_DANCE_PREPEND_END_ON_HOLD(KC_COLN),
-};
 
 ///////////////////////////////////////////////////////////////////////////////
 // Autocorrect (https://docs.qmk.fm/features/autocorrect)
@@ -698,16 +671,12 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
                 return M_MKGRVS;
 
             case KC_LBRC:
-            case SYM_LBRC:
                 return M_BRC; // [ -> ]
             case KC_LABK:
-            case SYM_LABK:
                 return M_ABK; // < -> >
             case KC_LCBR:
-            case SYM_LCBR:
                 return M_CBR; // { -> }
             case KC_LPRN:
-            case SYM_LPRN:
                 return M_PRN; // ( -> )
 
             case KC_PLUS: // + -> =
@@ -849,8 +818,6 @@ void keyboard_post_init_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    tap_dance_action_t *action;
-
     // Track whether the left home ring and index keys are held, ignoring layer.
     static bool left_home_ring_held  = false;
     static bool left_home_index_held = false;
@@ -1019,24 +986,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             return true;
-
-        // To detecte holding on tap dancing
-        case SYM_LABK:
-        case SYM_LBRC:
-        case SYM_LCBR:
-        case SYM_LPRN:
-        case SYM_RABK:
-        case SYM_RBRC:
-        case SYM_RCBR:
-        case SYM_RPRN:
-        case SYM_SCLN:
-        case SYM_COLN:
-            action = &tap_dance_actions[QK_TAP_DANCE_GET_INDEX(keycode)];
-            if (!record->event.pressed && action->state.count && !action->state.finished) {
-                tap_dance_tap_hold_t *tap_hold = action->user_data;
-                tap_code16(tap_hold->tap);
-            }
-            break;
     }
 
     if (record->event.pressed) {
