@@ -64,8 +64,10 @@ enum custom_keycodes {
     O_SEC,
     O_ID,
 
+    PASTE_ENTER,
+
 #ifdef ENABLE_MOUSE_JIGGLER
-    JIGGLE
+    JIGGLE,
 #endif
 };
 
@@ -303,6 +305,8 @@ const uint16_t PROGMEM eq_lprn_combo[]    = {KC_EQL, KC_LPRN, COMBO_END};
 const uint16_t PROGMEM astr_exlm_combo[]  = {KC_ASTR, KC_EXLM, COMBO_END};
 const uint16_t PROGMEM dlr_rbrc_combo[]   = {KC_DLR, KC_RBRC, COMBO_END};
 
+const uint16_t PROGMEM paste_selall_combo[] = {PASTE, SELALL, COMBO_END};
+
 combo_t key_combos[] = {
     COMBO(j_comm_combo, CW_TOGG), // J and , => activate Caps Word.
     COMBO(j_k_combo, KC_ESC),     // J and K => esc
@@ -311,6 +315,8 @@ combo_t key_combos[] = {
 
     COMBO(y_d_combo, DM_REC1), // y and d => Start recording a macro
     COMBO(c_p_combo, DM_PLY1), // c and p => Play the recorded mocro
+
+    COMBO(paste_selall_combo, PASTE_ENTER), // PASTE and SELALL => PASTE + enter
 
     // Symbols
     COMBO(rbrc_rabk_combo, SYM_ARROW),             // ] and > => ->
@@ -1063,6 +1069,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                                         : (shift_mods ? "\xe2\x87\x92"    // =>
                                                       : "\xe2\x86\x92")); // ->
                 return false;
+
+            case PASTE_ENTER:
+                SEND_STRING(SS_LCTL("v") SS_TAP(X_ENTER));
+                break;
 
             // Symbols
             case SYM_ARROW:
