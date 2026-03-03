@@ -398,6 +398,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
         case HRM_N:
         case HRM_H:
         case HRM_E:
+        case HRM_D:
             return QUICK_TAP_TERM; // Enable key repeating.
         default:
             return 0; // Otherwise, force hold and disable key repeating.
