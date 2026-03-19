@@ -25,14 +25,3 @@ __attribute__((weak)) bool terminate_case_modes_user(uint16_t keycode, const key
     return false;
 }
 
-/* overrideable function to determine whether to use the default separator on
- * first keypress when waiting for the separator. */
-__attribute__((weak)) bool use_default_xcase_separator(uint16_t keycode, const keyrecord_t *record) {
-    // for example:
-    /* switch (keycode) { */
-    /*     case KC_A ... KC_Z: */
-    /*     case KC_1 ... KC_0: */
-    /*         return true; */
-    /* } */
-    return false;
-}

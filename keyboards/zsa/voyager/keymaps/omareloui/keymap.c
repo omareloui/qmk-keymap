@@ -494,12 +494,6 @@ bool terminate_case_modes_user(uint16_t keycode, const keyrecord_t *record) {
         case M_QUEN:
         case M_THE:
         case M_TMENT:
-        case XC_TITLECASE:
-        case XC_CAMELCASE:
-        case XC_PASCALCASE:
-        case XC_SNAKECASE:
-        case XC_KEBABCASE:
-        case XC_PATHCASE:
             // If mod chording disable the mods
             if (record->event.pressed && (get_mods() != 0)) {
                 return true;

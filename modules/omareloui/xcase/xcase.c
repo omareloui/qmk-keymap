@@ -17,10 +17,6 @@
 
 #include "xcase.h"
 
-#ifndef DEFAULT_XCASE_SEPARATOR
-#    define DEFAULT_XCASE_SEPARATOR KC_UNDS
-#endif
-
 #ifndef DEFAULT_DELIMITERS_TERMINATE_COUNT
 #    define DEFAULT_DELIMITERS_TERMINATE_COUNT 2
 #endif
@@ -29,18 +25,15 @@
 
 // State variables with bitfields for optimization
 static struct {
-    xcase_state_t state : 2;
-    bool          at_start : 1;
-    bool          with_space : 1;
-    int16_t       dist_to_delim;
-    uint8_t       delim_count;
-    uint16_t      delimiter;
-} xcase = {.state = XCASE_OFF, .at_start = false, .with_space = false, .delim_count = 0, .delimiter = 0};
+    bool     active : 1;
+    bool     at_start : 1;
+    bool     with_space : 1;
+    int16_t  dist_to_delim;
+    uint8_t  delim_count;
+    uint16_t delimiter;
+} xcase = {.active = false, .at_start = false, .with_space = false, .delim_count = 0, .delimiter = 0};
 
-// Get xcase state
-enum xcase_state get_xcase_state(void) {
-    return xcase.state;
-}
+bool terminating = false;
 
 // Place the current xcase delimiter
 static void place_delimiter(void) {
@@ -52,14 +45,9 @@ static void place_delimiter(void) {
     xcase.at_start = false;
 }
 
-// Enable xcase and pickup the next keystroke as the delimiter
-void enable_xcase(void) {
-    xcase.state = XCASE_WAIT;
-}
-
 // Enable xcase with the specified delimiter
 void enable_xcase_with(xcase_config_t config) {
-    xcase.state         = XCASE_ON;
+    xcase.active        = true;
     xcase.delimiter     = config.delimiter;
     xcase.dist_to_delim = -1;
     xcase.delim_count   = 0;
@@ -75,7 +63,7 @@ void enable_xcase_with(xcase_config_t config) {
 
 // Disable xcase
 void disable_xcase(void) {
-    xcase.state = XCASE_OFF;
+    xcase.active = false;
 }
 
 // Removes a delimiter, used for double tap space exit
@@ -95,7 +83,7 @@ static void remove_delimiter(void) {
 }
 
 bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
-    if (!xcase.state) {
+    if (!xcase.active) {
         return true;
     }
 
@@ -110,32 +98,7 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
         return true;
     }
 
-    if (xcase.state == XCASE_WAIT) {
-        // grab the next input to be the delimiter
-        if (use_default_xcase_separator(keycode, record)) {
-            enable_xcase_with((xcase_config_t){.delimiter = DEFAULT_XCASE_SEPARATOR});
-        } else if (record->event.pressed) {
-            // factor in mods
-            if (get_mods() & MOD_MASK_SHIFT) {
-                keycode = LSFT(keycode);
-            } else if (get_mods() & MOD_BIT(KC_RALT)) {
-                keycode = RALT(keycode);
-            }
-            enable_xcase_with((xcase_config_t){.delimiter = keycode});
-            return false;
-        } else {
-            if (IS_OSM(keycode)) {
-                // this catches the OSM release if no other key was pressed
-                set_oneshot_mods(0);
-                enable_xcase_with((xcase_config_t){.delimiter = keycode});
-                return false;
-            }
-            // let other special keys go through
-            return true;
-        }
-    }
-
-    if (!record->event.pressed || xcase.state != XCASE_ON) {
+    if (!record->event.pressed || !xcase.active) {
         return true;
     }
 
@@ -177,6 +140,7 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
     // check if the case modes have been terminated
     if (terminate_case_modes_user(keycode, record)) {
         disable_xcase();
+        terminating = true;
     }
 
     return true;
@@ -206,6 +170,16 @@ void enable_path_case(void) {
     enable_xcase_with((xcase_config_t){.delimiter = KC_SLSH, .capture_first = false, .with_space = false});
 }
 
+bool _handle_xcase_key_tap(void (*fn)(void)) {
+    if (!terminating) {
+        fn();
+        return false;
+    }
+
+    terminating = false;
+    return true;
+}
+
 bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
     // Process case modes
     if (!process_case_modes(keycode, record)) {
@@ -218,23 +192,18 @@ bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
         case XC_TITLECASE:
-            enable_title_case();
-            return false;
+            return _handle_xcase_key_tap(enable_title_case);
         case XC_SNAKECASE:
-            enable_snake_case();
-            return false;
+            return _handle_xcase_key_tap(enable_snake_case);
         case XC_PASCALCASE:
-            enable_pascal_case();
-            return false;
+            return _handle_xcase_key_tap(enable_pascal_case);
         case XC_CAMELCASE:
-            enable_camel_case();
-            return false;
+            return _handle_xcase_key_tap(enable_camel_case);
         case XC_KEBABCASE:
-            enable_kebab_case();
-            return false;
+            return _handle_xcase_key_tap(enable_kebab_case);
         case XC_PATHCASE:
-            enable_path_case();
-            return false;
+            return _handle_xcase_key_tap(enable_path_case);
+
         default:
             return true;
     }

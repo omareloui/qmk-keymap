@@ -18,19 +18,12 @@
 
 #include QMK_KEYBOARD_H
 
-// enum for the xcase states
-typedef enum xcase_state { XCASE_OFF, XCASE_WAIT, XCASE_ON } xcase_state_t;
-
 typedef struct {
     uint16_t delimiter;
     bool     capture_first : 1;
     bool     with_space : 1;
 } xcase_config_t;
 
-// Get xcase state
-xcase_state_t get_xcase_state(void);
-// Enable xcase and pickup the next keystroke as the delimiter
-void enable_xcase(void);
 // Enable xcase with the specified delimiter
 void enable_xcase_with(xcase_config_t config);
 // Disable xcase
@@ -48,4 +41,3 @@ void enable_pascal_case(void);
 void enable_path_case(void);
 
 bool terminate_case_modes_user(uint16_t keycode, const keyrecord_t *record);
-bool use_default_xcase_separator(uint16_t keycode, const keyrecord_t *record);
