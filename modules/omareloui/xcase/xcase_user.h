@@ -17,6 +17,7 @@ __attribute__((weak)) bool terminate_case_modes_user(uint16_t keycode, const key
             break;
         default:
             if (record->event.pressed) {
+                clear_oneshot_mods();
                 return true;
             }
             break;
