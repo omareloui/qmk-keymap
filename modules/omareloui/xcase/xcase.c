@@ -54,6 +54,8 @@ void enable_xcase_with(xcase_config_t config) {
     xcase.with_space    = config.with_space;
     xcase.at_start      = true;
 
+    xcase_set_user(true);
+
     if (config.capture_first) {
         xcase.delim_count++;
         place_delimiter();
@@ -64,6 +66,7 @@ void enable_xcase_with(xcase_config_t config) {
 // Disable xcase
 void disable_xcase(void) {
     xcase.active = false;
+    xcase_set_user(false);
 }
 
 // Removes a delimiter, used for double tap space exit
@@ -181,7 +184,8 @@ bool _handle_xcase_key_tap(void (*fn)(void)) {
 }
 
 bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
-    // Process case modes
+    xcase_set_user(xcase.active);
+
     if (!process_case_modes(keycode, record)) {
         return false;
     }

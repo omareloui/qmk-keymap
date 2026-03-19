@@ -25,3 +25,4 @@ __attribute__((weak)) bool terminate_case_modes_user(uint16_t keycode, const key
     return false;
 }
 
+__attribute__((weak)) void xcase_set_user(bool active) {}

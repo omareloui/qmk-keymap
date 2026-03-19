@@ -4,6 +4,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "palettefx.h"
+#include "quantum.h"
 #include "report.h"
 #include QMK_KEYBOARD_H
 
@@ -800,6 +801,15 @@ void caps_word_set_user(bool active) {
 }
 #endif // STATUS_LED_3
 
+#ifdef COMMUNITY_MODULE_XCASE_ENABLE
+#    ifdef STATUS_LED_4
+// LED 4 indicates when XCaps is active.
+void xcase_set_user(bool active) {
+    STATUS_LED_4(active);
+}
+#    endif // STATUS_LED_4
+#endif     // COMMUNITY_MODULE_XCASE_ENABLE
+
 ///////////////////////////////////////////////////////////////////////////////
 // RGB Matrix Lighting (https://docs.qmk.fm/features/rgb_matrix)
 ///////////////////////////////////////////////////////////////////////////////
@@ -834,7 +844,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Track whether the left home ring and index keys are held, ignoring layer.
     static bool left_home_ring_held  = false;
     static bool left_home_index_held = false;
-    if (record->event.key.row == LEFT_HOME_ROW) {
+    if (record->event.key.row == LEFT_HOME_ROW && IS_LAYER_ON(NAV)) {
         switch (record->event.key.col) {
             case LEFT_HOME_RING_COL:
                 left_home_ring_held = record->event.pressed;

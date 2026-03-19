@@ -41,3 +41,4 @@ void enable_pascal_case(void);
 void enable_path_case(void);
 
 bool terminate_case_modes_user(uint16_t keycode, const keyrecord_t *record);
+void xcase_set_user(bool active);
