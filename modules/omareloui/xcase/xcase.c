@@ -184,8 +184,6 @@ bool _handle_xcase_key_tap(void (*fn)(void)) {
 }
 
 bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
-    xcase_set_user(xcase.active);
-
     if (!process_case_modes(keycode, record)) {
         return false;
     }

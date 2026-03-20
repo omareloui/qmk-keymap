@@ -844,7 +844,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Track whether the left home ring and index keys are held, ignoring layer.
     static bool left_home_ring_held  = false;
     static bool left_home_index_held = false;
-    if (record->event.key.row == LEFT_HOME_ROW && IS_LAYER_ON(NAV)) {
+    if (record->event.key.row == LEFT_HOME_ROW) {
         switch (record->event.key.col) {
             case LEFT_HOME_RING_COL:
                 left_home_ring_held = record->event.pressed;
@@ -855,7 +855,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
 
         // NAV stays on while layer locked or while either ring or index is held.
-        if (!(is_layer_locked(NAV) || left_home_ring_held || left_home_index_held)) {
+        if (IS_LAYER_ON(NAV) && !(is_layer_locked(NAV) || left_home_ring_held || left_home_index_held)) {
             layer_off(NAV);
         }
     }
