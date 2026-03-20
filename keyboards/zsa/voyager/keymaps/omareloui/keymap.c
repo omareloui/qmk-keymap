@@ -118,7 +118,7 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
   '*', 'L', 'L', 'L', 'L', 'L',              'R', 'R', 'R', 'R', 'R', '*',
   '*', 'L', 'L', 'L', 'L', 'L',              'R', 'R', 'R', 'R', 'R', '*',
   '*', 'L', 'L', 'L', 'L', 'L',              'R', 'R', 'R', 'R', 'R', '*',
-                           'L', 'L',    'R', 'R'
+                           '*', '*',    '*', '*'
 );
 // clang-format on
 #endif
@@ -383,6 +383,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
         case HRM_R:
         case HRM_E:
+        case HRM_A:
+        case HRM_T:
             return TAPPING_TERM - 20;
 
         default:

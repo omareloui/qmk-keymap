@@ -2,7 +2,7 @@
 
 #define CHORDAL_HOLD
 
-#define TAPPING_TERM 200
+#define TAPPING_TERM 180
 #define TAPPING_TERM_PER_KEY
 #define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM_PER_KEY
@@ -24,7 +24,7 @@
 // Define speed curve for Orbital Mouse.
 // clang-format off
 #define ORBITAL_MOUSE_SPEED_CURVE \
-      {10, 11, 16, 23, 34, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42}
+      {15, 16, 21, 28, 39, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47}
 //     |               |               |               |           |
 // t = 0.000           1.024           2.048           3.072       3.840 s
 // clang-format on
