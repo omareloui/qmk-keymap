@@ -33,7 +33,7 @@ static struct {
     uint16_t delimiter;
 } xcase = {.active = false, .at_start = false, .with_space = false, .delim_count = 0, .delimiter = 0};
 
-bool terminating = false;
+bool should_exit_xcase_on_trigger_key = false;
 
 // Place the current xcase delimiter
 static void place_delimiter(void) {
@@ -143,7 +143,7 @@ bool process_case_modes(uint16_t keycode, const keyrecord_t *record) {
     // check if the case modes have been terminated
     if (terminate_case_modes_user(keycode, record)) {
         disable_xcase();
-        terminating = true;
+        should_exit_xcase_on_trigger_key = true;
     }
 
     return true;
@@ -174,12 +174,12 @@ void enable_path_case(void) {
 }
 
 bool _handle_xcase_key_tap(void (*fn)(void)) {
-    if (!terminating) {
+    if (!should_exit_xcase_on_trigger_key) {
         fn();
         return false;
     }
 
-    terminating = false;
+    should_exit_xcase_on_trigger_key = false;
     return true;
 }
 
@@ -209,6 +209,7 @@ bool process_record_xcase(uint16_t keycode, keyrecord_t *record) {
             return _handle_xcase_key_tap(enable_path_case);
 
         default:
+            should_exit_xcase_on_trigger_key = false;
             return true;
     }
 }
