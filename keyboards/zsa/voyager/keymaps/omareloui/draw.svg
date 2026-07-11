@@ -124,6 +124,7 @@ path.combo {
 }
 /* End Tabler Icons Cleanup */
 
+@media (prefers-color-scheme: dark) {
 svg.keymap { fill: #d1d6db; }
 rect.key { fill: #3f4750; }
 rect.key, rect.combo { stroke: #60666c; }
@@ -132,7 +133,8 @@ rect.held, rect.combo.held { fill: #854747; }
 text.label, text.footer { stroke: black; }
 text.trans { fill: #7e8184; }
 path.combo { stroke: #7f7f7f; }
-</style>
+
+}</style>
 <g transform="translate(30, 0)" class="layer-STRDY">
 <text x="0" y="28" class="label" id="STRDY">STRDY:</text>
 <g transform="translate(0, 56)">
@@ -372,7 +374,7 @@ path.combo { stroke: #7f7f7f; }
 <path d="M434,225 h-232 a6.0,6.0 0 0 1 -6.0,-6.0 v-4" class="combo"/>
 <path d="M434,225 h232 a6.0,6.0 0 0 0 6.0,-6.0 v-4" class="combo"/>
 <rect rx="6" ry="6" x="420" y="212" width="28" height="26" class="combo"/>
-<text x="434" y="225" class="combo tap">CAPSW</text>
+<text x="434" y="225" class="combo tap">⇪</text>
 </g>
 <g class="combo combopos-1">
 <rect rx="6" ry="6" x="154" y="189" width="28" height="26" class="combo"/>
@@ -391,15 +393,15 @@ path.combo { stroke: #7f7f7f; }
 </a></g>
 <g class="combo combopos-4">
 <rect rx="6" ry="6" x="266" y="149" width="28" height="26" class="combo"/>
-<text x="280" y="162" class="combo tap">DM_REC1</text>
+<text x="280" y="162" class="combo tap">REC</text>
 </g>
 <g class="combo combopos-5">
 <rect rx="6" ry="6" x="266" y="93" width="28" height="26" class="combo"/>
-<text x="280" y="106" class="combo tap">DM_PLY1</text>
+<text x="280" y="106" class="combo tap">PLY</text>
 </g>
 <g class="combo combopos-6">
 <rect rx="6" ry="6" x="154" y="21" width="28" height="26" class="combo"/>
-<text x="168" y="34" class="combo tap"><tspan style="font-size: 64%">PASTE_ENTER</tspan></text>
+<text x="168" y="34" class="combo tap">⎘+↵</text>
 </g>
 <g class="combo combopos-7">
 <rect rx="6" ry="6" x="624" y="191" width="40" height="26" class="combo"/>
