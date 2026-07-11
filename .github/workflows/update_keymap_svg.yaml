@@ -1,0 +1,46 @@
+---
+name: Update keymap SVG
+
+on:
+  push:
+    paths:
+      - "keyboards/zsa/voyager/keymaps/omareloui/draw_keymap.yaml"
+      - "keyboards/zsa/voyager/keymaps/omareloui/draw_config.yaml"
+    branches:
+      - main
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  draw:
+    name: "Regenerate draw.svg"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install keymap-drawer
+        run: pip install keymap-drawer
+
+      - name: Draw keymap SVG
+        working-directory: keyboards/zsa/voyager/keymaps/omareloui
+        run: keymap -c draw_config.yaml draw draw_keymap.yaml -o draw.svg
+
+      - name: Commit updated SVG
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add keyboards/zsa/voyager/keymaps/omareloui/draw.svg
+          if git diff --cached --quiet; then
+            echo "No changes to draw.svg"
+          else
+            git commit -m "chore: regenerate draw.svg [skip ci]"
+            git push
+          fi
