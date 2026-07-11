@@ -5,7 +5,7 @@ layout:
 
 layers:
   STRDY:
-    - ["`", ⎀, ⎘, ⎁, ⧉, OM BTN1, ⌘+⇥, ↖, ←, →]
+    - ["`", ⎀, ⎘, ⎁, ⧉, ◧, ⌘+⇥, ↖, ←, →]
     - [↘, GAME, ⇥, V, M, L, C, P, B, ★]
     - - U
       - O
@@ -115,9 +115,9 @@ layers:
     - - { t: ▽, type: trans }
       - { t: ▽, type: trans }
       - { t: ▽, type: trans }
-      - WREF
-      - WWW PRV TAB
-      - WWW NXT TAB
+      - ⎈+R
+      - ⎈+⇞
+      - ⎈+⇟
       - ""
       - ""
       - ⇞
@@ -131,7 +131,7 @@ layers:
       - ⇧+⎇+⇥
       - ⎇+⇥
       - { t: ⎀, type: held }
-      - OM BTN1
+      - ◧
     - - ⇟
       - ←
       - ↓
@@ -144,10 +144,10 @@ layers:
       - ⇟
     - - ""
       - ""
-      - UNDO
       - APP
-      - SELWBAK
-      - SELWORD
+      - ⎌
+      - ⟽
+      - ⟾
       - ""
       - { t: ▽, type: trans }
       - WBAK
@@ -271,10 +271,10 @@ layers:
       - ""
       - JIGGLE
       - ""
-      - OM W U
-      - OM BTN1
-    - - OM U
-      - OM BTN2
+      - 🖰⇡
+      - ◧
+    - - 🖰↑
+      - ◨
       - SRCHSEL
       - { t: ▽, type: trans }
       - OM SLOW
@@ -283,10 +283,10 @@ layers:
       - ⇧
       - ⎀
       - ""
-    - - OM W D
-      - OM L
-      - OM D
-      - OM R
+    - - 🖰⇣
+      - 🖰⟲
+      - 🖰↓
+      - 🖰⟳
       - OM SLOW
       - { t: ▽, type: trans }
       - { t: ▽, type: held }
@@ -302,8 +302,8 @@ layers:
       - UC NEXT
       - { t: ▽, type: trans }
       - WBAK
-      - OM BTN1
-    - [OM BTN1, 🖈]
+      - ◧
+    - [◧, 🖈]
 
 combos:
   - { tk: [J, ","], k: ⇪, l: [STRDY], align: bottom }
