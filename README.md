@@ -1,59 +1,116 @@
-# QMK Userspace
+# QMK Keymap
 
-This is a template repository which allows for an external set of QMK keymaps to be defined and compiled. This is useful for users who want to maintain their own keymaps without having to fork the main QMK repository.
+Personal [QMK](https://qmk.fm) userspace for my [ZSA Voyager](https://www.zsa.io/voyager), built on the External Userspace template. It holds my keymap, config, and a couple of personal QMK community modules.
 
-## Howto configure your build targets
+## Keyboard
 
-1. Run the normal `qmk setup` procedure if you haven't already done so -- see [QMK Docs](https://docs.qmk.fm/#/newbs) for details.
-1. Fork this repository
-1. Clone your fork to your local machine
-1. Enable userspace in QMK config using `qmk config user.overlay_dir="$(realpath qmk_userspace)"`
-1. Add a new keymap for your board using `qmk new-keymap`
-    * This will create a new keymap in the `keyboards` directory, in the same location that would normally be used in the main QMK repository. For example, if you wanted to add a keymap for the Planck, it will be created in `keyboards/planck/keymaps/<your keymap name>`
-    * You can also create a new keymap using `qmk new-keymap -kb <your_keyboard> -km <your_keymap>`
-    * Alternatively, add your keymap manually by placing it in the location specified above.
-    * `layouts/<layout name>/<your keymap name>/keymap.*` is also supported if you prefer the layout system
-1. Add your keymap(s) to the build by running `qmk userspace-add -kb <your_keyboard> -km <your_keymap>`
-    * This will automatically update your `qmk.json` file
-    * Corresponding `qmk userspace-remove -kb <your_keyboard> -km <your_keymap>` will delete it
-    * Listing the build targets can be done with `qmk userspace-list`
-1. Commit your changes
+- **Board:** ZSA Voyager (`zsa/voyager`)
+- **Base layout:** Magic Sturdy (inspired from [getreuer](https://github.com/getreuer/qmk-keymap)'s)
 
-## Howto build with GitHub
+## Layout
 
-1. In the GitHub Actions tab, enable workflows
-1. Push your changes above to your forked GitHub repository
-1. Look at the GitHub Actions for a new actions run
-1. Wait for the actions run to complete
-1. Inspect the Releases tab on your repository for the latest firmware build
+![Voyager keymap layout](keyboards/zsa/voyager/keymaps/omareloui/draw.svg)
 
-## Howto build locally
+_(Rendered with [`qmk-keymap-drawer`](https://github.com/caksoylar/keymap-drawer))_
 
-1. Run the normal `qmk setup` procedure if you haven't already done so -- see [QMK Docs](https://docs.qmk.fm/#/newbs) for details.
-1. Fork this repository
-1. Clone your fork to your local machine
-1. `cd` into this repository's clone directory
-1. Set global userspace path: `qmk config user.overlay_dir="$(realpath .)"` -- you MUST be located in the cloned userspace location for this to work correctly
-    * This will be automatically detected if you've `cd`ed into your userspace repository, but the above makes your userspace available regardless of your shell location.
-1. Compile normally: `qmk compile -kb your_keyboard -km your_keymap` or `make your_keyboard:your_keymap`
+Layers, in order:
 
-Alternatively, if you configured your build targets above, you can use `qmk userspace-compile` to build all of your userspace targets at once.
+| Layer   | Purpose                                                                     |
+| ------- | --------------------------------------------------------------------------- |
+| `STRDY` | Base alpha layer (home row mods for Shift/Ctrl/Alt/GUI + layer taps)        |
+| `GAME`  | Flat WASD-friendly layer for gaming                                         |
+| `SYM`   | Symbols                                                                     |
+| `NAV`   | Navigation, window/tab switching, text selection helpers                    |
+| `NUM`   | Numpad-style numbers and math operators                                     |
+| `WIN`   | Media keys, RGB matrix controls, window management (macOS-style GUI combos) |
+| `FUN`   | Function keys, reboot                                                       |
+| `EXT`   | Extra: clipboard ops, Unicode input, mouse jiggler, Orbital Mouse controls  |
 
-## Extra info
+Home row mods use **Chordal Hold** and **tapping term**.
 
-If you wish to point GitHub actions to a different repository, a different branch, or even a different keymap name, you can modify `.github/workflows/build_binaries.yml` to suit your needs.
+## Modules
 
-To override the `build` job, you can change the following parameters to use a different QMK repository or branch:
+Community modules pulled in via `.gitmodules` and declared in `keymap.json`:
+
+**From [getreuer/qmk-modules](https://github.com/getreuer/qmk-modules):**
+
+- **Sentence Case** – auto-capitalizes the first letter after sentence-ending punctuation
+- **Custom Shift Keys** – per-key alternate output when shifted, restricted here to layers 0, 1, and 5
+- **Select Word** – smarter word/line selection helpers (`SELWORD` / `SELWBAK` / `SELLINE`)
+- **Lumino** – opinionated RGB matrix lighting control scheme (`LUM_CYC`)
+- **PaletteFx** – RGB matrix effects/palettes, all effects and palettes enabled
+- **Orbital Mouse** – joystick-style cursor movement from a key cluster, with a custom speed curve
+- **Mouse Turbo Click** – auto-repeating mouse clicks (`TURBO`, used on the `GAME` layer)
+
+**Own module (`modules/omareloui/xcase`):**
+
+- **XCase** – converts the following typed word into `camelCase`, `PascalCase`, `snake_case`, `kebab-case`, `Title Case`, or `path/case` on demand
+
+## Other notable features
+
+- **Combos** (`COMBO_ENABLE`) for punctuation and home-row-mod letter pairs
+- **Autocorrect** with a custom dictionary (`autocorrection_dict.txt` / generated `autocorrect_data.h`)
+- **Repeat Key** and **Layer Lock** for one-shot key repeats and stuck-on layers
+- **Dynamic Macros** (nesting disabled)
+- **Mouse keys** with a jigger keycode (`JIGGLE`, gated behind `ENABLE_MOUSE_JIGGLER`) to keep a session alive
+- A handful of personal macros (email/username/ID snippets, symbol pairs, Magic-key expansions) implemented in `keymap.c`
+
+## Configuring QMK
+
+1. Install and set up the QMK CLI if you haven't already — see the [QMK docs](https://docs.qmk.fm/#/newbs).
+2. Fork and clone this repository.
+3. Point QMK at this userspace:
+
+   ```sh
+   qmk config user.overlay_dir="$(realpath qmk-keymap)"
+   ```
+
+4. (Optional) list or manage build targets:
+
+   ```sh
+   qmk userspace-list
+   qmk userspace-add -kb zsa/voyager -km omareloui
+   qmk userspace-remove -kb zsa/voyager -km omareloui
+   ```
+
+   The `zsa/voyager` + `omareloui` target is already declared in `qmk.json`, so this is only needed if you add more keymaps.
+
+## Building
+
+**Locally**, from inside the cloned repo:
+
+```sh
+qmk config user.overlay_dir="$(realpath .)"
+qmk compile -kb zsa/voyager -km omareloui
+# or
+make zsa/voyager:omareloui
+# or, to build every target listed in qmk.json:
+qmk userspace-compile
 ```
-    with:
-      qmk_repo: qmk/qmk_firmware
-      qmk_ref: master
-```
 
-If you wish to manually manage `qmk_firmware` using git within the userspace repository, you can add `qmk_firmware` as a submodule in the userspace directory instead. GitHub Actions will automatically use the submodule at the pinned revision if it exists, otherwise it will use the default latest revision of `qmk_firmware` from the main repository.
+This pulls in the `modules/getreuer` submodule automatically — run `git submodule update --init --recursive` first if you cloned without `--recurse-submodules`.
 
-This can also be used to control which fork is used, though only upstream `qmk_firmware` will have support for external userspace until other manufacturers update their forks.
+There's also a `.devcontainer` (based on `ghcr.io/qmk/qmk_cli`) if you'd rather build inside VS Code / Codespaces without installing the toolchain locally.
 
-1. (First time only) `git submodule add https://github.com/qmk/qmk_firmware.git`
-1. (To update) `git submodule update --init --recursive`
-1. Commit your changes to your userspace repository
+**Via GitHub Actions:**
+
+1. Enable Actions on your fork.
+2. Push to `main` (or trigger the workflow manually).
+3. `build_binaries.yaml` runs the reusable `qmk_userspace_build` / `qmk_userspace_publish` workflows against `qmk/qmk_firmware@develop`.
+4. Grab the compiled `.bin`/`.uf2` from the fork's **Releases** tab once the run finishes.
+
+## Flashing
+
+1. Put the Voyager into bootloader mode (via [ZSA's Wally tool](https://www.zsa.io/flash) or the key combo for your layout).
+2. Flash with QMK directly:
+
+   ```sh
+   qmk flash -kb zsa/voyager -km omareloui
+   ```
+
+3. Alternatively, drag-and-drop the built firmware file using Wally, or use the ZSA online flasher if you built via GitHub Actions.
+4. Repeat for both halves if your firmware/EEPROM settings require it.
+
+## License
+
+GPL-2.0, consistent with QMK firmware itself. See `LICENSE`.
