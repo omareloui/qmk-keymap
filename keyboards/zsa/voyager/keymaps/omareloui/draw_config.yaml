@@ -7,7 +7,7 @@ draw_config:
   combo_h: 26
   key_rx: 6.0
   key_ry: 6.0
-  dark_mode: true
+  dark_mode: "auto"
   n_columns: 1
   separate_combo_diagrams: false
   combo_diagrams_scale: 2
@@ -67,6 +67,7 @@ parse_config:
     - KC_
     - QK_
     - OM_
+    - DM_
   qmk_keycode_map:
     XXXXXXX: ""
     "NO": ""
@@ -137,6 +138,7 @@ parse_config:
     ENT: ↵
     ESC: ⎋
     BSPC: ⌫
+    DEL: ⌦
     TAB: ⇥
     SPC: ␣
     CAPS: ⇪
@@ -148,8 +150,6 @@ parse_config:
     RSFT: ⇧
     RALT: ⎇
     RGUI: ⌘
-    DEL: ⌦
-    INS: ⎀
     PGUP: ⇞
     PGDN: ⇟
     HOME: ↖
