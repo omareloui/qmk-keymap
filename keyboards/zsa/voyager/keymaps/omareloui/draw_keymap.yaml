@@ -239,7 +239,7 @@ layers:
       - { type: held }
       - ""
       - ⌘+↵
-      - { t: ▶⏸, s: MNXT }
+      - { t: ▶⏸, s: ▶❘ }
       - ⌘+␣
     - - { t: ▽, type: trans }
       - 🖈
