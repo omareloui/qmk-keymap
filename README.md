@@ -11,7 +11,7 @@ Personal [QMK](https://qmk.fm) userspace for my [ZSA Voyager](https://www.zsa.io
 
 ![Voyager keymap layout](keyboards/zsa/voyager/keymaps/omareloui/draw.svg)
 
-_(Rendered with [`qmk-keymap-drawer`](https://github.com/caksoylar/keymap-drawer))_
+(Rendered with [keymap-drawer](https://github.com/caksoylar/keymap-drawer))
 
 Layers, in order:
 
