@@ -189,7 +189,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ├─────┼─────────────┼─────────────┼─────────────┼─────────┼──────────┤                  ├──────┼──────┼─────────┼─────────┼─────────┼─────┤
 //    │     │    lalt     │  S(A(tab))  │   A(tab)    │ SELLINE │ OM_BTN1  │                  │ pgdn │ left │  down   │  rght   │   del   │     │
 //    ├─────┼─────────────┼─────────────┼─────────────┼─────────┼──────────┤                  ├──────┼──────┼─────────┼─────────┼─────────┼─────┤
-//    │     │    lgui     │    pgup     │    pgdn     │   no    │    no    │                  │ UNDO │ app  │ SELWBAK │ SELWORD │   no    │     │
+//    │     │    lgui     │    pgup     │    pgdn     │   no    │    no    │                  │ UNDO │ pscr │ SELWBAK │ SELWORD │   no    │     │
 //    └─────┴─────────────┴─────────────┴─────────────┴─────────┼──────────┼────────┐   ┌─────┼──────┼──────┴─────────┴─────────┴─────────┴─────┘
 //                                                              │ www_back │ G(tab) │   │     │ lock │
 //                                                              └──────────┴────────┘   └─────┴──────┘
@@ -197,7 +197,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______ , _______ , _______      , _______     , _______ , _______ ,                           _______ , _______ , _______ , _______ , _______ , _______,
   _______ , KC_WREF , WWW_PRV_TAB  , WWW_NXT_TAB , XXXXXXX , XXXXXXX ,                           KC_PGUP , KC_HOME , KC_UP   , KC_END  , SRCHSEL , _______,
   _______ , KC_LALT , S(A(KC_TAB)) , A(KC_TAB)   , SELLINE , OM_BTN1 ,                           KC_PGDN , KC_LEFT , KC_DOWN , KC_RGHT , KC_DEL  , _______,
-  _______ , KC_LGUI , KC_PGUP      , KC_PGDN     , XXXXXXX , XXXXXXX ,                           UNDO    , KC_APP  , SELWBAK , SELWORD , XXXXXXX , _______,
+  _______ , KC_LGUI , KC_PGUP      , KC_PGDN     , XXXXXXX , XXXXXXX ,                           UNDO    , KC_PSCR , SELWBAK , SELWORD , XXXXXXX , _______,
                                                              KC_WBAK , G(KC_TAB) ,     _______ , QK_LLCK
 ),
 
