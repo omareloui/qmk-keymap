@@ -1,0 +1,338 @@
+---
+layout:
+  qmk_keyboard: zsa/voyager
+  layout_name: LAYOUT
+
+layers:
+  STRDY:
+    - ["`", ⎀, ⎘, ⎁, ⧉, OM BTN1, ⌘+⇥, ↖, ←, →]
+    - [↘, GAME, ⇥, V, M, L, C, P, B, ★]
+    - - U
+      - O
+      - Q
+      - /
+      - ⌫
+      - { t: S, h: ⎇ }
+      - { t: T, h: SYM }
+      - { t: R, h: ⇧ }
+      - { t: D, h: NAV }
+      - Y
+    - - F
+      - { t: N, h: NUM }
+      - { t: E, h: ⇧ }
+      - { t: A, h: SYM }
+      - { t: I, h: ⎇ }
+      - "-"
+      - { t: ":", h: EXT }
+      - { t: X, h: ⌘ }
+      - K
+      - J
+    - - { t: G, h: ⎈ }
+      - W
+      - Z
+      - { t: H, h: ⎈ }
+      - ","
+      - { t: ".", h: WIN }
+      - { t: "'", h: ⌘ }
+      - ↵
+      - _
+      - ␣
+    - [⟲, ⎋]
+
+  GAME:
+    - [⎋, "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    - ["0", STRDY, ⇥, "", Q, ↑, E, R, "", ""]
+    - ["", "", "", "", ⇧, "", ←, ↓, →, ""]
+    - ["", "", "", "", "", "", ↵, ⎈, "", ""]
+    - ["", "", "", "", "", "", "", "", TURBO, ␣]
+    - ["", ""]
+
+  SYM:
+    - - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+    - - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - ^
+      - <
+      - "["
+      - ★
+      - "`"
+      - "&"
+      - +
+    - - "]"
+      - ">"
+      - $
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - "="
+      - { t: (, type: held }
+      - "{"
+      - /
+      - "~"
+    - - "-"
+      - \
+      - "}"
+      - { t: ), type: held }
+      - ;
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - "@"
+      - "'"
+      - '"'
+    - - "#"
+      - "%"
+      - "|"
+      - "*"
+      - "!"
+      - "?"
+      - ":"
+      - { t: ▽, type: trans }
+      - USRNAME
+      - { t: ▽, type: trans }
+    - - { t: ▽, type: trans }
+      - 🖈
+
+  NAV:
+    # case HRM_T:
+    #     if (!record->tap.count) {
+    #         if (record->event.pressed) {
+    #             if ((mods & MOD_BIT_LSHIFT) != 0) {
+    #                 register_mods(MOD_BIT_LCTRL);
+    #                 layer_on(NAV);
+    - - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+    - - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - WREF
+      - WWW PRV TAB
+      - WWW NXT TAB
+      - ""
+      - ""
+      - ⇞
+      - ↘
+    - - ↑
+      - ↘
+      - SRCHSEL
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - ⎇
+      - ⇧+⎇+⇥
+      - ⎇+⇥
+      - { t: ⎀, type: held }
+      - OM BTN1
+    - - ⇟
+      - ←
+      - ↓
+      - →
+      - ⌦
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - ⌘
+      - ⇞
+      - ⇟
+    - - ""
+      - ""
+      - UNDO
+      - APP
+      - SELWBAK
+      - SELWORD
+      - ""
+      - { t: ▽, type: trans }
+      - WBAK
+      - ⌘+⇥
+    - - { t: ▽, type: trans }
+      - 🖈
+
+  NUM:
+    - - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+    - - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - /
+      - "9"
+      - "8"
+      - "7"
+      - "*"
+      - ""
+      - ""
+    - - ""
+      - ""
+      - ""
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - "-"
+      - "3"
+      - "2"
+      - "1"
+      - +
+    - - ""
+      - { type: held }
+      - E
+      - ⎈
+      - ⎇
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - X
+      - "6"
+      - "5"
+    - - "4"
+      - "%"
+      - ""
+      - ""
+      - ","
+      - .
+      - ⌘
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+    - ["0", 🖈]
+
+  WIN:
+    - - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+    - - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - RM DEF1
+      - RM DEF2
+      - 🕨
+      - 🕩
+      - 🕪
+      - MUTEMIC
+      - ""
+      - ""
+    - ["", "", "", "", RM RND, RM HUEU, ⌘+3, ⌘+2, ⌘+1, ⌘+D]
+    - ["", "", ⇧, "", ⎇, "", LUM CYC, RM NEXT, ⌘+6, ⌘+5]
+    - [⌘+4, ⌘+W, "", ⇧+⎇+⇥, ⎇+⇥, { type: held }, "", ⌘+↵, MPLY, ⌘+␣]
+    - - { t: ▽, type: trans }
+      - 🖈
+
+  FUN:
+    - - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - ""
+      - ""
+      - ""
+      - ""
+    - ["", "", "", F12, F9, F8, F7, "", "", ""]
+    - ["", "", "", "", "", F10, F3, F2, F1, ""]
+    - [{ type: held }, { type: held }, ⇧, ⎈, ⎇, "", "", F11, F6, F5]
+    - [F4, "", "", "", "", "", ⌘, QK RBT, "", ""]
+    - ["", 🖈]
+
+  EXT:
+    - - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+    - - { t: ▽, type: trans }
+      - AC TOGG
+      - { t: ▽, type: trans }
+      - ""
+      - ""
+      - ""
+      - JIGGLE
+      - ""
+      - OM W U
+      - OM BTN1
+    - - OM U
+      - OM BTN2
+      - SRCHSEL
+      - { t: ▽, type: trans }
+      - OM SLOW
+      - ⎇
+      - ⎈
+      - ⇧
+      - ⎀
+      - ""
+    - - OM W D
+      - OM L
+      - OM D
+      - OM R
+      - OM SLOW
+      - { t: ▽, type: trans }
+      - { t: ▽, type: held }
+      - ⌘
+      - ⎘
+      - ⎁
+    - - ⧉
+      - ✂
+      - O ID
+      - O EMAIL
+      - O SEC
+      - UC PREV
+      - UC NEXT
+      - { t: ▽, type: trans }
+      - WBAK
+      - OM BTN1
+    - [OM BTN1, 🖈]
+
+combos:
+  - { tk: [J, ","], k: CAPSW, l: [STRDY], align: bottom }
+  - { tk: [J, K], k: ⎋, l: [STRDY] }
+  - { tk: [K, G], k: ↵, l: [STRDY], align: bottom }
+  - { tk: [F, N], k: FUN, l: [STRDY] }
+  - { tk: [Y, D], k: DM_REC1, l: [STRDY] }
+  - { tk: [C, P], k: DM_PLY1, l: [STRDY] }
+  - { tk: [⎘, ⎁], k: PASTE_ENTER, l: [STRDY] }
+
+  - { tk: ["H", "'"], k: TITLE, l: [STRDY], align: top, slide: -0.2, offset: 0.2, w: 40 }
+  - { tk: ["H", ","], k: CAMEL, l: [STRDY], w: 40 }
+  - { tk: ["H", "."], k: PASCAL, l: [STRDY], align: bottom, w: 45 }
+  - { tk: [",", "."], k: SNAKE, l: [STRDY], w: 40 }
+  - { tk: [",", "'"], k: KEBAB, l: [STRDY], align: top, w: 40 }
+  - { tk: [".", "'"], k: PATH, l: [STRDY], w: 35 }
+
+  - { tk: ["]", ">"], k: ->, l: [SYM] }
+  - { tk: ["+", ">"], k: =>, l: [SYM], align: top }
+  - { tk: [">", "$"], k: £, l: [SYM] }
+  - { tk: ["}", ")"], k: "↘){❘}", l: [SYM], w: 40 }
+  - { tk: ["&", "+"], k: "&&", l: [SYM] }
+  - { tk: ["|", "*"], k: "||", l: [SYM] }
+  - { tk: ["=", "("], k: ":=", l: [SYM] }
+  - { tk: ["$", "]"], k: "${❘}", l: [SYM], align: bottom, offset: -0.2, w: 35 }
+  - { tk: ["*", "!"], k: "/*❘*/", l: [SYM], w: 45 }
