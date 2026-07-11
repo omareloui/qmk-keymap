@@ -5,7 +5,7 @@ layout:
 
 layers:
   STRDY:
-    - ["`", ⎀, 🗎, ⎁, ⧉, ◧, ⌘+⇥, ↖, ←, →]
+    - ["`", ⎀, 🗎, ⎁, ⧉, $$mouse_left_click$$, ⌘+⇥, ↖, ←, →]
     - [↘, GAME, ⇥, V, M, L, C, P, B, ★]
     - - U
       - O
@@ -99,7 +99,7 @@ layers:
       - USRNAME
       - { t: ▽, type: trans }
     - - { t: ▽, type: trans }
-      - 🖈
+      - $$lock$$
 
   NAV:
     - - { t: ▽, type: trans }
@@ -131,7 +131,7 @@ layers:
       - ⇧+⎇+⇥
       - ⎇+⇥
       - { t: ⎀, type: held }
-      - ◧
+      - $$mouse_left_click$$
     - - ⇟
       - ←
       - ↓
@@ -153,7 +153,7 @@ layers:
       - WBAK
       - ⌘+⇥
     - - { t: ▽, type: trans }
-      - 🖈
+      - $$lock$$
 
   NUM:
     - - { t: ▽, type: trans }
@@ -206,7 +206,7 @@ layers:
       - { t: ▽, type: trans }
       - { t: ▽, type: trans }
       - { t: ▽, type: trans }
-    - ["0", 🖈]
+    - ["0", $$lock$$]
 
   WIN:
     - - { t: ▽, type: trans }
@@ -242,7 +242,7 @@ layers:
       - { t: ▶⏸, s: ▶❘ }
       - ⌘+␣
     - - { t: ▽, type: trans }
-      - 🖈
+      - $$lock$$
 
   FUN:
     - - { t: ▽, type: trans }
@@ -259,7 +259,7 @@ layers:
     - ["", "", "", "", "", F10, F3, F2, F1, ""]
     - [{ type: held }, { type: held }, ⇧, ⎈, ⎇, "", "", F11, F6, F5]
     - [F4, "", "", "", "", "", ⌘, QK RBT, "", ""]
-    - ["", 🖈]
+    - ["", $$lock$$]
 
   EXT:
     - - { t: ▽, type: trans }
@@ -281,9 +281,9 @@ layers:
       - JIGGLE
       - ""
       - 🖰⇡
-      - ◧
+      - $$mouse_left_click$$
     - - 🖰↑
-      - ◨
+      - $$mouse_right_click$$
       - $$search$$
       - { t: ▽, type: trans }
       - OM SLOW
@@ -311,8 +311,8 @@ layers:
       - UC NEXT
       - { t: ▽, type: trans }
       - WBAK
-      - ◧
-    - [◧, 🖈]
+      - $$mouse_left_click$$
+    - [$$mouse_left_click$$, $$lock$$]
 
 combos:
   - { tk: [J, ","], k: ⇪, l: [STRDY], align: bottom }

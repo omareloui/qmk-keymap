@@ -62,9 +62,6 @@ The diagram uses glyphs instead of raw keycode names (mapped in `draw_config.yam
 | 🗎          | Paste                          |
 | ⎁          | Select All                     |
 | ⎀          | Select Line                    |
-| 🖈          | Layer Lock                     |
-| ◧          | Left Mouse Click               |
-| ◨          | Right Mouse Click              |
 | 🖰(↓ ↑ ⟲ ⟳) | Mouse Direction                |
 | 🖰(⇡ ⇣)     | Mouse Scroll                   |
 | ⟾          | Select Word Forwards           |
