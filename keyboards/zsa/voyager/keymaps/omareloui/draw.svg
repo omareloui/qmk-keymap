@@ -402,34 +402,34 @@ path.combo { stroke: #7f7f7f; }
 <text x="168" y="34" class="combo tap"><tspan style="font-size: 64%">PASTE_ENTER</tspan></text>
 </g>
 <g class="combo combopos-7">
-<path d="M683,173 h-61 a6.0,6.0 0 0 0 -6.0,6.0 v16" class="combo"/>
-<path d="M683,173 h95 a6.0,6.0 0 0 1 6.0,6.0 v21" class="combo"/>
-<rect rx="6" ry="6" x="663" y="160" width="40" height="26" class="combo"/>
-<text x="683" y="173" class="combo tap">TITLE</text>
-</g>
-<g class="combo combopos-8">
 <rect rx="6" ry="6" x="624" y="191" width="40" height="26" class="combo"/>
 <text x="644" y="204" class="combo tap">CAMEL</text>
 </g>
-<g class="combo combopos-9">
-<path d="M672,242 h-50 a6.0,6.0 0 0 1 -6.0,-6.0 v-4" class="combo"/>
-<path d="M672,242 h50 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<rect rx="6" ry="6" x="650" y="229" width="45" height="26" class="combo"/>
-<text x="672" y="242" class="combo tap">PASCAL</text>
-</g>
-<g class="combo combopos-10">
+<g class="combo combopos-8">
 <rect rx="6" ry="6" x="680" y="189" width="40" height="26" class="combo"/>
 <text x="700" y="202" class="combo tap">SNAKE</text>
 </g>
-<g class="combo combopos-11">
-<path d="M728,167 h-50 a6.0,6.0 0 0 0 -6.0,6.0 v4" class="combo"/>
-<path d="M728,167 h50 a6.0,6.0 0 0 1 6.0,6.0 v27" class="combo"/>
-<rect rx="6" ry="6" x="708" y="154" width="40" height="26" class="combo"/>
-<text x="728" y="167" class="combo tap">KEBAB</text>
-</g>
-<g class="combo combopos-12">
+<g class="combo combopos-9">
 <rect rx="6" ry="6" x="738" y="200" width="35" height="26" class="combo"/>
 <text x="756" y="213" class="combo tap">PATH</text>
+</g>
+<g class="combo combopos-10">
+<path d="M700,292 h-78 a6.0,6.0 0 0 1 -6.0,-6.0 v-55" class="combo"/>
+<path d="M700,292 h78 a6.0,6.0 0 0 0 6.0,-6.0 v-49" class="combo"/>
+<rect rx="6" ry="6" x="680" y="279" width="40" height="26" class="combo"/>
+<text x="700" y="292" class="combo tap">TITLE</text>
+</g>
+<g class="combo combopos-11">
+<path d="M650,264 h-28 a6.0,6.0 0 0 1 -6.0,-6.0 v-27" class="combo"/>
+<path d="M650,264 h72 a6.0,6.0 0 0 0 6.0,-6.0 v-32" class="combo"/>
+<rect rx="6" ry="6" x="627" y="251" width="45" height="26" class="combo"/>
+<text x="650" y="264" class="combo tap">PASCAL</text>
+</g>
+<g class="combo combopos-12">
+<path d="M756,270 h-78 a6.0,6.0 0 0 1 -6.0,-6.0 v-49" class="combo"/>
+<path d="M756,270 h22 a6.0,6.0 0 0 0 6.0,-6.0 v-27" class="combo"/>
+<rect rx="6" ry="6" x="736" y="257" width="40" height="26" class="combo"/>
+<text x="756" y="270" class="combo tap">KEBAB</text>
 </g>
 </g>
 </g>
