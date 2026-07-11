@@ -320,12 +320,12 @@ combos:
   - { tk: [C, P], k: DM_PLY1, l: [STRDY] }
   - { tk: [⎘, ⎁], k: PASTE_ENTER, l: [STRDY] }
 
-  - { tk: ["H", "'"], k: TITLE, l: [STRDY], align: top, slide: -0.2, offset: 0.2, w: 40 }
   - { tk: ["H", ","], k: CAMEL, l: [STRDY], w: 40 }
-  - { tk: ["H", "."], k: PASCAL, l: [STRDY], align: bottom, w: 45 }
   - { tk: [",", "."], k: SNAKE, l: [STRDY], w: 40 }
-  - { tk: [",", "'"], k: KEBAB, l: [STRDY], align: top, w: 40 }
   - { tk: [".", "'"], k: PATH, l: [STRDY], w: 35 }
+  - { tk: ["H", "'"], k: TITLE, l: [STRDY], align: bottom, offset: .8, w: 40 }
+  - { tk: ["H", "."], k: PASCAL, l: [STRDY], align: bottom, w: 45, slide: -0.4, offset: 0.4 }
+  - { tk: [",", "'"], k: KEBAB, l: [STRDY], align: bottom, w: 40, slide: 0.5, offset: 0.4 }
 
   - { tk: ["]", ">"], k: ->, l: [SYM] }
   - { tk: ["+", ">"], k: =>, l: [SYM], align: top }
