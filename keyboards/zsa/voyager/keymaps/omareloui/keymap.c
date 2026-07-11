@@ -208,7 +208,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ├─────┼─────┼─────┼─────┼─────┼─────┤             ├──────┼─────┼─────┼──────┼──────┼─────┤
 //    │     │  -  │  3  │  2  │  1  │  +  │             │  no  │ no  │  e  │ rctl │ lalt │     │
 //    ├─────┼─────┼─────┼─────┼─────┼─────┤             ├──────┼─────┼─────┼──────┼──────┼─────┤
-//    │     │  x  │  6  │  5  │  4  │  %  │             │  no  │ no  │  ,  │  .   │ lgui │     │
+//    │     │     │  6  │  5  │  4  │  %  │             │  no  │ no  │  ,  │  .   │ lgui │     │
 //    └─────┴─────┴─────┴─────┴─────┼─────┼─────┐   ┌───┼──────┼─────┴─────┴──────┴──────┴─────┘
 //                                  │     │     │   │ 0 │ lock │
 //                                  └─────┴─────┘   └───┴──────┘
@@ -216,7 +216,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______ , _______ , _______ , _______ , _______ , _______ ,                      _______ , _______ , _______ , _______ , _______ , _______,
   _______ , KC_SLSH , KC_9    , KC_8    , KC_7    , KC_ASTR ,                      XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , _______,
   _______ , KC_MINS , KC_3    , KC_2    , KC_1    , KC_PLUS ,                      XXXXXXX , XXXXXXX , KC_E    , KC_RCTL , KC_LALT , _______,
-  _______ , KC_X    , KC_6    , KC_5    , KC_4    , KC_PERC ,                      XXXXXXX , XXXXXXX , KC_COMM , KC_DOT  , KC_LGUI , _______,
+  _______ , _______ , KC_6    , KC_5    , KC_4    , KC_PERC ,                      XXXXXXX , XXXXXXX , KC_COMM , KC_DOT  , KC_LGUI , _______,
                                                     _______ , _______ ,     KC_0 , QK_LLCK
 ),
 
