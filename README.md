@@ -1,6 +1,8 @@
 # QMK Keymap
 
-Personal [QMK](https://qmk.fm) userspace for my [ZSA Voyager](https://www.zsa.io/voyager), built on the External Userspace template. It holds my keymap, config, and a couple of personal QMK community modules.
+Personal [QMK](https://qmk.fm) userspace for my [ZSA
+Voyager](https://www.zsa.io/voyager), built on the External Userspace template.
+It holds my keymap, config, and a couple of personal QMK community modules.
 
 ## Keyboard
 
@@ -9,7 +11,7 @@ Personal [QMK](https://qmk.fm) userspace for my [ZSA Voyager](https://www.zsa.io
 
 ## Layout
 
-![Voyager keymap layout](keyboards/zsa/voyager/keymaps/omareloui/draw.svg)
+[![Voyager keymap layout](keyboards/zsa/voyager/keymaps/omareloui/draw.svg)](keyboards/zsa/voyager/keymaps/omareloui/draw_keymap.yaml)
 
 (Rendered with [keymap-drawer](https://github.com/caksoylar/keymap-drawer))
 
@@ -71,6 +73,7 @@ The diagram uses glyphs instead of raw keycode names (mapped in `draw_config.yam
 | ⎙          | Print screen                   |
 | ▶⏸         | Play/Pause media               |
 | ▶❘         | Next media                     |
+| ⌕          | Search selected in new tab     |
 
 ## Modules
 

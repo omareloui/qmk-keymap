@@ -124,7 +124,7 @@ layers:
       - ↖
     - - ↑
       - ↘
-      - SRCHSEL
+      - $$search$$
       - { t: ▽, type: trans }
       - { t: ▽, type: trans }
       - ⎇
@@ -226,7 +226,7 @@ layers:
       - 🕨
       - 🕩
       - 🕪
-      - MUTEMIC
+      - $$mute_mic$$
       - ""
       - ""
     - ["", "", "", "", RM RND, RM HUEU, ⌘+3, ⌘+2, ⌘+1, ⌘+D]
@@ -284,7 +284,7 @@ layers:
       - ◧
     - - 🖰↑
       - ◨
-      - SRCHSEL
+      - $$search$$
       - { t: ▽, type: trans }
       - OM SLOW
       - ⎇
