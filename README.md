@@ -57,7 +57,7 @@ The diagram uses glyphs instead of raw keycode names (mapped in `draw_config.yam
 | ⟲          | Repeat Key                     |
 | ⧉          | Copy                           |
 | ✂          | Cut                            |
-| ⎘          | Paste                          |
+| 🗎          | Paste                          |
 | ⎁          | Select All                     |
 | ⎀          | Select Line                    |
 | 🖈          | Layer Lock                     |
@@ -69,6 +69,8 @@ The diagram uses glyphs instead of raw keycode names (mapped in `draw_config.yam
 | ⟽          | Select Word Backwards          |
 | ⎌          | Undo                           |
 | ⎙          | Print screen                   |
+| ▶⏸         | Play/Pause media               |
+| ▶❘         | Next media                     |
 
 ## Modules
 
