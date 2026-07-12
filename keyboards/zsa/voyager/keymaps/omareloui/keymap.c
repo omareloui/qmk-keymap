@@ -891,6 +891,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     switch (keycode) {
+        // When the Repeat key follows Space, it behaves as one-shot shift.
+        case KC_SPC:
+            if (get_repeat_key_count() > 0) {
+                if (record->event.pressed) {
+                    add_oneshot_mods(MOD_LSFT);
+                    register_mods(MOD_LSFT);
+                } else {
+                    unregister_mods(MOD_LSFT);
+                }
+                return false;
+            }
+            break;
+
         // Behavior:
         //  * Unmodified:       _ (KC_UNDS)
         //  * With Shift:       - (KC_MINS)
