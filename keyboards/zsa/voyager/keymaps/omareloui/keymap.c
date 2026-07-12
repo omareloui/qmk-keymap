@@ -992,6 +992,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return true;
 
+        // Hold behavior: switches to SYM layer.
+        // Tap behavior:
+        //  * Unmodified:       T
+        //  * With Left Shift:  Ctrl + NAV layer
         case HRM_T:
             if (!record->tap.count) {
                 if (record->event.pressed) {
