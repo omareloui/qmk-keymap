@@ -3,10 +3,7 @@
 // Copyright 2025 Omar Eloui  (@omareloui) <contact@omareloui.com>
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include "palettefx.h"
 #include "quantum.h"
-#include "report.h"
-#include QMK_KEYBOARD_H
 
 enum layers {
     STRDY,
@@ -810,25 +807,25 @@ static void lighting_set_palette(uint8_t palette) {
         lumino_cycle_3_state();
     }
 #    endif // COMMUNITY_MODULE_LUMINO_ENABLE
-    rgb_matrix_sethsv_noeeprom(RGB_MATRIX_HUE_STEP * palette, 255, 255);
     rgb_matrix_enable_noeeprom();
+    rgb_matrix_sethsv_noeeprom(RGB_MATRIX_HUE_STEP * palette, 255, rgb_matrix_get_val());
 }
 
 static void lighting_preset(uint8_t effect, uint8_t palette) {
-    rgb_matrix_mode_noeeprom(effect);
     lighting_set_palette(palette);
-    rgb_matrix_set_speed_noeeprom(128);
+    rgb_matrix_mode_noeeprom(effect);
+    rgb_matrix_set_speed_noeeprom(60);
 }
 #endif // RGB_MATRIX_ENABLE
 
 ///////////////////////////////////////////////////////////////////////////////
 // User macro callbacks (https://docs.qmk.fm/feature_macros)
 ///////////////////////////////////////////////////////////////////////////////
+#if COMMUNITY_MODULE_PALETTEFX_ENABLE
 void keyboard_post_init_user(void) {
-#if RGB_MATRIX_ENABLE
-    lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_FLOW, PALETTEFX_SYNTHWAVE);
-#endif // RGB_MATRIX_ENABLE
+    lighting_preset(RGB_MATRIX_COMMUNITY_MODULE_PALETTEFX_FLOW, PALETTEFX_SYNTHWAVE);
 }
+#endif // COMMUNITY_MODULE_PALETTEFX_ENABLE
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Track whether the left home ring and index keys are held, ignoring layer.
@@ -1149,21 +1146,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
 #endif // COMMUNITY_MODULE_LUMINO_ENABLE
 
-#if RGB_MATRIX_ENABLE
+#if COMMUNITY_MODULE_PALETTEFX_ENABLE
             case RM_RND: {
                 uint8_t h = (UINT16_C(17099) * timer_read()) >> 8;
-                lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_FLOW, h);
+                lighting_preset(RGB_MATRIX_COMMUNITY_MODULE_PALETTEFX_FLOW, h);
                 return false;
             }
 
             case RM_DEF1:
-                lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_FLOW, PALETTEFX_SYNTHWAVE);
+                lighting_preset(RGB_MATRIX_COMMUNITY_MODULE_PALETTEFX_FLOW, PALETTEFX_SYNTHWAVE);
                 return false;
 
             case RM_DEF2:
-                lighting_preset(RGB_MATRIX_CUSTOM_PALETTEFX_RIPPLE, PALETTEFX_WATERMELON);
+                lighting_preset(RGB_MATRIX_COMMUNITY_MODULE_PALETTEFX_RIPPLE, PALETTEFX_WATERMELON);
                 return false;
-#endif // RGB_MATRIX_ENABLE
+#endif // COMMUNITY_MODULE_PALETTEFX_ENABLE
         }
     }
 

@@ -132,6 +132,8 @@ qmk userspace-compile
 
 This pulls in the `modules/getreuer` submodule automatically — run `git submodule update --init --recursive` first if you cloned without `--recurse-submodules`.
 
+You can use `git submodule update --remote --recursive` to pull in updates from the upstream `getreuer/qmk-modules` repo.
+
 There's also a `.devcontainer` (based on `ghcr.io/qmk/qmk_cli`) if you'd rather build inside VS Code / Codespaces without installing the toolchain locally.
 
 **Via GitHub Actions:**
