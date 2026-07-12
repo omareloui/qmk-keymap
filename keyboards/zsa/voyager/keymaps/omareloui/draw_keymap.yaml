@@ -278,7 +278,7 @@ layers:
       - ""
       - ""
       - ""
-      - JIGGLE
+      - $$mouse_jiggle$$
       - ""
       - $$mouse_scroll_up$$
       - $$mouse_left_click$$
