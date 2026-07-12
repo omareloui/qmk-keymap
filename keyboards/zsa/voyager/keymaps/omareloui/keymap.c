@@ -53,9 +53,7 @@ enum custom_keycodes {
     M_INCLUDE,
     M_NBSP,
     M_UPDIR,
-    M_BRC,
     M_ABK,
-    M_CBR,
     M_PRN,
     M_NOOP,
 
@@ -685,12 +683,8 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
             case KC_GRV: // ` -> ``<cursor>``` (for Markdown code)
                 return M_MKGRVS;
 
-            case KC_LBRC:
-                return M_BRC; // [ -> ]
             case KC_LABK:
                 return M_ABK; // < -> >
-            case KC_LCBR:
-                return M_CBR; // { -> }
             case KC_LPRN:
                 return M_PRN; // ( -> )
 
@@ -1071,7 +1065,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
 
             case PASTE_ENTER:
-                SEND_STRING(SS_LCTL("v") SS_TAP(X_ENTER));
+                SEND_STRING_DELAY(SS_LCTL("v") SS_TAP(X_ENTER), TAP_CODE_DELAY);
                 break;
 
             // Symbols
@@ -1124,12 +1118,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 break;
             case M_ABK:
                 SEND_STRING(/*<*/ ">");
-                break;
-            case M_BRC:
-                SEND_STRING(/*[*/ "]");
-                break;
-            case M_CBR:
-                SEND_STRING(/*{*/ "}");
                 break;
             case M_PRN:
                 SEND_STRING(/*(*/ ")");
