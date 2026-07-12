@@ -306,7 +306,7 @@ layers:
       - ✂
       - O ID
       - O EMAIL
-      - O SEC
+      - EMAIL
       - UC PREV
       - UC NEXT
       - { t: ▽, type: trans }
