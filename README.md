@@ -83,6 +83,7 @@ Community modules pulled in via `.gitmodules` and declared in `keymap.json`:
 - **PaletteFx** – RGB matrix effects/palettes, all effects and palettes enabled
 - **Orbital Mouse** – joystick-style cursor movement from a key cluster, with a custom speed curve
 - **Mouse Turbo Click** – auto-repeating mouse clicks (`TURBO`, used on the `GAME` layer)
+- **Cyclotab** – tab/window switching with a single key
 
 **Own module (`modules/omareloui/xcase`):**
 
