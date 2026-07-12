@@ -286,7 +286,7 @@ layers:
       - $$mouse_right_click$$
       - $$search$$
       - { t: ▽, type: trans }
-      - OM SLOW
+    - - { t: ▽, type: trans }
       - ⎇
       - ⎈
       - ⇧
