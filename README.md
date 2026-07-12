@@ -34,43 +34,41 @@ Home row mods use **Chordal Hold** and **tapping term**.
 
 The diagram uses glyphs instead of raw keycode names (mapped in `draw_config.yaml`'s `qmk_keycode_map`). Reference for reading it:
 
-| Symbol     | Meaning                        |
-| ---------- | ------------------------------ |
-| ↵          | Enter                          |
-| ␣          | Space                          |
-| ⎋          | Escape                         |
-| ⌫          | Backspace                      |
-| ⌦          | Delete                         |
-| ⇥          | Tab                            |
-| ⎈          | Ctrl (left/right)              |
-| ⇧          | Shift (left/right)             |
-| ⎇          | Alt (left/right)               |
-| ⌘          | GUI / Super / Cmd (left/right) |
-| ⇪          | Caps Word                      |
-| ⇞          | Page Up                        |
-| ⇟          | Page Down                      |
-| ↖          | Home                           |
-| ↘          | End                            |
-| ← ↓ → ↑    | Arrow keys                     |
-| 🕪          | Volume Up                      |
-| 🕩          | Volume Down                    |
-| 🕨          | Mute                           |
-| ★          | Magic key                      |
-| ⟲          | Repeat Key                     |
-| ⧉          | Copy                           |
-| ✂          | Cut                            |
-| 🗎          | Paste                          |
-| ⎁          | Select All                     |
-| ⎀          | Select Line                    |
-| 🖰(↓ ↑ ⟲ ⟳) | Mouse Direction                |
-| 🖰(⇡ ⇣)     | Mouse Scroll                   |
-| ⟾          | Select Word Forwards           |
-| ⟽          | Select Word Backwards          |
-| ⎌          | Undo                           |
-| ⎙          | Print screen                   |
-| ▶⏸         | Play/Pause media               |
-| ▶❘         | Next media                     |
-| ⌕          | Search selected in new tab     |
+| Symbol  | Meaning                        |
+| ------- | ------------------------------ |
+| ↵       | Enter                          |
+| ␣       | Space                          |
+| ⎋       | Escape                         |
+| ⌫       | Backspace                      |
+| ⌦       | Delete                         |
+| ⇥       | Tab                            |
+| ⎈       | Ctrl (left/right)              |
+| ⇧       | Shift (left/right)             |
+| ⎇       | Alt (left/right)               |
+| ⌘       | GUI / Super / Cmd (left/right) |
+| ⇪       | Caps Word                      |
+| ⇞       | Page Up                        |
+| ⇟       | Page Down                      |
+| ↖       | Home                           |
+| ↘       | End                            |
+| ← ↓ → ↑ | Arrow keys                     |
+| 🕪       | Volume Up                      |
+| 🕩       | Volume Down                    |
+| 🕨       | Mute                           |
+| ★       | Magic key                      |
+| ⟲       | Repeat Key                     |
+| ⧉       | Copy                           |
+| ✂       | Cut                            |
+| 🗎       | Paste                          |
+| ⎁       | Select All                     |
+| ⎀       | Select Line                    |
+| ⟾       | Select Word Forwards           |
+| ⟽       | Select Word Backwards          |
+| ⎌       | Undo                           |
+| ⎙       | Print screen                   |
+| ▶⏸      | Play/Pause media               |
+| ▶❘      | Next media                     |
+| ⌕       | Search selected in new tab     |
 
 ## Modules
 

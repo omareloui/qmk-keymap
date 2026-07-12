@@ -280,9 +280,9 @@ layers:
       - ""
       - JIGGLE
       - ""
-      - 🖰⇡
+      - $$mouse_scroll_up$$
       - $$mouse_left_click$$
-    - - 🖰↑
+    - - $$mouse_move_up$$
       - $$mouse_right_click$$
       - $$search$$
       - { t: ▽, type: trans }
@@ -292,10 +292,10 @@ layers:
       - ⇧
       - ⎀
       - ""
-    - - 🖰⇣
-      - 🖰⟲
-      - 🖰↓
-      - 🖰⟳
+    - - $$mouse_scroll_down$$
+      - $$mouse_rotate_left$$
+      - $$mouse_move_down$$
+      - $$mouse_rotate_right$$
       - OM SLOW
       - { t: ▽, type: trans }
       - { t: ▽, type: held }
