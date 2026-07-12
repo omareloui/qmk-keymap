@@ -808,7 +808,7 @@ void xcase_set_user(bool active) {
 ///////////////////////////////////////////////////////////////////////////////
 // RGB Matrix Lighting (https://docs.qmk.fm/features/rgb_matrix)
 ///////////////////////////////////////////////////////////////////////////////
-#if RGB_MATRIX_ENABLE
+#if COMMUNITY_MODULE_PALETTEFX_ENABLE
 static void lighting_set_palette(uint8_t palette) {
 #    ifdef COMMUNITY_MODULE_LUMINO_ENABLE
     if (lumino_get_value() == 0) {
@@ -824,7 +824,7 @@ static void lighting_preset(uint8_t effect, uint8_t palette) {
     rgb_matrix_mode_noeeprom(effect);
     rgb_matrix_set_speed_noeeprom(60);
 }
-#endif // RGB_MATRIX_ENABLE
+#endif // COMMUNITY_MODULE_PALETTEFX_ENABLE
 
 ///////////////////////////////////////////////////////////////////////////////
 // User macro callbacks (https://docs.qmk.fm/feature_macros)
