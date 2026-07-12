@@ -7,7 +7,7 @@ It holds my keymap, config, and a couple of personal QMK community modules.
 ## Keyboard
 
 - **Board:** ZSA Voyager (`zsa/voyager`)
-- **Base layout:** Magic Sturdy (inspired from [getreuer](https://github.com/getreuer/qmk-keymap)'s)
+- **Base layout:** Magic Sturdy (inspired from [getreuer](https://github.com/getreuer/qmk-keymap)'s keymaps)
 
 ## Layout
 
