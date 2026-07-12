@@ -354,6 +354,15 @@ const custom_shift_key_t custom_shift_keys[] = {
 #endif // COMMUNITY_MODULE_CUSTOM_SHIFT_KEYS_ENABLE
 
 ///////////////////////////////////////////////////////////////////////////////
+// Speculative hold (https://docs.qmk.fm/tap_hold#speculative-hold)
+///////////////////////////////////////////////////////////////////////////////
+#ifdef SPECULATIVE_HOLD
+bool get_speculative_hold(uint16_t keycode, keyrecord_t *record) {
+    return true; // Enable for all mods.
+}
+#endif // SPECULATIVE_HOLD
+
+///////////////////////////////////////////////////////////////////////////////
 // Autocorrect (https://docs.qmk.fm/features/autocorrect)
 ///////////////////////////////////////////////////////////////////////////////
 #ifdef AUTOCORRECT_ENABLE
@@ -460,7 +469,6 @@ char sentence_case_press_user(uint16_t keycode, keyrecord_t *record, uint8_t mod
 
             case KC_SPC:
                 return ' '; // Space key.
-
             case KC_QUOT:
             case KC_DQUO:
                 return '\''; // Quote key.
