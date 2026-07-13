@@ -239,7 +239,7 @@ layers:
       - { type: held }
       - ""
       - ⌘+↵
-      - { t: ▶⏸, s: ▶❘ }
+      - { t: $$play_pause_media$$, s: $$next_media$$ }
       - ⌘+␣
     - - { t: ▽, type: trans }
       - $$lock$$
