@@ -223,10 +223,10 @@ layers:
       - { t: ▽, type: trans }
       - RM DEF1
       - RM DEF2
-      - 🕨
-      - 🕩
-      - 🕪
-      - $$mute_mic$$
+      - $$volume_mute$$
+      - $$volume_down$$
+      - $$volume_up$$
+      - $$mic_mute$$
       - ""
       - ""
     - ["", "", "", "", RM RND, RM HUEU, ⌘+3, ⌘+2, ⌘+1, ⌘+D]
