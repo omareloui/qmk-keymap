@@ -236,3 +236,41 @@ parse_config:
     PASTE: ⎘
     SELALL: ⎁
     SELLINE: ⎀
+    SRCHSEL: $$search$$
+    OM_BTN1: $$mouse_left_click$$
+    OM_BTN2: $$mouse_right_click$$
+    OM_W_U: $$mouse_scroll_up$$
+    OM_U: $$mouse_move_up$$
+    OM_W_D: $$mouse_scroll_down$$
+    OM_L: $$mouse_rotate_left$$
+    OM_D: $$mouse_move_down$$
+    OM_R: $$mouse_rotate_right$$
+    HRM_S: { t: S, h: ⎇ }
+    HRM_T: { t: T, h: SYM }
+    HRM_R: { t: R, h: ⇧ }
+    HRM_D: { t: D, h: NAV }
+    HRM_N: { t: N, h: NUM }
+    HRM_E: { t: E, h: ⇧ }
+    HRM_A: { t: A, h: SYM }
+    HRM_I: { t: I, h: ⎇ }
+    HRM_QUO: { t: "'", h: ⌘ }
+    HRM_DOT: { t: ".", s: "?", h: WIN }
+    HRM_H: { t: H, h: ⎈ }
+    HRM_G: { t: G, h: ⎈ }
+    HRM_X: { t: X, h: ⌘ }
+    EXT_COL: { t: ":", h: EXT }
+    QK_LLCK: $$lock$$
+    WREF: ⎈+R
+    WWW_PRV_TAB: ⎈+⇞
+    WWW_NXT_TAB: ⎈+⇟
+    PSCR: ⎙
+    UNDO: ⎌
+    SELWBAK: ⟽
+    SELWORD: ⟾
+    KC_MUTE: 🕨
+    KC_VOLD: 🕩
+    KC_VOLU: 🕪
+    MUTEMIC: $$mute_mic$$
+    KC_MPLY: { t: ▶⏸, s: ▶❘ }
+    QK_RBT: reboot
+    JIGGLE: $$mouse_jiggle$$

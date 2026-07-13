@@ -258,7 +258,7 @@ layers:
     - ["", "", "", F12, F9, F8, F7, "", "", ""]
     - ["", "", "", "", "", F10, F3, F2, F1, ""]
     - [{ type: held }, { type: held }, ⇧, ⎈, ⎇, "", "", F11, F6, F5]
-    - [F4, "", "", "", "", "", ⌘, QK RBT, "", ""]
+    - [F4, "", "", "", "", "", ⌘, reboot, "", ""]
     - ["", $$lock$$]
 
   EXT:
@@ -322,6 +322,7 @@ combos:
   - { tk: [Y, D], k: REC, l: [STRDY] }
   - { tk: [C, P], k: PLY, l: [STRDY] }
   - { tk: [🗎, ⎁], k: 🗎+↵, l: [STRDY] }
+  - { tk: [T, R], k: ⎈+NAV, l: [STRDY] }
 
   - { tk: ["H", ","], k: CAMEL, l: [STRDY], w: 40 }
   - { tk: [",", "."], k: SNAKE, l: [STRDY], w: 40 }
