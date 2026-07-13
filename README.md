@@ -13,8 +13,6 @@ It holds my keymap, config, and a couple of personal QMK community modules.
 
 [![Voyager keymap layout](keyboards/zsa/voyager/keymaps/omareloui/draw.svg)](keyboards/zsa/voyager/keymaps/omareloui/draw_keymap.yaml)
 
-(Rendered with [keymap-drawer](https://github.com/caksoylar/keymap-drawer))
-
 Layers, in order:
 
 | Layer   | Purpose                                                                     |
