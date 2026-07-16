@@ -1,13 +1,11 @@
 # QMK Keymap
 
-Personal [QMK](https://qmk.fm) userspace for my [ZSA
-Voyager](https://www.zsa.io/voyager), built on the External Userspace template.
-It holds my keymap, config, and a couple of personal QMK community modules.
+Personal [QMK](https://qmk.fm) userspace for my [ZSA Voyager](https://www.zsa.io/voyager) inspired from [getreuer](https://github.com/getreuer/qmk-keymap)'s keymaps.
 
 ## Keyboard
 
 - **Board:** ZSA Voyager (`zsa/voyager`)
-- **Base layout:** Magic Sturdy (inspired from [getreuer](https://github.com/getreuer/qmk-keymap)'s keymaps)
+- **Base layout:** [Magic Sturdy](https://github.com/Ikcelaks/keyboard_layouts/blob/main/magic_sturdy/magic_sturdy.md) with [getreuer's mods](https://getreuer.info/posts/keyboards/alt-layouts/index.html#magic-sturdy)
 
 ## Layout
 
@@ -28,33 +26,63 @@ Layers, in order:
 
 Home row mods use **Chordal Hold** and **tapping term**.
 
+### Magic keys
+
+#### Magic Keys in Base Layer
+
+|     |              |              |              |              |              |              |              |              |              |              |              |              |              |
+| --- | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |
+| key | <kbd>A</kbd> | <kbd>O</kbd> | <kbd>U</kbd> | <kbd>E</kbd> | <kbd>C</kbd> | <kbd>D</kbd> | <kbd>G</kbd> | <kbd>P</kbd> | <kbd>Y</kbd> | <kbd>K</kbd> | <kbd>L</kbd> | <kbd>R</kbd> | <kbd>S</kbd> |
+| ★   | <kbd>O</kbd> | <kbd>A</kbd> | <kbd>E</kbd> | <kbd>U</kbd> | <kbd>Y</kbd> | <kbd>Y</kbd> | <kbd>Y</kbd> | <kbd>Y</kbd> | <kbd>P</kbd> | <kbd>J</kbd> | <kbd>k</kbd> | <kbd>L</kbd> | <kbd>K</kbd> |
+| ⟲   | <kbd>N</kbd> | <kbd>N</kbd> |              | <kbd>N</kbd> |              | <kbd>N</kbd> |              |              |              |              |              |              |              |
+
+|     |               |                |                |                 |                |                           |
+| --- | ------------- | -------------- | -------------- | --------------- | -------------- | ------------------------- |
+| key | <kbd>I</kbd>  | <kbd>Q</kbd>   | <kbd>M</kbd>   | <kbd>T</kbd>    | <kbd>␣</kbd>   | <kbd>⇧</kbd>+<kbd>I</kbd> |
+| ★   | <kbd>ON</kbd> | <kbd>UEN</kbd> | <kbd>ENT</kbd> | <kbd>MENT</kbd> | <kbd>THE</kbd> | <kbd>'</kbd>              |
+| ⟲   | <kbd>S</kbd>  | <kbd>C</kbd>   | <kbd>S</kbd>   | <kbd>S</kbd>    | <kbd>N</kbd>   |                           |
+
+#### Magic Keys in Symbols Layer
+
+|     |              |              |              |                |               |               |                                                                                                                                               |
+| --- | ------------ | ------------ | ------------ | -------------- | ------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| key | <kbd>(</kbd> | <kbd>[</kbd> | <kbd><</kbd> | <kbd>.</kbd>   | <kbd>=</kbd>  | <kbd>!</kbd>  | <kbd>+</kbd>, <kbd>-</kbd>, <kbd>\*</kbd>, <kbd>%</kbd>, <kbd>\|</kbd>, <kbd>^</kbd>, <kbd>~</kbd>, <kbd>$</kbd>, <kbd>\_</kbd>, <kbd>:</kbd> |
+| ★   | <kbd>)</kbd> | <kbd>]</kbd> | <kbd>></kbd> | <kbd>./</kbd>  | <kbd>==</kbd> | <kbd>==</kbd> | <kbd>=</kbd>                                                                                                                                  |
+| ⟲   |              |              |              | <kbd>../</kbd> |               |               |                                                                                                                                               |
+
+|     |                           |                             |                    |                  |                    |
+| --- | ------------------------- | --------------------------- | ------------------ | ---------------- | ------------------ |
+| key | <kbd>"</kbd>              | <kbd>`</kbd>                | <kbd>#</kbd>       | <kbd>&</kbd>     | <kbd>@</kbd>       |
+| ★   | <kbd>""\<cursor>"""</kbd> | <kbd>``↵\<cursor>↵```</kbd> | <kbd>include</kbd> | <kbd>nbsp;</kbd> | <kbd>USRNAME</kbd> |
+| ⟲   |                           |                             |                    |                  |                    |
+
 ### Legend
 
 The diagram uses glyphs instead of raw keycode names (mapped in `draw_config.yaml`'s `qmk_keycode_map`). Reference for reading it:
 
-| Symbol | Meaning                        |
-| ------ | ------------------------------ |
-| ★      | Magic key                      |
-| ⟲      | Repeat Key                     |
-| ⎈      | Ctrl (left/right)              |
-| ⇧      | Shift (left/right)             |
-| ⎇      | Alt (left/right)               |
-| ⌘      | GUI / Super / Cmd (left/right) |
-| ⇪      | Caps Word                      |
-| ⇞      | Page Up                        |
-| ⇟      | Page Down                      |
-| ↖      | Home                           |
-| ↘      | End                            |
-| ⧉      | Copy                           |
-| ✂      | Cut                            |
-| 🗎      | Paste                          |
-| ⎁      | Select All                     |
-| ⎀      | Select Line                    |
-| ⟾      | Select Word Forwards           |
-| ⟽      | Select Word Backwards          |
-| ⎌      | Undo                           |
-| ⎙      | Print screen                   |
-| ⌕      | Search selected in new tab     |
+| Symbol       | Meaning                        |
+| ------------ | ------------------------------ |
+| <kbd>★</kbd> | Magic key                      |
+| <kbd>⟲</kbd> | Repeat Key                     |
+| <kbd>⎈</kbd> | Ctrl (left/right)              |
+| <kbd>⇧</kbd> | Shift (left/right)             |
+| <kbd>⎇</kbd> | Alt (left/right)               |
+| <kbd>⌘</kbd> | GUI / Super / Cmd (left/right) |
+| <kbd>⇪</kbd> | Caps Word                      |
+| <kbd>⇞</kbd> | Page Up                        |
+| <kbd>⇟</kbd> | Page Down                      |
+| <kbd>↖</kbd> | Home                           |
+| <kbd>↘</kbd> | End                            |
+| <kbd>⧉</kbd> | Copy                           |
+| <kbd>✂</kbd> | Cut                            |
+| <kbd>🗎</kbd> | Paste                          |
+| <kbd>⎁</kbd> | Select All                     |
+| <kbd>⎀</kbd> | Select Line                    |
+| <kbd>⟾</kbd> | Select Word Forwards           |
+| <kbd>⟽</kbd> | Select Word Backwards          |
+| <kbd>⎌</kbd> | Undo                           |
+| <kbd>⎙</kbd> | Print screen                   |
+| <kbd>⌕</kbd> | Search selected in new tab     |
 
 ## Modules
 
