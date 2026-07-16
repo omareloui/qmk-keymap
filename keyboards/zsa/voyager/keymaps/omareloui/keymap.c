@@ -703,6 +703,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
             case KC_DLR:  // $ -> =
             case KC_UNDS: // _ -> =
             case KC_COLN: // : -> =
+            case EXT_COL: // : -> =
                 return KC_EQL;
 
             case KC_F:
