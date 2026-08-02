@@ -11,6 +11,8 @@
     "getreuer/orbital_mouse",
     "getreuer/mouse_turbo_click",
 
+    "zsa/navigator_trackball",
+
     "omareloui/xcase"
   ]
 }
