@@ -127,23 +127,23 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-//    ┌─────────┬─────────┬───────┬────────┬───────┬───────────────┐                  ┌─────────┬───────┬───────┬─────────┬─────────┬──────────┐
-//    │    `    │ SELLINE │ PASTE │ SELALL │ COPY  │ TT(NAVIGATOR) │                  │ OM_BTN1 │ home  │ left  │  rght   │   end   │ TG(GAME) │
-//    ├─────────┼─────────┼───────┼────────┼───────┼───────────────┤                  ├─────────┼───────┼───────┼─────────┼─────────┼──────────┤
-//    │   tab   │    v    │   m   │   l    │   c   │       p       │                  │    b    │ MAGIC │   u   │    o    │    q    │    /     │
-//    ├─────────┼─────────┼───────┼────────┼───────┼───────────────┤                  ├─────────┼───────┼───────┼─────────┼─────────┼──────────┤
-//    │  bspc   │  HRM_S  │ HRM_T │ HRM_R  │ HRM_D │       y       │                  │    f    │ HRM_N │ HRM_E │  HRM_A  │  HRM_I  │    -     │
-//    ├─────────┼─────────┼───────┼────────┼───────┼───────────────┤                  ├─────────┼───────┼───────┼─────────┼─────────┼──────────┤
-//    │ EXT_COL │  HRM_X  │   k   │   j    │ HRM_G │       w       │                  │    z    │ HRM_H │   ,   │ HRM_DOT │ HRM_QUO │   ent    │
-//    └─────────┴─────────┴───────┴────────┴───────┼───────────────┼─────┐   ┌────────┼─────────┼───────┴───────┴─────────┴─────────┴──────────┘
-//                                                 │       _       │ spc │   │ QK_REP │   esc   │
-//                                                 └───────────────┴─────┘   └────────┴─────────┘
+//    ┌─────────┬─────────┬───────┬────────┬───────┬─────────┐                  ┌───────────────┬───────┬───────┬─────────┬─────────┬──────────┐
+//    │    `    │ SELLINE │ PASTE │ SELALL │ COPY  │ OM_BTN1 │                  │ TT(NAVIGATOR) │ home  │ left  │  rght   │   end   │ TG(GAME) │
+//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├───────────────┼───────┼───────┼─────────┼─────────┼──────────┤
+//    │   tab   │    v    │   m   │   l    │   c   │    p    │                  │       b       │ MAGIC │   u   │    o    │    q    │    /     │
+//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├───────────────┼───────┼───────┼─────────┼─────────┼──────────┤
+//    │  bspc   │  HRM_S  │ HRM_T │ HRM_R  │ HRM_D │    y    │                  │       f       │ HRM_N │ HRM_E │  HRM_A  │  HRM_I  │    -     │
+//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├───────────────┼───────┼───────┼─────────┼─────────┼──────────┤
+//    │ EXT_COL │  HRM_X  │   k   │   j    │ HRM_G │    w    │                  │       z       │ HRM_H │   ,   │ HRM_DOT │ HRM_QUO │   ent    │
+//    └─────────┴─────────┴───────┴────────┴───────┼─────────┼─────┐   ┌────────┼───────────────┼───────┴───────┴─────────┴─────────┴──────────┘
+//                                                 │    _    │ spc │   │ QK_REP │      esc      │
+//                                                 └─────────┴─────┘   └────────┴───────────────┘
 [STRDY] = LAYOUT(
-  KC_GRV  , SELLINE , PASTE , SELALL , COPY  , TT(NAVIGATOR) ,                       OM_BTN1 , KC_HOME , KC_LEFT , KC_RGHT , KC_END  , TG(GAME),
-  KC_TAB  , KC_V    , KC_M  , KC_L   , KC_C  , KC_P          ,                       KC_B    , MAGIC   , KC_U    , KC_O    , KC_Q    , KC_SLSH ,
-  KC_BSPC , HRM_S   , HRM_T , HRM_R  , HRM_D , KC_Y          ,                       KC_F    , HRM_N   , HRM_E   , HRM_A   , HRM_I   , KC_MINS ,
-  EXT_COL , HRM_X   , KC_K  , KC_J   , HRM_G , KC_W          ,                       KC_Z    , HRM_H   , KC_COMM , HRM_DOT , HRM_QUO , KC_ENT  ,
-                                               KC_UNDS       , KC_SPC ,     QK_REP , KC_ESC
+  KC_GRV  , SELLINE , PASTE , SELALL , COPY  , OM_BTN1 ,                       TT(NAVIGATOR) , KC_HOME , KC_LEFT , KC_RGHT , KC_END  , TG(GAME),
+  KC_TAB  , KC_V    , KC_M  , KC_L   , KC_C  , KC_P    ,                       KC_B          , MAGIC   , KC_U    , KC_O    , KC_Q    , KC_SLSH ,
+  KC_BSPC , HRM_S   , HRM_T , HRM_R  , HRM_D , KC_Y    ,                       KC_F          , HRM_N   , HRM_E   , HRM_A   , HRM_I   , KC_MINS ,
+  EXT_COL , HRM_X   , KC_K  , KC_J   , HRM_G , KC_W    ,                       KC_Z          , HRM_H   , KC_COMM , HRM_DOT , HRM_QUO , KC_ENT  ,
+                                               KC_UNDS , KC_SPC ,     QK_REP , KC_ESC
 ),
 
 //    ┌──────┬──────┬──────┬──────┬──────┬───────┐              ┌────┬────┬────┬────┬────┬──────────┐
@@ -165,23 +165,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     TURBO   , KC_SPC ,     XXXXXXX , XXXXXXX
 ),
 
-//    ┌─────┬───────────┬─────────────┬───────────┬──────────┬───────────────┐              ┌─────┬─────┬─────┬─────┬─────┬─────┐
-//    │     │           │             │           │          │ TT(NAVIGATOR) │              │     │     │     │     │     │     │
-//    ├─────┼───────────┼─────────────┼───────────┼──────────┼───────────────┤              ├─────┼─────┼─────┼─────┼─────┼─────┤
-//    │ no  │    no     │   NAV_CLR   │ NAV_DCPI  │ NAV_ICPI │      no       │              │ no  │     │     │     │     │     │
-//    ├─────┼───────────┼─────────────┼───────────┼──────────┼───────────────┤              ├─────┼─────┼─────┼─────┼─────┼─────┤
-//    │ no  │    no     │   MS_BTN3   │  MS_BTN2  │ MS_BTN1  │      no       │              │ no  │     │     │     │     │     │
-//    ├─────┼───────────┼─────────────┼───────────┼──────────┼───────────────┤              ├─────┼─────┼─────┼─────┼─────┼─────┤
-//    │ no  │ NAV_VSCRL │ DRAG_SCROLL │ NAV_TURBO │ NAV_AIM  │      no       │              │ no  │     │     │     │     │     │
-//    └─────┴───────────┴─────────────┴───────────┴──────────┼───────────────┼─────┐   ┌────┼─────┼─────┴─────┴─────┴─────┴─────┘
-//                                                           │               │     │   │ no │ no  │
-//                                                           └───────────────┴─────┘   └────┴─────┘
+//    ┌─────┬───────────┬─────────────┬───────────┬──────────┬─────┐              ┌───────────────┬─────┬─────┬─────┬─────┬─────┐
+//    │     │           │             │           │          │     │              │ TT(NAVIGATOR) │     │     │     │     │     │
+//    ├─────┼───────────┼─────────────┼───────────┼──────────┼─────┤              ├───────────────┼─────┼─────┼─────┼─────┼─────┤
+//    │ no  │    no     │   NAV_CLR   │ NAV_DCPI  │ NAV_ICPI │ no  │              │      no       │     │     │     │     │     │
+//    ├─────┼───────────┼─────────────┼───────────┼──────────┼─────┤              ├───────────────┼─────┼─────┼─────┼─────┼─────┤
+//    │ no  │    no     │   MS_BTN3   │  MS_BTN2  │ MS_BTN1  │ no  │              │      no       │     │     │     │     │     │
+//    ├─────┼───────────┼─────────────┼───────────┼──────────┼─────┤              ├───────────────┼─────┼─────┼─────┼─────┼─────┤
+//    │ no  │ NAV_VSCRL │ DRAG_SCROLL │ NAV_TURBO │ NAV_AIM  │ no  │              │      no       │     │     │     │     │     │
+//    └─────┴───────────┴─────────────┴───────────┴──────────┼─────┼─────┐   ┌────┼───────────────┼─────┴─────┴─────┴─────┴─────┘
+//                                                           │     │     │   │ no │ TT(NAVIGATOR) │
+//                                                           └─────┴─────┘   └────┴───────────────┘
 [NAVIGATOR] = LAYOUT(
-  _______ , _______   , _______     , _______   , _______  , TT(NAVIGATOR) ,                         _______ , _______ , _______ , _______ , _______ , _______,
-  XXXXXXX , XXXXXXX   , NAV_CLR     , NAV_DCPI  , NAV_ICPI , XXXXXXX       ,                         XXXXXXX , _______ , _______ , _______ , _______ , _______,
-  XXXXXXX , XXXXXXX   , MS_BTN3     , MS_BTN2   , MS_BTN1  , XXXXXXX       ,                         XXXXXXX , _______ , _______ , _______ , _______ , _______,
-  XXXXXXX , NAV_VSCRL , DRAG_SCROLL , NAV_TURBO , NAV_AIM  , XXXXXXX       ,                         XXXXXXX , _______ , _______ , _______ , _______ , _______,
-                                                             _______       , _______ ,     XXXXXXX , XXXXXXX
+  _______ , _______   , _______     , _______   , _______  , _______ ,                         TT(NAVIGATOR) , _______ , _______ , _______ , _______ , _______,
+  XXXXXXX , XXXXXXX   , NAV_CLR     , NAV_DCPI  , NAV_ICPI , XXXXXXX ,                         XXXXXXX       , _______ , _______ , _______ , _______ , _______,
+  XXXXXXX , XXXXXXX   , MS_BTN3     , MS_BTN2   , MS_BTN1  , XXXXXXX ,                         XXXXXXX       , _______ , _______ , _______ , _______ , _______,
+  XXXXXXX , NAV_VSCRL , DRAG_SCROLL , NAV_TURBO , NAV_AIM  , XXXXXXX ,                         XXXXXXX       , _______ , _______ , _______ , _______ , _______,
+                                                             _______ , _______ ,     XXXXXXX , TT(NAVIGATOR)
 ),
 
 //    ┌─────┬─────┬─────┬─────┬───────┬─────────┐               ┌──────┬─────┬─────┬─────┬─────┬─────┐
@@ -797,7 +797,7 @@ bool rgb_matrix_indicators_user(void) {
 
         case NAVIGATOR:
             rgb_matrix_set_color_all(0, 0, 0);
-            rgb_matrix_set_color(5, RGB_RED);
+            rgb_matrix_set_color(26, RGB_RED);
 
             rgb_matrix_set_color(8, RGB_WHITE);
             rgb_matrix_set_color(9, RGB_RED);
@@ -1079,11 +1079,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if (record->event.pressed) {
                     if (IS_LAYER_ON(NAVIGATOR)) {
                         layer_off(NAVIGATOR);
+                        navigator_hold_pending_off = false;
                     } else {
                         layer_on(NAVIGATOR);
+                        navigator_hold_pending_off = true;
                     }
                 } else if (navigator_hold_pending_off) {
                     layer_off(NAVIGATOR);
+                    navigator_hold_pending_off = false;
                 }
                 return false;
             }
