@@ -13,8 +13,8 @@
 // Don't apply custom shift keys with mods other than Shift.
 #define CUSTOM_SHIFT_KEYS_NEGMODS ~MOD_MASK_SHIFT
 
-// Only apply custom shift keys on layers 0, 1 and 5.
-#define CUSTOM_SHIFT_KEYS_LAYER_MASK (1 << 0) | (1 << 1) | (1 << 5)
+// Only apply custom shift keys on STRDY, SYM and EXT (0, 2 and 8).
+#define CUSTOM_SHIFT_KEYS_LAYER_MASK (1 << 0) | (1 << 2) | (1 << 8)
 
 // When idle, turn off Layer Lock after 60 seconds.
 #define LAYER_LOCK_IDLE_TIMEOUT 60000

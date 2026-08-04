@@ -99,6 +99,10 @@ Community modules pulled in via `.gitmodules` and declared in `keymap.json`:
 - **Mouse Turbo Click** – auto-repeating mouse clicks (`TURBO`, used on the `GAME` layer)
 - **Cyclotab** – tab/window switching with a single key
 
+**From [zsa/qmk_modules](https://github.com/zsa/qmk_modules):**
+
+- **Navigator Trackball** – ZSA's official trackball driver; `NAV_TURBO`/`NAV_AIM`/`DRAG_SCROLL` (hold) and `NAV_VSCRL` (toggle) on the `EXT` layer top row
+
 **Own module (`modules/omareloui/xcase`):**
 
 - **XCase** – converts the following typed word into `camelCase`, `PascalCase`, `snake_case`, `kebab-case`, `Title Case`, or `path/case` on demand
