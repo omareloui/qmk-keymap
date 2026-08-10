@@ -84,6 +84,13 @@
 #    undef ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 #endif // COMMUNITY_MODULE_PALETTEFX_ENABLE
 
+// Auto-switch to the NAVIGATOR layer on trackball motion, back to base once it's
+// idle. Must match NAVIGATOR's position in `enum layers` in keymap.c (config.h
+// can't see that enum, it lives in a different translation unit).
+#define AUTOMOUSE_LAYER 2
+#define AUTOMOUSE_ENABLED_TRACKPAD false // No trackpad on this build, only the trackball.
+#define AUTOMOUSE_TIMEOUT_TRACKBALL 5000 // ms idle before dropping back to base (default 650).
+
 #define DYNAMIC_MACRO_NO_NESTING
 
 #define ENABLE_MOUSE_JIGGLER

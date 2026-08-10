@@ -62,6 +62,11 @@ enum custom_keycodes {
 
     PASTE_ENTER,
 
+    NAV_CTL_BTN1,
+    NAV_GUI_BTN1,
+    NAV_GUI_BTN2,
+    NAV_NOOP,
+
 #ifdef ENABLE_MOUSE_JIGGLER
     JIGGLE,
 #endif
@@ -165,23 +170,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     TURBO   , KC_SPC ,     XXXXXXX , XXXXXXX
 ),
 
-//    ┌─────┬───────────┬─────────────┬───────────┬──────────┬─────┐              ┌───────────────┬─────┬─────┬─────┬─────┬─────┐
-//    │     │           │             │           │          │     │              │ TT(NAVIGATOR) │     │     │     │     │     │
-//    ├─────┼───────────┼─────────────┼───────────┼──────────┼─────┤              ├───────────────┼─────┼─────┼─────┼─────┼─────┤
-//    │ no  │    no     │   NAV_CLR   │ NAV_DCPI  │ NAV_ICPI │ no  │              │      no       │     │     │     │     │     │
-//    ├─────┼───────────┼─────────────┼───────────┼──────────┼─────┤              ├───────────────┼─────┼─────┼─────┼─────┼─────┤
-//    │ no  │    no     │   MS_BTN3   │  MS_BTN2  │ MS_BTN1  │ no  │              │      no       │     │     │     │     │     │
-//    ├─────┼───────────┼─────────────┼───────────┼──────────┼─────┤              ├───────────────┼─────┼─────┼─────┼─────┼─────┤
-//    │ no  │ NAV_VSCRL │ DRAG_SCROLL │ NAV_TURBO │ NAV_AIM  │ no  │              │      no       │     │     │     │     │     │
-//    └─────┴───────────┴─────────────┴───────────┴──────────┼─────┼─────┐   ┌────┼───────────────┼─────┴─────┴─────┴─────┴─────┘
-//                                                           │     │     │   │ no │ TT(NAVIGATOR) │
-//                                                           └─────┴─────┘   └────┴───────────────┘
+//    ┌─────┬──────────────┬──────────────┬───────────┬──────────────┬──────────┐               ┌───────────────┬──────────┬──────────┬─────────┬─────┬─────┐
+//    │     │              │              │           │              │          │               │ TT(NAVIGATOR) │          │          │         │     │     │
+//    ├─────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤               ├───────────────┼──────────┼──────────┼─────────┼─────┼─────┤
+//    │     │  NAV_TURBO   │ DRAG_SCROLL  │ NAV_VSCRL │      no      │    no    │               │      no       │    no    │    no    │   no    │ no  │     │
+//    ├─────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤               ├───────────────┼──────────┼──────────┼─────────┼─────┼─────┤
+//    │     │   NAV_AIM    │   MS_BTN3    │  MS_BTN2  │   MS_BTN1    │    no    │               │      no       │ NAV_ICPI │ NAV_DCPI │ NAV_CLR │ no  │     │
+//    ├─────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤               ├───────────────┼──────────┼──────────┼─────────┼─────┼─────┤
+//    │     │ NAV_GUI_BTN1 │ NAV_GUI_BTN2 │ NAV_NOOP  │ NAV_CTL_BTN1 │    no    │               │      no       │    no    │    no    │   no    │ no  │     │
+//    └─────┴──────────────┴──────────────┴───────────┴──────────────┼──────────┼─────┐   ┌─────┼───────────────┼──────────┴──────────┴─────────┴─────┴─────┘
+//                                                                   │ www_back │     │   │     │ TT(NAVIGATOR) │
+//                                                                   └──────────┴─────┘   └─────┴───────────────┘
 [NAVIGATOR] = LAYOUT(
-  _______ , _______   , _______     , _______   , _______  , _______ ,                         TT(NAVIGATOR) , _______ , _______ , _______ , _______ , _______,
-  XXXXXXX , XXXXXXX   , NAV_CLR     , NAV_DCPI  , NAV_ICPI , XXXXXXX ,                         XXXXXXX       , _______ , _______ , _______ , _______ , _______,
-  XXXXXXX , XXXXXXX   , MS_BTN3     , MS_BTN2   , MS_BTN1  , XXXXXXX ,                         XXXXXXX       , _______ , _______ , _______ , _______ , _______,
-  XXXXXXX , NAV_VSCRL , DRAG_SCROLL , NAV_TURBO , NAV_AIM  , XXXXXXX ,                         XXXXXXX       , _______ , _______ , _______ , _______ , _______,
-                                                             _______ , _______ ,     XXXXXXX , TT(NAVIGATOR)
+  _______ , _______      , _______      , _______   , _______      , _______ ,                         TT(NAVIGATOR) , _______  , _______  , _______ , _______ , _______,
+  _______ , NAV_TURBO    , DRAG_SCROLL  , NAV_VSCRL , XXXXXXX      , XXXXXXX ,                         XXXXXXX       , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , _______,
+  _______ , NAV_AIM      , MS_BTN3      , MS_BTN2   , MS_BTN1      , XXXXXXX ,                         XXXXXXX       , NAV_ICPI , NAV_DCPI , NAV_CLR , XXXXXXX , _______,
+  _______ , NAV_GUI_BTN1 , NAV_GUI_BTN2 , NAV_NOOP  , NAV_CTL_BTN1 , XXXXXXX ,                         XXXXXXX       , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , _______,
+                                                                     KC_WBAK , _______ ,     _______ , TT(NAVIGATOR)
 ),
 
 //    ┌─────┬─────┬─────┬─────┬───────┬─────────┐               ┌──────┬─────┬─────┬─────┬─────┬─────┐
@@ -329,11 +334,15 @@ const uint16_t PROGMEM dlr_rbrc_combo[]   = {KC_DLR, KC_RBRC, COMBO_END};
 
 const uint16_t PROGMEM paste_selall_combo[] = {PASTE, SELALL, COMBO_END};
 
+const uint16_t PROGMEM nav_gui_btn2_noop_combo[] = {NAV_GUI_BTN2, NAV_NOOP, COMBO_END};
+
 combo_t key_combos[] = {
     COMBO(j_comm_combo, CW_TOGG), // J and , => activate Caps Word.
     COMBO(j_k_combo, KC_ESC),     // J and K => esc
     COMBO(k_g_combo, KC_ENT),     // J, K and G => enter
     COMBO(f_n_combo, OSL(FUN)),   // F and N => FUN layer
+
+    COMBO(nav_gui_btn2_noop_combo, TT(NAVIGATOR)), // NAV_GUI_BTN2 and NAV_NOOP (K and J position on NAVIGATOR) => exit NAVIGATOR
 
     COMBO(y_d_combo, DM_REC1), // y and d => Start recording a macro
     COMBO(c_p_combo, DM_PLY1), // c and p => Play the recorded mocro
@@ -797,20 +806,33 @@ bool rgb_matrix_indicators_user(void) {
 
         case NAVIGATOR:
             rgb_matrix_set_color_all(0, 0, 0);
+
+            // exit keys
             rgb_matrix_set_color(26, RGB_RED);
+            rgb_matrix_set_color(51, RGB_RED);
 
-            rgb_matrix_set_color(8, RGB_WHITE);
-            rgb_matrix_set_color(9, RGB_RED);
-            rgb_matrix_set_color(10, RGB_GREEN);
+            // mouse keys
+            rgb_matrix_set_color(16, RGB_WHITE); // MS_BTN1
+            rgb_matrix_set_color(15, RGB_WHITE); // MS_BTN2
+            rgb_matrix_set_color(14, RGB_WHITE); // MS_BTN3
 
-            rgb_matrix_set_color(14, RGB_WHITE);
-            rgb_matrix_set_color(15, RGB_WHITE);
-            rgb_matrix_set_color(16, RGB_WHITE);
+            // modified clicks
+            rgb_matrix_set_color(19, RGB_TURQUOISE); // NAV_GUI_BTN1
+            rgb_matrix_set_color(20, RGB_TURQUOISE); // NAV_GUI_BTN2
+            rgb_matrix_set_color(22, RGB_ORANGE);    // NAV_CTL_BTN1
 
-            rgb_matrix_set_color(19, RGB_MAGENTA);
-            rgb_matrix_set_color(20, RGB_MAGENTA);
-            rgb_matrix_set_color(21, RGB_PINK);
-            rgb_matrix_set_color(22, RGB_SPRINGGREEN);
+            // scroll
+            rgb_matrix_set_color(8, RGB_MAGENTA); // DRAG_SCROLL
+            rgb_matrix_set_color(9, RGB_MAGENTA); // NAV_VSCRL
+
+            // aim and turbo
+            rgb_matrix_set_color(7, RGB_PINK);         // NAV_TURBO
+            rgb_matrix_set_color(13, RGB_SPRINGGREEN); // NAV_AIM
+
+            // Speed control keys
+            rgb_matrix_set_color(39, RGB_SPRINGGREEN); // NAV_ICPI
+            rgb_matrix_set_color(40, RGB_PINK);        // NAV_DCPI
+            rgb_matrix_set_color(41, RGB_WHITE);       // NAV_CLR
             break;
     }
 
@@ -1099,6 +1121,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         }
+
+        // Ctrl/Gui + mouse click. Orbital Mouse owns the click through its own
+        // report, so the modifier is registered separately and the click is
+        // forwarded as OM_BTN1 rather than wrapping it with LCTL()/LGUI(),
+        // which Orbital Mouse wouldn't see.
+        case NAV_CTL_BTN1:
+            if (record->event.pressed) register_code(KC_LCTL);
+            process_record_orbital_mouse(OM_BTN1, record);
+            if (!record->event.pressed) unregister_code(KC_LCTL);
+            return false;
+
+        case NAV_GUI_BTN1:
+            if (record->event.pressed) register_code(KC_LGUI);
+            process_record_orbital_mouse(OM_BTN1, record);
+            if (!record->event.pressed) unregister_code(KC_LGUI);
+            return false;
+
+        case NAV_GUI_BTN2:
+            if (record->event.pressed) register_code(KC_LGUI);
+            process_record_orbital_mouse(OM_BTN2, record);
+            if (!record->event.pressed) unregister_code(KC_LGUI);
+            return false;
     }
 
     if (record->event.pressed) {

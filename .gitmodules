@@ -1,6 +1,6 @@
 [submodule "modules/getreuer"]
 	path = modules/getreuer
-	url = https://github.com/getreuer/qmk-modules.git
+	url = git@github.com:omareloui/qmk-modules.git
 [submodule "modules/zsa"]
 	path = modules/zsa
 	url = git@github.com:omareloui/qmk_modules.git
