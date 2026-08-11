@@ -830,8 +830,8 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(13, RGB_SPRINGGREEN); // NAV_AIM
 
             // Speed control keys
-            rgb_matrix_set_color(39, RGB_SPRINGGREEN); // NAV_ICPI
-            rgb_matrix_set_color(40, RGB_PINK);        // NAV_DCPI
+            rgb_matrix_set_color(39, RGB_PINK);        // NAV_ICPI
+            rgb_matrix_set_color(40, RGB_SPRINGGREEN); // NAV_DCPI
             rgb_matrix_set_color(41, RGB_WHITE);       // NAV_CLR
             break;
     }
@@ -1089,6 +1089,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             return true;
+
+        // Keys with no-op mapping in NAVIGATOR layer fall through to STRDY and
+        // exit NAVIGATOR.
+        case KC_NO:
+        case NAV_NOOP:
+            if (record->event.pressed && layer == NAVIGATOR) {
+                layer_off(NAVIGATOR);
+            }
+            break;
 
         // Hold behavior: NAVIGATOR layer while held; if NAVIGATOR is already
         // on (i.e. left on via a previous tap or this same hold), the press
