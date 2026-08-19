@@ -391,15 +391,6 @@ const custom_shift_key_t custom_shift_keys[] = {
 #endif // COMMUNITY_MODULE_CUSTOM_SHIFT_KEYS_ENABLE
 
 ///////////////////////////////////////////////////////////////////////////////
-// Speculative hold (https://docs.qmk.fm/tap_hold#speculative-hold)
-///////////////////////////////////////////////////////////////////////////////
-#ifdef SPECULATIVE_HOLD
-bool get_speculative_hold(uint16_t keycode, keyrecord_t *record) {
-    return true; // Enable for all mods.
-}
-#endif // SPECULATIVE_HOLD
-
-///////////////////////////////////////////////////////////////////////////////
 // Autocorrect (https://docs.qmk.fm/features/autocorrect)
 ///////////////////////////////////////////////////////////////////////////////
 #ifdef AUTOCORRECT_ENABLE
@@ -474,6 +465,21 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, u
     return get_chordal_hold_default(tap_hold_record, other_record);
 }
 #endif // CHORDAL_HOLD
+
+///////////////////////////////////////////////////////////////////////////////
+// Speculative hold (https://docs.qmk.fm/tap_hold#speculative-hold)
+///////////////////////////////////////////////////////////////////////////////
+#ifdef SPECULATIVE_HOLD
+bool get_speculative_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case HRM_X:
+        case HRM_QUO:
+            return false; // disable for GUI mods.
+        default:
+            return true; // enable for all other mods.
+    }
+}
+#endif // SPECULATIVE_HOLD
 
 ///////////////////////////////////////////////////////////////////////////////
 // Sentence case (https://getreuer.info/posts/keyboards/sentence-case)
