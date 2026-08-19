@@ -108,6 +108,8 @@ enum custom_keycodes {
 #define WWW_PRV_TAB C(KC_PGUP)
 #define WWW_NXT_TAB C(KC_PGDN)
 
+#define NAV_BTN1 LT(NAV, MS_BTN1)
+
 #define NAV_TURBO NAVIGATOR_TURBO
 #define NAV_AIM NAVIGATOR_AIM
 #define NAV_VSCRL TOGGLE_SCROLL_VERTICAL
@@ -132,7 +134,7 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ┌─────────┬─────────┬───────┬────────┬───────┬─────────┐                  ┌────────┬───────┬───────┬─────────┬─────────┬──────────┐
-//    │    `    │ SELLINE │ PASTE │ SELALL │ COPY  │ OM_BTN1 │                  │ G(tab) │ home  │ left  │  rght   │   end   │ TG(GAME) │
+//    │    `    │ SELLINE │ PASTE │ SELALL │ COPY  │ MS_BTN1 │                  │ G(tab) │ home  │ left  │  rght   │   end   │ TG(GAME) │
 //    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├────────┼───────┼───────┼─────────┼─────────┼──────────┤
 //    │   tab   │    v    │   m   │   l    │   c   │    p    │                  │   b    │ MAGIC │   u   │    o    │    q    │    /     │
 //    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├────────┼───────┼───────┼─────────┼─────────┼──────────┤
@@ -143,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                                                 │    _    │ spc │   │ QK_REP │  esc   │
 //                                                 └─────────┴─────┘   └────────┴────────┘
 [STRDY] = LAYOUT(
-  KC_GRV  , SELLINE , PASTE , SELALL , COPY  , OM_BTN1 ,                       G(KC_TAB) , KC_HOME , KC_LEFT , KC_RGHT , KC_END  , TG(GAME),
+  KC_GRV  , SELLINE , PASTE , SELALL , COPY  , MS_BTN1 ,                       G(KC_TAB) , KC_HOME , KC_LEFT , KC_RGHT , KC_END  , TG(GAME),
   KC_TAB  , KC_V    , KC_M  , KC_L   , KC_C  , KC_P    ,                       KC_B      , MAGIC   , KC_U    , KC_O    , KC_Q    , KC_SLSH ,
   KC_BSPC , HRM_S   , HRM_T , HRM_R  , HRM_D , KC_Y    ,                       KC_F      , HRM_N   , HRM_E   , HRM_A   , HRM_I   , KC_MINS ,
   EXT_COL , HRM_X   , KC_K  , KC_J   , HRM_G , KC_W    ,                       KC_Z      , HRM_H   , KC_COMM , HRM_DOT , HRM_QUO , KC_ENT  ,
@@ -174,7 +176,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ├────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤             ├───────────────┼──────────┼──────────┼─────────┼────┼────┤
 //    │ no │  NAV_TURBO   │ DRAG_SCROLL  │ NAV_VSCRL │      no      │    no    │             │      no       │    no    │    no    │   no    │ no │ no │
 //    ├────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤             ├───────────────┼──────────┼──────────┼─────────┼────┼────┤
-//    │ no │   NAV_AIM    │   MS_BTN2    │  MS_BTN3  │   MS_BTN1    │    no    │             │      no       │ NAV_ICPI │ NAV_DCPI │ NAV_CLR │ no │ no │
+//    │ no │   NAV_AIM    │   MS_BTN2    │  MS_BTN3  │   NAV_BTN1   │    no    │             │      no       │ NAV_ICPI │ NAV_DCPI │ NAV_CLR │ no │ no │
 //    ├────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤             ├───────────────┼──────────┼──────────┼─────────┼────┼────┤
 //    │ no │ NAV_GUI_BTN1 │ NAV_GUI_BTN2 │ NAV_NOOP  │ NAV_CTL_BTN1 │    no    │             │      no       │    no    │    no    │   no    │ no │ no │
 //    └────┴──────────────┴──────────────┴───────────┴──────────────┼──────────┼────┐   ┌────┼───────────────┼──────────┴──────────┴─────────┴────┴────┘
@@ -183,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [NAVIGATOR] = LAYOUT(
   XXXXXXX , XXXXXXX      , XXXXXXX      , XXXXXXX   , XXXXXXX      , XXXXXXX ,                         XXXXXXX       , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , XXXXXXX,
   XXXXXXX , NAV_TURBO    , DRAG_SCROLL  , NAV_VSCRL , XXXXXXX      , XXXXXXX ,                         XXXXXXX       , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , XXXXXXX,
-  XXXXXXX , NAV_AIM      , MS_BTN2      , MS_BTN3   , MS_BTN1      , XXXXXXX ,                         XXXXXXX       , NAV_ICPI , NAV_DCPI , NAV_CLR , XXXXXXX , XXXXXXX,
+  XXXXXXX , NAV_AIM      , MS_BTN2      , MS_BTN3   , NAV_BTN1     , XXXXXXX ,                         XXXXXXX       , NAV_ICPI , NAV_DCPI , NAV_CLR , XXXXXXX , XXXXXXX,
   XXXXXXX , NAV_GUI_BTN1 , NAV_GUI_BTN2 , NAV_NOOP  , NAV_CTL_BTN1 , XXXXXXX ,                         XXXXXXX       , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , XXXXXXX,
                                                                      KC_WBAK , XXXXXXX ,     XXXXXXX , TT(NAVIGATOR)
 ),
@@ -212,7 +214,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ├─────┼─────────────┼─────────────┼─────────────┼─────────┼──────────┤                  ├──────┼──────┼─────────┼─────────┼─────────┼─────┤
 //    │     │ www_refresh │ WWW_PRV_TAB │ WWW_NXT_TAB │   no    │    no    │                  │ pgup │ home │   up    │   end   │ SRCHSEL │     │
 //    ├─────┼─────────────┼─────────────┼─────────────┼─────────┼──────────┤                  ├──────┼──────┼─────────┼─────────┼─────────┼─────┤
-//    │     │    lalt     │  S(A(tab))  │   A(tab)    │ SELLINE │ OM_BTN1  │                  │ pgdn │ left │  down   │  rght   │   del   │     │
+//    │     │    lalt     │  S(A(tab))  │   A(tab)    │ SELLINE │ MS_BTN1  │                  │ pgdn │ left │  down   │  rght   │   del   │     │
 //    ├─────┼─────────────┼─────────────┼─────────────┼─────────┼──────────┤                  ├──────┼──────┼─────────┼─────────┼─────────┼─────┤
 //    │     │    lgui     │    pgup     │    pgdn     │   no    │    no    │                  │ UNDO │ pscr │ SELWBAK │ SELWORD │   no    │     │
 //    └─────┴─────────────┴─────────────┴─────────────┴─────────┼──────────┼────────┐   ┌─────┼──────┼──────┴─────────┴─────────┴─────────┴─────┘
@@ -221,7 +223,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [NAV] = LAYOUT(
   _______ , _______ , _______      , _______     , _______ , _______ ,                           _______ , _______ , _______ , _______ , _______ , _______,
   _______ , KC_WREF , WWW_PRV_TAB  , WWW_NXT_TAB , XXXXXXX , XXXXXXX ,                           KC_PGUP , KC_HOME , KC_UP   , KC_END  , SRCHSEL , _______,
-  _______ , KC_LALT , S(A(KC_TAB)) , A(KC_TAB)   , SELLINE , OM_BTN1 ,                           KC_PGDN , KC_LEFT , KC_DOWN , KC_RGHT , KC_DEL  , _______,
+  _______ , KC_LALT , S(A(KC_TAB)) , A(KC_TAB)   , SELLINE , MS_BTN1 ,                           KC_PGDN , KC_LEFT , KC_DOWN , KC_RGHT , KC_DEL  , _______,
   _______ , KC_LGUI , KC_PGUP      , KC_PGDN     , XXXXXXX , XXXXXXX ,                           UNDO    , KC_PSCR , SELWBAK , SELWORD , XXXXXXX , _______,
                                                              KC_WBAK , G(KC_TAB) ,     _______ , QK_LLCK
 ),
@@ -283,23 +285,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     XXXXXXX , XXXXXXX ,     XXXXXXX , QK_LLCK
 ),
 
-//    ┌─────┬──────┬───────┬────────┬─────────┬──────────┐                       ┌────────┬─────────┬───────┬─────────┬─────────┬─────────┐
-//    │     │      │       │        │         │          │                       │        │         │       │         │         │ AC_TOGG │
-//    ├─────┼──────┼───────┼────────┼─────────┼──────────┤                       ├────────┼─────────┼───────┼─────────┼─────────┼─────────┤
-//    │     │  no  │  no   │   no   │ JIGGLE  │    no    │                       │ OM_W_U │ OM_BTN1 │ OM_U  │ OM_BTN2 │ SRCHSEL │         │
-//    ├─────┼──────┼───────┼────────┼─────────┼──────────┤                       ├────────┼─────────┼───────┼─────────┼─────────┼─────────┤
-//    │     │ lalt │ lctl  │  lsft  │ SELLINE │    no    │                       │ OM_W_D │  OM_L   │ OM_D  │  OM_R   │ OM_SLOW │         │
-//    ├─────┼──────┼───────┼────────┼─────────┼──────────┤                       ├────────┼─────────┼───────┼─────────┼─────────┼─────────┤
-//    │     │ lgui │ PASTE │ SELALL │  COPY   │   CUT    │                       │  O_ID  │ O_EMAIL │ EMAIL │ UC_PREV │ UC_NEXT │         │
-//    └─────┴──────┴───────┴────────┴─────────┼──────────┼─────────┐   ┌─────────┼────────┼─────────┴───────┴─────────┴─────────┴─────────┘
-//                                            │ www_back │ OM_BTN1 │   │ OM_BTN1 │  lock  │
-//                                            └──────────┴─────────┘   └─────────┴────────┘
+//    ┌─────┬──────┬───────┬────────┬─────────┬──────────┐                       ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
+//    │     │      │       │        │         │          │                       │         │         │         │         │         │ AC_TOGG │
+//    ├─────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+//    │     │  no  │  no   │   no   │ JIGGLE  │    no    │                       │ MS_WHLU │ MS_BTN1 │  MS_UP  │ MS_BTN2 │ SRCHSEL │         │
+//    ├─────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+//    │     │ lalt │ lctl  │  lsft  │ SELLINE │    no    │                       │ MS_WHLD │ MS_LEFT │ MS_DOWN │ MS_RGHT │ MS_ACL0 │         │
+//    ├─────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+//    │     │ lgui │ PASTE │ SELALL │  COPY   │   CUT    │                       │  O_ID   │ O_EMAIL │  EMAIL  │ UC_PREV │ UC_NEXT │         │
+//    └─────┴──────┴───────┴────────┴─────────┼──────────┼─────────┐   ┌─────────┼─────────┼─────────┴─────────┴─────────┴─────────┴─────────┘
+//                                            │ www_back │ MS_BTN1 │   │ MS_BTN1 │  lock   │
+//                                            └──────────┴─────────┘   └─────────┴─────────┘
 [EXT] = LAYOUT(
   _______ , _______ , _______ , _______ , _______ , _______ ,                         _______ , _______ , _______ , _______ , _______ , AC_TOGG,
-  _______ , XXXXXXX , XXXXXXX , XXXXXXX , JIGGLE  , XXXXXXX ,                         OM_W_U  , OM_BTN1 , OM_U    , OM_BTN2 , SRCHSEL , _______,
-  _______ , KC_LALT , KC_LCTL , KC_LSFT , SELLINE , XXXXXXX ,                         OM_W_D  , OM_L    , OM_D    , OM_R    , OM_SLOW , _______,
+  _______ , XXXXXXX , XXXXXXX , XXXXXXX , JIGGLE  , XXXXXXX ,                         MS_WHLU , MS_BTN1 , MS_UP   , MS_BTN2 , SRCHSEL , _______,
+  _______ , KC_LALT , KC_LCTL , KC_LSFT , SELLINE , XXXXXXX ,                         MS_WHLD , MS_LEFT , MS_DOWN , MS_RGHT , MS_ACL0 , _______,
   _______ , KC_LGUI , PASTE   , SELALL  , COPY    , CUT     ,                         O_ID    , O_EMAIL , EMAIL   , UC_PREV , UC_NEXT , _______,
-                                                    KC_WBAK , OM_BTN1 ,     OM_BTN1 , QK_LLCK
+                                                    KC_WBAK , MS_BTN1 ,     MS_BTN1 , QK_LLCK
 )
 };
 // clang-format on
@@ -440,6 +442,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
         case HRM_H:
         case HRM_E:
         case HRM_D:
+        case NAV_BTN1:
             return QUICK_TAP_TERM; // Enable key repeating.
         default:
             return 0; // Otherwise, force hold and disable key repeating.
@@ -810,7 +813,7 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(51, RGB_RED);
 
             // mouse keys
-            rgb_matrix_set_color(16, RGB_WHITE); // MS_BTN1
+            rgb_matrix_set_color(16, RGB_WHITE); // NAV_BTN1
             rgb_matrix_set_color(15, RGB_WHITE); // MS_BTN2
             rgb_matrix_set_color(14, RGB_WHITE); // MS_BTN3
 
@@ -1080,6 +1083,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return true;
 
         case HRM_D: // NAV switch.
+        case NAV_BTN1:
             if (!record->tap.count) {
                 if (record->event.pressed) {
                     layer_on(NAV);
@@ -1139,26 +1143,35 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         }
 
-        // Ctrl/Gui + mouse click. Orbital Mouse owns the click through its own
-        // report, so the modifier is registered separately and the click is
-        // forwarded as OM_BTN1 rather than wrapping it with LCTL()/LGUI(),
-        // which Orbital Mouse wouldn't see.
+        // Ctrl/Gui + mouse click.
         case NAV_CTL_BTN1:
-            if (record->event.pressed) register_code(KC_LCTL);
-            process_record_orbital_mouse(OM_BTN1, record);
-            if (!record->event.pressed) unregister_code(KC_LCTL);
+            if (record->event.pressed) {
+                register_code(KC_LCTL);
+                register_code(MS_BTN1);
+            } else {
+                unregister_code(MS_BTN1);
+                unregister_code(KC_LCTL);
+            }
             return false;
 
         case NAV_GUI_BTN1:
-            if (record->event.pressed) register_code(KC_LGUI);
-            process_record_orbital_mouse(OM_BTN1, record);
-            if (!record->event.pressed) unregister_code(KC_LGUI);
+            if (record->event.pressed) {
+                register_code(KC_LGUI);
+                register_code(MS_BTN1);
+            } else {
+                unregister_code(MS_BTN1);
+                unregister_code(KC_LGUI);
+            }
             return false;
 
         case NAV_GUI_BTN2:
-            if (record->event.pressed) register_code(KC_LGUI);
-            process_record_orbital_mouse(OM_BTN2, record);
-            if (!record->event.pressed) unregister_code(KC_LGUI);
+            if (record->event.pressed) {
+                register_code(KC_LGUI);
+                register_code(MS_BTN2);
+            } else {
+                unregister_code(MS_BTN2);
+                unregister_code(KC_LGUI);
+            }
             return false;
     }
 

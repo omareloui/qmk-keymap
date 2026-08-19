@@ -4,8 +4,11 @@
 
 #define TAPPING_TERM 180
 #define TAPPING_TERM_PER_KEY
-#define PERMISSIVE_HOLD
+
+#define QUICK_TAP_TERM TAPPING_TERM
 #define QUICK_TAP_TERM_PER_KEY
+
+#define PERMISSIVE_HOLD
 #define SPECULATIVE_HOLD
 
 #define UNICODE_SELECTED_MODES UNICODE_MODE_WINCOMPOSE, UNICODE_MODE_LINUX
@@ -21,14 +24,6 @@
 
 // When idle, turn off Sentence Case after 2 seconds.
 #define SENTENCE_CASE_TIMEOUT 2000
-
-// Define speed curve for Orbital Mouse.
-// clang-format off
-#define ORBITAL_MOUSE_SPEED_CURVE \
-      {24, 24, 24, 32, 62, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72, 72}
-//     |               |               |               |           |
-// t = 0.000           1.024           2.048           3.072       3.840 s
-// clang-format on
 
 // Enable all effects and palettes in PaletteFx.
 #define PALETTEFX_ENABLE_ALL_EFFECTS
