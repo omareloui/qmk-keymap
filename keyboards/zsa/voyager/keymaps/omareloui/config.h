@@ -91,3 +91,7 @@
 #define ENABLE_MOUSE_JIGGLER
 
 #define CYCLOTAB_TIMEOUT 0
+
+// Navigator trackball settings
+#define NAVIGATOR_TRACKBALL_ROTATION 20 // degrees, 0-359
+#define NAVIGATOR_TRACKBALL_CPI 30      // 1-125

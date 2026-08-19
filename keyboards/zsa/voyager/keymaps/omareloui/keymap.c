@@ -171,23 +171,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     TURBO   , KC_SPC ,     XXXXXXX , XXXXXXX
 ),
 
-//    ┌────┬──────────────┬──────────────┬───────────┬──────────────┬──────────┐             ┌───────────────┬──────────┬──────────┬─────────┬────┬────┐
-//    │ no │      no      │      no      │    no     │      no      │    no    │             │      no       │    no    │    no    │   no    │ no │ no │
-//    ├────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤             ├───────────────┼──────────┼──────────┼─────────┼────┼────┤
-//    │ no │  NAV_TURBO   │ DRAG_SCROLL  │ NAV_VSCRL │      no      │    no    │             │      no       │    no    │    no    │   no    │ no │ no │
-//    ├────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤             ├───────────────┼──────────┼──────────┼─────────┼────┼────┤
-//    │ no │   NAV_AIM    │   MS_BTN2    │  MS_BTN3  │   NAV_BTN1   │    no    │             │      no       │ NAV_ICPI │ NAV_DCPI │ NAV_CLR │ no │ no │
-//    ├────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤             ├───────────────┼──────────┼──────────┼─────────┼────┼────┤
-//    │ no │ NAV_GUI_BTN1 │ NAV_GUI_BTN2 │ NAV_NOOP  │ NAV_CTL_BTN1 │    no    │             │      no       │    no    │    no    │   no    │ no │ no │
-//    └────┴──────────────┴──────────────┴───────────┴──────────────┼──────────┼────┐   ┌────┼───────────────┼──────────┴──────────┴─────────┴────┴────┘
-//                                                                  │ www_back │ no │   │ no │ TT(NAVIGATOR) │
-//                                                                  └──────────┴────┘   └────┴───────────────┘
+//    ┌────┬──────────────┬──────────────┬───────────┬──────────────┬──────────┐                      ┌────┬──────────┬──────────┬─────────┬────┬───────────────┐
+//    │ no │      no      │      no      │    no     │      no      │    no    │                      │ no │    no    │    no    │   no    │ no │ TT(NAVIGATOR) │
+//    ├────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤                      ├────┼──────────┼──────────┼─────────┼────┼───────────────┤
+//    │ no │  NAV_TURBO   │ DRAG_SCROLL  │ NAV_VSCRL │      no      │    no    │                      │ no │    no    │    no    │   no    │ no │      no       │
+//    ├────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤                      ├────┼──────────┼──────────┼─────────┼────┼───────────────┤
+//    │ no │   NAV_AIM    │   MS_BTN2    │  MS_BTN3  │   NAV_BTN1   │    no    │                      │ no │ NAV_ICPI │ NAV_DCPI │ NAV_CLR │ no │      no       │
+//    ├────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤                      ├────┼──────────┼──────────┼─────────┼────┼───────────────┤
+//    │ no │ NAV_GUI_BTN1 │ NAV_GUI_BTN2 │ NAV_NOOP  │ NAV_CTL_BTN1 │    no    │                      │ no │    no    │    no    │   no    │ no │      no       │
+//    └────┴──────────────┴──────────────┴───────────┴──────────────┼──────────┼─────────────┐   ┌────┼────┼──────────┴──────────┴─────────┴────┴───────────────┘
+//                                                                  │ www_back │ www_forward │   │ no │ no │
+//                                                                  └──────────┴─────────────┘   └────┴────┘
 [NAVIGATOR] = LAYOUT(
-  XXXXXXX , XXXXXXX      , XXXXXXX      , XXXXXXX   , XXXXXXX      , XXXXXXX ,                         XXXXXXX       , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , XXXXXXX,
-  XXXXXXX , NAV_TURBO    , DRAG_SCROLL  , NAV_VSCRL , XXXXXXX      , XXXXXXX ,                         XXXXXXX       , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , XXXXXXX,
-  XXXXXXX , NAV_AIM      , MS_BTN2      , MS_BTN3   , NAV_BTN1     , XXXXXXX ,                         XXXXXXX       , NAV_ICPI , NAV_DCPI , NAV_CLR , XXXXXXX , XXXXXXX,
-  XXXXXXX , NAV_GUI_BTN1 , NAV_GUI_BTN2 , NAV_NOOP  , NAV_CTL_BTN1 , XXXXXXX ,                         XXXXXXX       , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , XXXXXXX,
-                                                                     KC_WBAK , XXXXXXX ,     XXXXXXX , TT(NAVIGATOR)
+  XXXXXXX , XXXXXXX      , XXXXXXX      , XXXXXXX   , XXXXXXX      , XXXXXXX ,                         XXXXXXX , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , TT(NAVIGATOR),
+  XXXXXXX , NAV_TURBO    , DRAG_SCROLL  , NAV_VSCRL , XXXXXXX      , XXXXXXX ,                         XXXXXXX , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , XXXXXXX      ,
+  XXXXXXX , NAV_AIM      , MS_BTN2      , MS_BTN3   , NAV_BTN1     , XXXXXXX ,                         XXXXXXX , NAV_ICPI , NAV_DCPI , NAV_CLR , XXXXXXX , XXXXXXX      ,
+  XXXXXXX , NAV_GUI_BTN1 , NAV_GUI_BTN2 , NAV_NOOP  , NAV_CTL_BTN1 , XXXXXXX ,                         XXXXXXX , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , XXXXXXX      ,
+                                                                     KC_WBAK , KC_WFWD ,     XXXXXXX , XXXXXXX
 ),
 
 //    ┌─────┬─────┬─────┬─────┬───────┬─────────┐               ┌──────┬─────┬─────┬─────┬─────┬─────┐
@@ -810,7 +810,7 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color_all(0, 0, 0);
 
             // exit keys
-            rgb_matrix_set_color(51, RGB_RED);
+            rgb_matrix_set_color(31, RGB_RED);
 
             // mouse keys
             rgb_matrix_set_color(16, RGB_WHITE); // NAV_BTN1
