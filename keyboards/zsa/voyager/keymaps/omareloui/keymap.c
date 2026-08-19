@@ -81,7 +81,6 @@ enum custom_keycodes {
 
 #define MAGIC QK_AREP
 
-#define NOTIMPLE KC_NO
 #define MUTEMIC KC_F20
 
 #define HRM_S LALT_T(KC_S)
@@ -132,22 +131,22 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-//    ┌─────────┬─────────┬───────┬────────┬───────┬─────────┐                  ┌───────────────┬───────┬───────┬─────────┬─────────┬──────────┐
-//    │    `    │ SELLINE │ PASTE │ SELALL │ COPY  │ OM_BTN1 │                  │ TT(NAVIGATOR) │ home  │ left  │  rght   │   end   │ TG(GAME) │
-//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├───────────────┼───────┼───────┼─────────┼─────────┼──────────┤
-//    │   tab   │    v    │   m   │   l    │   c   │    p    │                  │       b       │ MAGIC │   u   │    o    │    q    │    /     │
-//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├───────────────┼───────┼───────┼─────────┼─────────┼──────────┤
-//    │  bspc   │  HRM_S  │ HRM_T │ HRM_R  │ HRM_D │    y    │                  │       f       │ HRM_N │ HRM_E │  HRM_A  │  HRM_I  │    -     │
-//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├───────────────┼───────┼───────┼─────────┼─────────┼──────────┤
-//    │ EXT_COL │  HRM_X  │   k   │   j    │ HRM_G │    w    │                  │       z       │ HRM_H │   ,   │ HRM_DOT │ HRM_QUO │   ent    │
-//    └─────────┴─────────┴───────┴────────┴───────┼─────────┼─────┐   ┌────────┼───────────────┼───────┴───────┴─────────┴─────────┴──────────┘
-//                                                 │    _    │ spc │   │ QK_REP │      esc      │
-//                                                 └─────────┴─────┘   └────────┴───────────────┘
+//    ┌─────────┬─────────┬───────┬────────┬───────┬─────────┐                  ┌────────┬───────┬───────┬─────────┬─────────┬──────────┐
+//    │    `    │ SELLINE │ PASTE │ SELALL │ COPY  │ OM_BTN1 │                  │ G(tab) │ home  │ left  │  rght   │   end   │ TG(GAME) │
+//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├────────┼───────┼───────┼─────────┼─────────┼──────────┤
+//    │   tab   │    v    │   m   │   l    │   c   │    p    │                  │   b    │ MAGIC │   u   │    o    │    q    │    /     │
+//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├────────┼───────┼───────┼─────────┼─────────┼──────────┤
+//    │  bspc   │  HRM_S  │ HRM_T │ HRM_R  │ HRM_D │    y    │                  │   f    │ HRM_N │ HRM_E │  HRM_A  │  HRM_I  │    -     │
+//    ├─────────┼─────────┼───────┼────────┼───────┼─────────┤                  ├────────┼───────┼───────┼─────────┼─────────┼──────────┤
+//    │ EXT_COL │  HRM_X  │   k   │   j    │ HRM_G │    w    │                  │   z    │ HRM_H │   ,   │ HRM_DOT │ HRM_QUO │   ent    │
+//    └─────────┴─────────┴───────┴────────┴───────┼─────────┼─────┐   ┌────────┼────────┼───────┴───────┴─────────┴─────────┴──────────┘
+//                                                 │    _    │ spc │   │ QK_REP │  esc   │
+//                                                 └─────────┴─────┘   └────────┴────────┘
 [STRDY] = LAYOUT(
-  KC_GRV  , SELLINE , PASTE , SELALL , COPY  , OM_BTN1 ,                       TT(NAVIGATOR) , KC_HOME , KC_LEFT , KC_RGHT , KC_END  , TG(GAME),
-  KC_TAB  , KC_V    , KC_M  , KC_L   , KC_C  , KC_P    ,                       KC_B          , MAGIC   , KC_U    , KC_O    , KC_Q    , KC_SLSH ,
-  KC_BSPC , HRM_S   , HRM_T , HRM_R  , HRM_D , KC_Y    ,                       KC_F          , HRM_N   , HRM_E   , HRM_A   , HRM_I   , KC_MINS ,
-  EXT_COL , HRM_X   , KC_K  , KC_J   , HRM_G , KC_W    ,                       KC_Z          , HRM_H   , KC_COMM , HRM_DOT , HRM_QUO , KC_ENT  ,
+  KC_GRV  , SELLINE , PASTE , SELALL , COPY  , OM_BTN1 ,                       G(KC_TAB) , KC_HOME , KC_LEFT , KC_RGHT , KC_END  , TG(GAME),
+  KC_TAB  , KC_V    , KC_M  , KC_L   , KC_C  , KC_P    ,                       KC_B      , MAGIC   , KC_U    , KC_O    , KC_Q    , KC_SLSH ,
+  KC_BSPC , HRM_S   , HRM_T , HRM_R  , HRM_D , KC_Y    ,                       KC_F      , HRM_N   , HRM_E   , HRM_A   , HRM_I   , KC_MINS ,
+  EXT_COL , HRM_X   , KC_K  , KC_J   , HRM_G , KC_W    ,                       KC_Z      , HRM_H   , KC_COMM , HRM_DOT , HRM_QUO , KC_ENT  ,
                                                KC_UNDS , KC_SPC ,     QK_REP , KC_ESC
 ),
 
@@ -170,23 +169,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     TURBO   , KC_SPC ,     XXXXXXX , XXXXXXX
 ),
 
-//    ┌─────┬──────────────┬──────────────┬───────────┬──────────────┬──────────┐               ┌───────────────┬──────────┬──────────┬─────────┬─────┬─────┐
-//    │     │              │              │           │              │          │               │ TT(NAVIGATOR) │          │          │         │     │     │
-//    ├─────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤               ├───────────────┼──────────┼──────────┼─────────┼─────┼─────┤
-//    │     │  NAV_TURBO   │ DRAG_SCROLL  │ NAV_VSCRL │      no      │    no    │               │      no       │    no    │    no    │   no    │ no  │     │
-//    ├─────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤               ├───────────────┼──────────┼──────────┼─────────┼─────┼─────┤
-//    │     │   NAV_AIM    │   MS_BTN3    │  MS_BTN2  │   MS_BTN1    │    no    │               │      no       │ NAV_ICPI │ NAV_DCPI │ NAV_CLR │ no  │     │
-//    ├─────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤               ├───────────────┼──────────┼──────────┼─────────┼─────┼─────┤
-//    │     │ NAV_GUI_BTN1 │ NAV_GUI_BTN2 │ NAV_NOOP  │ NAV_CTL_BTN1 │    no    │               │      no       │    no    │    no    │   no    │ no  │     │
-//    └─────┴──────────────┴──────────────┴───────────┴──────────────┼──────────┼─────┐   ┌─────┼───────────────┼──────────┴──────────┴─────────┴─────┴─────┘
-//                                                                   │ www_back │     │   │     │ TT(NAVIGATOR) │
-//                                                                   └──────────┴─────┘   └─────┴───────────────┘
+//    ┌────┬──────────────┬──────────────┬───────────┬──────────────┬──────────┐             ┌───────────────┬──────────┬──────────┬─────────┬────┬────┐
+//    │ no │      no      │      no      │    no     │      no      │    no    │             │      no       │    no    │    no    │   no    │ no │ no │
+//    ├────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤             ├───────────────┼──────────┼──────────┼─────────┼────┼────┤
+//    │ no │  NAV_TURBO   │ DRAG_SCROLL  │ NAV_VSCRL │      no      │    no    │             │      no       │    no    │    no    │   no    │ no │ no │
+//    ├────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤             ├───────────────┼──────────┼──────────┼─────────┼────┼────┤
+//    │ no │   NAV_AIM    │   MS_BTN2    │  MS_BTN3  │   MS_BTN1    │    no    │             │      no       │ NAV_ICPI │ NAV_DCPI │ NAV_CLR │ no │ no │
+//    ├────┼──────────────┼──────────────┼───────────┼──────────────┼──────────┤             ├───────────────┼──────────┼──────────┼─────────┼────┼────┤
+//    │ no │ NAV_GUI_BTN1 │ NAV_GUI_BTN2 │ NAV_NOOP  │ NAV_CTL_BTN1 │    no    │             │      no       │    no    │    no    │   no    │ no │ no │
+//    └────┴──────────────┴──────────────┴───────────┴──────────────┼──────────┼────┐   ┌────┼───────────────┼──────────┴──────────┴─────────┴────┴────┘
+//                                                                  │ www_back │ no │   │ no │ TT(NAVIGATOR) │
+//                                                                  └──────────┴────┘   └────┴───────────────┘
 [NAVIGATOR] = LAYOUT(
-  _______ , _______      , _______      , _______   , _______      , _______ ,                         TT(NAVIGATOR) , _______  , _______  , _______ , _______ , _______,
-  _______ , NAV_TURBO    , DRAG_SCROLL  , NAV_VSCRL , XXXXXXX      , XXXXXXX ,                         XXXXXXX       , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , _______,
-  _______ , NAV_AIM      , MS_BTN3      , MS_BTN2   , MS_BTN1      , XXXXXXX ,                         XXXXXXX       , NAV_ICPI , NAV_DCPI , NAV_CLR , XXXXXXX , _______,
-  _______ , NAV_GUI_BTN1 , NAV_GUI_BTN2 , NAV_NOOP  , NAV_CTL_BTN1 , XXXXXXX ,                         XXXXXXX       , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , _______,
-                                                                     KC_WBAK , _______ ,     _______ , TT(NAVIGATOR)
+  XXXXXXX , XXXXXXX      , XXXXXXX      , XXXXXXX   , XXXXXXX      , XXXXXXX ,                         XXXXXXX       , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , XXXXXXX,
+  XXXXXXX , NAV_TURBO    , DRAG_SCROLL  , NAV_VSCRL , XXXXXXX      , XXXXXXX ,                         XXXXXXX       , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , XXXXXXX,
+  XXXXXXX , NAV_AIM      , MS_BTN2      , MS_BTN3   , MS_BTN1      , XXXXXXX ,                         XXXXXXX       , NAV_ICPI , NAV_DCPI , NAV_CLR , XXXXXXX , XXXXXXX,
+  XXXXXXX , NAV_GUI_BTN1 , NAV_GUI_BTN2 , NAV_NOOP  , NAV_CTL_BTN1 , XXXXXXX ,                         XXXXXXX       , XXXXXXX  , XXXXXXX  , XXXXXXX , XXXXXXX , XXXXXXX,
+                                                                     KC_WBAK , XXXXXXX ,     XXXXXXX , TT(NAVIGATOR)
 ),
 
 //    ┌─────┬─────┬─────┬─────┬───────┬─────────┐               ┌──────┬─────┬─────┬─────┬─────┬─────┐
@@ -808,7 +807,6 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color_all(0, 0, 0);
 
             // exit keys
-            rgb_matrix_set_color(26, RGB_RED);
             rgb_matrix_set_color(51, RGB_RED);
 
             // mouse keys
@@ -1091,13 +1089,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return true;
 
         // Keys with no-op mapping in NAVIGATOR layer fall through to STRDY and
-        // exit NAVIGATOR.
+        // exit NAVIGATOR. The STRDY keycode is looked up and sent directly
+        // (mod-tap/layer-tap keys are unwrapped to their tap keycode) rather
+        // than relying on QMK to re-resolve the keycode after the layer is
+        // turned off, which doesn't reliably register the key.
         case KC_NO:
         case NAV_NOOP:
-            if (record->event.pressed && layer == NAVIGATOR) {
-                layer_off(NAVIGATOR);
+            if (layer == NAVIGATOR) {
+                const uint16_t base_keycode = keymap_key_to_keycode(STRDY, record->event.key);
+                const uint16_t send_keycode = (IS_QK_MOD_TAP(base_keycode) || IS_QK_LAYER_TAP(base_keycode)) ? (base_keycode & 0xFF) : base_keycode;
+                if (record->event.pressed) {
+                    layer_off(NAVIGATOR);
+                    register_code16(send_keycode);
+                } else {
+                    unregister_code16(send_keycode);
+                }
             }
-            break;
+            return false;
 
         // Hold behavior: NAVIGATOR layer while held; if NAVIGATOR is already
         // on (i.e. left on via a previous tap or this same hold), the press
