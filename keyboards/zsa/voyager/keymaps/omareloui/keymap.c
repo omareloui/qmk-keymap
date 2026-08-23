@@ -177,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //    ┌─────────┬────────────────┬────────────────┬─────────────┬────────────────┬──────────┐                      ┌────┬────────────┬────────────┬───────────┬──────┬───────────────┐
 //    │   no    │       no       │       no       │     no      │       no       │    no    │                      │ no │     no     │     no     │    no     │  no  │ TT(NAVIGATOR) │
 //    ├─────────┼────────────────┼────────────────┼─────────────┼────────────────┼──────────┤                      ├────┼────────────┼────────────┼───────────┼──────┼───────────────┤
-//    │   no    │  NVGTR_TURBO   │  DRAG_SCROLL   │ NVGTR_VSCRL │       no       │    no    │                      │ no │     no     │     no     │    no     │  no  │      no       │
+//    │   no    │  NVGTR_TURBO   │  DRAG_SCROLL   │ NVGTR_VSCRL │    MS_BTN1     │    no    │                      │ no │     no     │     no     │    no     │  no  │      no       │
 //    ├─────────┼────────────────┼────────────────┼─────────────┼────────────────┼──────────┤                      ├────┼────────────┼────────────┼───────────┼──────┼───────────────┤
 //    │   no    │   NVGTR_AIM    │   NVGTR_BTN2   │ NVGTR_BTN3  │   NVGTR_BTN1   │    no    │                      │ no │ NVGTR_ICPI │ NVGTR_DCPI │ NVGTR_CLR │ ralt │      no       │
 //    ├─────────┼────────────────┼────────────────┼─────────────┼────────────────┼──────────┤                      ├────┼────────────┼────────────┼───────────┼──────┼───────────────┤
@@ -187,7 +187,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                                                                               └──────────┴─────────────┘   └────┴────┘
 [NAVIGATOR] = LAYOUT(
   XXXXXXX , XXXXXXX        , XXXXXXX        , XXXXXXX     , XXXXXXX        , XXXXXXX ,                         XXXXXXX , XXXXXXX    , XXXXXXX    , XXXXXXX   , XXXXXXX , TT(NAVIGATOR),
-  XXXXXXX , NVGTR_TURBO    , DRAG_SCROLL    , NVGTR_VSCRL , XXXXXXX        , XXXXXXX ,                         XXXXXXX , XXXXXXX    , XXXXXXX    , XXXXXXX   , XXXXXXX , XXXXXXX      ,
+  XXXXXXX , NVGTR_TURBO    , DRAG_SCROLL    , NVGTR_VSCRL , MS_BTN1        , XXXXXXX ,                         XXXXXXX , XXXXXXX    , XXXXXXX    , XXXXXXX   , XXXXXXX , XXXXXXX      ,
   XXXXXXX , NVGTR_AIM      , NVGTR_BTN2     , NVGTR_BTN3  , NVGTR_BTN1     , XXXXXXX ,                         XXXXXXX , NVGTR_ICPI , NVGTR_DCPI , NVGTR_CLR , KC_RALT , XXXXXXX      ,
   EXT_COL , NVGTR_GUI_BTN1 , NVGTR_GUI_BTN2 , NVGTR_NOOP  , NVGTR_CTL_BTN1 , XXXXXXX ,                         XXXXXXX , KC_RCTL    , XXXXXXX    , NVGTR_WIN , KC_RGUI , XXXXXXX      ,
                                                                              KC_WBAK , KC_WFWD ,     XXXXXXX , XXXXXXX
@@ -437,7 +437,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
         case HRM_E:
         case HRM_D:
         case NVGTR_BTN1:
-            return QUICK_TAP_TERM; // Enable key repeating.
+            return QUICK_TAP_TERM; // Enable key repeating (tap-then-hold = drag).
         default:
             return 0; // Otherwise, force hold and disable key repeating.
     }
@@ -822,14 +822,24 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color(31, RGB_RED);
 
             // mouse keys
+            rgb_matrix_set_color(10, RGB_WHITE); // MS_BTN1
             rgb_matrix_set_color(16, RGB_WHITE); // NVGTR_BTN1
             rgb_matrix_set_color(15, RGB_WHITE); // NVGTR_BTN2
             rgb_matrix_set_color(14, RGB_WHITE); // NVGTR_BTN3
 
-            // modified clicks
+            // modifers, web, and layer
+            rgb_matrix_set_color(18, RGB_GOLD);      // EXT_COL
             rgb_matrix_set_color(19, RGB_TURQUOISE); // NVGTR_GUI_BTN1
             rgb_matrix_set_color(20, RGB_TURQUOISE); // NVGTR_GUI_BTN2
-            rgb_matrix_set_color(22, RGB_ORANGE);    // NVGTR_CTL_BTN1
+            rgb_matrix_set_color(22, RGB_TURQUOISE); // NVGTR_CTL_BTN1
+
+            rgb_matrix_set_color(24, RGB_YELLOW); // KC_WBAK
+            rgb_matrix_set_color(25, RGB_YELLOW); // KC_WFWD
+
+            rgb_matrix_set_color(42, RGB_ORANGE); // KC_RALT
+            rgb_matrix_set_color(45, RGB_ORANGE); // KC_RCTL
+            rgb_matrix_set_color(47, RGB_GOLD);   // NVGTR_WIN
+            rgb_matrix_set_color(48, RGB_ORANGE); // KC_RGUI
 
             // scroll
             rgb_matrix_set_color(8, RGB_MAGENTA); // DRAG_SCROLL
@@ -1092,7 +1102,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return true;
 
         case HRM_D: // NAV switch.
-        case NVGTR_BTN1:
             if (!record->tap.count) {
                 if (record->event.pressed) {
                     layer_on(NAV);
