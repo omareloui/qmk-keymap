@@ -5,6 +5,17 @@
 
 #include "quantum.h"
 
+// Private strings live in an untracked secrets.h; fall back to empty strings.
+#if __has_include("secrets.h")
+#    include "secrets.h"
+#endif
+#ifndef WORK_ID_STR
+#    define WORK_ID_STR ""
+#endif
+#ifndef WORK_EMAIL_STR
+#    define WORK_EMAIL_STR ""
+#endif
+
 enum layers {
     STRDY,
     GAME,
@@ -57,8 +68,8 @@ enum custom_keycodes {
 
     LUM_CYC,
 
-    O_EMAIL,
-    O_ID,
+    WORK_EMAIL,
+    WORK_ID,
 
     PASTE_ENTER,
 
@@ -288,22 +299,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     XXXXXXX , XXXXXXX ,     XXXXXXX , QK_LLCK
 ),
 
-//    ┌─────┬──────┬───────┬────────┬─────────┬──────────┐                       ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
-//    │     │      │       │        │         │          │                       │         │         │         │         │         │ AC_TOGG │
-//    ├─────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-//    │     │  no  │  no   │   no   │ JIGGLE  │    no    │                       │ MS_WHLU │ MS_BTN1 │  MS_UP  │ MS_BTN2 │ SRCHSEL │         │
-//    ├─────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-//    │     │ lalt │ lctl  │  lsft  │ SELLINE │    no    │                       │ MS_WHLD │ MS_LEFT │ MS_DOWN │ MS_RGHT │ MS_ACL0 │         │
-//    ├─────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-//    │     │ lgui │ PASTE │ SELALL │  COPY   │   CUT    │                       │  O_ID   │ O_EMAIL │  EMAIL  │ UC_PREV │ UC_NEXT │         │
-//    └─────┴──────┴───────┴────────┴─────────┼──────────┼─────────┐   ┌─────────┼─────────┼─────────┴─────────┴─────────┴─────────┴─────────┘
+//    ┌─────┬──────┬───────┬────────┬─────────┬──────────┐                       ┌─────────┬────────────┬─────────┬─────────┬─────────┬─────────┐
+//    │     │      │       │        │         │          │                       │         │            │         │         │         │ AC_TOGG │
+//    ├─────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼────────────┼─────────┼─────────┼─────────┼─────────┤
+//    │     │  no  │  no   │   no   │ JIGGLE  │    no    │                       │ MS_WHLU │  MS_BTN1   │  MS_UP  │ MS_BTN2 │ SRCHSEL │         │
+//    ├─────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼────────────┼─────────┼─────────┼─────────┼─────────┤
+//    │     │ lalt │ lctl  │  lsft  │ SELLINE │    no    │                       │ MS_WHLD │  MS_LEFT   │ MS_DOWN │ MS_RGHT │ MS_ACL0 │         │
+//    ├─────┼──────┼───────┼────────┼─────────┼──────────┤                       ├─────────┼────────────┼─────────┼─────────┼─────────┼─────────┤
+//    │     │ lgui │ PASTE │ SELALL │  COPY   │   CUT    │                       │ WORK_ID │ WORK_EMAIL │  EMAIL  │ UC_PREV │ UC_NEXT │         │
+//    └─────┴──────┴───────┴────────┴─────────┼──────────┼─────────┐   ┌─────────┼─────────┼────────────┴─────────┴─────────┴─────────┴─────────┘
 //                                            │ www_back │ MS_BTN1 │   │ MS_BTN1 │  lock   │
 //                                            └──────────┴─────────┘   └─────────┴─────────┘
 [EXT] = LAYOUT(
-  _______ , _______ , _______ , _______ , _______ , _______ ,                         _______ , _______ , _______ , _______ , _______ , AC_TOGG,
-  _______ , XXXXXXX , XXXXXXX , XXXXXXX , JIGGLE  , XXXXXXX ,                         MS_WHLU , MS_BTN1 , MS_UP   , MS_BTN2 , SRCHSEL , _______,
-  _______ , KC_LALT , KC_LCTL , KC_LSFT , SELLINE , XXXXXXX ,                         MS_WHLD , MS_LEFT , MS_DOWN , MS_RGHT , MS_ACL0 , _______,
-  _______ , KC_LGUI , PASTE   , SELALL  , COPY    , CUT     ,                         O_ID    , O_EMAIL , EMAIL   , UC_PREV , UC_NEXT , _______,
+  _______ , _______ , _______ , _______ , _______ , _______ ,                         _______ , _______    , _______ , _______ , _______ , AC_TOGG,
+  _______ , XXXXXXX , XXXXXXX , XXXXXXX , JIGGLE  , XXXXXXX ,                         MS_WHLU , MS_BTN1    , MS_UP   , MS_BTN2 , SRCHSEL , _______,
+  _______ , KC_LALT , KC_LCTL , KC_LSFT , SELLINE , XXXXXXX ,                         MS_WHLD , MS_LEFT    , MS_DOWN , MS_RGHT , MS_ACL0 , _______,
+  _______ , KC_LGUI , PASTE   , SELALL  , COPY    , CUT     ,                         WORK_ID , WORK_EMAIL , EMAIL   , UC_PREV , UC_NEXT , _______,
                                                     KC_WBAK , MS_BTN1 ,     MS_BTN1 , QK_LLCK
 )
 };
@@ -1240,13 +1251,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 send_string_with_delay_P("contact@omareloui.com", TAP_CODE_DELAY);
                 return false;
 
-            case O_ID:
+            case WORK_ID:
                 clear_mods();
-                send_string_with_delay_P("VPYH9010", TAP_CODE_DELAY);
+                send_string_with_delay_P(PSTR(WORK_ID_STR), TAP_CODE_DELAY);
                 return false;
-            case O_EMAIL:
+            case WORK_EMAIL:
                 clear_mods();
-                send_string_with_delay_P("omar.eloui@orange.com", TAP_CODE_DELAY);
+                send_string_with_delay_P(PSTR(WORK_EMAIL_STR), TAP_CODE_DELAY);
                 return false;
 
             case ARROW:                                                   // Unicode arrows -> => <-> <=> through Shift and Alt.
