@@ -185,23 +185,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     TURBO   , KC_SPC ,     XXXXXXX , XXXXXXX
 ),
 
-//    ┌─────────┬────────────────┬────────────────┬─────────────┬────────────────┬──────────┐                      ┌────┬────────────┬────────────┬───────────┬──────┬───────────────┐
-//    │   no    │       no       │       no       │     no      │       no       │    no    │                      │ no │     no     │     no     │    no     │  no  │ TT(NAVIGATOR) │
-//    ├─────────┼────────────────┼────────────────┼─────────────┼────────────────┼──────────┤                      ├────┼────────────┼────────────┼───────────┼──────┼───────────────┤
-//    │   no    │  NVGTR_TURBO   │  DRAG_SCROLL   │ NVGTR_VSCRL │    MS_BTN1     │    no    │                      │ no │     no     │     no     │    no     │  no  │      no       │
-//    ├─────────┼────────────────┼────────────────┼─────────────┼────────────────┼──────────┤                      ├────┼────────────┼────────────┼───────────┼──────┼───────────────┤
-//    │   no    │   NVGTR_AIM    │   NVGTR_BTN2   │ NVGTR_BTN3  │   NVGTR_BTN1   │    no    │                      │ no │ NVGTR_ICPI │ NVGTR_DCPI │ NVGTR_CLR │ ralt │      no       │
-//    ├─────────┼────────────────┼────────────────┼─────────────┼────────────────┼──────────┤                      ├────┼────────────┼────────────┼───────────┼──────┼───────────────┤
-//    │ EXT_COL │ NVGTR_GUI_BTN1 │ NVGTR_GUI_BTN2 │ NVGTR_NOOP  │ NVGTR_CTL_BTN1 │    no    │                      │ no │    rctl    │     no     │ NVGTR_WIN │ rgui │      no       │
-//    └─────────┴────────────────┴────────────────┴─────────────┴────────────────┼──────────┼─────────────┐   ┌────┼────┼────────────┴────────────┴───────────┴──────┴───────────────┘
-//                                                                               │ www_back │ www_forward │   │ no │ no │
-//                                                                               └──────────┴─────────────┘   └────┴────┘
+//    ┌───────────────┬────────────────┬────────────────┬─────────────┬────────────────┬──────────┐                      ┌────┬────────────┬────────────┬───────────┬──────┬───────────────┐
+//    │      no       │       no       │       no       │     no      │       no       │    no    │                      │ no │     no     │     no     │    no     │  no  │ TT(NAVIGATOR) │
+//    ├───────────────┼────────────────┼────────────────┼─────────────┼────────────────┼──────────┤                      ├────┼────────────┼────────────┼───────────┼──────┼───────────────┤
+//    │      no       │  NVGTR_TURBO   │  DRAG_SCROLL   │ NVGTR_VSCRL │    MS_BTN1     │    no    │                      │ no │     no     │     no     │    no     │  no  │      no       │
+//    ├───────────────┼────────────────┼────────────────┼─────────────┼────────────────┼──────────┤                      ├────┼────────────┼────────────┼───────────┼──────┼───────────────┤
+//    │ TT(NAVIGATOR) │   NVGTR_AIM    │   NVGTR_BTN2   │ NVGTR_BTN3  │   NVGTR_BTN1   │    no    │                      │ no │ NVGTR_ICPI │ NVGTR_DCPI │ NVGTR_CLR │ ralt │      no       │
+//    ├───────────────┼────────────────┼────────────────┼─────────────┼────────────────┼──────────┤                      ├────┼────────────┼────────────┼───────────┼──────┼───────────────┤
+//    │    EXT_COL    │ NVGTR_GUI_BTN1 │ NVGTR_GUI_BTN2 │ NVGTR_NOOP  │ NVGTR_CTL_BTN1 │    no    │                      │ no │    rctl    │     no     │ NVGTR_WIN │ rgui │      no       │
+//    └───────────────┴────────────────┴────────────────┴─────────────┴────────────────┼──────────┼─────────────┐   ┌────┼────┼────────────┴────────────┴───────────┴──────┴───────────────┘
+//                                                                                     │ www_back │ www_forward │   │ no │ no │
+//                                                                                     └──────────┴─────────────┘   └────┴────┘
 [NAVIGATOR] = LAYOUT(
-  XXXXXXX , XXXXXXX        , XXXXXXX        , XXXXXXX     , XXXXXXX        , XXXXXXX ,                         XXXXXXX , XXXXXXX    , XXXXXXX    , XXXXXXX   , XXXXXXX , TT(NAVIGATOR),
-  XXXXXXX , NVGTR_TURBO    , DRAG_SCROLL    , NVGTR_VSCRL , MS_BTN1        , XXXXXXX ,                         XXXXXXX , XXXXXXX    , XXXXXXX    , XXXXXXX   , XXXXXXX , XXXXXXX      ,
-  XXXXXXX , NVGTR_AIM      , NVGTR_BTN2     , NVGTR_BTN3  , NVGTR_BTN1     , XXXXXXX ,                         XXXXXXX , NVGTR_ICPI , NVGTR_DCPI , NVGTR_CLR , KC_RALT , XXXXXXX      ,
-  EXT_COL , NVGTR_GUI_BTN1 , NVGTR_GUI_BTN2 , NVGTR_NOOP  , NVGTR_CTL_BTN1 , XXXXXXX ,                         XXXXXXX , KC_RCTL    , XXXXXXX    , NVGTR_WIN , KC_RGUI , XXXXXXX      ,
-                                                                             KC_WBAK , KC_WFWD ,     XXXXXXX , XXXXXXX
+  XXXXXXX       , XXXXXXX        , XXXXXXX        , XXXXXXX     , XXXXXXX        , XXXXXXX ,                         XXXXXXX , XXXXXXX    , XXXXXXX    , XXXXXXX   , XXXXXXX , TT(NAVIGATOR),
+  XXXXXXX       , NVGTR_TURBO    , DRAG_SCROLL    , NVGTR_VSCRL , MS_BTN1        , XXXXXXX ,                         XXXXXXX , XXXXXXX    , XXXXXXX    , XXXXXXX   , XXXXXXX , XXXXXXX      ,
+  TT(NAVIGATOR) , NVGTR_AIM      , NVGTR_BTN2     , NVGTR_BTN3  , NVGTR_BTN1     , XXXXXXX ,                         XXXXXXX , NVGTR_ICPI , NVGTR_DCPI , NVGTR_CLR , KC_RALT , XXXXXXX      ,
+  EXT_COL       , NVGTR_GUI_BTN1 , NVGTR_GUI_BTN2 , NVGTR_NOOP  , NVGTR_CTL_BTN1 , XXXXXXX ,                         XXXXXXX , KC_RCTL    , XXXXXXX    , NVGTR_WIN , KC_RGUI , XXXXXXX      ,
+                                                                                   KC_WBAK , KC_WFWD ,     XXXXXXX , XXXXXXX
 ),
 
 //    ┌─────┬─────┬─────┬─────┬───────┬─────────┐               ┌──────┬─────┬─────┬─────┬─────┬─────┐
@@ -349,15 +349,17 @@ const uint16_t PROGMEM dlr_rbrc_combo[]   = {KC_DLR, KC_RBRC, COMBO_END};
 
 const uint16_t PROGMEM paste_selall_combo[] = {PASTE, SELALL, COMBO_END};
 
-const uint16_t PROGMEM nav_gui_btn2_noop_combo[] = {NVGTR_GUI_BTN2, NVGTR_NOOP, COMBO_END};
+const uint16_t PROGMEM nav_gui_btn2_noop_combo[]     = {NVGTR_GUI_BTN2, NVGTR_NOOP, COMBO_END};
+const uint16_t PROGMEM nav_gui_btn2_ctl_btn1_combo[] = {NVGTR_GUI_BTN2, NVGTR_CTL_BTN1, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(j_comm_combo, CW_TOGG), // J and , => activate Caps Word.
-    COMBO(j_k_combo, KC_ESC),     // J and K => esc
-    COMBO(k_g_combo, KC_ENT),     // J, K and G => enter
     COMBO(f_n_combo, OSL(FUN)),   // F and N => FUN layer
 
-    COMBO(nav_gui_btn2_noop_combo, TT(NAVIGATOR)), // NVGTR_GUI_BTN2 and NVGTR_NOOP (K and J position on NAVIGATOR) => exit NAVIGATOR
+    COMBO(j_k_combo, KC_ESC),                   // J and K => esc
+    COMBO(k_g_combo, KC_ENT),                   // K and G => enter
+    COMBO(nav_gui_btn2_noop_combo, KC_ESC),     // NVGTR_GUI_BTN2 and NVGTR_NOOP (K and J position) => esc
+    COMBO(nav_gui_btn2_ctl_btn1_combo, KC_ENT), // NVGTR_GUI_BTN2 and NVGTR_CTL_BTN1 (K and G position) => enter
 
     COMBO(y_d_combo, DM_REC1), // y and d => Start recording a macro
     COMBO(c_p_combo, DM_PLY1), // c and p => Play the recorded mocro
@@ -830,13 +832,14 @@ bool rgb_matrix_indicators_user(void) {
             rgb_matrix_set_color_all(0, 0, 0);
 
             // exit keys
-            rgb_matrix_set_color(31, RGB_RED);
+            rgb_matrix_set_color(31, RGB_RED); // TT(NAVIGATOR) right board
+            rgb_matrix_set_color(12, RGB_RED); // TT(NAVIGATOR) left board
 
             // mouse keys
             rgb_matrix_set_color(10, RGB_WHITE); // MS_BTN1
             rgb_matrix_set_color(16, RGB_WHITE); // NVGTR_BTN1
-            rgb_matrix_set_color(15, RGB_WHITE); // NVGTR_BTN2
-            rgb_matrix_set_color(14, RGB_WHITE); // NVGTR_BTN3
+            rgb_matrix_set_color(15, RGB_WHITE); // NVGTR_BTN3
+            rgb_matrix_set_color(14, RGB_WHITE); // NVGTR_BTN2
 
             // modifers, web, and layer
             rgb_matrix_set_color(18, RGB_GOLD);      // EXT_COL
