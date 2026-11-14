@@ -29,9 +29,17 @@ draw_config:
     rel_h: 12.0
     rx: 4.0
     ry: 4.0
-  svg_extra_style: ""
+  # Navigator: shell and ring in the keyboard body's color, ball in the keys' color.
+  svg_extra_style: |
+    path.trackball-housing, circle.trackball { fill: #eef0f2; }
+    circle.trackball-ball { fill: #f6f8fa; }
+    @media (prefers-color-scheme: dark) {
+      path.trackball-housing, circle.trackball { fill: #2a3037; }
+      circle.trackball-ball { fill: #3f4750; }
+    }
   footer_text: Created with <a href="https://github.com/caksoylar/keymap-drawer">keymap-drawer</a>
   shrink_wide_legends: 7
+  draw_board: true
   trackballs:
     - x: 8.276
       y: 3.55
@@ -39,12 +47,14 @@ draw_config:
       ball_ratio: 0.76
       draw_housing: true
       housing: >-
-        M -0.807,-2.499 H 0.535 Q 0.663,-2.499 0.663,-2.372 V -1.564
-        H 0.901 Q 0.986,-1.564 0.986,-1.479 V -0.374
-        A 1.054,1.054 0 0 1 1.02,0.264 L 1.02,1.105 L 1.232,2.465
-        L 0.85,2.83 Q 0.748,2.907 0.663,2.805 L -0.85,0.62
-        A 1.054,1.054 0 0 1 -0.935,-0.484 V -2.372
-        Q -0.935,-2.499 -0.807,-2.499 Z
+        M -0.807,-3.17 H 0.535 Q 0.663,-3.17 0.663,-3.042 V -1.9 H 0.901 Q 0.986,-1.9 0.986,-1.815
+        V 0.638 L 0.988,0.638 L 0.986,0.658 L 0.981,0.676 L 0.972,0.693 L 0.961,0.708 L 0.947,0.721
+        L 0.928,0.733 L 0.739,0.840 L 0.713,0.857 L 0.688,0.880 L 0.667,0.907 L 0.652,0.938
+        L 0.643,0.971 L 0.640,1.005 L 0.640,1.445 L 0.639,1.452 L 0.638,1.459 L 0.635,1.465
+        L 0.631,1.470 L 0.626,1.475 L 0.621,1.478 L 0.029,1.787 L -0.005,1.820 L -0.021,1.858
+        L -0.028,1.901 L -0.026,1.947 L -0.015,1.996 L 0.006,2.046 L 0.850,3.509
+        Q 0.863,3.531 0.841,3.543 L 0.784,3.576 Q 0.762,3.589 0.750,3.567 L -0.020,2.234
+        Q -0.095,2.104 -0.158,1.968 L -0.935,0.300 V -3.042 Q -0.935,-3.17 -0.807,-3.17 Z
   style_layer_activators: true
   glyph_tap_size: 14
   glyph_hold_size: 12

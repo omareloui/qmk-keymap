@@ -112,10 +112,10 @@ The diagram uses glyphs instead of raw keycode names (mapped in `draw_config.yam
 | <kbd>⇦</kbd> | Browser back |
 | <kbd>⇨</kbd> | Browser forward |
 
-The trackball drawn between the halves on every layer is the Navigator, mounted on the inner edge of the right half. The diagram is drawn with [my fork of keymap-drawer](https://github.com/omareloui/keymap-drawer/tree/feat/trackballs), which adds the `trackballs` option used in `draw_config.yaml`; the upstream CLI and the [web app](https://keymap-drawer.streamlit.app/) don't support it yet and silently ignore that option (no trackball is drawn). To regenerate it locally:
+The trackball drawn between the halves on every layer is the Navigator, mounted on the inner edge of the right half, and the shape around the keys is the Voyager's body. The diagram is drawn with [my fork of keymap-drawer](https://github.com/omareloui/keymap-drawer), which adds the `trackballs` and `draw_board` options used in `draw_config.yaml` (set `draw_board: false` to show only the keys); the upstream CLI and the [web app](https://keymap-drawer.streamlit.app/) don't support them yet and silently ignore them. To regenerate it locally:
 
 ```sh
-pip install "git+https://github.com/omareloui/keymap-drawer@feat/trackballs"
+pip install "git+https://github.com/omareloui/keymap-drawer@main"
 cd keyboards/zsa/voyager/keymaps/omareloui
 keymap -c draw_config.yaml draw draw_keymap.yaml -o draw.svg
 ```
