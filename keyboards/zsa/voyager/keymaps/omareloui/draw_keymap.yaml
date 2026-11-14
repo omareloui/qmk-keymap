@@ -48,44 +48,57 @@ layers:
     - ["", ""]
 
   NAVIGATOR:
-    - ["", "", "", "", "", "", "", "", "", "", "", { t: EXIT, h: NAVGTR }]
-    - - ""
+    - [
+        { t: ▽, type: trans },
+        { t: ▽, type: trans },
+        { t: ▽, type: trans },
+        { t: ▽, type: trans },
+        { t: ▽, type: trans },
+        { t: ▽, type: trans },
+        { t: ▽, type: trans },
+        { t: ▽, type: trans },
+        { t: ▽, type: trans },
+        { t: ▽, type: trans },
+        { t: ▽, type: trans },
+        { t: EXIT, h: NAVGTR },
+      ]
+    - - { t: ▽, type: trans }
       - TURBO
       - $$mouse_scroll$$
       - $$mouse_scroll_lock$$
       - $$mouse_left_click$$
-      - ""
-      - ""
-      - ""
-      - ""
-      - ""
-      - ""
-      - ""
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
     - - { t: EXIT, h: NAVGTR }
       - AIM
       - { t: $$mouse_right_click$$, h: SYM }
       - { t: MID, h: ⇧ }
       - { t: $$mouse_left_click$$, h: NAV }
-      - ""
-      - ""
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
       - { t: CPI+, h: NUM }
       - { t: CPI−, h: ⇧ }
       - { t: CPI⟲, h: SYM }
       - ⎇
-      - ""
+      - { t: ▽, type: trans }
     - - { t: ":", h: EXT }
       - $$gui_mouse_left_click$$
       - $$gui_mouse_right_click$$
       - J
       - $$ctrl_mouse_left_click$$
-      - ""
-      - ""
+      - { t: ▽, type: trans }
+      - { t: ▽, type: trans }
       - ⎈
-      - ""
+      - { t: ▽, type: trans }
       - WIN
       - ⌘
-      - ""
-    - [⇦, ⇨, "", ""]
+      - { t: ▽, type: trans }
+    - [⇦, ⇨, { t: ▽, type: trans }, { t: ▽, type: trans }]
 
   SYM:
     - - { t: ▽, type: trans }
