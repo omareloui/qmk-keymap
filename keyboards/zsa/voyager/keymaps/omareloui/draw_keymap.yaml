@@ -5,7 +5,7 @@ layout:
 
 layers:
   STRDY:
-    - ["`", ⎀, 🗎, ⎁, ⧉, $$mouse_left_click$$, ⌘+⇥, ↖, ←, →]
+    - ["`", ⎀, ⎘, ⎁, ⧉, $$mouse_left_click$$, ⌘+⇥, ↖, ←, →]
     - [↘, GAME, ⇥, V, M, L, C, P, B, ★]
     - - U
       - O
@@ -46,6 +46,46 @@ layers:
     - ["", "", "", "", "", "", ↵, ⎈, "", ""]
     - ["", "", "", "", "", "", "", "", TURBO, ␣]
     - ["", ""]
+
+  NAVIGATOR:
+    - ["", "", "", "", "", "", "", "", "", "", "", { t: EXIT, h: NAVGTR }]
+    - - ""
+      - TURBO
+      - $$mouse_scroll$$
+      - $$mouse_scroll_lock$$
+      - $$mouse_left_click$$
+      - ""
+      - ""
+      - ""
+      - ""
+      - ""
+      - ""
+      - ""
+    - - { t: EXIT, h: NAVGTR }
+      - AIM
+      - { t: $$mouse_right_click$$, h: SYM }
+      - { t: MID, h: ⇧ }
+      - { t: $$mouse_left_click$$, h: NAV }
+      - ""
+      - ""
+      - { t: CPI+, h: NUM }
+      - { t: CPI−, h: ⇧ }
+      - { t: CPI⟲, h: SYM }
+      - ⎇
+      - ""
+    - - { t: ":", h: EXT }
+      - $$gui_mouse_left_click$$
+      - $$gui_mouse_right_click$$
+      - J
+      - $$ctrl_mouse_left_click$$
+      - ""
+      - ""
+      - ⎈
+      - ""
+      - WIN
+      - ⌘
+      - ""
+    - [⇦, ⇨, "", ""]
 
   SYM:
     - - { t: ▽, type: trans }
@@ -150,7 +190,7 @@ layers:
       - ⟾
       - ""
       - { t: ▽, type: trans }
-      - WBAK
+      - ⇦
       - ⌘+⇥
     - - { t: ▽, type: trans }
       - $$lock$$
@@ -293,24 +333,24 @@ layers:
       - ⎀
       - ""
     - - $$mouse_scroll_down$$
-      - $$mouse_rotate_left$$
+      - $$mouse_move_left$$
       - $$mouse_move_down$$
-      - $$mouse_rotate_right$$
-      - OM SLOW
+      - $$mouse_move_right$$
+      - SLOW
       - { t: ▽, type: trans }
       - { t: ▽, type: held }
       - ⌘
-      - 🗎
+      - ⎘
       - ⎁
     - - ⧉
       - ✂
-      - O ID
-      - O EMAIL
+      - W ID
+      - W EMAIL
       - EMAIL
       - UC PREV
       - UC NEXT
       - { t: ▽, type: trans }
-      - WBAK
+      - ⇦
       - $$mouse_left_click$$
     - [$$mouse_left_click$$, $$lock$$]
 
@@ -321,8 +361,11 @@ combos:
   - { tk: [F, N], k: FUN, l: [STRDY] }
   - { tk: [Y, D], k: REC, l: [STRDY] }
   - { tk: [C, P], k: PLY, l: [STRDY] }
-  - { tk: [🗎, ⎁], k: 🗎+↵, l: [STRDY] }
+  - { tk: [⎘, ⎁], k: ⎘+↵, l: [STRDY] }
   - { tk: [T, R], k: ⎈+NAV, l: [STRDY], w: 40 }
+
+  - { p: [38, 39], k: ⎋, l: [NAVIGATOR] }
+  - { p: [38, 40], k: ↵, l: [NAVIGATOR], align: bottom }
 
   - { tk: ["H", ","], k: CAMEL, l: [STRDY], w: 40 }
   - { tk: [",", "."], k: SNAKE, l: [STRDY], w: 40 }

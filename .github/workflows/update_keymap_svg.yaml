@@ -27,7 +27,7 @@ jobs:
           python-version: "3.x"
 
       - name: Install keymap-drawer
-        run: pip install keymap-drawer
+        run: pip install "git+https://github.com/omareloui/keymap-drawer@46f408112da3e08e2cc01d3c671c7639544bbb6f"
 
       - name: Draw keymap SVG
         working-directory: keyboards/zsa/voyager/keymaps/omareloui

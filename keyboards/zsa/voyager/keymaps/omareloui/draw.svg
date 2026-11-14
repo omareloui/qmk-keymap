@@ -1,5 +1,32 @@
-<svg width="928" height="3552" viewBox="0 0 928 3552" class="keymap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="928" height="3989" viewBox="0 0 928 3989" class="keymap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>/* start glyphs */
+<svg id="ctrl_mouse_left_click">
+<svg viewBox="0 0 420 258">
+  <text x="105" y="205" font-size="300" text-anchor="middle" style="fill: inherit">⎈</text>
+  <g transform="translate(247 0)">
+      <path d="M88.5257 0C44.5327 0 0 22.0866 0 64.3046V171.845C0 219.352 38.6466 257.999 86.1546 257.999C133.662 257.999 172.308 219.352 172.308 171.845V64.3046C172.308 20.1214 128.881 0 88.5257 0ZM156.093 171.845C156.093 210.412 124.718 241.781 86.1546 241.781C47.5898 241.781 16.2178 210.412 16.2178 171.845V121.548C30.6991 125.929 57.9562 132.557 90.1805 132.557C110.813 132.557 133.472 129.801 156.093 122.017V171.845ZM156.093 104.767C96.9906 127.365 34.2799 110.35 16.2178 104.503V64.3046C16.2178 33.0701 53.473 16.2171 88.5257 16.2171C122.157 16.2171 156.093 31.084 156.093 64.3046V104.767ZM95.2765 35.0122V93.7997C95.2765 98.2763 91.642 101.909 87.1683 101.909C82.6931 101.909 79.0594 98.2763 79.0594 93.7997V35.0122C79.0594 30.5363 82.6924 26.9033 87.1683 26.9033C91.6413 26.9033 95.2765 30.5363 95.2765 35.0122ZM69.261 28.9915V103.997C57.7716 106.024 23.991 96.5651 23.991 96.5651C15.2077 29.6687 69.261 28.9915 69.261 28.9915Z" />
+  </g>
+</svg>
+
+</svg>
+<svg id="gui_mouse_left_click">
+<svg viewBox="0 0 420 258">
+  <text x="105" y="205" font-size="300" text-anchor="middle" style="fill: inherit">⌘</text>
+  <g transform="translate(247 0)">
+      <path d="M88.5257 0C44.5327 0 0 22.0866 0 64.3046V171.845C0 219.352 38.6466 257.999 86.1546 257.999C133.662 257.999 172.308 219.352 172.308 171.845V64.3046C172.308 20.1214 128.881 0 88.5257 0ZM156.093 171.845C156.093 210.412 124.718 241.781 86.1546 241.781C47.5898 241.781 16.2178 210.412 16.2178 171.845V121.548C30.6991 125.929 57.9562 132.557 90.1805 132.557C110.813 132.557 133.472 129.801 156.093 122.017V171.845ZM156.093 104.767C96.9906 127.365 34.2799 110.35 16.2178 104.503V64.3046C16.2178 33.0701 53.473 16.2171 88.5257 16.2171C122.157 16.2171 156.093 31.084 156.093 64.3046V104.767ZM95.2765 35.0122V93.7997C95.2765 98.2763 91.642 101.909 87.1683 101.909C82.6931 101.909 79.0594 98.2763 79.0594 93.7997V35.0122C79.0594 30.5363 82.6924 26.9033 87.1683 26.9033C91.6413 26.9033 95.2765 30.5363 95.2765 35.0122ZM69.261 28.9915V103.997C57.7716 106.024 23.991 96.5651 23.991 96.5651C15.2077 29.6687 69.261 28.9915 69.261 28.9915Z" />
+  </g>
+</svg>
+
+</svg>
+<svg id="gui_mouse_right_click">
+<svg viewBox="0 0 420 258">
+  <text x="105" y="205" font-size="300" text-anchor="middle" style="fill: inherit">⌘</text>
+  <g transform="translate(247 0)">
+      <path d="M83.7828 0C127.776 0 172.308 22.0866 172.308 64.3046V171.845C172.308 219.352 133.662 257.999 86.1539 257.999C38.6466 257.999 1.93482e-05 219.352 1.93482e-05 171.845V64.3046C1.93482e-05 20.1214 43.4279 0 83.7828 0ZM16.2156 171.845C16.2156 210.412 47.5905 241.781 86.1539 241.781C124.719 241.781 156.091 210.412 156.091 171.845V121.548C141.609 125.929 114.352 132.557 82.128 132.557C61.4958 132.557 38.8369 129.801 16.2156 122.017V171.845ZM16.2156 104.767C75.3179 127.365 138.029 110.35 156.091 104.503V64.3046C156.091 33.0701 118.835 16.2171 83.7828 16.2171C50.1512 16.2171 16.2156 31.084 16.2156 64.3046V104.767ZM77.032 35.0122V93.7997C77.032 98.2763 80.6664 101.909 85.1402 101.909C89.6154 101.909 93.2491 98.2763 93.2491 93.7997V35.0122C93.2491 30.5363 89.6161 26.9033 85.1402 26.9033C80.6672 26.9033 77.032 30.5363 77.032 35.0122ZM103.047 28.9915V103.997C114.537 106.024 148.318 96.5651 148.318 96.5651C157.101 29.6687 103.047 28.9915 103.047 28.9915Z" />
+  </g>
+</svg>
+
+</svg>
 <svg id="lock">
 <svg viewBox="0 0 640 640">
     <path d="M256 160L256 224L384 224L384 160C384 124.7 355.3 96 320 96C284.7 96 256 124.7 256 160zM192 224L192 160C192 89.3 249.3 32 320 32C390.7 32 448 89.3 448 160L448 224C483.3 224 512 252.7 512 288L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 288C128 252.7 156.7 224 192 224z"/>
@@ -33,6 +60,26 @@
 </svg>
 
 </svg>
+<svg id="mouse_move_left">
+<svg viewBox="0 0 400 258">
+  <g transform="translate(228 0)">
+    <path d="M83.7832 0C43.4283 0 0 20.1215 0 64.3047V171.846C0 219.353 38.647 257.998 86.1543 257.998C133.662 257.998 172.309 219.353 172.309 171.846V64.3047C172.309 22.0867 127.776 0 83.7832 0ZM83.7832 16.2168C118.835 16.2168 156.092 33.0702 156.092 64.3047V104.504C138.03 110.351 75.3171 127.366 16.2148 104.768V64.3047C16.2148 31.0841 50.1516 16.2168 83.7832 16.2168ZM85.1406 26.9023C80.6676 26.9023 77.0313 30.5358 77.0313 35.0117V93.7988C77.0313 98.2754 80.6668 101.908 85.1406 101.908C89.6158 101.908 93.25 98.2754 93.25 93.7988V35.0117C93.25 30.5358 89.6165 26.9023 85.1406 26.9023ZM156.092 121.549V171.846C156.092 210.413 124.719 241.781 86.1543 241.781C47.5909 241.781 16.2148 210.413 16.2148 171.846V122.018C38.8361 129.802 61.4967 132.557 82.1289 132.557C114.353 132.557 141.61 125.93 156.092 121.549Z" />
+  </g>
+  <g transform="translate(-150 -10) rotate(-90 247 139)">
+    <path d="M247.134 44.3793C245.262 44.3793 243.39 45.0916 241.964 46.518L205.448 83.0336C202.595 85.8865 202.595 90.5207 205.448 93.3735C208.301 96.2263 212.933 96.2263 215.786 93.3735L239.841 69.3188V150.278V153.922V153.926V226.791C239.841 230.366 242.72 233.245 246.294 233.245H247.995C251.569 233.245 254.446 230.366 254.446 226.791V154.088C254.448 154.033 254.448 153.978 254.448 153.922V69.3188L278.503 93.3735C281.356 96.2263 285.988 96.2263 288.841 93.3735C291.694 90.5207 291.694 85.8865 288.841 83.0336L252.325 46.518H252.304C250.877 45.0916 249.005 44.3793 247.134 44.3793Z" />
+  </g>
+</svg>
+
+</svg>
+<svg id="mouse_move_right">
+<svg viewBox="0 0 400 258">
+  <path d="M83.7832 0C43.4283 0 0 20.1215 0 64.3047V171.846C0 219.353 38.647 257.998 86.1543 257.998C133.662 257.998 172.309 219.353 172.309 171.846V64.3047C172.309 22.0867 127.776 0 83.7832 0ZM83.7832 16.2168C118.835 16.2168 156.092 33.0702 156.092 64.3047V104.504C138.03 110.351 75.3171 127.366 16.2148 104.768V64.3047C16.2148 31.0841 50.1516 16.2168 83.7832 16.2168ZM85.1406 26.9023C80.6676 26.9023 77.0313 30.5358 77.0313 35.0117V93.7988C77.0313 98.2754 80.6668 101.908 85.1406 101.908C89.6158 101.908 93.25 98.2754 93.25 93.7988V35.0117C93.25 30.5358 89.6165 26.9023 85.1406 26.9023ZM156.092 121.549V171.846C156.092 210.413 124.719 241.781 86.1543 241.781C47.5909 241.781 16.2148 210.413 16.2148 171.846V122.018C38.8361 129.802 61.4967 132.557 82.1289 132.557C114.353 132.557 141.61 125.93 156.092 121.549Z" />
+  <g transform="translate(50 -10) rotate(90 247 139)">
+    <path d="M247.134 44.3793C245.262 44.3793 243.39 45.0916 241.964 46.518L205.448 83.0336C202.595 85.8865 202.595 90.5207 205.448 93.3735C208.301 96.2263 212.933 96.2263 215.786 93.3735L239.841 69.3188V150.278V153.922V153.926V226.791C239.841 230.366 242.72 233.245 246.294 233.245H247.995C251.569 233.245 254.446 230.366 254.446 226.791V154.088C254.448 154.033 254.448 153.978 254.448 153.922V69.3188L278.503 93.3735C281.356 96.2263 285.988 96.2263 288.841 93.3735C291.694 90.5207 291.694 85.8865 288.841 83.0336L252.325 46.518H252.304C250.877 45.0916 249.005 44.3793 247.134 44.3793Z" />
+  </g>
+</svg>
+
+</svg>
 <svg id="mouse_move_up">
 <svg viewBox="0 0 291 258">
   <path d="M83.7832 0C43.4283 0 0 20.1215 0 64.3047V171.846C0 219.353 38.647 257.998 86.1543 257.998C133.662 257.998 172.309 219.353 172.309 171.846V64.3047C172.309 22.0867 127.776 0 83.7832 0ZM83.7832 16.2168C118.835 16.2168 156.092 33.0702 156.092 64.3047V104.504C138.03 110.351 75.3171 127.366 16.2148 104.768V64.3047C16.2148 31.0841 50.1516 16.2168 83.7832 16.2168ZM85.1406 26.9023C80.6676 26.9023 77.0313 30.5358 77.0313 35.0117V93.7988C77.0313 98.2754 80.6668 101.908 85.1406 101.908C89.6158 101.908 93.25 98.2754 93.25 93.7988V35.0117C93.25 30.5358 89.6165 26.9023 85.1406 26.9023ZM156.092 121.549V171.846C156.092 210.413 124.719 241.781 86.1543 241.781C47.5909 241.781 16.2148 210.413 16.2148 171.846V122.018C38.8361 129.802 61.4967 132.557 82.1289 132.557C114.353 132.557 141.61 125.93 156.092 121.549Z" />
@@ -46,17 +93,10 @@
 </svg>
 
 </svg>
-<svg id="mouse_rotate_left">
-<svg viewBox="0 0 333 258">
-  <path d="M244.783 0C204.428 0 161 20.1215 161 64.3047V171.846C161 219.353 199.647 257.998 247.154 257.998C294.662 257.998 333.309 219.353 333.309 171.846V64.3047C333.309 22.0867 288.776 0 244.783 0ZM244.783 16.2168C279.835 16.2168 317.092 33.0702 317.092 64.3047V104.504C299.03 110.351 236.317 127.366 177.214 104.768V64.3047C177.214 31.0841 211.151 16.2168 244.783 16.2168ZM246.14 26.9023C241.667 26.9023 238.031 30.5358 238.031 35.0117V93.7988C238.031 98.2754 241.666 101.908 246.14 101.908C250.615 101.908 254.25 98.2754 254.25 93.7988V35.0117C254.25 30.5358 250.616 26.9023 246.14 26.9023ZM317.092 121.549V171.846C317.092 210.413 285.719 241.781 247.154 241.781C208.591 241.781 177.214 210.413 177.214 171.846V122.018C199.836 129.802 222.496 132.557 243.129 132.557C275.353 132.557 302.61 125.93 317.092 121.549Z" />
-  <path d="M6.09399 112.755H42.659C45.122 112.755 47.357 111.282 48.296 108.997C49.236 106.712 48.728 104.097 46.976 102.345L35.117 90.4884C54.238 75.6104 81.916 76.956 99.487 94.5253C118.532 113.567 118.532 144.415 99.487 163.457C80.443 182.499 49.591 182.499 30.547 163.457C28.465 161.375 26.611 159.166 24.986 156.83C22.421 153.149 17.343 152.26 13.661 154.825C9.979 157.389 9.09 162.467 11.655 166.148C13.813 169.246 16.276 172.191 19.044 174.958C44.436 200.347 85.598 200.347 110.965 174.958C136.332 149.569 136.357 108.439 110.965 83.0494C87.02 59.1074 49.083 57.7618 23.538 78.9363L10.411 65.7848C8.658 64.0329 6.043 63.5251 3.758 64.4645C1.472 65.4039 0 67.6382 0 70.1009V106.661C0 110.038 2.71699 112.755 6.09399 112.755Z" />
-</svg>
-
-</svg>
-<svg id="mouse_rotate_right">
-<svg viewBox="0 0 333 258">
+<svg id="mouse_scroll">
+<svg viewBox="0 0 300 258">
   <path d="M83.7832 0C43.4283 0 0 20.1215 0 64.3047V171.846C0 219.353 38.647 257.998 86.1543 257.998C133.662 257.998 172.309 219.353 172.309 171.846V64.3047C172.309 22.0867 127.776 0 83.7832 0ZM83.7832 16.2168C118.835 16.2168 156.092 33.0702 156.092 64.3047V104.504C138.03 110.351 75.3171 127.366 16.2148 104.768V64.3047C16.2148 31.0841 50.1516 16.2168 83.7832 16.2168ZM85.1406 26.9023C80.6676 26.9023 77.0313 30.5358 77.0313 35.0117V93.7988C77.0313 98.2754 80.6668 101.908 85.1406 101.908C89.6158 101.908 93.25 98.2754 93.25 93.7988V35.0117C93.25 30.5358 89.6165 26.9023 85.1406 26.9023ZM156.092 121.549V171.846C156.092 210.413 124.719 241.781 86.1543 241.781C47.5909 241.781 16.2148 210.413 16.2148 171.846V122.018C38.8361 129.802 61.4967 132.557 82.1289 132.557C114.353 132.557 141.61 125.93 156.092 121.549Z" />
-  <path d="M327.214 112.755H290.649C288.186 112.755 285.952 111.282 285.012 108.997C284.073 106.712 284.58 104.097 286.332 102.345L298.191 90.4884C279.07 75.6104 251.392 76.956 233.821 94.5253C214.776 113.567 214.776 144.415 233.821 163.457C252.865 182.499 283.717 182.499 302.761 163.457C304.844 161.375 306.697 159.166 308.322 156.83C310.887 153.149 315.966 152.26 319.647 154.825C323.329 157.389 324.218 162.467 321.653 166.148C319.495 169.246 317.032 172.191 314.264 174.958C288.872 200.347 247.711 200.347 222.343 174.958C196.976 149.569 196.951 108.439 222.343 83.0494C246.289 59.1074 284.225 57.7618 309.77 78.9363L322.898 65.7848C324.65 64.0329 327.265 63.5251 329.551 64.4645C331.836 65.4039 333.309 67.6382 333.309 70.1009V106.661C333.309 110.038 330.592 112.755 327.214 112.755Z" />
+  <path d="M247 30 L292 80 H262 V178 H292 L247 228 L202 178 H232 V80 H202 Z" />
 </svg>
 
 </svg>
@@ -64,6 +104,16 @@
 <svg viewBox="0 0 173 422">
   <path d="M83.7832 0C43.4283 0 0 20.1215 0 64.3047V171.846C0 219.353 38.647 257.998 86.1543 257.998C133.662 257.998 172.309 219.353 172.309 171.846V64.3047C172.309 22.0867 127.776 0 83.7832 0ZM83.7832 16.2168C118.835 16.2168 156.092 33.0702 156.092 64.3047V104.504C138.03 110.351 75.3171 127.366 16.2148 104.768V64.3047C16.2148 31.0841 50.1516 16.2168 83.7832 16.2168ZM85.1406 26.9023C80.6676 26.9023 77.0313 30.5358 77.0313 35.0117V93.7988C77.0313 98.2754 80.6668 101.908 85.1406 101.908C89.6158 101.908 93.25 98.2754 93.25 93.7988V35.0117C93.25 30.5358 89.6165 26.9023 85.1406 26.9023ZM156.092 121.549V171.846C156.092 210.413 124.719 241.781 86.1543 241.781C47.5909 241.781 16.2148 210.413 16.2148 171.846V122.018C38.8361 129.802 61.4967 132.557 82.1289 132.557C114.353 132.557 141.61 125.93 156.092 121.549Z" />
   <path d="M93.4127 418.911C89.3128 423.027 82.6544 423.027 78.5545 418.911L26.075 366.225C21.975 362.109 21.975 355.424 26.075 351.308C30.1749 347.192 36.8333 347.192 40.9332 351.308L86 396.552L131.067 351.341C135.167 347.225 141.825 347.225 145.925 351.341C150.025 355.457 150.025 362.142 145.925 366.258L93.4455 418.944L93.4127 418.911ZM145.892 303.002L93.4127 355.688C89.3128 359.804 82.6544 359.804 78.5545 355.688L26.075 303.002C21.975 298.886 21.975 292.201 26.075 288.085C30.1749 283.969 36.8333 283.969 40.9332 288.085L86 333.329L131.067 288.118C135.167 284.002 141.825 284.002 145.925 288.118C150.025 292.234 150.025 298.919 145.925 303.035L145.892 303.002Z" />
+</svg>
+
+</svg>
+<svg id="mouse_scroll_lock">
+<svg viewBox="0 0 400 258">
+  <path d="M83.7832 0C43.4283 0 0 20.1215 0 64.3047V171.846C0 219.353 38.647 257.998 86.1543 257.998C133.662 257.998 172.309 219.353 172.309 171.846V64.3047C172.309 22.0867 127.776 0 83.7832 0ZM83.7832 16.2168C118.835 16.2168 156.092 33.0702 156.092 64.3047V104.504C138.03 110.351 75.3171 127.366 16.2148 104.768V64.3047C16.2148 31.0841 50.1516 16.2168 83.7832 16.2168ZM85.1406 26.9023C80.6676 26.9023 77.0313 30.5358 77.0313 35.0117V93.7988C77.0313 98.2754 80.6668 101.908 85.1406 101.908C89.6158 101.908 93.25 98.2754 93.25 93.7988V35.0117C93.25 30.5358 89.6165 26.9023 85.1406 26.9023ZM156.092 121.549V171.846C156.092 210.413 124.719 241.781 86.1543 241.781C47.5909 241.781 16.2148 210.413 16.2148 171.846V122.018C38.8361 129.802 61.4967 132.557 82.1289 132.557C114.353 132.557 141.61 125.93 156.092 121.549Z" />
+  <path d="M232 30 L277 80 H247 V178 H277 L232 228 L187 178 H217 V80 H187 Z" />
+  <g transform="translate(282 118) scale(0.22)">
+    <path d="M256 160L256 224L384 224L384 160C384 124.7 355.3 96 320 96C284.7 96 256 124.7 256 160zM192 224L192 160C192 89.3 249.3 32 320 32C390.7 32 448 89.3 448 160L448 224C483.3 224 512 252.7 512 288L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 288C128 252.7 156.7 224 192 224z"/>
+  </g>
 </svg>
 
 </svg>
@@ -133,6 +183,19 @@ rect.key {
 }
 
 rect.key, rect.combo {
+    stroke: #c9cccf;
+    stroke-width: 1;
+}
+
+/* default trackball styling, only used if trackballs are set */
+circle.trackball, path.trackball-housing {
+    fill: #f6f8fa;
+    stroke: #c9cccf;
+    stroke-width: 1;
+}
+
+circle.trackball-ball {
+    fill: #e1e4e8;
     stroke: #c9cccf;
     stroke-width: 1;
 }
@@ -242,6 +305,8 @@ path.combo {
 svg.keymap { fill: #d1d6db; }
 rect.key { fill: #3f4750; }
 rect.key, rect.combo { stroke: #60666c; }
+circle.trackball, path.trackball-housing { fill: #3f4750; stroke: #60666c; }
+circle.trackball-ball { fill: #2d333a; stroke: #60666c; }
 rect.combo, rect.combo-separate { fill: #1f3d7a; }
 rect.held, rect.combo.held { fill: #854747; }
 text.label, text.footer { stroke: black; }
@@ -252,6 +317,11 @@ path.combo { stroke: #7f7f7f; }
 <g transform="translate(30, 0)" class="layer-STRDY">
 <text x="0" y="28" class="label" id="STRDY">STRDY:</text>
 <g transform="translate(0, 56)">
+<g transform="translate(463, 199)" class="trackball trackball-0">
+<path d="M -0.807,-2.499 H 0.535 Q 0.663,-2.499 0.663,-2.372 V -1.564 H 0.901 Q 0.986,-1.564 0.986,-1.479 V -0.374 A 1.054,1.054 0 0 1 1.02,0.264 L 1.02,1.105 L 1.232,2.465 L 0.85,2.83 Q 0.748,2.907 0.663,2.805 L -0.85,0.62 A 1.054,1.054 0 0 1 -0.935,-0.484 V -2.372 Q -0.935,-2.499 -0.807,-2.499 Z" transform="scale(56.0)" vector-effect="non-scaling-stroke" class="trackball-housing"/>
+<circle r="57" class="trackball"/>
+<circle r="43" class="trackball-ball"/>
+</g>
 <g transform="translate(28, 50)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">`</text>
@@ -262,7 +332,7 @@ path.combo { stroke: #7f7f7f; }
 </g>
 <g transform="translate(140, 39)" class="key keypos-2">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">🗎</text>
+<text x="0" y="0" class="key tap">⎘</text>
 </g>
 <g transform="translate(196, 28)" class="key keypos-3">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -516,7 +586,7 @@ path.combo { stroke: #7f7f7f; }
 </g>
 <g class="combo combopos-6">
 <rect rx="6" ry="6" x="154" y="21" width="28" height="26" class="combo"/>
-<text x="168" y="34" class="combo tap">🗎+↵</text>
+<text x="168" y="34" class="combo tap">⎘+↵</text>
 </g>
 <g class="combo combopos-7">
 <rect rx="6" ry="6" x="148" y="133" width="40" height="26" class="combo"/>
@@ -557,6 +627,11 @@ path.combo { stroke: #7f7f7f; }
 <g transform="translate(30, 437)" class="layer-GAME">
 <text x="0" y="28" class="label" id="GAME">GAME:</text>
 <g transform="translate(0, 56)">
+<g transform="translate(463, 199)" class="trackball trackball-0">
+<path d="M -0.807,-2.499 H 0.535 Q 0.663,-2.499 0.663,-2.372 V -1.564 H 0.901 Q 0.986,-1.564 0.986,-1.479 V -0.374 A 1.054,1.054 0 0 1 1.02,0.264 L 1.02,1.105 L 1.232,2.465 L 0.85,2.83 Q 0.748,2.907 0.663,2.805 L -0.85,0.62 A 1.054,1.054 0 0 1 -0.935,-0.484 V -2.372 Q -0.935,-2.499 -0.807,-2.499 Z" transform="scale(56.0)" vector-effect="non-scaling-stroke" class="trackball-housing"/>
+<circle r="57" class="trackball"/>
+<circle r="43" class="trackball-ball"/>
+</g>
 <g transform="translate(28, 50)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">⎋</text>
@@ -741,9 +816,229 @@ path.combo { stroke: #7f7f7f; }
 </g>
 </g>
 </g>
-<g transform="translate(30, 874)" class="layer-SYM">
+<g transform="translate(30, 874)" class="layer-NAVIGATOR">
+<text x="0" y="28" class="label" id="NAVIGATOR">NAVIGATOR:</text>
+<g transform="translate(0, 56)">
+<g transform="translate(463, 199)" class="trackball trackball-0">
+<path d="M -0.807,-2.499 H 0.535 Q 0.663,-2.499 0.663,-2.372 V -1.564 H 0.901 Q 0.986,-1.564 0.986,-1.479 V -0.374 A 1.054,1.054 0 0 1 1.02,0.264 L 1.02,1.105 L 1.232,2.465 L 0.85,2.83 Q 0.748,2.907 0.663,2.805 L -0.85,0.62 A 1.054,1.054 0 0 1 -0.935,-0.484 V -2.372 Q -0.935,-2.499 -0.807,-2.499 Z" transform="scale(56.0)" vector-effect="non-scaling-stroke" class="trackball-housing"/>
+<circle r="57" class="trackball"/>
+<circle r="43" class="trackball-ball"/>
+</g>
+<g transform="translate(28, 50)" class="key keypos-0">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(84, 50)" class="key keypos-1">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(140, 39)" class="key keypos-2">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(196, 28)" class="key keypos-3">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(252, 45)" class="key keypos-4">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(308, 56)" class="key keypos-5">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(560, 56)" class="key keypos-6">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(616, 45)" class="key keypos-7">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(672, 28)" class="key keypos-8">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(728, 39)" class="key keypos-9">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(784, 50)" class="key keypos-10">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(840, 50)" class="key keypos-11">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">EXIT</text>
+<text x="0" y="24" class="key hold">NAVGTR</text>
+</g>
+<g transform="translate(28, 106)" class="key keypos-12">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(84, 106)" class="key keypos-13">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">TURBO</text>
+</g>
+<g transform="translate(140, 95)" class="key keypos-14">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<use href="#mouse_scroll" xlink:href="#mouse_scroll" x="-8" y="-7" height="14" width="16.27906976744186" class="key tap glyph mouse_scroll"/>
+</g>
+<g transform="translate(196, 84)" class="key keypos-15">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<use href="#mouse_scroll_lock" xlink:href="#mouse_scroll_lock" x="-11" y="-7" height="14" width="21.705426356589147" class="key tap glyph mouse_scroll_lock"/>
+</g>
+<g transform="translate(252, 101)" class="key keypos-16">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<use href="#mouse_left_click" xlink:href="#mouse_left_click" x="-5" y="-7" height="14" width="9.387596899224807" class="key tap glyph mouse_left_click"/>
+</g>
+<g transform="translate(308, 112)" class="key keypos-17">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(560, 112)" class="key keypos-18">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(616, 101)" class="key keypos-19">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(672, 84)" class="key keypos-20">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(728, 95)" class="key keypos-21">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(784, 106)" class="key keypos-22">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(840, 106)" class="key keypos-23">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(28, 162)" class="key keypos-24">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">EXIT</text>
+<text x="0" y="24" class="key hold">NAVGTR</text>
+</g>
+<g transform="translate(84, 162)" class="key keypos-25">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">AIM</text>
+</g>
+<g transform="translate(140, 151)" class="key keypos-26">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<use href="#mouse_right_click" xlink:href="#mouse_right_click" x="-5" y="-7" height="14" width="9.387596899224807" class="key tap glyph mouse_right_click"/>
+<a href="#SYM">
+<text x="0" y="24" class="key hold layer-activator">SYM</text>
+</a></g>
+<g transform="translate(196, 140)" class="key keypos-27">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">MID</text>
+<text x="0" y="24" class="key hold">⇧</text>
+</g>
+<g transform="translate(252, 157)" class="key keypos-28">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<use href="#mouse_left_click" xlink:href="#mouse_left_click" x="-5" y="-7" height="14" width="9.387596899224807" class="key tap glyph mouse_left_click"/>
+<a href="#NAV">
+<text x="0" y="24" class="key hold layer-activator">NAV</text>
+</a></g>
+<g transform="translate(308, 168)" class="key keypos-29">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(560, 168)" class="key keypos-30">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(616, 157)" class="key keypos-31">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">CPI+</text>
+<a href="#NUM">
+<text x="0" y="24" class="key hold layer-activator">NUM</text>
+</a></g>
+<g transform="translate(672, 140)" class="key keypos-32">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">CPI−</text>
+<text x="0" y="24" class="key hold">⇧</text>
+</g>
+<g transform="translate(728, 151)" class="key keypos-33">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">CPI⟲</text>
+<a href="#SYM">
+<text x="0" y="24" class="key hold layer-activator">SYM</text>
+</a></g>
+<g transform="translate(784, 162)" class="key keypos-34">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">⎇</text>
+</g>
+<g transform="translate(840, 162)" class="key keypos-35">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(28, 218)" class="key keypos-36">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">:</text>
+<a href="#EXT">
+<text x="0" y="24" class="key hold layer-activator">EXT</text>
+</a></g>
+<g transform="translate(84, 218)" class="key keypos-37">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<use href="#gui_mouse_left_click" xlink:href="#gui_mouse_left_click" x="-11" y="-7" height="14" width="22.790697674418606" class="key tap glyph gui_mouse_left_click"/>
+</g>
+<g transform="translate(140, 207)" class="key keypos-38">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<use href="#gui_mouse_right_click" xlink:href="#gui_mouse_right_click" x="-11" y="-7" height="14" width="22.790697674418606" class="key tap glyph gui_mouse_right_click"/>
+</g>
+<g transform="translate(196, 196)" class="key keypos-39">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">J</text>
+</g>
+<g transform="translate(252, 213)" class="key keypos-40">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<use href="#ctrl_mouse_left_click" xlink:href="#ctrl_mouse_left_click" x="-11" y="-7" height="14" width="22.790697674418606" class="key tap glyph ctrl_mouse_left_click"/>
+</g>
+<g transform="translate(308, 224)" class="key keypos-41">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(560, 224)" class="key keypos-42">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(616, 213)" class="key keypos-43">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">⎈</text>
+</g>
+<g transform="translate(672, 196)" class="key keypos-44">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(728, 207)" class="key keypos-45">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<a href="#WIN">
+<text x="0" y="0" class="key tap layer-activator">WIN</text>
+</a></g>
+<g transform="translate(784, 218)" class="key keypos-46">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">⌘</text>
+</g>
+<g transform="translate(840, 218)" class="key keypos-47">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g transform="translate(309, 290) rotate(30.0)" class="key keypos-48">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">⇦</text>
+</g>
+<g transform="translate(349, 333) rotate(30.0)" class="key keypos-49">
+<rect rx="6" ry="6" x="-26" y="-37" width="52" height="74" class="key"/>
+<text x="0" y="0" class="key tap">⇨</text>
+</g>
+<g transform="translate(519, 333) rotate(-30.0)" class="key keypos-50">
+<rect rx="6" ry="6" x="-26" y="-37" width="52" height="74" class="key"/>
+</g>
+<g transform="translate(559, 290) rotate(-30.0)" class="key keypos-51">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+</g>
+<g class="combo combopos-0">
+<rect rx="6" ry="6" x="154" y="189" width="28" height="26" class="combo"/>
+<text x="168" y="202" class="combo tap">⎋</text>
+</g>
+<g class="combo combopos-1">
+<path d="M196,242 h-50 a6.0,6.0 0 0 1 -6.0,-6.0 v-10" class="combo"/>
+<path d="M196,242 h50 a6.0,6.0 0 0 0 6.0,-6.0 v-4" class="combo"/>
+<rect rx="6" ry="6" x="182" y="229" width="28" height="26" class="combo"/>
+<text x="196" y="242" class="combo tap">↵</text>
+</g>
+</g>
+</g>
+<g transform="translate(30, 1311)" class="layer-SYM">
 <text x="0" y="28" class="label" id="SYM">SYM:</text>
 <g transform="translate(0, 56)">
+<g transform="translate(463, 199)" class="trackball trackball-0">
+<path d="M -0.807,-2.499 H 0.535 Q 0.663,-2.499 0.663,-2.372 V -1.564 H 0.901 Q 0.986,-1.564 0.986,-1.479 V -0.374 A 1.054,1.054 0 0 1 1.02,0.264 L 1.02,1.105 L 1.232,2.465 L 0.85,2.83 Q 0.748,2.907 0.663,2.805 L -0.85,0.62 A 1.054,1.054 0 0 1 -0.935,-0.484 V -2.372 Q -0.935,-2.499 -0.807,-2.499 Z" transform="scale(56.0)" vector-effect="non-scaling-stroke" class="trackball-housing"/>
+<circle r="57" class="trackball"/>
+<circle r="43" class="trackball-ball"/>
+</g>
 <g transform="translate(28, 50)" class="key trans keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <text x="0" y="0" class="key trans tap">▽</text>
@@ -994,9 +1289,14 @@ path.combo { stroke: #7f7f7f; }
 </g>
 </g>
 </g>
-<g transform="translate(30, 1311)" class="layer-NAV">
+<g transform="translate(30, 1748)" class="layer-NAV">
 <text x="0" y="28" class="label" id="NAV">NAV:</text>
 <g transform="translate(0, 56)">
+<g transform="translate(463, 199)" class="trackball trackball-0">
+<path d="M -0.807,-2.499 H 0.535 Q 0.663,-2.499 0.663,-2.372 V -1.564 H 0.901 Q 0.986,-1.564 0.986,-1.479 V -0.374 A 1.054,1.054 0 0 1 1.02,0.264 L 1.02,1.105 L 1.232,2.465 L 0.85,2.83 Q 0.748,2.907 0.663,2.805 L -0.85,0.62 A 1.054,1.054 0 0 1 -0.935,-0.484 V -2.372 Q -0.935,-2.499 -0.807,-2.499 Z" transform="scale(56.0)" vector-effect="non-scaling-stroke" class="trackball-housing"/>
+<circle r="57" class="trackball"/>
+<circle r="43" class="trackball-ball"/>
+</g>
 <g transform="translate(28, 50)" class="key trans keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <text x="0" y="0" class="key trans tap">▽</text>
@@ -1186,7 +1486,7 @@ path.combo { stroke: #7f7f7f; }
 </g>
 <g transform="translate(309, 290) rotate(30.0)" class="key keypos-48">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">WBAK</text>
+<text x="0" y="0" class="key tap">⇦</text>
 </g>
 <g transform="translate(349, 333) rotate(30.0)" class="key keypos-49">
 <rect rx="6" ry="6" x="-26" y="-37" width="52" height="74" class="key"/>
@@ -1202,9 +1502,14 @@ path.combo { stroke: #7f7f7f; }
 </g>
 </g>
 </g>
-<g transform="translate(30, 1748)" class="layer-NUM">
+<g transform="translate(30, 2185)" class="layer-NUM">
 <text x="0" y="28" class="label" id="NUM">NUM:</text>
 <g transform="translate(0, 56)">
+<g transform="translate(463, 199)" class="trackball trackball-0">
+<path d="M -0.807,-2.499 H 0.535 Q 0.663,-2.499 0.663,-2.372 V -1.564 H 0.901 Q 0.986,-1.564 0.986,-1.479 V -0.374 A 1.054,1.054 0 0 1 1.02,0.264 L 1.02,1.105 L 1.232,2.465 L 0.85,2.83 Q 0.748,2.907 0.663,2.805 L -0.85,0.62 A 1.054,1.054 0 0 1 -0.935,-0.484 V -2.372 Q -0.935,-2.499 -0.807,-2.499 Z" transform="scale(56.0)" vector-effect="non-scaling-stroke" class="trackball-housing"/>
+<circle r="57" class="trackball"/>
+<circle r="43" class="trackball-ball"/>
+</g>
 <g transform="translate(28, 50)" class="key trans keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <text x="0" y="0" class="key trans tap">▽</text>
@@ -1406,9 +1711,14 @@ path.combo { stroke: #7f7f7f; }
 </g>
 </g>
 </g>
-<g transform="translate(30, 2185)" class="layer-WIN">
+<g transform="translate(30, 2622)" class="layer-WIN">
 <text x="0" y="28" class="label" id="WIN">WIN:</text>
 <g transform="translate(0, 56)">
+<g transform="translate(463, 199)" class="trackball trackball-0">
+<path d="M -0.807,-2.499 H 0.535 Q 0.663,-2.499 0.663,-2.372 V -1.564 H 0.901 Q 0.986,-1.564 0.986,-1.479 V -0.374 A 1.054,1.054 0 0 1 1.02,0.264 L 1.02,1.105 L 1.232,2.465 L 0.85,2.83 Q 0.748,2.907 0.663,2.805 L -0.85,0.62 A 1.054,1.054 0 0 1 -0.935,-0.484 V -2.372 Q -0.935,-2.499 -0.807,-2.499 Z" transform="scale(56.0)" vector-effect="non-scaling-stroke" class="trackball-housing"/>
+<circle r="57" class="trackball"/>
+<circle r="43" class="trackball-ball"/>
+</g>
 <g transform="translate(28, 50)" class="key trans keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <text x="0" y="0" class="key trans tap">▽</text>
@@ -1619,9 +1929,14 @@ path.combo { stroke: #7f7f7f; }
 </g>
 </g>
 </g>
-<g transform="translate(30, 2622)" class="layer-FUN">
+<g transform="translate(30, 3059)" class="layer-FUN">
 <text x="0" y="28" class="label" id="FUN">FUN:</text>
 <g transform="translate(0, 56)">
+<g transform="translate(463, 199)" class="trackball trackball-0">
+<path d="M -0.807,-2.499 H 0.535 Q 0.663,-2.499 0.663,-2.372 V -1.564 H 0.901 Q 0.986,-1.564 0.986,-1.479 V -0.374 A 1.054,1.054 0 0 1 1.02,0.264 L 1.02,1.105 L 1.232,2.465 L 0.85,2.83 Q 0.748,2.907 0.663,2.805 L -0.85,0.62 A 1.054,1.054 0 0 1 -0.935,-0.484 V -2.372 Q -0.935,-2.499 -0.807,-2.499 Z" transform="scale(56.0)" vector-effect="non-scaling-stroke" class="trackball-housing"/>
+<circle r="57" class="trackball"/>
+<circle r="43" class="trackball-ball"/>
+</g>
 <g transform="translate(28, 50)" class="key trans keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <text x="0" y="0" class="key trans tap">▽</text>
@@ -1804,9 +2119,14 @@ path.combo { stroke: #7f7f7f; }
 </g>
 </g>
 </g>
-<g transform="translate(30, 3059)" class="layer-EXT">
+<g transform="translate(30, 3496)" class="layer-EXT">
 <text x="0" y="28" class="label" id="EXT">EXT:</text>
 <g transform="translate(0, 56)">
+<g transform="translate(463, 199)" class="trackball trackball-0">
+<path d="M -0.807,-2.499 H 0.535 Q 0.663,-2.499 0.663,-2.372 V -1.564 H 0.901 Q 0.986,-1.564 0.986,-1.479 V -0.374 A 1.054,1.054 0 0 1 1.02,0.264 L 1.02,1.105 L 1.232,2.465 L 0.85,2.83 Q 0.748,2.907 0.663,2.805 L -0.85,0.62 A 1.054,1.054 0 0 1 -0.935,-0.484 V -2.372 Q -0.935,-2.499 -0.807,-2.499 Z" transform="scale(56.0)" vector-effect="non-scaling-stroke" class="trackball-housing"/>
+<circle r="57" class="trackball"/>
+<circle r="43" class="trackball-ball"/>
+</g>
 <g transform="translate(28, 50)" class="key trans keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <text x="0" y="0" class="key trans tap">▽</text>
@@ -1930,7 +2250,7 @@ path.combo { stroke: #7f7f7f; }
 </g>
 <g transform="translate(616, 157)" class="key keypos-31">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#mouse_rotate_left" xlink:href="#mouse_rotate_left" x="-9" y="-7" height="14" width="18.069767441860463" class="key tap glyph mouse_rotate_left"/>
+<use href="#mouse_move_left" xlink:href="#mouse_move_left" x="-11" y="-7" height="14" width="21.705426356589147" class="key tap glyph mouse_move_left"/>
 </g>
 <g transform="translate(672, 140)" class="key keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1938,13 +2258,11 @@ path.combo { stroke: #7f7f7f; }
 </g>
 <g transform="translate(728, 151)" class="key keypos-33">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<use href="#mouse_rotate_right" xlink:href="#mouse_rotate_right" x="-9" y="-7" height="14" width="18.069767441860463" class="key tap glyph mouse_rotate_right"/>
+<use href="#mouse_move_right" xlink:href="#mouse_move_right" x="-11" y="-7" height="14" width="21.705426356589147" class="key tap glyph mouse_move_right"/>
 </g>
 <g transform="translate(784, 162)" class="key keypos-34">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">OM</tspan><tspan x="0" dy="1.2em">SLOW</tspan>
-</text>
+<text x="0" y="0" class="key tap">SLOW</text>
 </g>
 <g transform="translate(840, 162)" class="key trans keypos-35">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
@@ -1960,7 +2278,7 @@ path.combo { stroke: #7f7f7f; }
 </g>
 <g transform="translate(140, 207)" class="key keypos-38">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">🗎</text>
+<text x="0" y="0" class="key tap">⎘</text>
 </g>
 <g transform="translate(196, 196)" class="key keypos-39">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1977,13 +2295,13 @@ path.combo { stroke: #7f7f7f; }
 <g transform="translate(560, 224)" class="key keypos-42">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">O</tspan><tspan x="0" dy="1.2em">ID</tspan>
+<tspan x="0" dy="-0.6em">W</tspan><tspan x="0" dy="1.2em">ID</tspan>
 </text>
 </g>
 <g transform="translate(616, 213)" class="key keypos-43">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">O</tspan><tspan x="0" dy="1.2em">EMAIL</tspan>
+<tspan x="0" dy="-0.6em">W</tspan><tspan x="0" dy="1.2em">EMAIL</tspan>
 </text>
 </g>
 <g transform="translate(672, 196)" class="key keypos-44">
@@ -2008,7 +2326,7 @@ path.combo { stroke: #7f7f7f; }
 </g>
 <g transform="translate(309, 290) rotate(30.0)" class="key keypos-48">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">WBAK</text>
+<text x="0" y="0" class="key tap">⇦</text>
 </g>
 <g transform="translate(349, 333) rotate(30.0)" class="key keypos-49">
 <rect rx="6" ry="6" x="-26" y="-37" width="52" height="74" class="key"/>
@@ -2024,4 +2342,4 @@ path.combo { stroke: #7f7f7f; }
 </g>
 </g>
 </g>
-<text x="898.0" y="3524.0" class="footer">Created with <a href="https://github.com/caksoylar/keymap-drawer">keymap-drawer</a></text></svg>
+<text x="898.0" y="3961.0" class="footer">Created with <a href="https://github.com/caksoylar/keymap-drawer">keymap-drawer</a></text></svg>

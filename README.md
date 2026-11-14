@@ -5,6 +5,7 @@ Personal [QMK](https://qmk.fm) userspace for my [ZSA Voyager](https://www.zsa.io
 ## Keyboard
 
 - **Board:** ZSA Voyager (`zsa/voyager`)
+- **Pointing device:** [ZSA Navigator](https://www.zsa.io/navigator) trackball on the right half
 - **Base layout:** [Magic Sturdy](https://github.com/Ikcelaks/keyboard_layouts/blob/main/magic_sturdy/magic_sturdy.md) with [getreuer's mods](https://getreuer.info/posts/keyboards/alt-layouts/index.html#magic-sturdy)
 
 ## Layout
@@ -13,18 +14,43 @@ Personal [QMK](https://qmk.fm) userspace for my [ZSA Voyager](https://www.zsa.io
 
 Layers, in order:
 
-| Layer   | Purpose                                                                     |
-| ------- | --------------------------------------------------------------------------- |
-| `STRDY` | Base alpha layer (home row mods for Shift/Ctrl/Alt/GUI + layer taps)        |
-| `GAME`  | Flat WASD-friendly layer for gaming                                         |
-| `SYM`   | Symbols                                                                     |
-| `NAV`   | Navigation, window/tab switching, text selection helpers                    |
-| `NUM`   | Numpad-style numbers and math operators                                     |
-| `WIN`   | Media keys, RGB matrix controls, window management (macOS-style GUI combos) |
-| `FUN`   | Function keys, reboot                                                       |
-| `EXT`   | Extra: clipboard ops, Unicode input, mouse jiggler, Orbital Mouse controls  |
+| Layer       | Purpose                                                                                      |
+| ----------- | -------------------------------------------------------------------------------------------- |
+| `STRDY`     | Base alpha layer (home row mods for Shift/Ctrl/Alt/GUI + layer taps)                         |
+| `GAME`      | Flat WASD-friendly layer for gaming                                                          |
+| `NAVIGATOR` | Trackball layer: mouse buttons, scroll modes, CPI control (auto-enabled on trackball motion) |
+| `SYM`       | Symbols                                                                                      |
+| `NAV`       | Navigation, window/tab switching, text selection helpers                                     |
+| `NUM`       | Numpad-style numbers and math operators                                                      |
+| `WIN`       | Media keys, RGB matrix controls, window management (macOS-style GUI combos)                  |
+| `FUN`       | Function keys, reboot                                                                        |
+| `EXT`       | Extra: clipboard ops, Unicode input, mouse jiggler, mouse keys                               |
 
 Home row mods use **Chordal Hold** and **tapping term**.
+
+### Navigator trackball
+
+The [ZSA Navigator](https://www.zsa.io/navigator) trackball sits on the right half, so the `NAVIGATOR` layer puts all mouse controls on the **left** half, leaving the right hand on the ball.
+
+- **Entering:** moving the trackball turns `NAVIGATOR` on ([`zsa/automouse`](https://github.com/zsa/qmk_modules)) and it drops back to the base layer after 5 s idle. `EXIT`/`NAVGTR` (`TT(NAVIGATOR)`, left Backspace position and right top corner) also controls it manually:
+  - **Tap:** toggle the layer on/off for good.
+  - **Hold:** layer on while held; if it was already on, the press turns it off instead.
+- **Passing through:** tapping any empty key on `NAVIGATOR` exits the layer and sends that key's base-layer tap keycode, so typing can start straight away.
+- **Buttons** (on the left home row, under the fingers):
+
+  | Key                          | Tap                             | Hold  |
+  | ---------------------------- | ------------------------------- | ----- |
+  | Index (`D` position)         | Left click                      | `NAV` |
+  | Middle (`R` position)        | Middle click                    | Shift |
+  | Ring (`T` position)          | Right click                     | `SYM` |
+  | Top row index (`C` position) | Left click (drag)               | –     |
+  | Bottom row (`X`, `K`, `G`)   | ⌘+click, ⌘+right click, ⎈+click | –     |
+
+- **Scroll & precision:** scroll (`DRAG_SCROLL`, mouse + ↕ icon: hold to scroll with the ball), scroll lock (`NVGTR_VSCRL`, mouse + ↕ + lock icon: toggles vertical scrolling), `AIM` (hold for slow, precise movement), `TURBO` (hold for fast movement).
+- **Speed:** `CPI+` / `CPI−` / `CPI⟲` (reset) on the right home row, which double as `NUM` / Shift / `SYM` on hold.
+- **Other keys:** web back/forward on the left thumbs, `EXT` on the left pinky, right-hand mods (`⎈`, `⎇`, `⌘`) and `WIN`.
+- **Combos:** `K`+`J` positions → Esc and `K`+`G` positions → Enter, same as on the base layer.
+- **Config** (`config.h`): `NAVIGATOR_TRACKBALL_ROTATION 20`, `NAVIGATOR_TRACKBALL_CPI 30`, `AUTOMOUSE_LAYER 2` (must match `NAVIGATOR`'s index in `enum layers`), `AUTOMOUSE_TIMEOUT_TRACKBALL 5000`.
 
 ### Magic keys
 
@@ -71,18 +97,28 @@ The diagram uses glyphs instead of raw keycode names (mapped in `draw_config.yam
 | <kbd>⇪</kbd> | Caps Word                      |
 | <kbd>⇞</kbd> | Page Up                        |
 | <kbd>⇟</kbd> | Page Down                      |
-| <kbd>↖</kbd> | Home                           |
-| <kbd>↘</kbd> | End                            |
-| <kbd>⧉</kbd> | Copy                           |
-| <kbd>✂</kbd> | Cut                            |
-| <kbd>🗎</kbd> | Paste                          |
-| <kbd>⎁</kbd> | Select All                     |
-| <kbd>⎀</kbd> | Select Line                    |
-| <kbd>⟾</kbd> | Select Word Forwards           |
-| <kbd>⟽</kbd> | Select Word Backwards          |
-| <kbd>⎌</kbd> | Undo                           |
-| <kbd>⎙</kbd> | Print screen                   |
-| <kbd>⌕</kbd> | Search selected in new tab     |
+| <kbd>↖</kbd> | Home |
+| <kbd>↘</kbd> | End |
+| <kbd>⧉</kbd> | Copy |
+| <kbd>✂</kbd> | Cut |
+| <kbd>⎘</kbd> | Paste |
+| <kbd>⎁</kbd> | Select All |
+| <kbd>⎀</kbd> | Select Line |
+| <kbd>⟾</kbd> | Select Word Forwards |
+| <kbd>⟽</kbd> | Select Word Backwards |
+| <kbd>⎌</kbd> | Undo |
+| <kbd>⎙</kbd> | Print screen |
+| <kbd>⌕</kbd> | Search selected in new tab |
+| <kbd>⇦</kbd> | Browser back |
+| <kbd>⇨</kbd> | Browser forward |
+
+The trackball drawn between the halves on every layer is the Navigator, mounted on the inner edge of the right half. The diagram is drawn with [my fork of keymap-drawer](https://github.com/omareloui/keymap-drawer/tree/feat/trackballs), which adds the `trackballs` option used in `draw_config.yaml`; the upstream CLI and the [web app](https://keymap-drawer.streamlit.app/) don't support it yet and silently ignore that option (no trackball is drawn). To regenerate it locally:
+
+```sh
+pip install "git+https://github.com/omareloui/keymap-drawer@feat/trackballs"
+cd keyboards/zsa/voyager/keymaps/omareloui
+keymap -c draw_config.yaml draw draw_keymap.yaml -o draw.svg
+```
 
 ## Modules
 
@@ -91,17 +127,17 @@ Community modules pulled in via `.gitmodules` and declared in `keymap.json`:
 **From [getreuer/qmk-modules](https://github.com/getreuer/qmk-modules):**
 
 - **Sentence Case** – auto-capitalizes the first letter after sentence-ending punctuation
-- **Custom Shift Keys** – per-key alternate output when shifted, restricted here to layers 0, 1, and 5
+- **Custom Shift Keys** – per-key alternate output when shifted, restricted to the layers in `CUSTOM_SHIFT_KEYS_LAYER_MASK` (`config.h`)
 - **Select Word** – smarter word/line selection helpers (`SELWORD` / `SELWBAK` / `SELLINE`)
 - **Lumino** – opinionated RGB matrix lighting control scheme (`LUM_CYC`)
 - **PaletteFx** – RGB matrix effects/palettes, all effects and palettes enabled
-- **Orbital Mouse** – joystick-style cursor movement from a key cluster, with a custom speed curve
 - **Mouse Turbo Click** – auto-repeating mouse clicks (`TURBO`, used on the `GAME` layer)
 - **Cyclotab** – tab/window switching with a single key
 
 **From [zsa/qmk_modules](https://github.com/zsa/qmk_modules):**
 
-- **Navigator Trackball** – ZSA's official trackball driver; `NAV_TURBO`/`NAV_AIM`/`DRAG_SCROLL` (hold) and `NAV_VSCRL` (toggle) on the `EXT` layer top row
+- **Navigator Trackball** – ZSA's official trackball driver; turbo/aim/drag-scroll, vertical scroll toggle and CPI keys live on the [`NAVIGATOR` layer](#navigator-trackball)
+- **Automouse** – switches to the `NAVIGATOR` layer on trackball motion and back after 5 s idle
 
 **Own module (`modules/omareloui/xcase`):**
 
